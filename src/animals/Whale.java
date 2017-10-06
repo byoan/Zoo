@@ -51,9 +51,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
     }
 
     @Override
-    public void birth() {
-        if (this.sex == true) {
-            return;
-        }
+    public Whale birth() {
+        return new Whale();
     }
 }

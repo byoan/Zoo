@@ -52,9 +52,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     }
 
     @Override
-    public void lay() {
-        if (this.sex == true) {
-            return;
-        }
+    public Eagle lay() {
+        return new Eagle();
     }
 }

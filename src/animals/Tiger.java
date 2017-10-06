@@ -51,9 +51,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
     }
 
     @Override
-    public void birth() {
-        if (this.sex == true) {
-            return;
-        }
+    public Tiger birth() {
+        return new Tiger();
     }
 }

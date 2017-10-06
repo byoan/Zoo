@@ -51,9 +51,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     }
 
     @Override
-    public void lay() {
-        if (this.sex == true) {
-            return;
-        }
+    public Fish lay() {
+        return new Fish();
     }
 }

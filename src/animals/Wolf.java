@@ -51,9 +51,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     }
 
     @Override
-    public void birth() {
-        if (this.sex == true) {
-            return;
-        }
+    public Wolf birth() {
+        return new Wolf();
     }
 }

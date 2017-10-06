@@ -50,10 +50,8 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     }
 
     @Override
-    public void lay() {
-        if (this.sex == true) {
-            return;
-        }
+    public Pinguin lay() {
+        return new Pinguin();
     }
 
     @Override

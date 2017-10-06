@@ -52,9 +52,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     }
 
     @Override
-    public void lay() {
-        if (this.sex == true) {
-            return;
-        }
+    public Shark lay() {
+        return new Shark();
     }
 }
