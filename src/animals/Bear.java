@@ -110,18 +110,46 @@ public class Bear extends Animal implements Mammal {
     public int getCopulationTurn() {
         return this.copulationTurn;
     }
-    @Override
-    public void sound() {
 
+    /**
+     * Animal generic method to feed the current instance
+     */
+    @Override
+    public void eat() {
+        this.setHunger(100);
     }
 
+    /**
+     * Animal generic method to scream
+     */
+    @Override
+    public void scream() {
+        System.out.println("I'm screaming");
+    }
+
+    /**
+     * Animal generic method to heal the current animal instance
+     */
     @Override
     public void heal() {
-
+        this.setHealth(100);
     }
 
+    /**
+     * Animal generic method to put the current animal into sleep
+     */
     @Override
-    public void sleepAction() {
+    public void sleep() {
+        this.setSleeping(true);
+    }
+
+    /**
+     * Animal generic method to put the current animal instance awake
+     */
+    @Override
+    public void wake() {
+        this.setSleeping(false);
+    }
 
     }
 
