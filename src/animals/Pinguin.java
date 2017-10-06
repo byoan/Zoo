@@ -1,6 +1,6 @@
 package animals;
 
-public class Pinguin extends Animal implements MarineAnimal, Oviparous {
+public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAnimal {
 
     public Pinguin() {
         this.specieName = "Pinguin";
@@ -40,6 +40,11 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous {
     }
 
     @Override
+    public void wake() {
+
+    }
+
+    @Override
     public void swim() {
 
     }
@@ -49,5 +54,10 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous {
         if (this.sex == true) {
             return;
         }
+    }
+
+    @Override
+    public void fly() {
+
     }
 }
