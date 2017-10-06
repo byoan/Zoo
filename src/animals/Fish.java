@@ -3,9 +3,14 @@ package animals;
 public class Fish extends Animal implements MarineAnimal, Oviparous {
     public Fish() {
         this.specieName = "Fish";
+        this.sex = true;
+        this.weight = 0.10f;
+        this.size = 0.01f;
+        this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
+        this.childrenCreationTime = 5;
     }
 
     public Fish(boolean sex, float weight, float size, int age) {
@@ -17,6 +22,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
+        this.childrenCreationTime = 5;
     }
 
     @Override

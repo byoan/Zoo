@@ -4,9 +4,14 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
 
     public Shark() {
         this.specieName = "Shark";
+        this.sex = true;
+        this.weight = 907;
+        this.size = 3.5f;
+        this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
+        this.childrenCreationTime = 330;
     }
 
     public Shark(boolean sex, float weight, float size, int age) {
@@ -18,6 +23,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
+        this.childrenCreationTime = 330;
     }
 
     @Override

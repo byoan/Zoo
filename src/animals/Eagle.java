@@ -4,9 +4,14 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     public Eagle() {
         this.specieName = "Eagle";
+        this.sex = true;
+        this.weight = 30;
+        this.size = 1;
+        this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
+        this.childrenCreationTime = 5;
     }
 
     public Eagle(boolean sex, float weight, float size, int age) {
@@ -18,6 +23,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
+        this.childrenCreationTime = 5;
     }
 
     @Override

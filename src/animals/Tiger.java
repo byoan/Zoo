@@ -4,9 +4,14 @@ public class Tiger extends Animal implements Mammal {
 
     public Tiger() {
         this.specieName = "Tiger";
+        this.sex = true;
+        this.weight = 180;
+        this.size = 100;
+        this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
+        this.childrenCreationTime = 109;
     }
 
     public Tiger(boolean sex, float weight, float size, int age) {
@@ -18,6 +23,7 @@ public class Tiger extends Animal implements Mammal {
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
+        this.childrenCreationTime = 109;
     }
 
     @Override

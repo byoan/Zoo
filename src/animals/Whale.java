@@ -4,9 +4,14 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
 
     public Whale() {
         this.specieName = "Whale";
+        this.sex = true;
+        this.weight = 140000;
+        this.size = 25;
+        this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
+        this.childrenCreationTime = 330;
     }
 
     public Whale(boolean sex, float weight, float size, int age) {
@@ -18,6 +23,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
+        this.childrenCreationTime = 330;
     }
     @Override
     public void eat() {
