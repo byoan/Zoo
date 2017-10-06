@@ -7,8 +7,8 @@ abstract class Animal implements AnimalInterface {
     private float weight;
     private float size;
     private int age;
-    private String hungerIndicator;
+    private boolean hungerIndicator;
     private boolean sleepIndicator;
-    private String health;
+    private int health; // Percentage
 
 }
