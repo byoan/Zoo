@@ -10,5 +10,6 @@ public interface AnimalInterface {
 
     public void sleep();
 
+    public void wake();
 
 }
