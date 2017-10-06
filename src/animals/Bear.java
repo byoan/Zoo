@@ -26,8 +26,6 @@ public class Bear extends Animal implements Mammal {
         this.healthIndicator = 100;
         this.childrenCreationTime = 180;
     }
-    @Override
-    public void eat() {
 
     /**
      * Allows to randomly generate a boolean, used for the sex definition in case of a 'natural' birth
@@ -112,6 +110,13 @@ public class Bear extends Animal implements Mammal {
     }
 
     /**
+     * Sets the turn number at which the pregnancy started
+     */
+    public void setCopulationTurn(int turnNumber) {
+        this.copulationTurn = turnNumber;
+    }
+
+    /**
      * Animal generic method to feed the current instance
      */
     @Override
@@ -151,12 +156,48 @@ public class Bear extends Animal implements Mammal {
         this.setSleeping(false);
     }
 
+    /**
+     * Performs a copulation between the current animal instance and the given Animal (which must be the same)
+     * @param bear The animal instance that represents the male
+     * @param turnNb The current turn number, to mark the beginning of the pregnancy
+     */
+    public void copulate(Bear bear, int turnNb) {
+        if (bear.getSex() == this.getSex()) {
+            System.out.println("Same sex can't copulate");
+        } else {
+            if (this.getSex() == false) {
+                if (this.getCopulationTurn() <= 0) {
+                    this.setCopulationTurn(turnNb);
+                } else {
+                    // @TODO
+                    // Throw exception
+                    System.out.println("This animal is already pregnant");
+                }
+            } else {
+                // @TODO
+                // Throw exception
+                System.out.println("Man can't be pregnant");
+            }
+        }
     }
 
+    /**
+     * Checks if the pregnancy is at term
+     * @param turnNb the current turn number
+     */
+    public void checkBirth(int turnNb) {
+       if (turnNb - this.copulationTurn == this.getCopulationTurn()) {
+           this.birth();
+       }
+    }
+
+    /**
+     * Represents the birth of the children
+     * @return
+     */
     @Override
-    public void birth() {
-        if (this.sex == true) {
-            return;
-        }
+    public Bear birth() {
+        this.setCopulationTurn(0);
+        return new Bear();
     }
 }
