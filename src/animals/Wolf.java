@@ -1,6 +1,6 @@
 package animals;
 
-public class Wolf extends Animal implements Mammal {
+public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     public Wolf() {
         this.specieName = "Wolf";
