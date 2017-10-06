@@ -1,10 +1,18 @@
 package animals;
 
+import java.util.Random;
+
 public class Eagle extends Animal implements FlyingAnimal, Oviparous {
+
+    /**
+     * Defines the turn number at which the animal copulated, allowing us to calculate the difference
+     * with the current turn number to compare with the gestation time
+     */
+    private int copulationTurn;
 
     public Eagle() {
         this.specieName = "Eagle";
-        this.sex = true;
+        this.sex = this.getRandomBoolean();
         this.weight = 30;
         this.size = 1;
         this.age = 0;
@@ -43,6 +51,11 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     @Override
     public void sleep() {
+
+    }
+
+    @Override
+    public void wake() {
 
     }
 
