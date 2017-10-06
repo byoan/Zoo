@@ -1,5 +1,7 @@
 package animals;
 
+import java.util.Random;
+
 public class Bear extends Animal implements Mammal {
 
     public Bear() {
