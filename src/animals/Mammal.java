@@ -2,5 +2,5 @@ package animals;
 
 public interface Mammal {
 
-    public void birth();
+    public Animal birth();
 }

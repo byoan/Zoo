@@ -2,5 +2,5 @@ package animals;
 
 public interface Oviparous {
 
-    public void lay();
+    public Animal lay();
 }
