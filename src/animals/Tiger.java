@@ -1,6 +1,25 @@
 package animals;
 
-public class Tiger extends Animal implements Mammal{
+public class Tiger extends Animal implements Mammal {
+
+    public Tiger() {
+        this.specieName = "Tiger";
+        this.hungerIndicator = 100;
+        this.sleepIndicator = false;
+        this.healthIndicator = 100;
+    }
+
+    public Tiger(boolean sex, float weight, float size, int age) {
+        this.specieName = "Tiger";
+        this.sex = sex;
+        this.weight = weight;
+        this.size = size;
+        this.age = age;
+        this.hungerIndicator = 100;
+        this.sleepIndicator = false;
+        this.healthIndicator = 100;
+    }
+
     @Override
     public void eat() {
 
@@ -27,6 +46,8 @@ public class Tiger extends Animal implements Mammal{
 
     @Override
     public void birth() {
-
+        if (this.sex == true) {
+            return;
+        }
     }
 }

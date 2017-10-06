@@ -1,6 +1,24 @@
 package animals;
 
 public class Pinguin extends Animal implements MarineAnimal, Oviparous {
+
+    public Pinguin() {
+        this.specieName = "Pinguin";
+        this.hungerIndicator = 100;
+        this.sleepIndicator = false;
+        this.healthIndicator = 100;
+    }
+
+    public Pinguin(boolean sex, float weight, float size, int age) {
+        this.specieName = "Pinguin";
+        this.sex = sex;
+        this.weight = weight;
+        this.size = size;
+        this.age = age;
+        this.hungerIndicator = 100;
+        this.sleepIndicator = false;
+        this.healthIndicator = 100;
+    }
     @Override
     public void eat() {
 
@@ -28,6 +46,8 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous {
 
     @Override
     public void lay() {
-
+        if (this.sex == true) {
+            return;
+        }
     }
 }
