@@ -4,10 +4,11 @@ public interface AnimalInterface {
 
     public void eat();
 
-    public void sound();
+    public void scream();
 
     public void heal();
 
-    public void sleepAction();
+    public void sleep();
+
 
 }
