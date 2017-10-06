@@ -25,7 +25,7 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous {
     }
 
     @Override
-    public void sound() {
+    public void scream() {
 
     }
 
@@ -35,7 +35,7 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous {
     }
 
     @Override
-    public void sleepAction() {
+    public void sleep() {
 
     }
 

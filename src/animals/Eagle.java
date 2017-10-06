@@ -32,7 +32,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     }
 
     @Override
-    public void sound() {
+    public void scream() {
 
     }
 
@@ -42,7 +42,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     }
 
     @Override
-    public void sleepAction() {
+    public void sleep() {
 
     }
 

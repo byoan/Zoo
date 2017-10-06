@@ -31,7 +31,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     }
 
     @Override
-    public void sound() {
+    public void scream() {
 
     }
 
@@ -41,7 +41,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     }
 
     @Override
-    public void sleepAction() {
+    public void sleep() {
 
     }
 

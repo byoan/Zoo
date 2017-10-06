@@ -32,7 +32,7 @@ public class Wolf extends Animal implements Mammal {
     }
 
     @Override
-    public void sound() {
+    public void scream() {
 
     }
 
@@ -42,7 +42,7 @@ public class Wolf extends Animal implements Mammal {
     }
 
     @Override
-    public void sleepAction() {
+    public void sleep() {
 
     }
 

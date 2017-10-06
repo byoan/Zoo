@@ -31,7 +31,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
     }
 
     @Override
-    public void sound() {
+    public void scream() {
 
     }
 
@@ -41,7 +41,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
     }
 
     @Override
-    public void sleepAction() {
+    public void sleep() {
 
     }
 
