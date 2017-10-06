@@ -45,6 +45,14 @@ public class Bear extends Animal implements Mammal {
     }
 
     /**
+     * Returns the gestation time for the current animal instance
+     * @return the gestation time
+     */
+    public int getChildrenCreationTime() {
+        return this.childrenCreationTime;
+    }
+
+    /**
      * Returns the sex of the current animal
      * @return the current sex
      */
@@ -194,7 +202,7 @@ public class Bear extends Animal implements Mammal {
      * @param turnNb the current turn number
      */
     public void checkBirth(int turnNb) {
-       if (turnNb - this.copulationTurn == this.getCopulationTurn()) {
+       if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
            this.birth();
        }
     }
