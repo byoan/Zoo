@@ -145,7 +145,7 @@ public class Bear extends Animal implements Mammal {
      */
     @Override
     public void scream() {
-        System.out.println("I'm screaming");
+        System.out.println("A bear is screaming");
     }
 
     /**
