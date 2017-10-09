@@ -4,7 +4,7 @@ import animals.AnimalInterface;
 
 import java.util.List;
 
-public class Enclosure {
+public class Enclosure<A extends AnimalInterface> {
     private String name;
     private int surface;
     private int maxAnimals;
@@ -16,14 +16,9 @@ public class Enclosure {
     private int cleanliness;
 
     /**
-     * Type of animal that can be contained in the enclosure
-     */
-    private AnimalInterface type;
-
-    /**
      * The collection of animals that are contained in the enclosure
      */
-    private List<AnimalInterface> animals;
+    private List<A> animals;
 
     public Enclosure() {
 
@@ -61,19 +56,11 @@ public class Enclosure {
         this.cleanliness = cleanliness;
     }
 
-    public AnimalInterface getType() {
-        return type;
-    }
-
-    public void setType(AnimalInterface type) {
-        this.type = type;
-    }
-
-    public List<AnimalInterface> getAnimals() {
+    public List<A> getAnimals() {
         return animals;
     }
 
-    public void setAnimals(List<AnimalInterface> animals) {
+    public void setAnimals(List<A> animals) {
         this.animals = animals;
     }
 }

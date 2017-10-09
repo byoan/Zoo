@@ -5,9 +5,10 @@ import animals.MarineAnimal;
 
 import java.util.List;
 
-public class Aquarium extends Enclosure {
+public class Aquarium<A extends MarineAnimal> extends Enclosure {
 
-    public Aquarium(AnimalInterface type) {
-        this.setType(type);
-    }
+    /**
+     * The collection of animals that are contained in the enclosure
+     */
+    private List<A> animals;
 }
