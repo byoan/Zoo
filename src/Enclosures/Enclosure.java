@@ -89,4 +89,25 @@ public class Enclosure<A extends AnimalInterface> {
             animal.eat();
         }
     }
+
+    public Enclosure<A> createTemporaryEnclosure() {
+        return new Enclosure<A>();
+    }
+
+    public void cleanEnclosure() {
+        if (this.getAnimals().size() > 0) {
+            Enclosure<A> temporaryEnclosure = this.createTemporaryEnclosure();
+            for (A animal : this.getAnimals()) {
+                temporaryEnclosure.add(animal);
+                this.getAnimals().remove(animal);
+            }
+            this.setCleanliness(2);
+            for (A animal : temporaryEnclosure.getAnimals()) {
+                this.getAnimals().add(animal);
+                temporaryEnclosure.remove(animal);
+            }
+        } else {
+            this.setCleanliness(2);
+        }
+    }
 }
