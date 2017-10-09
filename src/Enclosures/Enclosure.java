@@ -25,7 +25,7 @@ public class Enclosure<A extends AnimalInterface> {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -33,7 +33,7 @@ public class Enclosure<A extends AnimalInterface> {
     }
 
     public int getSurface() {
-        return surface;
+        return this.surface;
     }
 
     public void setSurface(int surface) {
@@ -41,7 +41,7 @@ public class Enclosure<A extends AnimalInterface> {
     }
 
     public int getMaxAnimals() {
-        return maxAnimals;
+        return this.maxAnimals;
     }
 
     public void setMaxAnimals(int maxAnimals) {
@@ -49,7 +49,7 @@ public class Enclosure<A extends AnimalInterface> {
     }
 
     public int getCleanliness() {
-        return cleanliness;
+        return this.cleanliness;
     }
 
     public void setCleanliness(int cleanliness) {
@@ -57,7 +57,7 @@ public class Enclosure<A extends AnimalInterface> {
     }
 
     public List<A> getAnimals() {
-        return animals;
+        return this.animals;
     }
 
     public void setAnimals(List<A> animals) {
