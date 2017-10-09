@@ -79,4 +79,8 @@ public class Enclosure<A extends AnimalInterface> {
             System.out.println(e.getMessage());
         }
     }
+
+    public int getNbAnimals() {
+        return this.getAnimals().size();
+    }
 }
