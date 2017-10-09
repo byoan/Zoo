@@ -172,6 +172,11 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
         this.setSleeping(false);
     }
 
+    @Override
+    public void swim() {
+
+    }
+
     /**
      * Performs a copulation between the current animal instance and the given Animal (which must be the same)
      * @param whale The animal instance that represents the male
