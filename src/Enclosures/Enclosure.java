@@ -63,4 +63,20 @@ public class Enclosure<A extends AnimalInterface> {
     public void setAnimals(List<A> animals) {
         this.animals = animals;
     }
+
+    public void add(A animal) {
+        try {
+            this.getAnimals().add(animal);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void remove(A animal) {
+        try {
+            this.getAnimals().remove(animal);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
