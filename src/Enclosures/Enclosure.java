@@ -83,4 +83,10 @@ public class Enclosure<A extends AnimalInterface> {
     public int getNbAnimals() {
         return this.getAnimals().size();
     }
+
+    public void feedAnimals() {
+        for(A animal : this.getAnimals()) {
+            animal.eat();
+        }
+    }
 }
