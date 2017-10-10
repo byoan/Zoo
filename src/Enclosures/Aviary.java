@@ -46,4 +46,11 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
         }
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "Aviary{" +
+                "height=" + height +
+                ", roofState=" + roofState +
+                '}';
+    }
 }

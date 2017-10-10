@@ -115,4 +115,15 @@ public class Enclosure<A extends AnimalInterface> {
             this.setCleanliness(2);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Enclosure{" +
+                "name='" + name + '\'' +
+                ", surface=" + surface +
+                ", maxAnimals=" + maxAnimals +
+                ", cleanliness=" + cleanliness +
+                ", animals=" + animals +
+                '}';
+    }
 }

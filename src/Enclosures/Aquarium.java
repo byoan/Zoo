@@ -67,4 +67,12 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Aquarium{" +
+                "deepth=" + deepth +
+                ", salitiny=" + salitiny +
+                ", waterLevel=" + waterLevel +
+                '}';
+    }
 }
