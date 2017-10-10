@@ -22,6 +22,13 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      */
     private int waterLevel;
 
+    public Aquarium(String name, int surface, int maxAnimals, int deepth, int salitiny, int waterLevel) {
+        super(name, surface, maxAnimals);
+        this.deepth = deepth;
+        this.salitiny = salitiny;
+        this.waterLevel = waterLevel;
+    }
+
     public int getCurrentWaterLevel() {
         return this.waterLevel;
     }

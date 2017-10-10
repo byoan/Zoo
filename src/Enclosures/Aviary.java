@@ -6,6 +6,9 @@ import java.util.List;
 
 public class Aviary<A extends FlyingAnimal> extends Enclosure {
 
+    /**
+     * Represents the height of the aviary
+     */
     private int height;
 
     /**
@@ -13,6 +16,12 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
      * 0 = bad, 1 = correct, 2 = good
      */
     private int roofState;
+
+    public Aviary(String name, int surface, int maxAnimals, int height, int roofState) {
+        super(name, surface, maxAnimals);
+        this.height = height;
+        this.roofState = roofState;
+    }
 
     public int getHeight() {
         return this.height;

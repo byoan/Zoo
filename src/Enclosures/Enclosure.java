@@ -2,6 +2,7 @@ package Enclosures;
 
 import animals.AnimalInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Enclosure<A extends AnimalInterface> {
@@ -20,8 +21,12 @@ public class Enclosure<A extends AnimalInterface> {
      */
     private List<A> animals;
 
-    public Enclosure() {
-
+    public Enclosure(String name, int surface, int maxAnimals) {
+        this.name = name;
+        this.surface = surface;
+        this.maxAnimals = maxAnimals;
+        this.cleanliness = 2;
+        this.animals = new ArrayList<A>();
     }
 
     public String getName() {
@@ -91,7 +96,7 @@ public class Enclosure<A extends AnimalInterface> {
     }
 
     public Enclosure<A> createTemporaryEnclosure() {
-        return new Enclosure<A>();
+        return new Enclosure<A>("Temporary Enclosure for " + this.getName() + " cleaning", this.getSurface(), this.getMaxAnimals());
     }
 
     public void cleanEnclosure() {
