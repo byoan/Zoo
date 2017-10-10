@@ -17,6 +17,19 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      */
     private int salitiny;
 
+    /**
+     * Represents the current water level
+     */
+    private int waterLevel;
+
+    public int getCurrentWaterLevel() {
+        return this.waterLevel;
+    }
+
+    public void setWaterLevel(int waterLevel) {
+        this.waterLevel = waterLevel;
+    }
+
     public int getDeepth() {
         return this.deepth;
     }
@@ -34,7 +47,17 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
     }
 
     public void cleanEnclosure() {
-        System.out.println("La profondeur est de " + this.getDeepth());
+        System.out.println("Le niveau de l'eau est de " + this.getCurrentWaterLevel());
+        if (this.getCurrentWaterLevel() < this.getDeepth()) {
+            System.out.println("Remplissage du bassin ...");
+            System.out.println("Le niveau de l'eau est maintenant de " + this.getCurrentWaterLevel());
+        }
+        System.out.println("La salinité vaut actuellement : " + this.getSalitiny() + "/m3");
+        if (this.getSalitiny() < 100) {
+            System.out.println("Recalibrage du niveau de sel ...");
+            this.setSalitiny(100);
+            System.out.println("La salinité a été recalibrée, elle vaut maintenant : " + this.getSalitiny());
+        }
     }
 
 }
