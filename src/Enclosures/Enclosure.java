@@ -3,7 +3,6 @@ package Enclosures;
 import animals.AnimalInterface;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Enclosure<A extends AnimalInterface> {
     private String name;
@@ -19,7 +18,7 @@ public class Enclosure<A extends AnimalInterface> {
     /**
      * The collection of animals that are contained in the enclosure
      */
-    private List<A> animals;
+    private ArrayList<A> animals;
 
     public Enclosure(String name, int surface, int maxAnimals) {
         this.name = name;
@@ -61,11 +60,11 @@ public class Enclosure<A extends AnimalInterface> {
         this.cleanliness = cleanliness;
     }
 
-    public List<A> getAnimals() {
+    public ArrayList<A> getAnimals() {
         return this.animals;
     }
 
-    public void setAnimals(List<A> animals) {
+    public void setAnimals(ArrayList<A> animals) {
         this.animals = animals;
     }
 
