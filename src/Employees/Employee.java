@@ -1,8 +1,13 @@
 package Employees;
 
 import Enclosures.Enclosure;
+import animals.AnimalInterface;
 
-abstract class Employee implements EmployeeInterface {
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+
+public class Employee implements EmployeeInterface {
 
     protected String name;
     protected boolean sex;  //True if man
@@ -33,8 +38,24 @@ abstract class Employee implements EmployeeInterface {
     }
 
     public void inspectEnclosure(Enclosure enclosure) {
-        if (enclosure != null) {
+        enclosure.toString();
+    }
 
+    public void cleanEnclosure(Enclosure enclosure) {
+        enclosure.cleanEnclosure();
+    }
+
+    public void feedAnimals(Enclosure enclosure) {
+        ArrayList<AnimalInterface> animals = enclosure.getAnimals();
+        for (AnimalInterface animal : animals) {
+            animal.eat();
+        }
+    }
+
+    public void transferAnimal(Enclosure originEnclosure, Enclosure targetEnclosure, AnimalInterface animalToTransfer) {
+        if (targetEnclosure.getNbAnimals() >= targetEnclosure.getAnimals().size() + 1) {
+            originEnclosure.getAnimals().remove(animalToTransfer);
+            targetEnclosure.getAnimals().add(animalToTransfer);
         }
     }
 }

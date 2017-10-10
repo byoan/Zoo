@@ -3,7 +3,7 @@ package Employees;
 public class Main {
 
     public static void main(String[] args) {
-        // write your code here
+        Employee em = new Employee();
     }
 }
 

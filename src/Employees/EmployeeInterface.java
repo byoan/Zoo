@@ -1,12 +1,15 @@
 package Employees;
 
+import Enclosures.Enclosure;
+import animals.AnimalInterface;
+
 public interface EmployeeInterface {
 
-    public void checkEnclosure();
+    public void inspectEnclosure(Enclosure enclosure);
 
-    public void cleanEnclosure();
+    public void cleanEnclosure(Enclosure enclosure);
 
-    public void feedAnimals();
+    public void feedAnimals(Enclosure enclosure);
 
-    public void transferAnimal();
+    public void transferAnimal(Enclosure originEnclosure, Enclosure targetEnclosure, AnimalInterface animalToTransfer);
 }
