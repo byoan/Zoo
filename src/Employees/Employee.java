@@ -8,14 +8,39 @@ import java.util.Random;
 
 public class Employee implements EmployeeInterface {
 
+    private static Employee instance = null;
+
     protected String name;
     protected boolean sex;  //True if man
     protected int age;
+
+    private Employee() {
+        super();
+    }
+
+    public Employee getInstance() {
+        if (Employee.instance == null) {
+            // synchronized allows use to keep the singleton even when using multiple threads
+            synchronized(Employee.class) {
+                if (Employee.instance == null) {
+                    Employee.instance = new Employee();
+                }
+            }
+        }
+        return Employee.instance;
+    }
 
     public boolean getRandomBoolean() {
         Random random = new Random();
         return random.nextBoolean();
     }
+
+    public void defineAttributes(String name, boolean sex, int age) {
+        this.setName(name);
+        this.setSex(sex);
+        this.setAge(age);
+    }
+
     public String getName() {
         return this.name;
     }
