@@ -13,8 +13,12 @@ public class Zoo {
     private int maxNbEnclosure;
     private ArrayList<Enclosure> enclosureList;
 
-    public String getNom() {
-        return this.nom;
+    public Zoo(String name, Employee employee, int maxNbEnclosure) {
+        this.name = name;
+        this.employee = employee;
+        this.maxNbEnclosure = maxNbEnclosure;
+    }
+
     public String getName() {
         return this.name;
     }
