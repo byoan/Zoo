@@ -8,17 +8,19 @@ import java.util.ArrayList;
 
 public class Zoo {
 
-    private String nom;
+    private String name;
     private Employee employee;
     private int maxNbEnclosure;
     private ArrayList<Enclosure> enclosureList;
 
     public String getNom() {
         return this.nom;
+    public String getName() {
+        return this.name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Employee getEmployee() {
