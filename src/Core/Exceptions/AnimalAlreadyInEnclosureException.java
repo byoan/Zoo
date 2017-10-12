@@ -13,7 +13,7 @@ public class AnimalAlreadyInEnclosureException extends Exception {
     }
 
     private AnimalInterface getAnimal() {
-        return animal;
+        return this.animal;
     }
 
     private Enclosure getEnclosure() {
