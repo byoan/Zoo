@@ -225,4 +225,21 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     public Shark lay() {
         return new Shark();
     }
+
+    @Override
+    public String toString() {
+        return "Shark{" +
+                "specieName='" + specieName + '\'' +
+                ", sex=" + sex +
+                ", weight=" + weight +
+                ", size=" + size +
+                ", age=" + age +
+                ", hungerIndicator=" + hungerIndicator +
+                ", sleepIndicator=" + sleepIndicator +
+                ", healthIndicator=" + healthIndicator +
+                ", copulationTurn=" + copulationTurn +
+                ", isHatched=" + isHatched +
+                ", childrenCreationTime=" + childrenCreationTime +
+                '}';
+    }
 }

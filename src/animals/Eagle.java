@@ -222,4 +222,21 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     public void fly() {
         System.out.println("An eagle is flying");
     }
+
+    @Override
+    public String toString() {
+        return "Eagle{" +
+                "specieName='" + specieName + '\'' +
+                ", sex=" + sex +
+                ", weight=" + weight +
+                ", size=" + size +
+                ", age=" + age +
+                ", hungerIndicator=" + hungerIndicator +
+                ", sleepIndicator=" + sleepIndicator +
+                ", healthIndicator=" + healthIndicator +
+                ", copulationTurn=" + copulationTurn +
+                ", isHatched=" + isHatched +
+                ", childrenCreationTime=" + childrenCreationTime +
+                '}';
+    }
 }

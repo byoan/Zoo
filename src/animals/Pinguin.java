@@ -227,4 +227,21 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     public void fly() {
         System.out.println("A pinguin is flying");
     }
+
+    @Override
+    public String toString() {
+        return "Pinguin{" +
+                "specieName='" + specieName + '\'' +
+                ", sex=" + sex +
+                ", weight=" + weight +
+                ", size=" + size +
+                ", age=" + age +
+                ", hungerIndicator=" + hungerIndicator +
+                ", sleepIndicator=" + sleepIndicator +
+                ", healthIndicator=" + healthIndicator +
+                ", copulationTurn=" + copulationTurn +
+                ", isHatched=" + isHatched +
+                ", childrenCreationTime=" + childrenCreationTime +
+                '}';
+    }
 }

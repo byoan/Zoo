@@ -225,4 +225,21 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     public Fish lay() {
         return new Fish();
     }
+
+    @Override
+    public String toString() {
+        return "Fish{" +
+                "specieName='" + specieName + '\'' +
+                ", sex=" + sex +
+                ", weight=" + weight +
+                ", size=" + size +
+                ", age=" + age +
+                ", hungerIndicator=" + hungerIndicator +
+                ", sleepIndicator=" + sleepIndicator +
+                ", healthIndicator=" + healthIndicator +
+                ", copulationTurn=" + copulationTurn +
+                ", isHatched=" + isHatched +
+                ", childrenCreationTime=" + childrenCreationTime +
+                '}';
+    }
 }

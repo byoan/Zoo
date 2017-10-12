@@ -220,4 +220,20 @@ public class Bear extends Animal implements Mammal {
         this.setCopulationTurn(0);
         return new Bear();
     }
+
+    @Override
+    public String toString() {
+        return "Bear{" +
+                "specieName='" + specieName + '\'' +
+                ", sex=" + sex +
+                ", weight=" + weight +
+                ", size=" + size +
+                ", age=" + age +
+                ", hungerIndicator=" + hungerIndicator +
+                ", sleepIndicator=" + sleepIndicator +
+                ", healthIndicator=" + healthIndicator +
+                ", copulationTurn=" + copulationTurn +
+                ", childrenCreationTime=" + childrenCreationTime +
+                '}';
+    }
 }

@@ -232,4 +232,20 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
         this.setCopulationTurn(0);
         return new Whale();
     }
+
+    @Override
+    public String toString() {
+        return "Whale{" +
+                "specieName='" + specieName + '\'' +
+                ", sex=" + sex +
+                ", weight=" + weight +
+                ", size=" + size +
+                ", age=" + age +
+                ", hungerIndicator=" + hungerIndicator +
+                ", sleepIndicator=" + sleepIndicator +
+                ", healthIndicator=" + healthIndicator +
+                ", copulationTurn=" + copulationTurn +
+                ", childrenCreationTime=" + childrenCreationTime +
+                '}';
+    }
 }

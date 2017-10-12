@@ -227,4 +227,20 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
         this.setCopulationTurn(0);
         return new Tiger();
     }
+
+    @Override
+    public String toString() {
+        return "Tiger{" +
+                "specieName='" + specieName + '\'' +
+                ", sex=" + sex +
+                ", weight=" + weight +
+                ", size=" + size +
+                ", age=" + age +
+                ", hungerIndicator=" + hungerIndicator +
+                ", sleepIndicator=" + sleepIndicator +
+                ", healthIndicator=" + healthIndicator +
+                ", copulationTurn=" + copulationTurn +
+                ", childrenCreationTime=" + childrenCreationTime +
+                '}';
+    }
 }
