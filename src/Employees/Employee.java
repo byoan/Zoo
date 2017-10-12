@@ -4,8 +4,6 @@ import Enclosures.Enclosure;
 import animals.AnimalInterface;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
 
 public class Employee implements EmployeeInterface {
 
