@@ -70,7 +70,11 @@ public class Enclosure<A extends AnimalInterface> {
 
     public void add(A animal) {
         try {
-            this.getAnimals().add(animal);
+            if (!this.getAnimals().contains(animal)) {
+                this.getAnimals().add(animal);
+            } else {
+                System.out.println("Can't add this animal to the enclosure, as it is already in");
+            }
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
