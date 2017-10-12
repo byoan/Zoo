@@ -3,8 +3,6 @@ package Core.Exceptions;
 import Enclosures.Enclosure;
 import animals.AnimalInterface;
 
-import java.util.ArrayList;
-
 public class AnimalAlreadyInEnclosureException extends Exception {
     private AnimalInterface animal;
     private Enclosure enclosure;
