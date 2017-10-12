@@ -4,6 +4,7 @@ import Enclosures.Enclosure;
 import animals.AnimalInterface;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Employee implements EmployeeInterface {
 
@@ -11,6 +12,10 @@ public class Employee implements EmployeeInterface {
     protected boolean sex;  //True if man
     protected int age;
 
+    public boolean getRandomBoolean() {
+        Random random = new Random();
+        return random.nextBoolean();
+    }
     public String getName() {
         return this.name;
     }
