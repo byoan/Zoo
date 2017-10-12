@@ -54,8 +54,12 @@ public class Employee implements EmployeeInterface {
 
     public void transferAnimal(Enclosure originEnclosure, Enclosure targetEnclosure, AnimalInterface animalToTransfer) {
         if (targetEnclosure.getNbAnimals() >= targetEnclosure.getAnimals().size() + 1) {
-            originEnclosure.getAnimals().remove(animalToTransfer);
-            targetEnclosure.getAnimals().add(animalToTransfer);
+            try {
+                originEnclosure.getAnimals().remove(animalToTransfer);
+                targetEnclosure.getAnimals().add(animalToTransfer);
+            } catch(Exception e) {
+                System.out.println("The following error was thrown while trying to transfer an animal : " + e.getMessage());
+            }
         }
     }
 }
