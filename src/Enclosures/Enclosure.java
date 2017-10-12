@@ -1,5 +1,6 @@
 package Enclosures;
 
+import Core.Exceptions.AnimalAlreadyInEnclosureException;
 import animals.AnimalInterface;
 
 import java.util.ArrayList;
@@ -68,15 +69,17 @@ public class Enclosure<A extends AnimalInterface> {
         this.animals = animals;
     }
 
-    public void add(A animal) {
+    public void add(A animal) throws AnimalAlreadyInEnclosureException {
         try {
             if (!this.getAnimals().contains(animal)) {
                 this.getAnimals().add(animal);
             } else {
-                System.out.println("Can't add this animal to the enclosure, as it is already in");
+                throw new AnimalAlreadyInEnclosureException(animal, this);
             }
-        } catch(Exception e) {
+        } catch (AnimalAlreadyInEnclosureException e) {
             System.out.println(e.getMessage());
+        } catch(Exception e) {
+            System.out.println("An error occured while trying to add the Animal to the Enclosure : " + e.getMessage());
         }
     }
 
@@ -106,8 +109,12 @@ public class Enclosure<A extends AnimalInterface> {
         if (this.getAnimals().size() > 0) {
             Enclosure<A> temporaryEnclosure = this.createTemporaryEnclosure();
             for (A animal : this.getAnimals()) {
-                temporaryEnclosure.add(animal);
-                this.getAnimals().remove(animal);
+                try {
+                    temporaryEnclosure.add(animal);
+                    this.getAnimals().remove(animal);
+                } catch (Exception e) {
+                    e.getMessage();
+                }
             }
             this.setCleanliness(2);
             for (A animal : temporaryEnclosure.getAnimals()) {
