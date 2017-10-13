@@ -18,6 +18,7 @@ public class Zoo {
         this.name = name;
         this.employee = employee;
         this.maxNbEnclosure = maxNbEnclosure;
+        this.setEnclosureList(new ArrayList<Enclosure>());
     }
 
     public String getName() {
