@@ -71,11 +71,12 @@ public class Enclosure<A extends AnimalInterface> {
 
     public void add(A animal) {
         try {
-            if (!this.getAnimals().contains(animal) && this.getAnimals().size() < this.getMaxAnimals()) {
+            if (!animal.isInEnclosure() && this.getAnimals().size() < this.getMaxAnimals()) {
                 this.getAnimals().add(animal);
+                animal.setInEnclosure(true);
             } else {
                 //throw new AnimalAlreadyInEnclosureException(animal, this);
-                System.out.println("Can't add this animal as it is already in");
+                System.out.println("Can't add this animal as it is already in an enclosure, or the enclosure is full");
             }
         } catch(Exception e) {
             System.out.println("An error occurred while trying to add the Animal to the Enclosure : " + e.getMessage());
@@ -84,7 +85,13 @@ public class Enclosure<A extends AnimalInterface> {
 
     public void remove(A animal) {
         try {
-            this.getAnimals().remove(animal);
+            if (animal.isInEnclosure() && this.getAnimals().contains(animal)) {
+                this.getAnimals().remove(animal);
+                animal.setInEnclosure(false);
+            } else {
+                // TODO : custom exception
+                System.out.println("This animal is not in this enclosure");
+            }
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
