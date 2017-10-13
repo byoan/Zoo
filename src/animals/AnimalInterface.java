@@ -12,4 +12,7 @@ public interface AnimalInterface {
 
     public void wake();
 
+    public boolean isInEnclosure();
+
+    public void setInEnclosure(boolean isInEnclosure);
 }

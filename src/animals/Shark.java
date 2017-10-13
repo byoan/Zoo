@@ -195,6 +195,16 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     }
 
     @Override
+    public boolean isInEnclosure() {
+        return this.isInEnclosure;
+    }
+
+    @Override
+    public void setInEnclosure(boolean isInEnclosure) {
+        this.isInEnclosure = isInEnclosure;
+    }
+
+    @Override
     public void swim() {
         System.out.println("A shark is swimming");
     }
@@ -240,6 +250,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
                 ", copulationTurn=" + copulationTurn +
                 ", isHatched=" + isHatched +
                 ", childrenCreationTime=" + childrenCreationTime +
+                ", isInEnclosure=" + isInEnclosure +
                 '}';
     }
 }

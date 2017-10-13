@@ -191,6 +191,16 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         this.setSleeping(false);
     }
 
+    @Override
+    public boolean isInEnclosure() {
+        return this.isInEnclosure;
+    }
+
+    @Override
+    public void setInEnclosure(boolean isInEnclosure) {
+        this.isInEnclosure = isInEnclosure;
+    }
+
     /**
      * Performs a copulation between the current animal instance and the given Animal (which must be the same)
      * @param eagle The animal instance that represents the male
@@ -237,6 +247,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
                 ", copulationTurn=" + copulationTurn +
                 ", isHatched=" + isHatched +
                 ", childrenCreationTime=" + childrenCreationTime +
+                ", isInEnclosure=" + isInEnclosure +
                 '}';
     }
 }

@@ -177,6 +177,16 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
     }
 
     @Override
+    public boolean isInEnclosure() {
+        return this.isInEnclosure;
+    }
+
+    @Override
+    public void setInEnclosure(boolean isInEnclosure) {
+        this.isInEnclosure = isInEnclosure;
+    }
+
+    @Override
     public void swim() {
 
     }
@@ -246,6 +256,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
                 ", healthIndicator=" + healthIndicator +
                 ", copulationTurn=" + copulationTurn +
                 ", childrenCreationTime=" + childrenCreationTime +
+                ", isInEnclosure=" + isInEnclosure +
                 '}';
     }
 }

@@ -11,4 +11,5 @@ abstract class Animal implements AnimalInterface {
     protected boolean sleepIndicator;
     protected int healthIndicator; // Percentage
     protected int childrenCreationTime;
+    protected boolean isInEnclosure = false;
 }

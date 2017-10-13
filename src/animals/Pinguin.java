@@ -192,6 +192,16 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     }
 
     @Override
+    public boolean isInEnclosure() {
+        return this.isInEnclosure;
+    }
+
+    @Override
+    public void setInEnclosure(boolean isInEnclosure) {
+        this.isInEnclosure = isInEnclosure;
+    }
+
+    @Override
     public void swim() {
         System.out.println("A pinguin is swimming");
     }
@@ -242,6 +252,7 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
                 ", copulationTurn=" + copulationTurn +
                 ", isHatched=" + isHatched +
                 ", childrenCreationTime=" + childrenCreationTime +
+                ", isInEnclosure=" + isInEnclosure +
                 '}';
     }
 }
