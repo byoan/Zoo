@@ -69,15 +69,14 @@ public class Enclosure<A extends AnimalInterface> {
         this.animals = animals;
     }
 
-    public void add(A animal) throws AnimalAlreadyInEnclosureException {
+    public void add(A animal) {
         try {
             if (!this.getAnimals().contains(animal)) {
                 this.getAnimals().add(animal);
             } else {
-                throw new AnimalAlreadyInEnclosureException(animal, this);
+                //throw new AnimalAlreadyInEnclosureException(animal, this);
+                System.out.println("Can't add this animal as it is already in");
             }
-        } catch (AnimalAlreadyInEnclosureException e) {
-            System.out.println(e.getMessage());
         } catch(Exception e) {
             System.out.println("An error occured while trying to add the Animal to the Enclosure : " + e.getMessage());
         }
