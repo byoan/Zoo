@@ -18,7 +18,7 @@ public class Employee implements EmployeeInterface {
         super();
     }
 
-    public Employee getInstance() {
+    public static Employee getInstance() {
         if (Employee.instance == null) {
             // synchronized allows use to keep the singleton even when using multiple threads
             synchronized(Employee.class) {
