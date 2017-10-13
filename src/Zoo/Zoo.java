@@ -2,7 +2,6 @@ package Zoo;
 
 import Employees.Employee;
 import Enclosures.Enclosure;
-import Enclosures.EnclosureInterface;
 import animals.AnimalInterface;
 
 import java.util.ArrayList;
@@ -53,7 +52,7 @@ public class Zoo {
         this.enclosureList = enclosureList;
     }
 
-    public void addEnclosure(Enclosure<AnimalInterface> enclosure) {
+    public <A extends AnimalInterface> void addEnclosure(Enclosure<A> enclosure) {
         try {
             if (this.getEnclosureList().size() < this.getMaxNbEnclosure()) {
                 this.getEnclosureList().add(enclosure);
