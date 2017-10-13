@@ -78,7 +78,7 @@ public class Enclosure<A extends AnimalInterface> {
                 System.out.println("Can't add this animal as it is already in");
             }
         } catch(Exception e) {
-            System.out.println("An error occured while trying to add the Animal to the Enclosure : " + e.getMessage());
+            System.out.println("An error occurred while trying to add the Animal to the Enclosure : " + e.getMessage());
         }
     }
 
