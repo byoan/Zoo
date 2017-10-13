@@ -75,6 +75,22 @@ public class Zoo {
         }
     }
 
+    public Enclosure getEnclosureByName(String enclosureName) {
+        if (this.getEnclosureList().size() > 0) {
+            for (int i = 0; i <= this.getEnclosureList().size(); i++) {
+                if (this.getEnclosureList().get(i).getName() == enclosureName) {
+                    return this.getEnclosureList().get(i);
+                }
+            }
+            // TODO : throw Exception
+            System.out.println("No enclosure found with this name");
+        } else {
+            // TODO : throw Exception
+            System.out.println("No enclosure in the Zoo yet");
+        }
+        return null;
+    }
+
     public int getNbAnimalsInZoo() {
         int nbAnimals = 0;
         for (Enclosure enclosure : this.getEnclosureList()) {
