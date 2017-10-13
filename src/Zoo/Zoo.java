@@ -2,6 +2,7 @@ package Zoo;
 
 import Employees.Employee;
 import Enclosures.Enclosure;
+import Enclosures.EnclosureInterface;
 import animals.AnimalInterface;
 
 import java.util.ArrayList;
@@ -49,6 +50,28 @@ public class Zoo {
 
     public void setEnclosureList(ArrayList<Enclosure> enclosureList) {
         this.enclosureList = enclosureList;
+    }
+
+    public void addEnclosure(Enclosure<AnimalInterface> enclosure) {
+        try {
+            if (this.getEnclosureList().size() < this.getMaxNbEnclosure()) {
+                this.getEnclosureList().add(enclosure);
+            } else {
+                // TODO : throw exception
+                System.out.println("Can't add this enclosure to the Zoo, as it is full");
+            }
+        } catch(Exception e) {
+            System.out.println("An error occurred while trying to add this enclosure to the zoo : " + e.getMessage());
+        }
+    }
+
+    public void removeEnclosure(Enclosure<AnimalInterface> enclosure) {
+        try {
+            this.getEnclosureList().remove(enclosure);
+        } catch(Exception e) {
+            // TODO : throw exception
+            System.out.println("An error occurred while trying to remove this enclosure from the zoo : " + e.getMessage());
+        }
     }
 
     public int getNbAnimalsInZoo() {
