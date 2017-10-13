@@ -71,7 +71,7 @@ public class Enclosure<A extends AnimalInterface> {
 
     public void add(A animal) {
         try {
-            if (!this.getAnimals().contains(animal)) {
+            if (!this.getAnimals().contains(animal) && this.getAnimals().size() < this.getMaxAnimals()) {
                 this.getAnimals().add(animal);
             } else {
                 //throw new AnimalAlreadyInEnclosureException(animal, this);
