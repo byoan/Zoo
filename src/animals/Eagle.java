@@ -166,6 +166,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     public void eat() {
         if (this.sleepIndicator != false) {
             this.setHunger(100);
+            System.out.println("This " + this.specieName + " was fed");
         } else {
             System.out.println("Can't eat while sleeping");
         }

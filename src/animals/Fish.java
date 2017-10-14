@@ -169,6 +169,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     public void eat() {
         if (this.sleepIndicator != false) {
             this.setHunger(100);
+            System.out.println("This " + this.specieName + " was fed");
         } else {
             System.out.println("Can't eat while sleeping");
         }

@@ -93,9 +93,13 @@ public class Simulation {
                 this.handlePickEnclosureToClean();
                 break;
             case 3:
-                this.handleAnimalTransfer();
+                this.handleAnimalFeeding();
                 break;
             case 4:
+            case 5:
+                this.handleAnimalTransfer();
+                break;
+            case 6:
                 this.doNothing();
                 break;
             default:
@@ -114,8 +118,9 @@ public class Simulation {
         System.out.println("Choose an action by entering it's number:");
         System.out.println("1. Inspect an enclosure");
         System.out.println("2. Clean an enclosure");
-        System.out.println("3. Transfer an animal");
-        System.out.println("4. Do nothing");
+        System.out.println("3. Feed an animal");
+        System.out.println("5. Transfer an animal");
+        System.out.println("6. Do nothing");
     }
 
     /**
@@ -125,6 +130,11 @@ public class Simulation {
         System.out.println("Not doing anything this turn ...");
     }
 
+    private <A extends AnimalInterface> void handleAnimalFeeding() {
+        Enclosure<A> enclosure = this.pickEnclosure("Select the enclosure containing the animal you want to feed:");
+        A animal = this.pickAnimal("Select the animal you want to feed:", enclosure);
+        this.getEmployee().feedAnimal(animal);
+    }
     /**
      * Allows to handle the animal transfer between 2 enclosures
      * @param <A> Generic type to be used within the method itself
