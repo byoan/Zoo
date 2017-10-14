@@ -111,25 +111,51 @@ public class Enclosure<A extends AnimalInterface> {
         return new Enclosure<A>("Temporary Enclosure for " + this.getName() + " cleaning", this.getSurface(), this.getMaxAnimals());
     }
 
+    public boolean transferAnimal(A animal, Enclosure<A> targetEnclosure, boolean silent) {
+        if (this.getAnimals().contains(animal)) {
+            try {
+                this.remove(animal);
+                targetEnclosure.add(animal);
+            } catch (Exception e) {
+                System.out.println("An error occurred while transferring the animal : " + e.getMessage());
+                return false;
+            }
+            // Check that the transfer executed as expected
+            if (!this.getAnimals().contains(animal) && targetEnclosure.getAnimals().contains(animal)) {
+                if (!silent) {
+                    System.out.println("The animal was successfully transferred");
+                }
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            System.out.println("This animal is not in this enclosure");
+            return false;
+        }
+    }
+
     public void cleanEnclosure() {
         if (this.getAnimals().size() > 0) {
             Enclosure<A> temporaryEnclosure = this.createTemporaryEnclosure();
-            for (A animal : this.getAnimals()) {
-                try {
-                    temporaryEnclosure.add(animal);
-                    this.getAnimals().remove(animal);
-                } catch (Exception e) {
-                    e.getMessage();
-                }
+            int originalSize = this.getNbAnimals();
+
+            // We must proceed this way, as using a foreach on the collection, and removing an item from this collection within the foreach will create an Exception
+            for (int i = 0; i < originalSize; i++) {
+                A animal = this.getAnimals().get(i);
+                this.transferAnimal(animal, temporaryEnclosure, true);
             }
             this.setCleanliness(2);
-            for (A animal : temporaryEnclosure.getAnimals()) {
-                this.getAnimals().add(animal);
-                temporaryEnclosure.remove(animal);
+
+            // We must proceed this way, as using a foreach on the collection, and removing an item from this collection within the foreach will create an Exception
+            for (int i = 0; i < originalSize; i++) {
+                A animal = temporaryEnclosure.getAnimals().get(i);
+                temporaryEnclosure.transferAnimal(animal, this, true);
             }
         } else {
             this.setCleanliness(2);
         }
+        System.out.println("The " + this.getName() + " enclosure has been cleaned.");
     }
 
     @Override
