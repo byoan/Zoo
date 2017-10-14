@@ -6,12 +6,14 @@ import Enclosures.Enclosure;
 import animals.AnimalInterface;
 import animals.Tiger;
 import animals.Whale;
+import java.util.Scanner;
 
 public class Simulation {
 
     private Employee employee;
     private Zoo zoo;
     private int turnNb;
+    Scanner scanner;
 
     public Employee getEmployee() {
         return employee;
@@ -32,6 +34,47 @@ public class Simulation {
 
     public void nextTurn() {
         this.setTurnNb(this.getTurnNb() + 1);
+    private void handleTurn() {
+        this.displayPickAction();
+        int action = 0;
+
+        while (true) {
+            String userInput = scanner.next();
+            try {
+                action = Integer.parseInt(userInput);
+                break;
+            } catch (Exception e) {
+                System.out.println("Error : " + e.getMessage() + ". Please try again");
+            }
+        }
+
+        switch(action) {
+            case 1:
+                this.handlePickEnclosureToInspect();
+                break;
+            case 2:
+                this.handlePickEnclosureToClean();
+                break;
+            case 3:
+                this.handleAnimalTransfer();
+                break;
+            case 4:
+                this.doNothing();
+                break;
+            default:
+                System.out.println("Did not understood your action, please try again");
+                this.handleTurn();
+                break;
+        }
+    }
+
+    private void displayPickAction() {
+        System.out.println("Choose an action by entering it's number:");
+        System.out.println("1. Inspect an enclosure");
+        System.out.println("2. Clean an enclosure");
+        System.out.println("3. Transfer an animal");
+        System.out.println("4. Do nothing");
+    }
     }
 
     public void setEmployee(Employee employee) {
