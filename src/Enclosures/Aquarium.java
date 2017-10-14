@@ -7,12 +7,12 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
     /**
      * Deepth of the aquarium
      */
-    private int deepth;
+    private int depth;
 
     /**
      * Percentage of salinity
      */
-    private int salitiny;
+    private int salinity;
 
     /**
      * Represents the current water level
@@ -30,8 +30,8 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      */
     public Aquarium(String name, int surface, int maxAnimals, int depth, int salinity, int waterLevel) {
         super(name, surface, maxAnimals);
-        this.deepth = deepth;
-        this.salitiny = salitiny;
+        this.depth = depth;
+        this.salinity = salinity;
         this.waterLevel = waterLevel;
     }
 
@@ -91,15 +91,15 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      */
     public void cleanEnclosure() {
         System.out.println("Le niveau de l'eau est de " + this.getCurrentWaterLevel());
-        if (this.getCurrentWaterLevel() < this.getDeepth()) {
+        if (this.getCurrentWaterLevel() < this.getDepth()) {
             System.out.println("Remplissage du bassin ...");
             System.out.println("Le niveau de l'eau est maintenant de " + this.getCurrentWaterLevel());
         }
-        System.out.println("La salinité vaut actuellement : " + this.getSalitiny() + "/m3");
-        if (this.getSalitiny() < 100) {
+        System.out.println("La salinité vaut actuellement : " + this.getSalinity() + "/m3");
+        if (this.getSalinity() < 100) {
             System.out.println("Recalibrage du niveau de sel ...");
-            this.setSalitiny(100);
-            System.out.println("La salinité a été recalibrée, elle vaut maintenant : " + this.getSalitiny());
+            this.setSalinity(100);
+            System.out.println("La salinité a été recalibrée, elle vaut maintenant : " + this.getSalinity());
         }
     }
 
@@ -110,8 +110,8 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
     @Override
     public String toString() {
         return super.toString() + "Aquarium{" +
-                "deepth=" + deepth +
-                ", salitiny=" + salitiny +
+                "depth=" + depth +
+                ", salinity=" + salinity +
                 ", waterLevel=" + waterLevel +
                 '}';
     }
