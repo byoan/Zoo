@@ -164,6 +164,41 @@ public class Simulation {
         }
         return enclosure.getAnimals().get(action - 1);
     }
+
+    private <A extends AnimalInterface> void handlePickEnclosureToInspect() {
+        if (this.getZoo().getEnclosureList().size() > 0) {
+            System.out.println("Which enclosure would you like to inspect?");
+            System.out.println("0. Go back to menu\n");
+            int i = 1;
+            for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
+                System.out.println(i + ". " + enclosure.getName());
+                ++i;
+            }
+
+            int action = 0;
+            while (true) {
+                String userInput = scanner.next();
+                try {
+                    action = Integer.parseInt(userInput);
+                    if (action > 0 && action <= this.getZoo().getEnclosureList().size()) {
+                        break;
+                    } else if (action == 0) {
+                        this.handleTurn();
+                    } else {
+                        System.out.println("Please enter a valid value");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error : " + e.getMessage() + ". Please try again");
+                }
+            }
+            System.out.println("Inspecting the enclosure n°" + action + ":");
+            System.out.println(this.getEmployee().inspectEnclosure(this.getZoo().getEnclosureList().get(action - 1)));
+        } else {
+            System.out.println("No enclosures are currently in the Zoo.\n");
+            this.handleTurn();
+            return;
+        }
+    }
     }
 
     private void setEmployee(Employee employee) {
