@@ -183,6 +183,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     @Override
     public void heal() {
         this.setHealth(100);
+        System.out.println("This " + this.specieName + " was healed");
     }
 
     @Override

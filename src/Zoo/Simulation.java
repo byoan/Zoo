@@ -96,6 +96,8 @@ public class Simulation {
                 this.handleAnimalFeeding();
                 break;
             case 4:
+                this.handleAnimalHealing();
+                break;
             case 5:
                 this.handleAnimalTransfer();
                 break;
@@ -119,6 +121,7 @@ public class Simulation {
         System.out.println("1. Inspect an enclosure");
         System.out.println("2. Clean an enclosure");
         System.out.println("3. Feed an animal");
+        System.out.println("4. Heal an animal");
         System.out.println("5. Transfer an animal");
         System.out.println("6. Do nothing");
     }
@@ -135,6 +138,13 @@ public class Simulation {
         A animal = this.pickAnimal("Select the animal you want to feed:", enclosure);
         this.getEmployee().feedAnimal(animal);
     }
+
+    private <A extends AnimalInterface> void handleAnimalHealing() {
+        Enclosure<A> enclosure = this.pickEnclosure("Select the enclosure containing the animal you want to heal:");
+        A animal = this.pickAnimal("Select the animal you want to heal:", enclosure);
+        this.getEmployee().healAnimal(animal);
+    }
+
     /**
      * Allows to handle the animal transfer between 2 enclosures
      * @param <A> Generic type to be used within the method itself

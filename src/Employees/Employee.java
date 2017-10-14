@@ -154,6 +154,11 @@ public class Employee implements EmployeeInterface {
     public <A extends AnimalInterface> void feedAnimal(A animal) {
         animal.eat();
     }
+
+    public <A extends AnimalInterface> void healAnimal(A animal) {
+        animal.heal();
+    }
+
     /**
      * Allows to make the employee perform an animal transfer between 2 enclosures
      * @param originEnclosure The origin enclosure of the animal

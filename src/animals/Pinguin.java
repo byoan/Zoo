@@ -180,6 +180,7 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     @Override
     public void heal() {
         this.setHealth(100);
+        System.out.println("This " + this.specieName + " was healed");
     }
 
     @Override
