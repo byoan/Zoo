@@ -33,7 +33,15 @@ public class Simulation {
     }
 
     private void nextTurn() {
+        if (this.getTurnNb() != 0) {
+            System.out.println("\nTurn n°" + this.getTurnNb() + " ended.");
+        }
         this.setTurnNb(this.getTurnNb() + 1);
+        System.out.println("Turn n°" + this.getTurnNb() + " started.\n");
+        // Execute events randomization here
+        this.handleTurn();
+    }
+
     private void handleTurn() {
         this.displayPickAction();
         int action = 0;
@@ -66,6 +74,8 @@ public class Simulation {
                 this.handleTurn();
                 break;
         }
+
+        this.nextTurn();
     }
 
     private void displayPickAction() {
@@ -91,6 +101,7 @@ public class Simulation {
 
     public void init() {
         this.setTurnNb(0);
+        this.scanner = new Scanner(System.in);
         this.setEmployee(Employee.getInstance());
         this.setZoo(new Zoo("My Zoo", this.getEmployee(), 1));
 
@@ -107,5 +118,8 @@ public class Simulation {
         zoo.getEnclosureByName("Tiger Enclosure").add(whale);
         System.out.println(zoo.getEnclosureByName("Tiger Enclosure").toString());
         System.out.println(zoo.getEnclosureList());
+        // Beginning of the simulation
+        System.out.println("\n\n====== WELCOME TO ZOO SIMULATOR 3000 ======\n\n");
+        this.nextTurn();
     }
 }
