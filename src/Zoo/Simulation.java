@@ -85,6 +85,10 @@ public class Simulation {
         System.out.println("3. Transfer an animal");
         System.out.println("4. Do nothing");
     }
+
+    private void doNothing() {
+        System.out.println("Not doing anything this turn ...");
+    }
     }
 
     private void setEmployee(Employee employee) {
