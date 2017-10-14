@@ -25,8 +25,8 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
      */
     public Aviary(String name, int surface, int maxAnimals, int height, int roofState) {
         super(name, surface, maxAnimals);
-        this.height = height;
-        this.roofState = roofState;
+        this.setHeight(height);
+        this.setRoofState(roofState);
     }
 
     /**
@@ -59,7 +59,11 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
      * @param roofState The new roof state cleanliness value
      */
     public void setRoofState(int roofState) {
-        this.roofState = roofState;
+        if (roofState >= 0 && roofState <= 2) {
+            this.roofState = roofState;
+        } else {
+            System.out.println("The given value for the roof cleanliness is not correct");
+        }
     }
 
     /**
