@@ -106,6 +106,7 @@ public class Simulation {
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             enclosure.deteriorate();
         }
+        System.out.println("Enclosures were deteriorated. You should look at them.\n");
     }
 
     /**
