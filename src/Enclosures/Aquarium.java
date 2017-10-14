@@ -1,6 +1,5 @@
 package Enclosures;
 
-import animals.AnimalInterface;
 import animals.MarineAnimal;
 
 public class Aquarium<A extends MarineAnimal> extends Enclosure {
