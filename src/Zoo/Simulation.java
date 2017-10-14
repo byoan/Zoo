@@ -95,6 +95,16 @@ public class Simulation {
             this.handleRandomAction(randomAction, animal, randomEnclosure);
         }
     }
+
+    /**
+     * Allows to deteriorate the cleanliness (and specific children values) of the enclosure without having to specify any value
+     */
+    private void deteriorateEnclosures() {
+        for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
+            enclosure.deteriorate();
+        }
+    }
+
     /**
      * This method allows to handle all the action that take place during this turn (from the Employee side)
      */

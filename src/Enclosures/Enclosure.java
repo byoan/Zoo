@@ -102,7 +102,16 @@ public class Enclosure<A extends AnimalInterface> {
      * @param cleanliness The new level of cleanliness
      */
     public void setCleanliness(int cleanliness) {
-        this.cleanliness = cleanliness;
+        if (this.getCleanliness() > 0 && cleanliness > 0 && cleanliness <= 2) {
+            this.cleanliness = cleanliness;
+        }
+    }
+
+    /**
+     * Allows to deteriorate the cleanliness of the enclosure without having to specify any value in the Simulation
+     */
+    public void deteriorate() {
+        this.setCleanliness(this.getCleanliness() - 1);
     }
 
     /**

@@ -59,11 +59,17 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
      * @param roofState The new roof state cleanliness value
      */
     public void setRoofState(int roofState) {
-        if (roofState >= 0 && roofState <= 2) {
+        if (this.getRoofState() > 0 && roofState >= 0 && roofState <= 2) {
             this.roofState = roofState;
-        } else {
-            System.out.println("The given value for the roof cleanliness is not correct");
         }
+    }
+
+    /**
+     * Allows to deteriorate the cleanliness and the roofState of the aviary without having to specify any value in the Simulation
+     */
+    public void deteriorate() {
+        this.setCleanliness(this.getCleanliness() - 1);
+        this.setRoofState(this.getRoofState() - 1);
     }
 
     /**
