@@ -15,15 +15,15 @@ public class Simulation {
     private int turnNb;
     Scanner scanner;
 
-    public Employee getEmployee() {
-        return employee;
+    private Employee getEmployee() {
+        return this.employee;
     }
 
-    public int getTurnNb() {
+    private int getTurnNb() {
         return this.turnNb;
     }
 
-    public void setTurnNb(int turnNb) {
+    private void setTurnNb(int turnNb) {
         // Add this test to prevent going back to a previous turn
         if (turnNb >= this.getTurnNb()) {
             this.turnNb = turnNb;
@@ -32,7 +32,7 @@ public class Simulation {
         }
     }
 
-    public void nextTurn() {
+    private void nextTurn() {
         this.setTurnNb(this.getTurnNb() + 1);
     private void handleTurn() {
         this.displayPickAction();
@@ -77,15 +77,15 @@ public class Simulation {
     }
     }
 
-    public void setEmployee(Employee employee) {
+    private void setEmployee(Employee employee) {
         this.employee = employee;
     }
 
-    public Zoo getZoo() {
+    private Zoo getZoo() {
         return this.zoo;
     }
 
-    public void setZoo(Zoo zoo) {
+    private void setZoo(Zoo zoo) {
         this.zoo = zoo;
     }
 
