@@ -11,9 +11,27 @@ public class Simulation {
 
     private Employee employee;
     private Zoo zoo;
+    private int turnNb;
 
     public Employee getEmployee() {
         return employee;
+    }
+
+    public int getTurnNb() {
+        return this.turnNb;
+    }
+
+    public void setTurnNb(int turnNb) {
+        // Add this test to prevent going back to a previous turn
+        if (turnNb >= this.getTurnNb()) {
+            this.turnNb = turnNb;
+        } else {
+            System.out.println("Error while trying to set the turn number to " + turnNb + ", can't go back to a previous turn");
+        }
+    }
+
+    public void nextTurn() {
+        this.setTurnNb(this.getTurnNb() + 1);
     }
 
     public void setEmployee(Employee employee) {
@@ -29,6 +47,7 @@ public class Simulation {
     }
 
     public void init() {
+        this.setTurnNb(0);
         this.setEmployee(Employee.getInstance());
         this.setZoo(new Zoo("My Zoo", this.getEmployee(), 1));
 
