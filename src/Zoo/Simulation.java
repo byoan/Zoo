@@ -2,11 +2,11 @@ package Zoo;
 
 import Core.Factories.AnimalFactory;
 import Employees.Employee;
+import Enclosures.Aviary;
 import Enclosures.Enclosure;
-import animals.AnimalInterface;
-import animals.Tiger;
-import animals.Wolf;
+import animals.*;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Simulation {
@@ -25,6 +25,19 @@ public class Simulation {
      * Represents the Scanner class, used for user input
      */
     Scanner scanner;
+
+    /**
+     * Represents the Random class, used for event generation between turns
+     */
+    Random random = new Random();
+
+    /**
+     * Getter for the Random instance of the Simulation
+     * @return The random instance of the simulation
+     */
+    public Random getRandom() {
+        return this.random;
+    }
 
     /**
      * Returns the employee instance
@@ -61,13 +74,27 @@ public class Simulation {
     private void nextTurn() {
         if (this.getTurnNb() != 0) {
             System.out.println("\nTurn n°" + this.getTurnNb() + " ended.");
+            System.out.println("\nTurn n°" + this.getTurnNb() + " ended.\n");
+            this.handleRandomEventGeneration();
         }
+
         this.setTurnNb(this.getTurnNb() + 1);
+
         System.out.println("Turn n°" + this.getTurnNb() + " started.\n");
-        // Execute events randomization here
+
         this.handleTurn();
     }
 
+    private void handleRandomEventGeneration() {
+        // Random events generation
+        Enclosure randomEnclosure = this.pickRandomEnclosure();
+        Animal animal = this.pickRandomAnimal(randomEnclosure);
+        String randomAction = this.pickRandomAction();
+
+        if (randomEnclosure != null && animal != null) {
+            this.handleRandomAction(randomAction, animal, randomEnclosure);
+        }
+    }
     /**
      * This method allows to handle all the action that take place during this turn (from the Employee side)
      */
@@ -332,6 +359,89 @@ public class Simulation {
      */
     private void setZoo(Zoo zoo) {
         this.zoo = zoo;
+    }
+
+    private <A extends AnimalInterface> Enclosure<A> pickRandomEnclosure() {
+        if (this.getZoo().getEnclosureList().size() > 0) {
+            int randomEnclosureId = this.getRandom().nextInt(this.getZoo().getEnclosureList().size());
+            return this.getZoo().getEnclosureList().get(randomEnclosureId);
+        }
+        return null;
+    }
+
+    private Animal pickRandomAnimal(Enclosure<Animal> enclosure) {
+        if (enclosure.getNbAnimals() > 0) {
+            int randomAnimalId = this.getRandom().nextInt(enclosure.getNbAnimals());
+            return enclosure.getAnimals().get(randomAnimalId);
+        }
+        return null;
+    }
+
+    private String pickRandomAction() {
+        // Retrieve in our own array, as each call to values() creates a new array (performance hungry)
+        RandomActions[] values = RandomActions.values();
+        int actionId = this.getRandom().nextInt(values.length);
+        return values[actionId].toString();
+    }
+
+    private void handleRandomAction(String action, Animal animal, Enclosure<Animal> enclosure) {
+        switch (action) {
+            case "DECREASE_HUNGER":
+                animal.setHunger(20);
+                System.out.println("A " + animal.getSpecieName() + " is hungry.\n");
+                break;
+            case "DECREASE_LIFE":
+                animal.setHealth(20);
+                System.out.println("A " + animal.getSpecieName() + " is hurt/sick.\n");
+                break;
+            case "SLEEP":
+                if (animal.isSleeping()) {
+                    animal.setSleeping(false);
+                } else {
+                    animal.wake();
+                }
+                break;
+            case "STOLE":
+                enclosure.remove(animal);
+                System.out.println("OMG, a " + animal.getSpecieName() + " was stolen.\n");
+                animal = null;
+                break;
+            case "ESCAPE":
+                if (animal instanceof MarineAnimal) {
+                    // Unless a whale has wings, it won't escape until chickens have golden teeth
+                    break;
+                } else if (animal instanceof FlyingAnimal) {
+                    if (enclosure.getCleanliness() < 1) {
+                        enclosure.remove(animal);
+                    }
+                    break;
+                }
+                enclosure.remove(animal);
+                System.out.println("OMG, a " + animal.getSpecieName() + " escaped.\n");
+                animal = null;
+                break;
+            case "FIGHT":
+                if (enclosure.getNbAnimals() > 2) {
+                    Animal secondAnimal = this.pickRandomAnimal(enclosure);
+                    while (animal.equals(secondAnimal)) {
+                        secondAnimal = this.pickRandomAnimal(enclosure);
+                    }
+                    animal.setHealth(20);
+                    secondAnimal.setHealth(30);
+                    System.out.println("2 animals fought in the \"" + enclosure.getName() + "\" enclosure.\n");
+                }
+                break;
+            case "COPULATE":
+                if (enclosure.getNbAnimals() > 2) {
+                    Animal secondAnimal = this.pickRandomAnimal(enclosure);
+                    while (animal.equals(secondAnimal)) {
+                        secondAnimal = this.pickRandomAnimal(enclosure);
+                    }
+                    animal.copulate(secondAnimal, this.getTurnNb());
+                    System.out.println("Some animals made some adult things in the " + enclosure.getName() + " enclosure");
+                }
+                break;
+        }
     }
 
     /**
