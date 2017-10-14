@@ -28,12 +28,8 @@ public class Zoo {
         this.name = name;
     }
 
-    public Employee getEmployee() {
-        return this.employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public static Employee getEmployee() {
+        return Employee.getInstance();
     }
 
     public int getMaxNbEnclosure() {

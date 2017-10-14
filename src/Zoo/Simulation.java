@@ -11,13 +11,12 @@ import java.util.Scanner;
 
 public class Simulation {
 
-    private Employee employee;
     private Zoo zoo;
     private int turnNb;
     Scanner scanner;
 
     private Employee getEmployee() {
-        return this.employee;
+        return Zoo.getEmployee();
     }
 
     private int getTurnNb() {
@@ -236,10 +235,6 @@ public class Simulation {
         }
     }
 
-    private void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     private Zoo getZoo() {
         return this.zoo;
     }
@@ -251,7 +246,6 @@ public class Simulation {
     public void init() {
         this.setTurnNb(0);
         this.scanner = new Scanner(System.in);
-        this.setEmployee(Employee.getInstance());
         this.setZoo(new Zoo("My Zoo", this.getEmployee(), 2));
 
         Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 2);
@@ -259,7 +253,6 @@ public class Simulation {
         Tiger tiger = AnimalFactory.getInstance().createTiger();
         Wolf wolf = AnimalFactory.getInstance().createWolf();
 
-        employee = this.getEmployee();
         zoo = this.getZoo();
         zoo.addEnclosure(tigerEnclosure);
         zoo.addEnclosure(wolfEnclosure);
