@@ -74,9 +74,11 @@ public class Simulation {
      */
     private void nextTurn() {
         if (this.getTurnNb() != 0) {
-            System.out.println("\nTurn n°" + this.getTurnNb() + " ended.");
             System.out.println("\nTurn n°" + this.getTurnNb() + " ended.\n");
             this.handleRandomEventGeneration();
+            if (this.getTurnNb() % 10 == 0) {
+                this.deteriorateEnclosures();
+            }
         }
 
         this.setTurnNb(this.getTurnNb() + 1);
