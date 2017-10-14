@@ -89,6 +89,81 @@ public class Simulation {
     private void doNothing() {
         System.out.println("Not doing anything this turn ...");
     }
+
+    private <A extends AnimalInterface> void handleAnimalTransfer() {
+        if (this.getZoo().getEnclosureList().size() > 0) {
+            Enclosure<A> originEnclosure = this.pickEnclosure("Select the enclosure containing the animal you want to transfer:");
+            A animal = this.pickAnimal("Select the animal you want to transfer:", originEnclosure);
+            Enclosure<A> targetEnclosure = this.pickEnclosure("Select the enclosure in which you would like to send this animal:");
+
+            while (originEnclosure.equals(targetEnclosure)) {
+                System.out.println("Can't transfer this animal in its current enclosure. Please choose another one.");
+                targetEnclosure = this.pickEnclosure("Select the enclosure in which you would like to send this animal:");
+            }
+
+            originEnclosure.transferAnimal(animal, targetEnclosure, false);
+        } else {
+            System.out.println("No enclosures are currently in the Zoo.\n");
+            this.handleTurn();
+            return;
+        }
+    }
+
+    private <A extends AnimalInterface> Enclosure<A> pickEnclosure(String messageToDisplay) {
+        System.out.println(messageToDisplay);
+        System.out.println("0. Go back to menu\n");
+        int i = 1;
+        for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
+            System.out.println(i + ". " + enclosure.getName());
+            ++i;
+        }
+
+        int action = 0;
+        while (true) {
+            String userInput = scanner.next();
+            try {
+                action = Integer.parseInt(userInput);
+                if (action > 0 && action <= this.getZoo().getEnclosureList().size()) {
+                    break;
+                } else if (action == 0) {
+                    this.handleTurn();
+                } else {
+                    System.out.println("Please enter a valid value");
+                }
+            } catch (Exception e) {
+                System.out.println("Error : " + e.getMessage() + ". Please try again");
+            }
+        }
+        return this.getZoo().getEnclosureList().get(action - 1);
+    }
+
+    private <A extends AnimalInterface> A pickAnimal(String messageToDisplay, Enclosure<A> enclosure) {
+        System.out.println(messageToDisplay);
+        System.out.println("0. Go back to menu\n");
+        int i = 1;
+        for (A animal : enclosure.getAnimals()) {
+            System.out.println(i + ". " + animal.toString());
+            ++i;
+        }
+
+        int action = 0;
+        while (true) {
+            String userInput = scanner.next();
+            try {
+                action = Integer.parseInt(userInput);
+                if (action > 0 && action <= enclosure.getAnimals().size()) {
+                    break;
+                } else if (action == 0) {
+                    this.handleTurn();
+                } else {
+                    System.out.println("Please enter a valid value");
+                }
+            } catch (Exception e) {
+                System.out.println("Error : " + e.getMessage() + ". Please try again");
+            }
+        }
+        return enclosure.getAnimals().get(action - 1);
+    }
     }
 
     private void setEmployee(Employee employee) {
