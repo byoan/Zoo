@@ -123,7 +123,12 @@ public class Zoo {
      */
     public void removeEnclosure(Enclosure<AnimalInterface> enclosure) {
         try {
-            this.getEnclosureList().remove(enclosure);
+            if (this.getEnclosureList().contains(enclosure)) {
+                this.getEnclosureList().remove(enclosure);
+            } else {
+                // TODO : throw custom exception
+                System.out.println("The given enclosure is currently not in this Zoo");
+            }
         } catch(Exception e) {
             // TODO : throw exception
             System.out.println("An error occurred while trying to remove this enclosure from the zoo : " + e.getMessage());
