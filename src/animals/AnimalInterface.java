@@ -39,4 +39,6 @@ public interface AnimalInterface {
      * @param isInEnclosure Whether or not it is now in an enclosure
      */
     public void setInEnclosure(boolean isInEnclosure);
+
+    public void copulate(Animal animal, int turnNb);
 }
