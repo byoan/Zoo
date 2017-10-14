@@ -5,7 +5,8 @@ import Employees.Employee;
 import Enclosures.Enclosure;
 import animals.AnimalInterface;
 import animals.Tiger;
-import animals.Whale;
+import animals.Wolf;
+
 import java.util.Scanner;
 
 public class Simulation {
@@ -251,21 +252,20 @@ public class Simulation {
         this.setTurnNb(0);
         this.scanner = new Scanner(System.in);
         this.setEmployee(Employee.getInstance());
-        this.setZoo(new Zoo("My Zoo", this.getEmployee(), 1));
+        this.setZoo(new Zoo("My Zoo", this.getEmployee(), 2));
 
         Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 2);
+        Enclosure<Wolf> wolfEnclosure = new Enclosure<Wolf>("Wolf Enclosure", 10, 10);
         Tiger tiger = AnimalFactory.getInstance().createTiger();
-        Whale whale = AnimalFactory.getInstance().createWhale();
+        Wolf wolf = AnimalFactory.getInstance().createWolf();
 
         employee = this.getEmployee();
         zoo = this.getZoo();
-        System.out.println(tigerEnclosure.getClass());
-        System.out.println();
         zoo.addEnclosure(tigerEnclosure);
+        zoo.addEnclosure(wolfEnclosure);
         zoo.getEnclosureByName("Tiger Enclosure").add(tiger);
-        zoo.getEnclosureByName("Tiger Enclosure").add(whale);
-        System.out.println(zoo.getEnclosureByName("Tiger Enclosure").toString());
-        System.out.println(zoo.getEnclosureList());
+        zoo.getEnclosureByName("Wolf Enclosure").add(wolf);
+
         // Beginning of the simulation
         System.out.println("\n\n====== WELCOME TO ZOO SIMULATOR 3000 ======\n\n");
         this.nextTurn();
