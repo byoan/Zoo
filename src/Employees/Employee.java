@@ -65,8 +65,8 @@ public class Employee implements EmployeeInterface {
         this.age = age;
     }
 
-    public void inspectEnclosure(Enclosure enclosure) {
-        enclosure.toString();
+    public String inspectEnclosure(Enclosure enclosure) {
+        return enclosure.toString();
     }
 
     public void cleanEnclosure(Enclosure enclosure) {

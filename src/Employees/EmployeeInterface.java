@@ -5,7 +5,7 @@ import animals.AnimalInterface;
 
 public interface EmployeeInterface {
 
-    public void inspectEnclosure(Enclosure enclosure);
+    public String inspectEnclosure(Enclosure enclosure);
 
     public void cleanEnclosure(Enclosure enclosure);
 
