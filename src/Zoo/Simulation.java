@@ -464,17 +464,27 @@ public class Simulation {
     public void init() {
         this.setTurnNb(0);
         this.scanner = new Scanner(System.in);
-        this.setZoo(new Zoo("My Zoo", this.getEmployee(), 2));
+        this.setZoo(new Zoo("My Zoo", this.getEmployee(), 10));
 
-        Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 2);
+        Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 10);
+        Aviary<Eagle> eagleEnclosure = new Aviary<Eagle>("Eagle Enclosure", 10, 10, 4, 2);
         Enclosure<Wolf> wolfEnclosure = new Enclosure<Wolf>("Wolf Enclosure", 10, 10);
         Tiger tiger = AnimalFactory.getInstance().createTiger();
+        Eagle eagle1 = AnimalFactory.getInstance().createEagle();
+        Eagle eagle2 = AnimalFactory.getInstance().createEagle();
+        Eagle eagle3 = AnimalFactory.getInstance().createEagle();
+        Eagle america = AnimalFactory.getInstance().createEagle();
         Wolf wolf = AnimalFactory.getInstance().createWolf();
 
         zoo = this.getZoo();
         zoo.addEnclosure(tigerEnclosure);
+        zoo.addEnclosure(eagleEnclosure);
         zoo.addEnclosure(wolfEnclosure);
         zoo.getEnclosureByName("Tiger Enclosure").add(tiger);
+        zoo.getEnclosureByName("Eagle Enclosure").add(eagle1);
+        zoo.getEnclosureByName("Eagle Enclosure").add(eagle2);
+        zoo.getEnclosureByName("Eagle Enclosure").add(eagle3);
+        zoo.getEnclosureByName("Eagle Enclosure").add(america);
         zoo.getEnclosureByName("Wolf Enclosure").add(wolf);
 
         // Beginning of the simulation
