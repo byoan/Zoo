@@ -11,18 +11,41 @@ import java.util.Scanner;
 
 public class Simulation {
 
+    /**
+     * Represents the Zoo instance
+     */
     private Zoo zoo;
+
+    /**
+     * Represents the current turn number
+     */
     private int turnNb;
+
+    /**
+     * Represents the Scanner class, used for user input
+     */
     Scanner scanner;
 
+    /**
+     * Returns the employee instance
+     * @return Employee The employee instance of the Zoo
+     */
     private Employee getEmployee() {
         return Zoo.getEmployee();
     }
 
+    /**
+     * Returns the current turn number
+     * @return int The turn number
+     */
     private int getTurnNb() {
         return this.turnNb;
     }
 
+    /**
+     * Allows to define the current turn number, but can't be lower that the actual turn number
+     * @param turnNb The wanted turn number
+     */
     private void setTurnNb(int turnNb) {
         // Add this test to prevent going back to a previous turn
         if (turnNb >= this.getTurnNb()) {
@@ -32,6 +55,9 @@ public class Simulation {
         }
     }
 
+    /**
+     * Ends the current turn and launches the next one
+     */
     private void nextTurn() {
         if (this.getTurnNb() != 0) {
             System.out.println("\nTurn n°" + this.getTurnNb() + " ended.");
@@ -42,6 +68,9 @@ public class Simulation {
         this.handleTurn();
     }
 
+    /**
+     * This method allows to handle all the action that take place during this turn (from the Employee side)
+     */
     private void handleTurn() {
         this.displayPickAction();
         int action = 0;
@@ -78,6 +107,9 @@ public class Simulation {
         this.nextTurn();
     }
 
+    /**
+     * Allows to display to the user all the available action to manipulate its employee
+     */
     private void displayPickAction() {
         System.out.println("Choose an action by entering it's number:");
         System.out.println("1. Inspect an enclosure");
@@ -86,29 +118,45 @@ public class Simulation {
         System.out.println("4. Do nothing");
     }
 
+    /**
+     * Displays the message which matches the "Do Nothing this turn" action
+     */
     private void doNothing() {
         System.out.println("Not doing anything this turn ...");
     }
 
+    /**
+     * Allows to handle the animal transfer between 2 enclosures
+     * @param <A> Generic type to be used within the method itself
+     */
     private <A extends AnimalInterface> void handleAnimalTransfer() {
         if (this.getZoo().getEnclosureList().size() > 0) {
             Enclosure<A> originEnclosure = this.pickEnclosure("Select the enclosure containing the animal you want to transfer:");
             A animal = this.pickAnimal("Select the animal you want to transfer:", originEnclosure);
             Enclosure<A> targetEnclosure = this.pickEnclosure("Select the enclosure in which you would like to send this animal:");
 
+            // While the enclosure is not different, we must keep asking to the user a valid one
             while (originEnclosure.equals(targetEnclosure)) {
                 System.out.println("Can't transfer this animal in its current enclosure. Please choose another one.");
                 targetEnclosure = this.pickEnclosure("Select the enclosure in which you would like to send this animal:");
             }
 
+            // Proceed to the transfer
             originEnclosure.transferAnimal(animal, targetEnclosure, false);
         } else {
             System.out.println("No enclosures are currently in the Zoo.\n");
+            // Return to the main menu
             this.handleTurn();
             return;
         }
     }
 
+    /**
+     * Offers the user to pick an enclosure from the Zoo's enclosure list
+     * @param messageToDisplay The message to display before offering options to the user
+     * @param <A> Generic type to be used within the method itself
+     * @return Enclosure<A> An Enclosure of AnimalInterface
+     */
     private <A extends AnimalInterface> Enclosure<A> pickEnclosure(String messageToDisplay) {
         System.out.println(messageToDisplay);
         System.out.println("0. Go back to menu\n");
@@ -137,6 +185,13 @@ public class Simulation {
         return this.getZoo().getEnclosureList().get(action - 1);
     }
 
+    /**
+     * Offers the user to pick an animal from the given enclosure
+     * @param messageToDisplay The message to display before offering options to the user
+     * @param enclosure The enclosure in which the user must pick an animal
+     * @param <A> Generic type to be used within the method itself
+     * @return The chosen animal, which implements the AnimalInterface
+     */
     private <A extends AnimalInterface> A pickAnimal(String messageToDisplay, Enclosure<A> enclosure) {
         System.out.println(messageToDisplay);
         System.out.println("0. Go back to menu\n");
@@ -165,6 +220,10 @@ public class Simulation {
         return enclosure.getAnimals().get(action - 1);
     }
 
+    /**
+     * Allows the user to pick an enclosure to inspect
+     * @param <A> Generic type to be used within the method itself
+     */
     private <A extends AnimalInterface> void handlePickEnclosureToInspect() {
         if (this.getZoo().getEnclosureList().size() > 0) {
             System.out.println("Which enclosure would you like to inspect?");
@@ -200,6 +259,10 @@ public class Simulation {
         }
     }
 
+    /**
+     * Allows the user to pick an enclosure to clean
+     * @param <A> Generic type to be used within the method itself
+     */
     private <A extends AnimalInterface> void handlePickEnclosureToClean() {
         if (this.getZoo().getEnclosureList().size() > 0) {
             System.out.println("Which enclosure would you like to clean?");
@@ -235,14 +298,25 @@ public class Simulation {
         }
     }
 
+    /**
+     * Returns our Zoo instance
+     * @return A Zoo instance
+     */
     private Zoo getZoo() {
         return this.zoo;
     }
 
+    /**
+     * Setter for our Zoo attribute
+     * @param zoo A Zoo instance
+     */
     private void setZoo(Zoo zoo) {
         this.zoo = zoo;
     }
 
+    /**
+     * Simulation init method, which basically runs the whole simulation
+     */
     public void init() {
         this.setTurnNb(0);
         this.scanner = new Scanner(System.in);

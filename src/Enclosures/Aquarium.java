@@ -20,37 +20,76 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      */
     private int waterLevel;
 
-    public Aquarium(String name, int surface, int maxAnimals, int deepth, int salitiny, int waterLevel) {
+    /**
+     * Constructor for the aquarium
+     * @param name The name of the aquarium
+     * @param surface The surface of the aquarium, in meters
+     * @param maxAnimals The maximum number of animals that the aquarium can contain
+     * @param depth The depth of the aquarium, in meters
+     * @param salinity The percentage of salinity of the aquarium
+     * @param waterLevel The water level of the aquarium, in meters
+     */
+    public Aquarium(String name, int surface, int maxAnimals, int depth, int salinity, int waterLevel) {
         super(name, surface, maxAnimals);
         this.deepth = deepth;
         this.salitiny = salitiny;
         this.waterLevel = waterLevel;
     }
 
+    /**
+     * Getter for the water level of the aquarium
+     * @return The current water level of the aquarium
+     */
     public int getCurrentWaterLevel() {
         return this.waterLevel;
     }
 
+    /**
+     * Setter of the water level of the aquarium
+     * Must have defined the depth of the aquarium before using
+     * @param waterLevel The new water level
+     */
     public void setWaterLevel(int waterLevel) {
         this.waterLevel = waterLevel;
     }
 
-    public int getDeepth() {
-        return this.deepth;
+    /**
+     * Getter for the aquarium depth
+     * @return The aquarium depth
+     */
+    public int getDepth() {
+        return this.depth;
     }
 
-    public void setDeepth(int deepth) {
-        this.deepth = deepth;
+    /**
+     * Setter for the aquarium max depth
+     * @param depth The new max depth
+     */
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
 
-    public int getSalitiny() {
-        return this.salitiny;
+    /**
+     * Getter for the level of salinity of the aquarium
+     * @return The current level of salinity
+     */
+    public int getSalinity() {
+        return this.salinity;
     }
 
-    public void setSalitiny(int salitiny) {
-        this.salitiny = salitiny;
+    /**
+     * Setter for the level of salinity of the aquarium
+     * @param salinity
+     */
+    public void setSalinity(int salinity) {
+        this.salinity = salinity;
     }
 
+    /**
+     * Allows to clean the aquarium.
+     * Does redefine the cleanEnclosure method from its parent
+     * Uses a generic name to ease its call within the Simulation
+     */
     public void cleanEnclosure() {
         System.out.println("Le niveau de l'eau est de " + this.getCurrentWaterLevel());
         if (this.getCurrentWaterLevel() < this.getDeepth()) {
@@ -65,6 +104,10 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
         }
     }
 
+    /**
+     * Allows to display all the aquarium properties
+     * @return
+     */
     @Override
     public String toString() {
         return super.toString() + "Aquarium{" +
