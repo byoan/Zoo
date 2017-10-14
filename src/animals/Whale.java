@@ -137,7 +137,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
      */
     @Override
     public void eat() {
-        if (this.sleepIndicator != false) {
+        if (this.sleepIndicator == false) {
             this.setHunger(100);
             System.out.println("This " + this.specieName + " was fed");
         } else {
