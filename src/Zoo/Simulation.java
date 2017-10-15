@@ -2,11 +2,13 @@ package Zoo;
 
 import Core.Enums.RandomActions;
 import Core.Factories.AnimalFactory;
+import Core.Jobs.CheckNewBirthJob;
 import Employees.Employee;
 import Enclosures.Aviary;
 import Enclosures.Enclosure;
 import animals.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -79,6 +81,7 @@ public class Simulation {
             if (this.getTurnNb() % 10 == 0) {
                 this.deteriorateEnclosures();
             }
+            this.handleNewBirths();
         }
 
         this.setTurnNb(this.getTurnNb() + 1);
@@ -88,10 +91,91 @@ public class Simulation {
         this.handleTurn();
     }
 
-    public static int getStaticTurnNb(int turnNb) {
-        return turnNb;
+    /**
+     * Allows to display a list of enclosures available for the new birth
+     * Will only display enclosure that have enough space
+     */
+    private void displayEnclosureListForNewBirth(Animal animal) {
+        System.out.println("A new " + animal.getSpecieName() + " is born. Please choose an enclosure to put it in:");
+        int i = 0;
+        for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
+            if (enclosure.getNbAnimals() < enclosure.getMaxAnimals()) {
+                System.out.println((i + 1) + ". " + enclosure.getName());
+            }
+            ++i;
+        }
     }
 
+    /**
+     * Checks if there is at least a male and a female in an Enclosure
+     * Used before trying to make them copulate
+     * @param enclosure The enclosure to test
+     * @return Whether both sexes have been seen
+     */
+    private boolean hasAtLeastMaleAndFemale(Enclosure<Animal> enclosure) {
+        boolean seenMale = false;
+        boolean seenFemale = false;
+        for (Animal animal : enclosure.getAnimals()) {
+            if (animal.getSex()) {
+                seenMale = true;
+            } else if (!animal.getSex()) {
+                seenFemale = true;
+            }
+        }
+
+        return (seenMale && seenFemale);
+    }
+
+    /**
+     * Allows to handle all the newly born animals, returned from CheckNewBirthJob
+     */
+    private void handleNewBirths() {
+        CheckNewBirthJob checkNewBirthJob = new CheckNewBirthJob(this.getZoo().getEnclosureList(), this.getTurnNb());
+        checkNewBirthJob.exec();
+        ArrayList<Animal> newBirths =  checkNewBirthJob.getNewBirths();
+
+        if (newBirths.size() > 0) {
+            for (Animal animal : newBirths) {
+                this.displayEnclosureListForNewBirth(animal);
+                this.chooseEnclosureForNewBirth(animal);
+            }
+        }
+    }
+
+    /**
+     * Asks the employee to choose a new enclosure for a newly born animal
+     * Used when the parent's enclosure is full
+     * @param animal The new animal
+     */
+    private void chooseEnclosureForNewBirth(Animal animal) {
+        int action = 0;
+        boolean correctAnswer = false;
+        while (!correctAnswer) {
+            String userInput = scanner.next();
+            try {
+                action = Integer.parseInt(userInput);
+                if (action > this.getZoo().getEnclosureList().size()) {
+                    System.out.println("Can't enter a value greater than the maximum enclosure. Please try again:\n");
+                    continue;
+                }
+                Enclosure<Animal> chosenEnclosure = this.getZoo().getEnclosureList().get(action - 1);
+                if (chosenEnclosure != null && chosenEnclosure.getNbAnimals() < chosenEnclosure.getMaxAnimals()) {
+                    chosenEnclosure.add(animal);
+                    System.out.println("Adding the new " + animal.getSpecieName() + " to the " + chosenEnclosure.getName() + " enclosure.\n");
+                    correctAnswer = true;
+                    break;
+                } else {
+                    System.out.println("This enclosure is not available. Please chose another one:\n");
+                }
+            } catch (Exception e) {
+                System.out.println("Error : " + e.toString() + ". Please try again:\n");
+            }
+        }
+    }
+
+    /**
+     * Allows to randomly generate an event for the current turn
+     */
     private void handleRandomEventGeneration() {
         // Random events generation
         Enclosure randomEnclosure = this.pickRandomEnclosure();
@@ -402,7 +486,7 @@ public class Simulation {
         return values[actionId].toString();
     }
 
-    private void handleRandomAction(String action, Animal animal, Enclosure<Animal> enclosure) {
+    private void handleRandomAction(String action, Animal animal, Enclosure enclosure) {
         switch (action) {
             case "DECREASE_HUNGER":
                 animal.setHunger(animal.getHunger() - 80);
@@ -458,8 +542,8 @@ public class Simulation {
                     while (animal.equals(secondAnimal)) {
                         secondAnimal = this.pickRandomAnimal(enclosure);
                     }
-                    animal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth()));
-                    secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth()));
+                    animal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth()));
+                    secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth()));
                     System.out.println("2 animals fought in the " + enclosure.getName() + " enclosure.\n");
                     if (animal.getHealth() <= 0) {
                         System.out.println("The first one died.\n");
@@ -474,13 +558,53 @@ public class Simulation {
                 }
                 break;
             case "COPULATE":
-                if (enclosure.getNbAnimals() > 2) {
+                if (enclosure.getNbAnimals() >= 2 && this.hasAtLeastMaleAndFemale(enclosure)) {
                     Animal secondAnimal = this.pickRandomAnimal(enclosure);
-                    while (animal.equals(secondAnimal)) {
+
+                    while (secondAnimal.equals(animal) || (animal.getSex() == secondAnimal.getSex())) {
                         secondAnimal = this.pickRandomAnimal(enclosure);
+                        if (secondAnimal.getSex() == animal.getSex()) {
+                            secondAnimal = animal;
+                        }
                     }
-                    animal.copulate(secondAnimal, this.getTurnNb());
-                    System.out.println("Some animals made some adult things in the " + enclosure.getName() + " enclosure");
+
+                    System.out.println("Some animals made some adult things in the " + enclosure.getName() + " enclosure.\n");
+
+                    if (animal instanceof Oviparous) {
+                        Animal newAnimal;
+                        if (animal.getSex()) {
+                            newAnimal = secondAnimal.copulate(animal, this.getTurnNb());
+                            while (newAnimal == null) {
+                                newAnimal = secondAnimal.copulate(animal, this.getTurnNb());
+                                if (newAnimal != null) {
+                                    break;
+                                }
+                            }
+                        } else {
+                            newAnimal = animal.copulate(secondAnimal, this.getTurnNb());
+                            while (newAnimal == null) {
+                                newAnimal = animal.copulate(secondAnimal, this.getTurnNb());
+                                if (newAnimal != null) {
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (enclosure.getNbAnimals() < enclosure.getMaxAnimals()) {
+                            enclosure.add(newAnimal);
+                        } else {
+                            this.displayEnclosureListForNewBirth(newAnimal);
+                            this.chooseEnclosureForNewBirth(newAnimal);
+                        }
+                    } else if (animal instanceof Mammal) {
+                        if (animal.getSex()) {
+                            ((Mammal)secondAnimal).copulate((Mammal)animal, this.getTurnNb());
+                        } else {
+                            ((Mammal)animal).copulate((Mammal)secondAnimal, this.getTurnNb());
+                        }
+                    }
+                } else {
+                    System.out.println("No copulation possible in the " + enclosure.getName() + " enclosure, as there is not enough male/female\n");
                 }
                 break;
         }
@@ -495,13 +619,11 @@ public class Simulation {
         this.setZoo(new Zoo("My Zoo", this.getEmployee(), 10));
 
         Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 10);
-        Aviary<Eagle> eagleEnclosure = new Aviary<Eagle>("Eagle Enclosure", 10, 10, 4, 2);
+        Aviary<Eagle> eagleEnclosure = new Aviary<Eagle>("Eagle Enclosure", 10, 4, 4, 2);
         Enclosure<Wolf> wolfEnclosure = new Enclosure<Wolf>("Wolf Enclosure", 10, 10);
         Tiger tiger = AnimalFactory.getInstance().createTiger();
+        Tiger tiger2 = AnimalFactory.getInstance().createTiger();
         Eagle eagle1 = AnimalFactory.getInstance().createEagle();
-        Eagle eagle2 = AnimalFactory.getInstance().createEagle();
-        Eagle eagle3 = AnimalFactory.getInstance().createEagle();
-        Eagle america = AnimalFactory.getInstance().createEagle();
         Wolf wolf = AnimalFactory.getInstance().createWolf();
 
         zoo = this.getZoo();
@@ -509,10 +631,8 @@ public class Simulation {
         zoo.addEnclosure(eagleEnclosure);
         zoo.addEnclosure(wolfEnclosure);
         zoo.getEnclosureByName("Tiger Enclosure").add(tiger);
+        zoo.getEnclosureByName("Tiger Enclosure").add(tiger2);
         zoo.getEnclosureByName("Eagle Enclosure").add(eagle1);
-        zoo.getEnclosureByName("Eagle Enclosure").add(eagle2);
-        zoo.getEnclosureByName("Eagle Enclosure").add(eagle3);
-        zoo.getEnclosureByName("Eagle Enclosure").add(america);
         zoo.getEnclosureByName("Wolf Enclosure").add(wolf);
 
         // Beginning of the simulation

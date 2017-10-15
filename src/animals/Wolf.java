@@ -1,7 +1,5 @@
 package animals;
 
-import java.util.Random;
-
 public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     private int strength;
@@ -67,22 +65,21 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * @param wolf The animal instance that represents the male
      * @param turnNb The current turn number, to mark the beginning of the pregnancy
      */
-    public void copulate(Wolf wolf, int turnNb) {
+    public <A extends Mammal> void copulate(A wolf, int turnNb) {
+        // Same sex can't copulate
         if (wolf.getSex() == this.getSex()) {
-            System.out.println("Same sex can't copulate");
+
         } else {
             if (this.getSex() == false) {
-                if (this.getCopulationTurn() <= 0) {
+                if (this.getCopulationTurn() == 0) {
                     this.setCopulationTurn(turnNb);
                 } else {
                     // @TODO
-                    // Throw exception
-                    System.out.println("This animal is already pregnant");
+                    // Throw exception This animal is already pregnant
                 }
             } else {
                 // @TODO
-                // Throw exception
-                System.out.println("Man can't be pregnant");
+                // Throw exception Man can't be pregnant;
             }
         }
     }
@@ -106,10 +103,14 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * Checks if the pregnancy is at term
      * @param turnNb the current turn number
      */
-    public void checkBirth(int turnNb) {
-        if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
-            this.birth();
+    public Wolf checkBirth(int turnNb) {
+        if (this.getCopulationTurn() == 0) {
+            return null;
+        } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
+            this.setCopulationTurn(0);
+            return this.birth();
         }
+        return null;
     }
 
     /**
@@ -125,7 +126,6 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     @Override
     public Wolf birth() {
-        this.setCopulationTurn(0);
         return new Wolf();
     }
 

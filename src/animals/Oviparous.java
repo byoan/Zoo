@@ -7,4 +7,6 @@ public interface Oviparous {
      * @return The new animal
      */
     public Animal lay();
+
+    public boolean checkIfHatched(int turnNb);
 }

@@ -1,7 +1,5 @@
 package animals;
 
-import java.util.Random;
-
 public class Bear extends Animal implements Mammal {
 
     /**
@@ -48,22 +46,21 @@ public class Bear extends Animal implements Mammal {
      * @param bear The animal instance that represents the male
      * @param turnNb The current turn number, to mark the beginning of the pregnancy
      */
-    public void copulate(Bear bear, int turnNb) {
+    public <A extends Mammal> void copulate(A bear, int turnNb) {
+        // Same sex can't copulate
         if (bear.getSex() == this.getSex()) {
-            System.out.println("Same sex can't copulate");
+
         } else {
             if (this.getSex() == false) {
-                if (this.getCopulationTurn() <= 0) {
+                if (this.getCopulationTurn() == 0) {
                     this.setCopulationTurn(turnNb);
                 } else {
                     // @TODO
-                    // Throw exception
-                    System.out.println("This animal is already pregnant");
+                    // Throw exception This animal is already pregnant
                 }
             } else {
                 // @TODO
-                // Throw exception
-                System.out.println("Man can't be pregnant");
+                // Throw exception Man can't be pregnant;
             }
         }
     }
@@ -72,10 +69,14 @@ public class Bear extends Animal implements Mammal {
      * Checks if the pregnancy is at term
      * @param turnNb the current turn number
      */
-    public void checkBirth(int turnNb) {
-       if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
-           this.birth();
-       }
+    public Bear checkBirth(int turnNb) {
+        if (this.getCopulationTurn() == 0) {
+            return null;
+        } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
+            this.setCopulationTurn(0);
+            return this.birth();
+        }
+        return null;
     }
 
     /**
@@ -84,7 +85,6 @@ public class Bear extends Animal implements Mammal {
      */
     @Override
     public Bear birth() {
-        this.setCopulationTurn(0);
         return new Bear();
     }
 

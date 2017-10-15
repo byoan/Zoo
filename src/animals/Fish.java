@@ -1,7 +1,5 @@
 package animals;
 
-import java.util.Random;
-
 public class Fish extends Animal implements MarineAnimal, Oviparous {
 
     /**
@@ -26,7 +24,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
         this.healthIndicator = 100;
         this.childrenCreationTime = 5;
         this.copulationTurn = 0;
-        this.isHatched = false;
+        this.isHatched = true;
     }
 
     public Fish(int copulationTurn) {
@@ -69,7 +67,10 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
      * @param turnNb
      */
     public boolean checkIfHatched(int turnNb) {
-        if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime() || this.getCopulationTurn() == 0) {
+        if (this.isHatched) {
+            return true;
+        } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
+            System.out.println("A fish hatched !");
             this.setHatched(true);
         }
         return this.isHatched;
@@ -89,22 +90,18 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
      * Performs a copulation between the current animal instance and the given Animal (which must be the same)
      * @param fish The animal instance that represents the male
      */
-    public void copulate(Fish fish, int turnNb) {
+    public <A extends AnimalInterface> Animal copulate(A fish, int turnNb) {
+        // Same sex can't copulate
         if (fish.getSex() == this.getSex()) {
-            System.out.println("Same sex can't copulate");
+            return null;
         } else {
+            // Man can't be pregnant
             if (this.getSex() == false) {
-                this.lay(turnNb);
+                return new Fish(turnNb);
             } else {
-                // @TODO
-                // Throw exception
-                System.out.println("Man can't be pregnant");
+                return null;
             }
         }
-    }
-
-    public Fish lay(int turnNb) {
-        return new Fish(turnNb);
     }
 
     @Override

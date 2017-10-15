@@ -205,7 +205,11 @@ public class Animal implements AnimalInterface {
     }
 
     @Override
-    public void copulate(Animal animal, int turnNb) {
+    public <A extends AnimalInterface> Animal copulate(A animal, int turnNb) {
+        return null;
+    }
+
+    public <A extends Mammal> void copulate(A animal, int turnNb) {
 
     }
 
@@ -230,5 +234,4 @@ public class Animal implements AnimalInterface {
         }
         return ageState;
     }
-
 }

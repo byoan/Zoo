@@ -40,5 +40,7 @@ public interface AnimalInterface {
      */
     public void setInEnclosure(boolean isInEnclosure);
 
-    public void copulate(Animal animal, int turnNb);
+    public <A extends AnimalInterface> Animal copulate(A animal, int turnNb);
+
+    public boolean getSex();
 }

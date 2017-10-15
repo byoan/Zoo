@@ -25,7 +25,7 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         this.sleepIndicator = false;
         this.healthIndicator = 100;
         this.copulationTurn = 0;
-        this.isHatched = false;
+        this.isHatched = true;
     }
 
     public Pinguin(int copulationTurn) {
@@ -66,7 +66,10 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
      * @param turnNb
      */
     public boolean checkIfHatched(int turnNb) {
-        if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime() || this.getCopulationTurn() == 0) {
+        if (this.isHatched) {
+            return true;
+        } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
+            System.out.println("A pinguin hatched !");
             this.setHatched(true);
         }
         return this.isHatched;
@@ -86,22 +89,18 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
      * Performs a copulation between the current animal instance and the given Animal (which must be the same)
      * @param pinguin The animal instance that represents the male
      */
-    public void copulate(Pinguin pinguin, int turnNb) {
+    public <A extends AnimalInterface> Animal copulate(A pinguin, int turnNb) {
+        // Same sex can't copulate
         if (pinguin.getSex() == this.getSex()) {
-            System.out.println("Same sex can't copulate");
+            return null;
         } else {
+            // Man can't be pregnant
             if (this.getSex() == false) {
-                this.lay(turnNb);
+                return new Pinguin(turnNb);
             } else {
-                // @TODO
-                // Throw exception
-                System.out.println("Man can't be pregnant");
+                return null;
             }
         }
-    }
-
-    public Pinguin lay(int turnNb) {
-        return new Pinguin(turnNb);
     }
 
     @Override

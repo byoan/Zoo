@@ -1,7 +1,5 @@
 package animals;
 
-import java.util.Random;
-
 public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     /**
@@ -26,7 +24,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         this.healthIndicator = 100;
         this.childrenCreationTime = 5;
         this.copulationTurn = 0;
-        this.isHatched = false;
+        this.isHatched = true;
     }
 
     public Eagle(int copulationTurn) {
@@ -66,7 +64,10 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
      * @param turnNb
      */
     public boolean checkIfHatched(int turnNb) {
-        if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime() || this.getCopulationTurn() == 0) {
+        if (this.isHatched) {
+            return true;
+        } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
+            System.out.println("An eagle hatched !");
             this.setHatched(true);
         }
         return this.isHatched;
@@ -81,22 +82,18 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
      * Performs a copulation between the current animal instance and the given Animal (which must be the same)
      * @param eagle The animal instance that represents the male
      */
-    public void copulate(Eagle eagle, int turnNb) {
+    public <A extends AnimalInterface> Animal copulate(A eagle, int turnNb) {
+        // Same sex can't copulate
         if (eagle.getSex() == this.getSex()) {
-            System.out.println("Same sex can't copulate");
+            return null;
         } else {
+            // Man can't be pregnant
             if (this.getSex() == false) {
-                this.lay(turnNb);
+                return new Eagle(turnNb);
             } else {
-                // @TODO
-                // Throw exception
-                System.out.println("Man can't be pregnant");
+                return null;
             }
         }
-    }
-
-    public Eagle lay(int turnNb) {
-        return new Eagle(turnNb);
     }
 
     @Override
