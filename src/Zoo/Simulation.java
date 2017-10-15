@@ -405,12 +405,24 @@ public class Simulation {
     private void handleRandomAction(String action, Animal animal, Enclosure<Animal> enclosure) {
         switch (action) {
             case "DECREASE_HUNGER":
-                animal.setHunger(20);
-                System.out.println("A " + animal.getSpecieName() + " is hungry.\n");
+                animal.setHunger(animal.getHunger() - 80);
+                if (animal.getHunger() <= 0) {
+                    enclosure.remove(animal);
+                    System.out.println("A " + animal.getSpecieName() + " starved to death in the " + enclosure.getName() + " enclosure.\n");
+                    animal = null;
+                } else {
+                    System.out.println("A " + animal.getSpecieName() + " is hungry in the " + enclosure.getName() + " enclosure.\n");
+                }
                 break;
             case "DECREASE_LIFE":
-                animal.setHealth(20);
-                System.out.println("A " + animal.getSpecieName() + " is hurt/sick.\n");
+                animal.setHealth(animal.getHealth() - 80);
+                if (animal.getHealth() <= 0) {
+                    enclosure.remove(animal);
+                    System.out.println("A " + animal.getSpecieName() + " died in the " + enclosure.getName() + " enclosure.\n ");
+                    animal = null;
+                } else {
+                    System.out.println("A " + animal.getSpecieName() + " is hurt/sick in the " + enclosure.getName() + " enclosure.\n");
+                }
                 break;
             case "SLEEP":
                 if (animal.isSleeping()) {
@@ -421,7 +433,7 @@ public class Simulation {
                 break;
             case "STOLE":
                 enclosure.remove(animal);
-                System.out.println("OMG, a " + animal.getSpecieName() + " was stolen.\n");
+                System.out.println("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + " enclosure.\n");
                 animal = null;
                 break;
             case "ESCAPE":
@@ -431,11 +443,13 @@ public class Simulation {
                 } else if (animal instanceof FlyingAnimal) {
                     if (enclosure.getCleanliness() < 1) {
                         enclosure.remove(animal);
+                        System.out.println("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
+                        animal = null;
                     }
                     break;
                 }
                 enclosure.remove(animal);
-                System.out.println("OMG, a " + animal.getSpecieName() + " escaped.\n");
+                System.out.println("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
                 animal = null;
                 break;
             case "FIGHT":
@@ -444,9 +458,19 @@ public class Simulation {
                     while (animal.equals(secondAnimal)) {
                         secondAnimal = this.pickRandomAnimal(enclosure);
                     }
-                    animal.setHealth(20);
-                    secondAnimal.setHealth(30);
-                    System.out.println("2 animals fought in the \"" + enclosure.getName() + "\" enclosure.\n");
+                    animal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth()));
+                    secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth()));
+                    System.out.println("2 animals fought in the " + enclosure.getName() + " enclosure.\n");
+                    if (animal.getHealth() <= 0) {
+                        System.out.println("The first one died.\n");
+                        enclosure.remove(animal);
+                        animal = null;
+                    }
+                    if (secondAnimal.getHealth() <= 0) {
+                        System.out.println("The second one died.\n");
+                        enclosure.remove(secondAnimal);
+                        secondAnimal = null;
+                    }
                 }
                 break;
             case "COPULATE":
