@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Wolf extends Animal implements Mammal, WanderAnimal {
 
+    private int strength;
     /**
      * Defines the turn number at which the animal copulated, allowing us to calculate the difference
      * with the current turn number to compare with the gestation time
@@ -13,6 +14,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     public Wolf() {
         this.specieName = "Wolf";
         this.sex = this.getRandomBoolean();
+        this.strength = this.strength(100);
         this.weight = 50;
         this.size = 82;
         this.age = 0;
@@ -22,9 +24,10 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.childrenCreationTime = 69;
     }
 
-    public Wolf(boolean sex, float weight, float size, int age) {
+    public Wolf(boolean sex, int strength, float weight, float size, int age) {
         this.specieName = "Wolf";
         this.sex = sex;
+        this.strength = strength;
         this.weight = weight;
         this.size = size;
         this.age = age;
@@ -66,6 +69,21 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
                 System.out.println("Man can't be pregnant");
             }
         }
+    }
+
+    /**
+     * Strength generator between 0 - 100
+     * int Random = (min.value ) + (int)(Math.random()* ( Max - Min + 1));
+     * Where min is the smallest value You want to be the smallest number possible to
+     * generate and Max is the biggest possible number to generate
+     * @param strengthNb
+     */
+    public int strength(int strengthNb)
+    {
+        while(strengthNb == 0) {
+            strengthNb = (int) (Math.random() * (100));
+        }
+        return strengthNb;
     }
 
     /**
@@ -111,4 +129,29 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
                 ", isInEnclosure=" + isInEnclosure +
                 '}';
     }
+
+    /**
+     * Enum of all possible rank in a pack
+     */
+    public enum rank {
+        Alpha, Beta, Gamma, Delta, Epsilon, Zêta, Eta, Thêta, Iota, Kappa, Lambda,
+        Mu, Nu, Xi, Omicron, Pi, Rhô, Sigma, Tau, Upsion, Phi, Chi, Psi, Omega,
+    }
+
+    /**
+     * Impetuosity generator between 0 - 100
+     * int Random = (min.value ) + (int)(Math.random()* ( Max - Min + 1));
+     * Where min is the smallest value You want to be the smallest number possible to
+     * generate and Max is the biggest possible number to generate
+     * @param impetuosityNb
+     * @return
+     */
+    public int impetuosity(int impetuosityNb)
+    {
+        while(impetuosityNb == 0) {
+            impetuosityNb = (int) (Math.random() * (100));
+        }
+        return impetuosityNb;
+    }
+
 }
