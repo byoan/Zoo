@@ -21,11 +21,20 @@ public class Animal implements AnimalInterface {
     protected int childrenCreationTime;
     protected boolean isInEnclosure = false;
 
+
+
     /**
      * Represents the age of an animal --> young, adult or old
      */
     private String ageAnimal;
 
+    public String getAgeAnimal() {
+        return ageAnimal;
+    }
+
+    public void setAgeAnimal(String ageAnimal) {
+        this.ageAnimal = ageAnimal;
+    }
     /**
      * Allows to randomly generate a boolean, used for the sex definition in case of a 'natural' birth
      * @return the randomly generated sex
