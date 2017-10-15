@@ -7,8 +7,8 @@ import Enclosures.Aviary;
 import Enclosures.Enclosure;
 import animals.*;
 
-import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Simulation {
 
@@ -33,15 +33,15 @@ public class Simulation {
     Scanner scanner;
 
     /**
-     * Represents the Random class, used for event generation between turns
+     * Represents the ThreadLocalRandom class, used for event generation between turns
      */
-    Random random = new Random();
+    ThreadLocalRandom random = ThreadLocalRandom.current();
 
     /**
-     * Getter for the Random instance of the Simulation
-     * @return The random instance of the simulation
+     * Getter for the ThreadLocalRandom instance of the Simulation
+     * @return The ThreadLocalRandom instance of the simulation
      */
-    public Random getRandom() {
+    public ThreadLocalRandom getRandom() {
         return this.random;
     }
 
