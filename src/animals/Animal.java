@@ -205,10 +205,10 @@ public class Animal implements AnimalInterface {
      * @param turnNb The turn number
      */
     private void defineAgeAnimal(int turnNb) {
-        if (this.getTurnNb() < 50) {
+        if (turnNb < 50) {
             this.ageAnimal = "Young";
             System.out.println("\nAnimal is " + this.ageAnimal);
-        } else if (this.getTurnNb() > 100) {
+        } else if (turnNb > 100) {
             this.ageAnimal = "Old";
             System.out.println("\nAnimal is " + this.ageAnimal);
         } else{
