@@ -49,7 +49,7 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      * @param waterLevel The new water level
      */
     public void setWaterLevel(int waterLevel) {
-        if (waterLevel <= this.getDepth()) {
+        if (waterLevel >= 0 && waterLevel <= this.getDepth()) {
             this.waterLevel = waterLevel;
         } else {
             System.out.println("The water level can't be greater that the aquarium depth");
@@ -85,7 +85,14 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      * @param salinity
      */
     public void setSalinity(int salinity) {
-        this.salinity = salinity;
+        if (salinity >= 0 && salinity <= 100) {
+            this.salinity = salinity;
+        }
+    }
+
+    public void deteriorate() {
+        this.setWaterLevel(this.getCurrentWaterLevel() - 1);
+        this.setSalinity(this.getSalinity() - 10);
     }
 
     /**
