@@ -213,17 +213,22 @@ public class Animal implements AnimalInterface {
      * Allows to define the current age of an animal
      * @param turnNb The turn number
      */
-    private void defineAgeAnimal(int turnNb) {
+    private int defineAgeAnimal(int turnNb) {
+        int ageState;
         if (turnNb < 50) {
+            ageState = 0;
             this.ageAnimal = "Young";
             System.out.println("\nAnimal is " + this.ageAnimal);
         } else if (turnNb > 100) {
+            ageState = 1;
             this.ageAnimal = "Old";
             System.out.println("\nAnimal is " + this.ageAnimal);
         } else{
-            this.ageAnimal = "adult";
+            ageState = 2;
+            this.ageAnimal = "Adult";
             System.out.println("\nAnimal is " + this.ageAnimal);
         }
+        return ageState;
     }
 
 }
