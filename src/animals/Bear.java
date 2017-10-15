@@ -90,18 +90,18 @@ public class Bear extends Animal implements Mammal {
 
     @Override
     public String toString() {
-        return "Bear{" +
-                "specieName='" + specieName + '\'' +
-                ", sex=" + sex +
-                ", weight=" + weight +
-                ", size=" + size +
-                ", age=" + age +
-                ", hungerIndicator=" + hungerIndicator +
-                ", sleepIndicator=" + sleepIndicator +
-                ", healthIndicator=" + healthIndicator +
-                ", copulationTurn=" + copulationTurn +
-                ", childrenCreationTime=" + childrenCreationTime +
-                ", isInEnclosure=" + isInEnclosure +
+        return "Bear {\n" +
+                "  specieName='" + specieName + "', \n" +
+                "  sex=" + sex + ", \n" +
+                "  weight=" + weight + ", \n" +
+                "  size=" + size + ", \n" +
+                "  age=" + age + ", \n" +
+                "  hungerIndicator=" + hungerIndicator + ", \n" +
+                "  sleepIndicator=" + sleepIndicator + ", \n" +
+                "  healthIndicator=" + healthIndicator + ", \n" +
+                "  copulationTurn=" + copulationTurn + ", \n" +
+                "  childrenCreationTime=" + childrenCreationTime + ", \n" +
+                "  isInEnclosure=" + isInEnclosure + ", \n" +
                 '}';
     }
 }

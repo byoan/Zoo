@@ -256,12 +256,12 @@ public class Enclosure<A extends AnimalInterface> {
      */
     @Override
     public String toString() {
-        return "Enclosure{" +
-                "name='" + name + '\'' +
-                ", surface=" + surface +
-                ", maxAnimals=" + maxAnimals +
-                ", cleanliness=" + cleanliness +
-                ", animals=" + animals +
-                '}';
+        return "Enclosure {\n" +
+                " name='" + this.getName() + "', \n" +
+                " surface=" + this.getSurface() + "\n" +
+                " maxAnimals=" + this.getMaxAnimals() + ", \n" +
+                " cleanliness=" + this.getCleanliness() + ", \n" +
+                " animals=" + this.getAnimals() + ", \n" +
+                "}";
     }
 }

@@ -89,9 +89,14 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
      */
     @Override
     public String toString() {
-        return super.toString() + "Aviary{" +
-                "height=" + height +
-                ", roofState=" + roofState +
+        return "Aviary {\n" +
+                " name='" + this.getName() + "', \n" +
+                " surface=" + this.getSurface() + "\n" +
+                " maxAnimals=" + this.getMaxAnimals() + ", \n" +
+                " cleanliness=" + this.getCleanliness() + ", \n" +
+                " height=" + this.getHeight() + ", \n" +
+                " roofState=" + this.getRoofState() + ", \n" +
+                " animals=" + this.getAnimals() + ", \n" +
                 '}';
     }
 }

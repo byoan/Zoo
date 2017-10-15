@@ -115,18 +115,18 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     @Override
     public String toString() {
-        return "Wolf{" +
-                "specieName='" + specieName + '\'' +
-                ", sex=" + sex +
-                ", weight=" + weight +
-                ", size=" + size +
-                ", age=" + age +
-                ", hungerIndicator=" + hungerIndicator +
-                ", sleepIndicator=" + sleepIndicator +
-                ", healthIndicator=" + healthIndicator +
-                ", copulationTurn=" + copulationTurn +
-                ", childrenCreationTime=" + childrenCreationTime +
-                ", isInEnclosure=" + isInEnclosure +
+        return "Wolf {\n" +
+                "  specieName='" + specieName + "', \n" +
+                "  sex=" + sex + ", \n" +
+                "  weight=" + weight + ", \n" +
+                "  size=" + size + ", \n" +
+                "  age=" + age + ", \n" +
+                "  hungerIndicator=" + hungerIndicator + ", \n" +
+                "  sleepIndicator=" + sleepIndicator + ", \n" +
+                "  healthIndicator=" + healthIndicator + ", \n" +
+                "  copulationTurn=" + copulationTurn + ", \n" +
+                "  childrenCreationTime=" + childrenCreationTime + ", \n" +
+                "  isInEnclosure=" + isInEnclosure + ", \n" +
                 '}';
     }
 

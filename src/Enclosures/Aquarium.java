@@ -120,10 +120,15 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      */
     @Override
     public String toString() {
-        return super.toString() + "Aquarium{" +
-                "depth=" + depth +
-                ", salinity=" + salinity +
-                ", waterLevel=" + waterLevel +
+        return "Aquarium {\n" +
+                " name='" + this.getName() + "', \n" +
+                " surface=" + this.getSurface() + "\n" +
+                " maxAnimals=" + this.getMaxAnimals() + ", \n" +
+                " cleanliness=" + this.getCleanliness() + ", \n" +
+                " depth=" + this.getDepth() + ", \n" +
+                " salinity=" + this.getSalinity() + ", \n" +
+                " waterLevel=" + this.getCurrentWaterLevel() + ", \n" +
+                " animals=" + this.getAnimals() + ", \n" +
                 '}';
     }
 }
