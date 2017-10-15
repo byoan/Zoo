@@ -59,7 +59,7 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
      * @param roofState The new roof state cleanliness value
      */
     public void setRoofState(int roofState) {
-        if (this.getRoofState() > 0 && roofState >= 0 && roofState <= 2) {
+        if (roofState >= 0 && roofState <= 2) {
             this.roofState = roofState;
         }
     }

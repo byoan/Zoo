@@ -102,7 +102,7 @@ public class Enclosure<A extends AnimalInterface> {
      * @param cleanliness The new level of cleanliness
      */
     public void setCleanliness(int cleanliness) {
-        if (this.getCleanliness() > 0 && cleanliness > 0 && cleanliness <= 2) {
+        if (cleanliness >= 0 && cleanliness <= 2) {
             this.cleanliness = cleanliness;
         }
     }
