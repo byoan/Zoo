@@ -22,6 +22,11 @@ public class Animal implements AnimalInterface {
     protected boolean isInEnclosure = false;
 
     /**
+     * Represents the age of an animal --> young, adult or old
+     */
+    private String ageAnimal;
+
+    /**
      * Allows to randomly generate a boolean, used for the sex definition in case of a 'natural' birth
      * @return the randomly generated sex
      */
@@ -194,4 +199,22 @@ public class Animal implements AnimalInterface {
     public void copulate(Animal animal, int turnNb) {
 
     }
+
+    /**
+     * Allows to define the current age of an animal
+     * @param turnNb The turn number
+     */
+    private void defineAgeAnimal(int turnNb) {
+        if (this.getTurnNb() < 50) {
+            this.ageAnimal = "Young";
+            System.out.println("\nAnimal is " + this.ageAnimal);
+        } else if (this.getTurnNb() > 100) {
+            this.ageAnimal = "Old";
+            System.out.println("\nAnimal is " + this.ageAnimal);
+        } else{
+            this.ageAnimal = "adult";
+            System.out.println("\nAnimal is " + this.ageAnimal);
+        }
+    }
+
 }

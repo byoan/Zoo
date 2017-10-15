@@ -23,11 +23,6 @@ public class Simulation {
     private int turnNb;
 
     /**
-     * Represents the age of an animal --> young, adult or old
-     */
-    private String ageAnimal;
-
-    /**
      * Represents the Scanner class, used for user input
      */
     Scanner scanner;
@@ -93,19 +88,8 @@ public class Simulation {
         this.handleTurn();
     }
 
-    private void defineAgeAnimal() {
-        if (this.getTurnNb() < 50) {
-            this.ageAnimal = "Young";
-            System.out.println("\nAnimal is " + this.ageAnimal);
-        }else if (this.getTurnNb() > 100) {
-            this.ageAnimal = "Old";
-            System.out.println("\nAnimal is " + this.ageAnimal);
-        }else{
-            this.ageAnimal = "adult";
-            System.out.println("\nAnimal is " + this.ageAnimal);
-        }
-
-        this.setTurnNb(this.getTurnNb() + 1);
+    public static int getStaticTurnNb(int turnNb) {
+        return turnNb;
     }
 
     private void handleRandomEventGeneration() {
