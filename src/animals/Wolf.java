@@ -131,14 +131,6 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     }
 
     /**
-     * Enum of all possible rank in a pack
-     */
-    public enum rank {
-        Alpha, Beta, Gamma, Delta, Epsilon, Zêta, Eta, Thêta, Iota, Kappa, Lambda,
-        Mu, Nu, Xi, Omicron, Pi, Rhô, Sigma, Tau, Upsion, Phi, Chi, Psi, Omega,
-    }
-
-    /**
      * Impetuosity generator between 0 - 100
      * int Random = (min.value ) + (int)(Math.random()* ( Max - Min + 1));
      * Where min is the smallest value You want to be the smallest number possible to
