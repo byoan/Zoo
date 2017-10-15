@@ -114,19 +114,19 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
 
     @Override
     public String toString() {
-        return "Fish{" +
-                "specieName='" + specieName + '\'' +
-                ", sex=" + sex +
-                ", weight=" + weight +
-                ", size=" + size +
-                ", age=" + age +
-                ", hungerIndicator=" + hungerIndicator +
-                ", sleepIndicator=" + sleepIndicator +
-                ", healthIndicator=" + healthIndicator +
-                ", copulationTurn=" + copulationTurn +
-                ", isHatched=" + isHatched +
-                ", childrenCreationTime=" + childrenCreationTime +
-                ", isInEnclosure=" + isInEnclosure +
+        return "Fish {\n" +
+                "  specieName='" + specieName + "', \n" +
+                "  sex=" + sex + ", \n" +
+                "  weight=" + weight + ", \n" +
+                "  size=" + size + ", \n" +
+                "  age=" + age + ", \n" +
+                "  hungerIndicator=" + hungerIndicator + ", \n" +
+                "  sleepIndicator=" + sleepIndicator + ", \n" +
+                "  healthIndicator=" + healthIndicator + ", \n" +
+                "  copulationTurn=" + copulationTurn + ", \n" +
+                "  isHatched=" + isHatched + ", \n" +
+                "  childrenCreationTime=" + childrenCreationTime + ", \n" +
+                "  isInEnclosure=" + isInEnclosure + ", \n" +
                 '}';
     }
 }
