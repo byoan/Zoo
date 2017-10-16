@@ -14,6 +14,18 @@ public class WolfPack {
     ArrayList<Wolf> wolfList = new ArrayList<Wolf>();
 
     /**
+     * Getter for the average strength of the pack
+     * @return The average strength
+     */
+    public double getPackStrengthAverage() {
+        double average = 0;
+        for (Wolf wolf : this.getWolfList()) {
+            average += (double)wolf.getStrength();
+        }
+        return average / this.getWolfList().size();
+    }
+
+    /**
      * Getter for the wolves in the pack
      * @return The wolves list composing the pack
      */
