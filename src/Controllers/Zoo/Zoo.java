@@ -62,8 +62,8 @@ public class Zoo {
      * Getter for our Employee of the Zoo
      * @return Employee The Employee attribute of the Zoo class
      */
-    public static Employee getEmployee() {
-        return Employee.getInstance();
+    public Employee getEmployee() {
+        return this.employee;
     }
 
     /**

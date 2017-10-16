@@ -48,7 +48,7 @@ public class Simulation {
      * @return Employee The employee instance of the Zoo
      */
     private Employee getEmployee() {
-        return Zoo.getEmployee();
+        return this.getZoo().getEmployee();
     }
 
     /**
@@ -639,7 +639,8 @@ public class Simulation {
     public void init() {
         this.setTurnNb(0);
         this.scanner = new Scanner(System.in);
-        this.setZoo(new Zoo("My Controllers.Zoo", this.getEmployee(), 10));
+        Employee employee = Employee.getInstance();
+        this.setZoo(new Zoo("My Controllers.Zoo", employee, 10));
 
 //        Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 10);
 //        Aviary<Eagle> eagleEnclosure = new Aviary<Eagle>("Eagle Enclosure", 10, 4, 4, 2);
