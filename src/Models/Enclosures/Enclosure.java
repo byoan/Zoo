@@ -1,10 +1,8 @@
-package Enclosures;
+package Models.Enclosures;
 
-import Core.Exceptions.AnimalAlreadyInEnclosureException;
-import animals.Animal;
-import animals.AnimalInterface;
-import animals.Wolf;
-import animals.WolfPack;
+import Models.Interfaces.Animal.AnimalInterface;
+import Models.Animals.Wolf;
+import Models.Animals.WolfPack;
 
 import java.util.ArrayList;
 
@@ -21,7 +19,7 @@ public class Enclosure<A extends AnimalInterface> {
     private int surface;
 
     /**
-     * Represents the maximum number of animals that the enclosure can contain
+     * Represents the maximum number of Models.Animals that the enclosure can contain
      */
     private int maxAnimals;
 
@@ -32,7 +30,7 @@ public class Enclosure<A extends AnimalInterface> {
     private int cleanliness;
 
     /**
-     * The collection of animals that are contained in the enclosure
+     * The collection of Models.Animals that are contained in the enclosure
      */
     private ArrayList<A> animals;
 
@@ -95,16 +93,16 @@ public class Enclosure<A extends AnimalInterface> {
     }
 
     /**
-     * Getter for the maximum number of animals that this enclosure can contain
-     * @return The maximum number of animals attribute of the enclosure
+     * Getter for the maximum number of Models.Animals that this enclosure can contain
+     * @return The maximum number of Models.Animals attribute of the enclosure
      */
     public int getMaxAnimals() {
         return this.maxAnimals;
     }
 
     /**
-     * Setter for the maximum number of animals of the enclosure attribute
-     * @param maxAnimals The new maximum number of animals
+     * Setter for the maximum number of Models.Animals of the enclosure attribute
+     * @param maxAnimals The new maximum number of Models.Animals
      */
     public void setMaxAnimals(int maxAnimals) {
         this.maxAnimals = maxAnimals;
@@ -136,16 +134,16 @@ public class Enclosure<A extends AnimalInterface> {
     }
 
     /**
-     * Getter for the list of animals contained in the enclosure
-     * @return An ArrayList<A extends AnimalInterface> containing all the animals of the enclosure
+     * Getter for the list of Models.Animals contained in the enclosure
+     * @return An ArrayList<A extends AnimalInterface> containing all the Models.Animals of the enclosure
      */
     public ArrayList<A> getAnimals() {
         return this.animals;
     }
 
     /**
-     * Setter for the list of animals contained in the enclosure
-     * @param animals The new list of animals of the enclosure
+     * Setter for the list of Models.Animals contained in the enclosure
+     * @param animals The new list of Models.Animals of the enclosure
      */
     public void setAnimals(ArrayList<A> animals) {
         this.animals = animals;
@@ -195,15 +193,15 @@ public class Enclosure<A extends AnimalInterface> {
     }
 
     /**
-     * Getter for the current number of animals in the enclosure
-     * @return The current number of animals in the enclosure
+     * Getter for the current number of Models.Animals in the enclosure
+     * @return The current number of Models.Animals in the enclosure
      */
     public int getNbAnimals() {
         return this.getAnimals().size();
     }
 
     /**
-     * Allows to feed all the animals of the enclosure
+     * Allows to feed all the Models.Animals of the enclosure
      */
     public void feedAnimals() {
         for(A animal : this.getAnimals()) {
@@ -286,7 +284,7 @@ public class Enclosure<A extends AnimalInterface> {
 
     /**
      * Allows to clean the enclosure
-     * Will transfer all the animals to a temporary enclosure to proceed
+     * Will transfer all the Models.Animals to a temporary enclosure to proceed
      */
     public void cleanEnclosure() {
         if (this.getAnimals().size() > 0) {
@@ -322,7 +320,7 @@ public class Enclosure<A extends AnimalInterface> {
                 " surface=" + this.getSurface() + "\n" +
                 " maxAnimals=" + this.getMaxAnimals() + ", \n" +
                 " cleanliness=" + this.getCleanliness() + ", \n" +
-                " animals=" + this.getAnimals() + ", \n" +
+                " Models.Animals=" + this.getAnimals() + ", \n" +
                 ((this.getWolfPack() != null) ? " pack=" + this.getWolfPack() + ", \n" : "") +
                 "}";
     }

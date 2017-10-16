@@ -1,7 +1,7 @@
-package Employees;
+package Models.Interfaces.Employee;
 
-import Enclosures.Enclosure;
-import animals.AnimalInterface;
+import Models.Enclosures.Enclosure;
+import Models.Interfaces.Animal.AnimalInterface;
 
 public interface EmployeeInterface {
 
@@ -19,7 +19,7 @@ public interface EmployeeInterface {
     public void cleanEnclosure(Enclosure enclosure);
 
     /**
-     * Makes the Employee feed all the animals of the given enclosure
+     * Makes the Employee feed all the Models.Animals of the given enclosure
      * @param enclosure The enclosure to feed
      */
     public void feedAnimals(Enclosure enclosure);

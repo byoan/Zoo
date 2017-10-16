@@ -1,4 +1,8 @@
-package animals;
+package Models.Animals;
+
+import Models.Interfaces.Animal.AnimalInterface;
+import Models.Interfaces.Animal.FlyingAnimal;
+import Models.Interfaces.Animal.Oviparous;
 
 public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 

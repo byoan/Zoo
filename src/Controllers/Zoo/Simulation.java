@@ -1,12 +1,12 @@
-package Zoo;
+package Controllers.Zoo;
 
-import Core.Enums.RandomActions;
-import Core.Factories.AnimalFactory;
-import Core.Jobs.CheckNewBirthJob;
-import Employees.Employee;
-import Enclosures.Aviary;
-import Enclosures.Enclosure;
-import animals.*;
+import Models.Enums.RandomActions;
+import Models.Factories.AnimalFactory;
+import Controllers.Jobs.CheckNewBirthJob;
+import Models.Employees.Employee;
+import Models.Enclosures.Enclosure;
+import Models.Animals.*;
+import Models.Interfaces.Animal.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Simulation {
 
     /**
-     * Represents the Zoo instance
+     * Represents the Controllers.Zoo instance
      */
     private Zoo zoo;
 
@@ -44,7 +44,7 @@ public class Simulation {
 
     /**
      * Returns the employee instance
-     * @return Employee The employee instance of the Zoo
+     * @return Employee The employee instance of the Controllers.Zoo
      */
     private Employee getEmployee() {
         return Zoo.getEmployee();
@@ -127,7 +127,7 @@ public class Simulation {
     }
 
     /**
-     * Allows to handle all the newly born animals, returned from CheckNewBirthJob
+     * Allows to handle all the newly born Models.Animals, returned from CheckNewBirthJob
      * Will be executed every turn
      */
     private void handleNewBirths() {
@@ -197,7 +197,7 @@ public class Simulation {
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             enclosure.deteriorate();
         }
-        System.out.println("Enclosures were deteriorated. You should look at them.\n");
+        System.out.println("Models.Enclosures were deteriorated. You should look at them.\n");
     }
 
     /**
@@ -261,23 +261,23 @@ public class Simulation {
         System.out.println("3. Feed an enclosure");
         System.out.println("4. Heal an animal");
         System.out.println("5. Transfer an animal");
-        System.out.println("6. Display the current number of animals in the Zoo");
-        System.out.println("7. Display all the animals currently in the Zoo");
+        System.out.println("6. Display the current number of Models.Animals in the Controllers.Zoo");
+        System.out.println("7. Display all the Models.Animals currently in the Controllers.Zoo");
         System.out.println("8. Do nothing");
     }
 
     /**
-     * Allows to display the current number of animals in the Zoo
+     * Allows to display the current number of Models.Animals in the Controllers.Zoo
      */
     private void handleDisplayCurrentNbAnimalsInZoo() {
-        System.out.println("Current number of animals in the Zoo: " + this.getZoo().getNbAnimalsInZoo());
+        System.out.println("Current number of Models.Animals in the Controllers.Zoo: " + this.getZoo().getNbAnimalsInZoo());
     }
 
     /**
-     * Allows to display all the animals that are currently in the Zoo
+     * Allows to display all the Models.Animals that are currently in the Controllers.Zoo
      */
     private void handleDisplayAllAnimalsInZoo() {
-        System.out.println("Here are all the animals currently in the Zoo:\n");
+        System.out.println("Here are all the Models.Animals currently in the Controllers.Zoo:\n");
         this.getZoo().displayAnimalsFromAllEnclosures();
     }
 
@@ -319,7 +319,7 @@ public class Simulation {
             // Proceed to the transfer
             originEnclosure.transferAnimal(animal, targetEnclosure, false);
         } else {
-            System.out.println("No enclosures are currently in the Zoo.\n");
+            System.out.println("No enclosures are currently in the Controllers.Zoo.\n");
             // Return to the main menu
             this.handleTurn();
             return;
@@ -327,7 +327,7 @@ public class Simulation {
     }
 
     /**
-     * Offers the user to pick an enclosure from the Zoo's enclosure list
+     * Offers the user to pick an enclosure from the Controllers.Zoo's enclosure list
      * @param messageToDisplay The message to display before offering options to the user
      * @param <A> Generic type to be used within the method itself
      * @return Enclosure<A> An Enclosure of AnimalInterface
@@ -428,7 +428,7 @@ public class Simulation {
             System.out.println("Inspecting the enclosure n°" + action + ":");
             System.out.println(this.getEmployee().inspectEnclosure(this.getZoo().getEnclosureList().get(action - 1)));
         } else {
-            System.out.println("No enclosures are currently in the Zoo.\n");
+            System.out.println("No enclosures are currently in the Controllers.Zoo.\n");
             this.handleTurn();
             return;
         }
@@ -467,23 +467,23 @@ public class Simulation {
             System.out.println("Cleaning the enclosure n°" + action + " ...");
             this.getEmployee().cleanEnclosure(this.getZoo().getEnclosureList().get(action - 1));
         } else {
-            System.out.println("No enclosures are currently in the Zoo.\n");
+            System.out.println("No enclosures are currently in the Controllers.Zoo.\n");
             this.handleTurn();
             return;
         }
     }
 
     /**
-     * Returns our Zoo instance
-     * @return A Zoo instance
+     * Returns our Controllers.Zoo instance
+     * @return A Controllers.Zoo instance
      */
     private Zoo getZoo() {
         return this.zoo;
     }
 
     /**
-     * Setter for our Zoo attribute
-     * @param zoo A Zoo instance
+     * Setter for our Controllers.Zoo attribute
+     * @param zoo A Controllers.Zoo instance
      */
     private void setZoo(Zoo zoo) {
         this.zoo = zoo;
@@ -576,7 +576,7 @@ public class Simulation {
                     }
                     animal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth()));
                     secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth()));
-                    System.out.println("2 animals fought in the " + enclosure.getName() + " enclosure.\n");
+                    System.out.println("2 Models.Animals fought in the " + enclosure.getName() + " enclosure.\n");
                     if (animal.getHealth() <= 0) {
                         System.out.println("The first one died.\n");
                         enclosure.remove(animal);
@@ -601,7 +601,7 @@ public class Simulation {
                         }
                     }
 
-                    System.out.println("Some animals made some adult things in the " + enclosure.getName() + " enclosure.\n");
+                    System.out.println("Some Models.Animals made some adult things in the " + enclosure.getName() + " enclosure.\n");
 
                     if (animal instanceof Oviparous) {
                         Animal newAnimal;
@@ -653,7 +653,7 @@ public class Simulation {
     public void init() {
         this.setTurnNb(0);
         this.scanner = new Scanner(System.in);
-        this.setZoo(new Zoo("My Zoo", this.getEmployee(), 10));
+        this.setZoo(new Zoo("My Controllers.Zoo", this.getEmployee(), 10));
 
 //        Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 10);
 //        Aviary<Eagle> eagleEnclosure = new Aviary<Eagle>("Eagle Enclosure", 10, 4, 4, 2);

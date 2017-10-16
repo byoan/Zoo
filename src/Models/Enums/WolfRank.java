@@ -1,4 +1,4 @@
-package Core.Enums;
+package Models.Enums;
 
 /**
  * Enum of all possible rank in a pack

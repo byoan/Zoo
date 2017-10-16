@@ -1,4 +1,6 @@
-package animals;
+package Models.Interfaces.Animal;
+
+import Models.Animals.Animal;
 
 public interface AnimalInterface {
 

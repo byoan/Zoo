@@ -1,6 +1,6 @@
-package Core.Factories;
+package Models.Factories;
 
-import animals.*;
+import Models.Animals.*;
 
 public final class AnimalFactory {
 

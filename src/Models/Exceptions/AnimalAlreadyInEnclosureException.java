@@ -1,7 +1,7 @@
-package Core.Exceptions;
+package Models.Exceptions;
 
-import Enclosures.Enclosure;
-import animals.AnimalInterface;
+import Models.Enclosures.Enclosure;
+import Models.Interfaces.Animal.AnimalInterface;
 
 public class AnimalAlreadyInEnclosureException extends Exception {
     private AnimalInterface animal;

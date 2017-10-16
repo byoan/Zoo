@@ -1,4 +1,4 @@
-package Core.Enums;
+package Models.Enums;
 
 public enum RandomActions {
 

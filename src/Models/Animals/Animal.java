@@ -1,4 +1,7 @@
-package animals;
+package Models.Animals;
+
+import Models.Interfaces.Animal.AnimalInterface;
+import Models.Interfaces.Animal.Mammal;
 
 import java.util.Random;
 

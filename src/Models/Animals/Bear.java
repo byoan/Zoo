@@ -1,4 +1,6 @@
-package animals;
+package Models.Animals;
+
+import Models.Interfaces.Animal.Mammal;
 
 public class Bear extends Animal implements Mammal {
 

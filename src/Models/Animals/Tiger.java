@@ -1,4 +1,7 @@
-package animals;
+package Models.Animals;
+
+import Models.Interfaces.Animal.Mammal;
+import Models.Interfaces.Animal.WanderAnimal;
 
 public class Tiger extends Animal implements Mammal, WanderAnimal {
 

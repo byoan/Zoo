@@ -1,7 +1,7 @@
-package animals;
+package Models.Animals;
 
-import Core.Enums.WolfRank;
-import Enclosures.Enclosure;
+import Models.Enums.WolfRank;
+import Models.Enclosures.Enclosure;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -129,7 +129,7 @@ public class WolfPack {
     @Override
     public String toString() {
         return "Pack {\n" +
-                " animals='" + this.getWolfList() + "', \n" +
+                " Models.Animals='" + this.getWolfList() + "', \n" +
                 ((this.getAlphaMale() != null) ? " alpha male='" + this.getAlphaMale() + "', \n" : " No alpha male") +
                 ((this.getAlphaFemale() != null) ? " alpha female='" + this.getAlphaFemale() + "', \n" : " No alpha female") +
                 "}";

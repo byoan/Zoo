@@ -1,6 +1,6 @@
-package Enclosures;
+package Models.Enclosures;
 
-import animals.MarineAnimal;
+import Models.Interfaces.Animal.MarineAnimal;
 
 public class Aquarium<A extends MarineAnimal> extends Enclosure {
 
@@ -23,7 +23,7 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      * Constructor for the aquarium
      * @param name The name of the aquarium
      * @param surface The surface of the aquarium, in meters
-     * @param maxAnimals The maximum number of animals that the aquarium can contain
+     * @param maxAnimals The maximum number of Models.Animals that the aquarium can contain
      * @param depth The depth of the aquarium, in meters
      * @param salinity The percentage of salinity of the aquarium
      * @param waterLevel The water level of the aquarium, in meters
@@ -129,7 +129,7 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
                 " depth=" + this.getDepth() + ", \n" +
                 " salinity=" + this.getSalinity() + ", \n" +
                 " waterLevel=" + this.getCurrentWaterLevel() + ", \n" +
-                " animals=" + this.getAnimals() + ", \n" +
+                " Models.Animals=" + this.getAnimals() + ", \n" +
                 '}';
     }
 }

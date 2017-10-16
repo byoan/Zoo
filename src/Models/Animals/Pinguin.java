@@ -1,6 +1,9 @@
-package animals;
+package Models.Animals;
 
-import java.util.Random;
+import Models.Interfaces.Animal.AnimalInterface;
+import Models.Interfaces.Animal.FlyingAnimal;
+import Models.Interfaces.Animal.MarineAnimal;
+import Models.Interfaces.Animal.Oviparous;
 
 public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAnimal {
 

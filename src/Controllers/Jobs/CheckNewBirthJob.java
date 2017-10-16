@@ -1,10 +1,9 @@
-package Core.Jobs;
+package Controllers.Jobs;
 
-import Enclosures.Enclosure;
-import animals.Animal;
-import animals.Mammal;
-import animals.Oviparous;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+import Models.Enclosures.Enclosure;
+import Models.Animals.Animal;
+import Models.Interfaces.Animal.Mammal;
+import Models.Interfaces.Animal.Oviparous;
 
 import java.util.ArrayList;
 

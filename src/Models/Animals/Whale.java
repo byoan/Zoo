@@ -1,4 +1,7 @@
-package animals;
+package Models.Animals;
+
+import Models.Interfaces.Animal.Mammal;
+import Models.Interfaces.Animal.MarineAnimal;
 
 public class Whale extends Animal implements MarineAnimal, Mammal {
 

@@ -1,4 +1,7 @@
-package animals;
+package Models.Animals;
+
+import Models.Interfaces.Animal.Mammal;
+import Models.Interfaces.Animal.WanderAnimal;
 
 import java.util.concurrent.ThreadLocalRandom;
 

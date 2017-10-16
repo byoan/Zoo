@@ -1,7 +1,8 @@
-package Employees;
+package Models.Employees;
 
-import Enclosures.Enclosure;
-import animals.AnimalInterface;
+import Models.Enclosures.Enclosure;
+import Models.Interfaces.Animal.AnimalInterface;
+import Models.Interfaces.Employee.EmployeeInterface;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -141,7 +142,7 @@ public class Employee implements EmployeeInterface {
     }
 
     /**
-     * Allows to make the employee feed all the animals of the given enclosure
+     * Allows to make the employee feed all the Models.Animals of the given enclosure
      * @param enclosure The enclosure to feed
      */
     public void feedAnimals(Enclosure enclosure) {

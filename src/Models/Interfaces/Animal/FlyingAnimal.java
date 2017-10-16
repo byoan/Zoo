@@ -1,4 +1,4 @@
-package animals;
+package Models.Interfaces.Animal;
 
 public interface FlyingAnimal {
 
