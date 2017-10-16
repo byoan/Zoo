@@ -4,8 +4,6 @@ import Models.Enums.UserActions;
 
 public class View {
 
-    public void display() {
-
     /**
      * Allows to display a generic back to menu message, preceded by a 0, which is the number that the user must type to go back to the menu
      */
