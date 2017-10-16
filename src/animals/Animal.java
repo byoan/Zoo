@@ -155,9 +155,8 @@ public class Animal implements AnimalInterface {
     public void eat() {
         if (this.sleepIndicator == false) {
             this.setHunger(100);
-            System.out.println("This " + this.specieName + " was fed");
         } else {
-            System.out.println("Can't eat while sleeping");
+            System.out.println("A " +  this.getSpecieName() + " can't eat while sleeping");
         }
     }
 

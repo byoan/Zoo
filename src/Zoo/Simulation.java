@@ -252,7 +252,7 @@ public class Simulation {
         System.out.println("Choose an action by entering it's number:");
         System.out.println("1. Inspect an enclosure");
         System.out.println("2. Clean an enclosure");
-        System.out.println("3. Feed an animal");
+        System.out.println("3. Feed an enclosure");
         System.out.println("4. Heal an animal");
         System.out.println("5. Transfer an animal");
         System.out.println("6. Do nothing");
@@ -266,9 +266,9 @@ public class Simulation {
     }
 
     private <A extends AnimalInterface> void handleAnimalFeeding() {
-        Enclosure<A> enclosure = this.pickEnclosure("Select the enclosure containing the animal you want to feed:");
-        A animal = this.pickAnimal("Select the animal you want to feed:", enclosure);
-        this.getEmployee().feedAnimal(animal);
+        Enclosure<A> enclosure = this.pickEnclosure("Select the enclosure that you want to feed:");
+        enclosure.feedAnimals();
+        System.out.println("This enclosure has been fed");
     }
 
     private <A extends AnimalInterface> void handleAnimalHealing() {
