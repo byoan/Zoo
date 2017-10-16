@@ -655,22 +655,28 @@ public class Simulation {
         this.scanner = new Scanner(System.in);
         this.setZoo(new Zoo("My Zoo", this.getEmployee(), 10));
 
-        Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 10);
-        Aviary<Eagle> eagleEnclosure = new Aviary<Eagle>("Eagle Enclosure", 10, 4, 4, 2);
+//        Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 10);
+//        Aviary<Eagle> eagleEnclosure = new Aviary<Eagle>("Eagle Enclosure", 10, 4, 4, 2);
         Enclosure<Wolf> wolfEnclosure = new Enclosure<Wolf>("Wolf Enclosure", 10, 10);
-        Tiger tiger = AnimalFactory.getInstance().createTiger();
-        Tiger tiger2 = AnimalFactory.getInstance().createTiger();
-        Eagle eagle1 = AnimalFactory.getInstance().createEagle();
+//        Tiger tiger = AnimalFactory.getInstance().createTiger();
+//        Tiger tiger2 = AnimalFactory.getInstance().createTiger();
+//        Eagle eagle1 = AnimalFactory.getInstance().createEagle();
         Wolf wolf = AnimalFactory.getInstance().createWolf();
+        Wolf wolf2 = AnimalFactory.getInstance().createWolf();
+        Wolf wolf3 = AnimalFactory.getInstance().createWolf();
+        Wolf wolf4 = AnimalFactory.getInstance().createWolf();
 
         zoo = this.getZoo();
-        zoo.addEnclosure(tigerEnclosure);
-        zoo.addEnclosure(eagleEnclosure);
+//        zoo.addEnclosure(tigerEnclosure);
+//        zoo.addEnclosure(eagleEnclosure);
         zoo.addEnclosure(wolfEnclosure);
-        zoo.getEnclosureByName("Tiger Enclosure").add(tiger);
-        zoo.getEnclosureByName("Tiger Enclosure").add(tiger2);
-        zoo.getEnclosureByName("Eagle Enclosure").add(eagle1);
+//        zoo.getEnclosureByName("Tiger Enclosure").add(tiger);
+//        zoo.getEnclosureByName("Tiger Enclosure").add(tiger2);
+//        zoo.getEnclosureByName("Eagle Enclosure").add(eagle1);
         zoo.getEnclosureByName("Wolf Enclosure").add(wolf);
+        zoo.getEnclosureByName("Wolf Enclosure").add(wolf2);
+        zoo.getEnclosureByName("Wolf Enclosure").add(wolf3);
+        zoo.getEnclosureByName("Wolf Enclosure").add(wolf4);
 
         // Beginning of the simulation
         System.out.println("\n\n====== WELCOME TO ZOO SIMULATOR 3000 ======\n\n");

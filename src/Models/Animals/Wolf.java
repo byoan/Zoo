@@ -30,6 +30,10 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * Will increase or decrease of 1 at each tried domination/taken domination
      */
     private int dominationFactor;
+
+    // TODO : level of the wolf
+//    private
+
     public Wolf() {
         this.specieName = "Wolf";
         this.sex = this.getRandomBoolean();
