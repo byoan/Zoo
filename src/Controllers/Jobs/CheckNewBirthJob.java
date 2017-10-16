@@ -26,14 +26,28 @@ public class CheckNewBirthJob {
         return this.turnNb;
     }
 
+    /**
+     * Getter for the list of enclosure to check
+     * Will most likely represent the list of enclosures of the Zoo
+     * @return ArrayList<Enclosure> The enclosure list that the job received
+     */
     public ArrayList<Enclosure> getEnclosureList() {
         return this.enclosureList;
     }
 
+    /**
+     * Getter for the newly born animals collections (born this turn)
+     * @return ArrayList<Animal> that were born this turn
+     */
     public ArrayList<Animal> getNewBirths() {
         return this.newBirths;
     }
 
+    /**
+     * Allows to browse the previously given enclosure list, looking for animals that were born during the turn.
+     * These animals will be added to a collection which will later be retrieved through a getter
+     * @param <A> Generic type to use within the method
+     */
     public <A extends Animal> void exec() {
         for (Enclosure<A> enclosure : this.getEnclosureList()) {
             for (Animal animal : enclosure.getAnimals()) {
