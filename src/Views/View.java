@@ -1,5 +1,7 @@
 package Views;
 
+import Models.Enums.UserActions;
+
 public class View {
 
     public void display() {
@@ -11,6 +13,9 @@ public class View {
      */
     public static void displayPickAction() {
         View.displayMessage("Choose an action by entering it's number:\n");
+        for (UserActions action : UserActions.values()) {
+            View.displayMessage(action.display());
+        }
     }
 
     /**
