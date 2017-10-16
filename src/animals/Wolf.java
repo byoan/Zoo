@@ -2,7 +2,17 @@ package animals;
 
 public class Wolf extends Animal implements Mammal, WanderAnimal {
 
+    /**
+     * Represents the strength of a wolf on a scale from 1 to 100
+     * Used for fights
+     */
     private int strength;
+
+    /**
+     * Represents the rank of the wolf within its pack (if any)
+     */
+    private String rank;
+
     /**
      * Defines the turn number at which the animal copulated, allowing us to calculate the difference
      * with the current turn number to compare with the gestation time
@@ -34,6 +44,22 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.sleepIndicator = false;
         this.healthIndicator = 100;
         this.childrenCreationTime = 69;
+    }
+
+    /**
+     * Getter for the rank of the wolf within its pack (if any)
+     * @return The wolf rank
+     */
+    public String getRank() {
+        return this.rank;
+    }
+
+    /**
+     * Setter for the rank of the wolf within the pack
+     * @param rank The new wolf rank
+     */
+    public void setRank(String rank) {
+        this.rank = rank;
     }
 
     /**
@@ -143,6 +169,8 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
                 "  copulationTurn=" + copulationTurn + ", \n" +
                 "  childrenCreationTime=" + childrenCreationTime + ", \n" +
                 "  isInEnclosure=" + isInEnclosure + ", \n" +
+                "  isInPack=" + ((this.getRank() == null) ? "Solitary" : "In a pack") + ", \n" +
+                "  rankInPack=" + ((this.getRank() == null) ? "none" : this.getRank()) + ", \n" +
                 '}';
     }
 

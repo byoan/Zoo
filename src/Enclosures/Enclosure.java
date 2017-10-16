@@ -1,7 +1,10 @@
 package Enclosures;
 
 import Core.Exceptions.AnimalAlreadyInEnclosureException;
+import animals.Animal;
 import animals.AnimalInterface;
+import animals.Wolf;
+import animals.WolfPack;
 
 import java.util.ArrayList;
 
@@ -33,12 +36,30 @@ public class Enclosure<A extends AnimalInterface> {
      */
     private ArrayList<A> animals;
 
+    private WolfPack wolfPack;
+
     public Enclosure(String name, int surface, int maxAnimals) {
         this.name = name;
         this.surface = surface;
         this.maxAnimals = maxAnimals;
         this.cleanliness = 2;
         this.animals = new ArrayList<A>();
+    }
+
+    /**
+     * Getter for the wolf pack of the enclosure
+     * @return The wolf pack of the enclosure, if any
+     */
+    public WolfPack getWolfPack() {
+        return this.wolfPack;
+    }
+
+    /**
+     * Setter for the wolf pack of the enclosure
+     * @param wolfPack The wolfpack to add to this enclosure
+     */
+    public void setWolfPack(WolfPack wolfPack) {
+        this.wolfPack = wolfPack;
     }
 
     /**
@@ -139,6 +160,8 @@ public class Enclosure<A extends AnimalInterface> {
             if (!animal.isInEnclosure() && this.getAnimals().size() < this.getMaxAnimals()) {
                 this.getAnimals().add(animal);
                 animal.setInEnclosure(true);
+                if (animal.getSpecieName() == "Wolf") {
+                    this.handleWolfAdditionToPack(animal);
             } else {
                 //throw new AnimalAlreadyInEnclosureException(animal, this);
                 System.out.println("Can't add this animal as it is already in an enclosure, or the enclosure is full");
@@ -180,6 +203,39 @@ public class Enclosure<A extends AnimalInterface> {
     public void feedAnimals() {
         for(A animal : this.getAnimals()) {
             animal.eat();
+        }
+    }
+
+    /**
+     * Allows to check for packs before adding the wolf to the enclosure
+     * @param wolf
+     */
+    private void handleWolfAdditionToPack(A wolf) {
+        if (wolf instanceof Wolf) {
+            if (this.getWolfPack() == null) {
+                for (A wolfInEnclosure : this.getAnimals()) {
+                    if (wolfInEnclosure.getSex() != wolf.getSex()) {
+                        this.setWolfPack(new WolfPack());
+                        this.getWolfPack().add((Wolf) wolf);
+                        ((Wolf) wolfInEnclosure).setRank("Alpha");
+                        this.getWolfPack().add((Wolf) wolfInEnclosure);
+
+                        if (this.getNbAnimals() >= 2) {
+                            this.getWolfPack().generateWolfRank((Wolf) wolf);
+                        }
+
+                        this.getWolfPack().addAllWolvesToPack((Enclosure<Wolf>) this);
+                        this.getWolfPack().setAtLeastOneOmegaInPack((Enclosure<Wolf>) this);
+                        break;
+                    }
+                }
+            } else {
+                this.getWolfPack().generateWolfRank((Wolf) wolf);
+                this.getWolfPack().add((Wolf) wolf);
+                this.getWolfPack().setAtLeastOneOmegaInPack((Enclosure<Wolf>) this);
+            }
+        } else {
+            // Error exception
         }
     }
 
@@ -262,6 +318,7 @@ public class Enclosure<A extends AnimalInterface> {
                 " maxAnimals=" + this.getMaxAnimals() + ", \n" +
                 " cleanliness=" + this.getCleanliness() + ", \n" +
                 " animals=" + this.getAnimals() + ", \n" +
+                ((this.getWolfPack() != null) ? " pack=" + this.getWolfPack() + ", \n" : "") +
                 "}";
     }
 }
