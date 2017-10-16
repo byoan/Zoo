@@ -205,7 +205,7 @@ public class Simulation {
      * This method allows to handle all the action that take place during this turn (from the Employee side)
      */
     private void handleTurn() {
-        this.displayPickAction();
+        View.displayPickAction();
         int action = 0;
 
         while (true) {
@@ -250,21 +250,6 @@ public class Simulation {
         }
 
         this.nextTurn();
-    }
-
-    /**
-     * Allows to display to the user all the available action to manipulate its employee
-     */
-    private void displayPickAction() {
-        View.displayMessage("Choose an action by entering it's number:");
-        View.displayMessage("1. Inspect an enclosure");
-        View.displayMessage("2. Clean an enclosure");
-        View.displayMessage("3. Feed an enclosure");
-        View.displayMessage("4. Heal an animal");
-        View.displayMessage("5. Transfer an animal");
-        View.displayMessage("6. Display the current number of Models.Animals in the Controllers.Zoo");
-        View.displayMessage("7. Display all the Models.Animals currently in the Controllers.Zoo");
-        View.displayMessage("8. Do nothing");
     }
 
     /**
