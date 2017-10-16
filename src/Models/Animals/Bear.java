@@ -1,5 +1,6 @@
 package Models.Animals;
 
+import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.Mammal;
 import Views.View;
 
@@ -88,7 +89,7 @@ public class Bear extends Animal implements Mammal {
      */
     @Override
     public Bear birth() {
-        return new Bear();
+        return AnimalFactory.getInstance().createBear();
     }
 
     @Override

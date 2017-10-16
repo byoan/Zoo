@@ -1,5 +1,6 @@
 package Models.Animals;
 
+import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.Mammal;
 import Models.Interfaces.Animal.MarineAnimal;
 import Views.View;
@@ -101,7 +102,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
      */
     @Override
     public Whale birth() {
-        return new Whale();
+        return AnimalFactory.getInstance().createWhale();
     }
 
     @Override

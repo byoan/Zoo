@@ -1,5 +1,6 @@
 package Models.Animals;
 
+import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.AnimalInterface;
 import Models.Interfaces.Animal.MarineAnimal;
 import Models.Interfaces.Animal.Oviparous;
@@ -111,7 +112,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
 
     @Override
     public Fish lay() {
-        return new Fish();
+        return AnimalFactory.getInstance().createFish();
     }
 
     @Override

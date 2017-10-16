@@ -1,5 +1,6 @@
 package Models.Animals;
 
+import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.AnimalInterface;
 import Models.Interfaces.Animal.FlyingAnimal;
 import Models.Interfaces.Animal.MarineAnimal;
@@ -109,7 +110,7 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
 
     @Override
     public Pinguin lay() {
-        return new Pinguin();
+        return AnimalFactory.getInstance().createPinguin();
     }
 
     @Override

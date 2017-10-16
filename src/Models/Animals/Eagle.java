@@ -1,5 +1,6 @@
 package Models.Animals;
 
+import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.AnimalInterface;
 import Models.Interfaces.Animal.FlyingAnimal;
 import Models.Interfaces.Animal.Oviparous;
@@ -103,7 +104,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     @Override
     public Eagle lay() {
-        return new Eagle();
+        return AnimalFactory.getInstance().createEagle();
     }
 
     @Override

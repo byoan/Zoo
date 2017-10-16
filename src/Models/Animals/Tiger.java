@@ -1,5 +1,6 @@
 package Models.Animals;
 
+import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.Mammal;
 import Models.Interfaces.Animal.WanderAnimal;
 import Views.View;
@@ -96,7 +97,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
      */
     @Override
     public Tiger birth() {
-        return new Tiger();
+        return AnimalFactory.getInstance().createTiger();
     }
 
     @Override

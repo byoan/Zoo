@@ -1,5 +1,6 @@
 package Models.Animals;
 
+import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.Mammal;
 import Models.Interfaces.Animal.WanderAnimal;
 import Views.View;
@@ -224,7 +225,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     @Override
     public Wolf birth() {
-        return new Wolf();
+        return AnimalFactory.getInstance().createWolf();
     }
 
     @Override
