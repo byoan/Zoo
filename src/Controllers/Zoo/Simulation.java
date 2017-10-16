@@ -198,7 +198,7 @@ public class Simulation {
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             enclosure.deteriorate();
         }
-        View.displayMessage("Models.Enclosures were deteriorated. You should look at them.\n");
+        View.displayMessage("Enclosures are deteriorated. You should clean them.\n");
     }
 
     /**
@@ -256,7 +256,7 @@ public class Simulation {
      * Allows to display the current number of Models.Animals in the Controllers.Zoo
      */
     private void handleDisplayCurrentNbAnimalsInZoo() {
-        View.displayMessage("Current number of Models.Animals in the Controllers.Zoo: " + this.getZoo().getNbAnimalsInZoo());
+        View.displayMessage("Current number of animals in the zoo: " + this.getZoo().getNbAnimalsInZoo());
     }
 
     /**

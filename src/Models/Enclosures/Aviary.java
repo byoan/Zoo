@@ -96,7 +96,7 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
                 " cleanliness=" + this.getCleanliness() + ", \n" +
                 " height=" + this.getHeight() + ", \n" +
                 " roofState=" + this.getRoofState() + ", \n" +
-                " Models.Animals=" + this.getAnimals() + ", \n" +
+                " animals=" + this.getAnimals() + ", \n" +
                 '}';
     }
 }
