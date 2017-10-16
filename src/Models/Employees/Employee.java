@@ -153,10 +153,6 @@ public class Employee implements EmployeeInterface {
         }
     }
 
-    public <A extends AnimalInterface> void feedAnimal(A animal) {
-        animal.eat();
-    }
-
     public <A extends AnimalInterface> void healAnimal(A animal) {
         animal.heal();
     }
