@@ -101,16 +101,17 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      * Uses a generic name to ease its call within the Simulation
      */
     public void cleanEnclosure() {
-        System.out.println("Le niveau de l'eau est de " + this.getCurrentWaterLevel());
+        System.out.println("The water level is worth " + this.getCurrentWaterLevel());
         if (this.getCurrentWaterLevel() < this.getDepth()) {
-            System.out.println("Remplissage du bassin ...");
-            System.out.println("Le niveau de l'eau est maintenant de " + this.getCurrentWaterLevel());
+            System.out.println("Adding more water ...");
+            this.setWaterLevel(this.getDepth());
+            System.out.println("The water level is now worth " + this.getCurrentWaterLevel());
         }
-        System.out.println("La salinité vaut actuellement : " + this.getSalinity() + "/m3");
+        System.out.println("The salinity level is now worth : " + this.getSalinity() + "/m3");
         if (this.getSalinity() < 100) {
-            System.out.println("Recalibrage du niveau de sel ...");
+            System.out.println("Recalibrating salinity level ...");
             this.setSalinity(100);
-            System.out.println("La salinité a été recalibrée, elle vaut maintenant : " + this.getSalinity());
+            System.out.println("Salinity has been recalibrated, it is now worth : " + this.getSalinity());
         }
     }
 
