@@ -59,8 +59,8 @@ public class Zoo {
     }
 
     /**
-     * Getter for our Employee of the Controllers.Zoo
-     * @return Employee The Employee attribute of the Controllers.Zoo class
+     * Getter for our Employee of the Zoo
+     * @return Employee The Employee attribute of the Zoo class
      */
     public static Employee getEmployee() {
         return Employee.getInstance();
@@ -83,8 +83,8 @@ public class Zoo {
     }
 
     /**
-     * Getter for the enclosures contained by the Controllers.Zoo
-     * @return An ArrayList of Models.Enclosures
+     * Getter for the enclosures contained by the Zoo
+     * @return An ArrayList of Enclosures
      */
     public ArrayList<Enclosure> getEnclosureList() {
         return this.enclosureList;
@@ -158,9 +158,9 @@ public class Zoo {
     }
 
     /**
-     * Getter for the current number of Models.Animals that are in the Controllers.Zoo
-     * Will iterate over the enclosures list to retrieve each enclosure's number of Models.Animals
-     * @return The total number of Models.Animals in the Controllers.Zoo
+     * Getter for the current number of animals that are in the Zoo
+     * Will iterate over the enclosures list to retrieve each enclosure's number of animals
+     * @return The total number of animals in the Zoo
      */
     public int getNbAnimalsInZoo() {
         int nbAnimals = 0;
@@ -171,7 +171,7 @@ public class Zoo {
     }
 
     /**
-     * Allows to display all the characteristics of each animal in the Controllers.Zoo
+     * Allows to display all the characteristics of each animal in the Zoo
      */
     public void displayAnimalsFromAllEnclosures() {
         for (Enclosure enclosure : this.getEnclosureList()) {

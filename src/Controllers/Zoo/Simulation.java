@@ -44,8 +44,8 @@ public class Simulation {
     }
 
     /**
-     * Returns the employee instance
-     * @return Employee The employee instance of the Controllers.Zoo
+     * Returns the employee instance of the Zoo
+     * @return Employee The employee instance of the Zoo
      */
     private Employee getEmployee() {
         return Zoo.getEmployee();
@@ -128,7 +128,7 @@ public class Simulation {
     }
 
     /**
-     * Allows to handle all the newly born Models.Animals, returned from CheckNewBirthJob
+     * Allows to handle all the newly born animals, returned from CheckNewBirthJob
      * Will be executed every turn
      */
     private void handleNewBirths() {
@@ -253,17 +253,17 @@ public class Simulation {
     }
 
     /**
-     * Allows to display the current number of Models.Animals in the Controllers.Zoo
+     * Allows to display the current number of animals in the Zoo
      */
     private void handleDisplayCurrentNbAnimalsInZoo() {
         View.displayMessage("Current number of animals in the zoo: " + this.getZoo().getNbAnimalsInZoo());
     }
 
     /**
-     * Allows to display all the Models.Animals that are currently in the Controllers.Zoo
+     * Allows to display all the animals that are currently in the Zoo
      */
     private void handleDisplayAllAnimalsInZoo() {
-        View.displayMessage("Here are all the Models.Animals currently in the Controllers.Zoo:\n");
+        View.displayMessage("Here are all the animals currently in the zoo:\n");
         this.getZoo().displayAnimalsFromAllEnclosures();
     }
 
@@ -305,7 +305,7 @@ public class Simulation {
             // Proceed to the transfer
             originEnclosure.transferAnimal(animal, targetEnclosure, false);
         } else {
-            View.displayMessage("No enclosures are currently in the Controllers.Zoo.\n");
+            View.displayMessage("No enclosures are currently in the zoo.\n");
             // Return to the main menu
             this.handleTurn();
             return;
@@ -313,7 +313,7 @@ public class Simulation {
     }
 
     /**
-     * Offers the user to pick an enclosure from the Controllers.Zoo's enclosure list
+     * Offers the user to pick an enclosure from the zoo's enclosure list
      * @param messageToDisplay The message to display before offering options to the user
      * @param <A> Generic type to be used within the method itself
      * @return Enclosure<A> An Enclosure of AnimalInterface

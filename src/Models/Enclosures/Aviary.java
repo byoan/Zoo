@@ -19,7 +19,7 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
      * Constructor for the Aviary
      * @param name The name of the aviary
      * @param surface The surface of the aviary
-     * @param maxAnimals The maximum number of Models.Animals that the aviary can contain
+     * @param maxAnimals The maximum number of animals that the aviary can contain
      * @param height The height of the aviary
      * @param roofState The roof state cleanliness (0 = bad, 1 = correct, 2 = good)
      */
