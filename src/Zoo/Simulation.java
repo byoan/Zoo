@@ -234,6 +234,12 @@ public class Simulation {
                 this.handleAnimalTransfer();
                 break;
             case 6:
+                this.handleDisplayCurrentNbAnimalsInZoo();
+                break;
+            case 7:
+                this.handleDisplayAllAnimalsInZoo();
+                break;
+            case 8:
                 this.doNothing();
                 break;
             default:
@@ -255,7 +261,24 @@ public class Simulation {
         System.out.println("3. Feed an enclosure");
         System.out.println("4. Heal an animal");
         System.out.println("5. Transfer an animal");
-        System.out.println("6. Do nothing");
+        System.out.println("6. Display the current number of animals in the Zoo");
+        System.out.println("7. Display all the animals currently in the Zoo");
+        System.out.println("8. Do nothing");
+    }
+
+    /**
+     * Allows to display the current number of animals in the Zoo
+     */
+    private void handleDisplayCurrentNbAnimalsInZoo() {
+        System.out.println("Current number of animals in the Zoo: " + this.getZoo().getNbAnimalsInZoo());
+    }
+
+    /**
+     * Allows to display all the animals that are currently in the Zoo
+     */
+    private void handleDisplayAllAnimalsInZoo() {
+        System.out.println("Here are all the animals currently in the Zoo:\n");
+        this.getZoo().displayAnimalsFromAllEnclosures();
     }
 
     /**

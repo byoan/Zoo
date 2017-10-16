@@ -173,11 +173,10 @@ public class Zoo {
      * Allows to display all the characteristics of each animal in the Zoo
      */
     public void displayAnimalsFromAllEnclosures() {
-        System.out.println("Displaying all animals currently in the Zoo : ");
         for (Enclosure enclosure : this.getEnclosureList()) {
             ArrayList<AnimalInterface> animalList = enclosure.getAnimals();
             for (AnimalInterface animal : animalList) {
-                animal.toString();
+                System.out.println(animal.toString());
             }
         }
     }
