@@ -1,12 +1,8 @@
 package animals;
 
-public class Wolf extends Animal implements Mammal, WanderAnimal {
+import java.util.concurrent.ThreadLocalRandom;
 
-    /**
-     * Represents the strength of a wolf on a scale from 1 to 100
-     * Used for fights
-     */
-    private int strength;
+public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     /**
      * Represents the rank of the wolf within its pack (if any)
@@ -112,17 +108,20 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     /**
      * Strength generator between 0 - 100
-     * int Random = (min.value ) + (int)(Math.random()* ( Max - Min + 1));
-     * Where min is the smallest value You want to be the smallest number possible to
-     * generate and Max is the biggest possible number to generate
-     * @param strengthNb
+     * @return A randomly generated number
      */
-    public int strength(int strengthNb)
+    private int generateStrength()
     {
-        while(strengthNb == 0) {
-            strengthNb = (int) (Math.random() * (100));
-        }
-        return strengthNb;
+        return ThreadLocalRandom.current().nextInt(0, 100);
+    }
+
+    /**
+     * Impetuosity generator between 0 - 100
+     * @return A randomly generated number
+     */
+    private int generateImpetuosity()
+    {
+        return ThreadLocalRandom.current().nextInt(0, 100);
     }
 
     /**
@@ -172,21 +171,5 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
                 "  isInPack=" + ((this.getRank() == null) ? "Solitary" : "In a pack") + ", \n" +
                 "  rankInPack=" + ((this.getRank() == null) ? "none" : this.getRank()) + ", \n" +
                 '}';
-    }
-
-    /**
-     * Impetuosity generator between 0 - 100
-     * int Random = (min.value ) + (int)(Math.random()* ( Max - Min + 1));
-     * Where min is the smallest value You want to be the smallest number possible to
-     * generate and Max is the biggest possible number to generate
-     * @param impetuosityNb
-     * @return
-     */
-    public int impetuosity(int impetuosityNb)
-    {
-        while(impetuosityNb == 0) {
-            impetuosityNb = (int) (Math.random() * (100));
-        }
-        return impetuosityNb;
     }
 }
