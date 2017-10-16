@@ -128,14 +128,17 @@ public class Simulation {
 
     /**
      * Allows to handle all the newly born animals, returned from CheckNewBirthJob
+     * Will be executed every turn
      */
     private void handleNewBirths() {
         CheckNewBirthJob checkNewBirthJob = new CheckNewBirthJob(this.getZoo().getEnclosureList(), this.getTurnNb());
         checkNewBirthJob.exec();
+        // Retrieve result from exec() method
         ArrayList<Animal> newBirths =  checkNewBirthJob.getNewBirths();
 
         if (newBirths.size() > 0) {
             for (Animal animal : newBirths) {
+                // Make the employee choose an enclosure for the newly born animal
                 this.displayEnclosureListForNewBirth(animal);
                 this.chooseEnclosureForNewBirth(animal);
             }
@@ -486,6 +489,12 @@ public class Simulation {
         return values[actionId].toString();
     }
 
+    /**
+     * Allows to handle the randomly generated action for the current turn
+     * @param action The action that was generated
+     * @param animal The animal which will sustain the event
+     * @param enclosure The enclosure which contains the targeted animal
+     */
     private void handleRandomAction(String action, Animal animal, Enclosure enclosure) {
         switch (action) {
             case "DECREASE_HUNGER":
@@ -561,6 +570,7 @@ public class Simulation {
                 if (enclosure.getNbAnimals() >= 2 && this.hasAtLeastMaleAndFemale(enclosure)) {
                     Animal secondAnimal = this.pickRandomAnimal(enclosure);
 
+                    // Try to pick another animal until we pick one that is not the same that the first, and that has not the same sex
                     while (secondAnimal.equals(animal) || (animal.getSex() == secondAnimal.getSex())) {
                         secondAnimal = this.pickRandomAnimal(enclosure);
                         if (secondAnimal.getSex() == animal.getSex()) {
@@ -572,8 +582,10 @@ public class Simulation {
 
                     if (animal instanceof Oviparous) {
                         Animal newAnimal;
+                        // If its a male, we must call the copulate method on the second animal (the female)
                         if (animal.getSex()) {
                             newAnimal = secondAnimal.copulate(animal, this.getTurnNb());
+                            // Try to copulate until we get a valid animal
                             while (newAnimal == null) {
                                 newAnimal = secondAnimal.copulate(animal, this.getTurnNb());
                                 if (newAnimal != null) {
@@ -582,6 +594,7 @@ public class Simulation {
                             }
                         } else {
                             newAnimal = animal.copulate(secondAnimal, this.getTurnNb());
+                            // Try to copulate until we get a valid animal
                             while (newAnimal == null) {
                                 newAnimal = animal.copulate(secondAnimal, this.getTurnNb());
                                 if (newAnimal != null) {
@@ -590,6 +603,7 @@ public class Simulation {
                             }
                         }
 
+                        // If there is enough space in the parent enclosure, put the new animal in it. Else, ask the Employee
                         if (enclosure.getNbAnimals() < enclosure.getMaxAnimals()) {
                             enclosure.add(newAnimal);
                         } else {
