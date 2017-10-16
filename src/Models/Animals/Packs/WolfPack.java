@@ -1,5 +1,6 @@
-package Models.Animals;
+package Models.Animals.Packs;
 
+import Models.Animals.Wolf;
 import Models.Enums.WolfRank;
 import Models.Enclosures.Enclosure;
 
