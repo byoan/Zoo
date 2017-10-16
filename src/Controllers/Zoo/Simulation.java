@@ -320,7 +320,7 @@ public class Simulation {
      */
     private <A extends AnimalInterface> Enclosure<A> pickEnclosure(String messageToDisplay) {
         View.displayMessage(messageToDisplay);
-        View.displayMessage("0. Go back to menu\n");
+        View.displayBackToMenuMessage();
         int i = 1;
         for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
             View.displayMessage(i + ". " + enclosure.getName());
@@ -355,7 +355,7 @@ public class Simulation {
      */
     private <A extends AnimalInterface> A pickAnimal(String messageToDisplay, Enclosure<A> enclosure) {
         View.displayMessage(messageToDisplay);
-        View.displayMessage("0. Go back to menu\n");
+        View.displayBackToMenuMessage();
         int i = 1;
         for (A animal : enclosure.getAnimals()) {
             View.displayMessage(i + ". " + animal.toString());
@@ -388,7 +388,7 @@ public class Simulation {
     private <A extends AnimalInterface> void handlePickEnclosureToInspect() {
         if (this.getZoo().getEnclosureList().size() > 0) {
             View.displayMessage("Which enclosure would you like to inspect?");
-            View.displayMessage("0. Go back to menu\n");
+            View.displayBackToMenuMessage();
             int i = 1;
             for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
                 View.displayMessage(i + ". " + enclosure.getName());
@@ -427,7 +427,7 @@ public class Simulation {
     private <A extends AnimalInterface> void handlePickEnclosureToClean() {
         if (this.getZoo().getEnclosureList().size() > 0) {
             View.displayMessage("Which enclosure would you like to clean?");
-            View.displayMessage("0. Go back to menu\n");
+            View.displayBackToMenuMessage();
             int i = 1;
             for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
                 View.displayMessage(i + ". " + enclosure.getName());
