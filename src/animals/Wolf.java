@@ -15,10 +15,25 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     private int copulationTurn;
 
+    /**
+     * Represents the impetuosity level of the wolf, on a scale from 0 to 100
+     */
+    private int impetuosity;
+
+    /**
+     * Represents the strength level of the wolf, on a scale from 0 to 100
+     */
+    private int strength;
+
+    /**
+     * Represents the domination factor of the wolf, starting at 100
+     * Will increase or decrease of 1 at each tried domination/taken domination
+     */
+    private int dominationFactor;
     public Wolf() {
         this.specieName = "Wolf";
         this.sex = this.getRandomBoolean();
-        this.strength = this.strength(100);
+        this.strength = this.generateStrength();
         this.weight = 50;
         this.size = 82;
         this.age = 0;
@@ -26,12 +41,13 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.sleepIndicator = false;
         this.healthIndicator = 100;
         this.childrenCreationTime = 69;
+        this.impetuosity = this.generateImpetuosity();
     }
 
-    public Wolf(boolean sex, int strength, float weight, float size, int age) {
+    public Wolf(boolean sex, float weight, float size, int age) {
         this.specieName = "Wolf";
         this.sex = sex;
-        this.strength = strength;
+        this.strength = this.generateStrength();
         this.weight = weight;
         this.size = size;
         this.age = age;
@@ -40,6 +56,55 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.sleepIndicator = false;
         this.healthIndicator = 100;
         this.childrenCreationTime = 69;
+        this.impetuosity = this.generateImpetuosity();
+    }
+
+    /**
+     * Getter for the domination factor of the wolf
+     * @return The domination factor of the wolf
+     */
+    public int getDominationFactor() {
+        return this.dominationFactor;
+    }
+
+    /**
+     * Setter for the domination factor of the wolf
+     * @param dominationFactor The new domination factor of the wolf
+     */
+    public void setDominationFactor(int dominationFactor) {
+        this.dominationFactor = dominationFactor;
+    }
+
+    /**
+     * Allows to increase the domination factor of the wolf
+     * Used when an attempted domination on another wolf succeeds
+     */
+    public void increaseDominationFactor() {
+        this.setDominationFactor(this.getDominationFactor() + 1);
+    }
+
+    /**
+     * Allows to increase the domination factor of the wolf
+     * Used when an attempted domination on another wolf succeeds
+     */
+    public void decreaseDominationFactor() {
+        this.setDominationFactor(this.getDominationFactor() - 1);
+    }
+
+    /**
+     * Getter for the impetuosity level of the wolf
+     * @return The impetuosity level of the wolf
+     */
+    public int getImpetuosity() {
+        return this.impetuosity;
+    }
+
+    /**
+     * Getter for the strength of the wolf
+     * @return The strength level of the wolf
+     */
+    public int getStrength() {
+        return this.strength;
     }
 
     /**
