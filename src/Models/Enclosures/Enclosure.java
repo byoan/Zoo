@@ -233,7 +233,7 @@ public class Enclosure<A extends AnimalInterface> {
                         break;
                     }
                 }
-            } else {
+            } else if (this.getWolfPack() != null && ((Wolf) wolf).getRank() == null){
                 this.getWolfPack().generateWolfRank((Wolf) wolf);
                 this.getWolfPack().add((Wolf) wolf);
                 this.getWolfPack().setAtLeastOneOmegaInPack((Enclosure<Wolf>) this);
@@ -294,14 +294,16 @@ public class Enclosure<A extends AnimalInterface> {
 
             // We must proceed this way, as using a foreach on the collection, and removing an item from this collection within the foreach will create an Exception
             for (int i = 0; i < originalSize; i++) {
-                A animal = this.getAnimals().get(i);
+                // We have to get the first animal, as this.getAnimals() gets reduced at every transfer, which means that we can't get using i (FIFO)
+                A animal = this.getAnimals().get(0);
                 this.transferAnimal(animal, temporaryEnclosure, true);
             }
             this.setCleanliness(2);
 
             // We must proceed this way, as using a foreach on the collection, and removing an item from this collection within the foreach will create an Exception
             for (int i = 0; i < originalSize; i++) {
-                A animal = temporaryEnclosure.getAnimals().get(i);
+                // We have to get the first animal, as this.getAnimals() gets reduced at every transfer, which means that we can't get using i (FIFO)
+                A animal = temporaryEnclosure.getAnimals().get(0);
                 temporaryEnclosure.transferAnimal(animal, this, true);
             }
         } else {
