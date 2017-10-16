@@ -3,6 +3,7 @@ package Controllers.Zoo;
 import Models.Employees.Employee;
 import Models.Enclosures.Enclosure;
 import Models.Interfaces.Animal.AnimalInterface;
+import Views.View;
 
 import java.util.ArrayList;
 
@@ -109,10 +110,10 @@ public class Zoo {
                 this.getEnclosureList().add(enclosure);
             } else {
                 // TODO : throw exception
-                System.out.println("Can't add this enclosure to the Controllers.Zoo, as it is full");
+                View.displayMessage("Can't add this enclosure to the Controllers.Zoo, as it is full");
             }
         } catch(Exception e) {
-            System.out.println("An error occurred while trying to add this enclosure to the zoo : " + e.getMessage());
+            View.displayMessage("An error occurred while trying to add this enclosure to the zoo : " + e.getMessage());
         }
     }
 
@@ -127,11 +128,11 @@ public class Zoo {
                 this.getEnclosureList().remove(enclosure);
             } else {
                 // TODO : throw custom exception
-                System.out.println("The given enclosure is currently not in this Controllers.Zoo");
+                View.displayMessage("The given enclosure is currently not in this Controllers.Zoo");
             }
         } catch(Exception e) {
             // TODO : throw exception
-            System.out.println("An error occurred while trying to remove this enclosure from the zoo : " + e.getMessage());
+            View.displayMessage("An error occurred while trying to remove this enclosure from the zoo : " + e.getMessage());
         }
     }
 
@@ -148,10 +149,10 @@ public class Zoo {
                 }
             }
             // TODO : throw Exception
-            System.out.println("No enclosure found with this name");
+            View.displayMessage("No enclosure found with this name");
         } else {
             // TODO : throw Exception
-            System.out.println("No enclosure in the Controllers.Zoo yet");
+            View.displayMessage("No enclosure in the Controllers.Zoo yet");
         }
         return null;
     }
@@ -176,7 +177,7 @@ public class Zoo {
         for (Enclosure enclosure : this.getEnclosureList()) {
             ArrayList<AnimalInterface> animalList = enclosure.getAnimals();
             for (AnimalInterface animal : animalList) {
-                System.out.println(animal.toString());
+                View.displayMessage(animal.toString());
             }
         }
     }

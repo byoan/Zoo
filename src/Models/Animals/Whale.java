@@ -2,6 +2,7 @@ package Models.Animals;
 
 import Models.Interfaces.Animal.Mammal;
 import Models.Interfaces.Animal.MarineAnimal;
+import Views.View;
 
 public class Whale extends Animal implements MarineAnimal, Mammal {
 
@@ -41,12 +42,12 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
      */
     @Override
     public void scream() {
-        System.out.println("I'm screaming");
+        View.displayMessage("I'm screaming");
     }
 
     @Override
     public void swim() {
-        System.out.println("A whale is swimming");
+        View.displayMessage("A whale is swimming");
     }
 
     /**
@@ -91,7 +92,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
      * Generic method who say if animal wandering or not
      */
     public void wander() {
-        System.out.println("I'm wandering...");
+        View.displayMessage("I'm wandering...");
     }
 
     /**

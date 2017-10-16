@@ -3,6 +3,7 @@ package Models.Employees;
 import Models.Enclosures.Enclosure;
 import Models.Interfaces.Animal.AnimalInterface;
 import Models.Interfaces.Employee.EmployeeInterface;
+import Views.View;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -172,7 +173,7 @@ public class Employee implements EmployeeInterface {
                 originEnclosure.getAnimals().remove(animalToTransfer);
                 targetEnclosure.getAnimals().add(animalToTransfer);
             } catch(Exception e) {
-                System.out.println("The following error was thrown while trying to transfer an animal : " + e.getMessage());
+                View.displayMessage("The following error was thrown while trying to transfer an animal : " + e.getMessage());
             }
         }
     }

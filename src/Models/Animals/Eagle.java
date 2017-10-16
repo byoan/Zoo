@@ -3,6 +3,7 @@ package Models.Animals;
 import Models.Interfaces.Animal.AnimalInterface;
 import Models.Interfaces.Animal.FlyingAnimal;
 import Models.Interfaces.Animal.Oviparous;
+import Views.View;
 
 public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
@@ -71,7 +72,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         if (this.isHatched) {
             return true;
         } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
-            System.out.println("An eagle hatched !");
+            View.displayMessage("An eagle hatched !");
             this.setHatched(true);
         }
         return this.isHatched;
@@ -79,7 +80,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     @Override
     public void scream() {
-        System.out.println("An eagle is screaming");
+        View.displayMessage("An eagle is screaming");
     }
 
     /**
@@ -107,7 +108,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     @Override
     public void fly() {
-        System.out.println("An eagle is flying");
+        View.displayMessage("An eagle is flying");
     }
 
     @Override

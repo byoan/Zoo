@@ -1,6 +1,7 @@
 package Models.Animals;
 
 import Models.Interfaces.Animal.Mammal;
+import Views.View;
 
 public class Bear extends Animal implements Mammal {
 
@@ -40,7 +41,7 @@ public class Bear extends Animal implements Mammal {
      */
     @Override
     public void scream() {
-        System.out.println("A bear is screaming");
+        View.displayMessage("A bear is screaming");
     }
 
         /**

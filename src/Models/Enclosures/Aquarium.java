@@ -1,6 +1,7 @@
 package Models.Enclosures;
 
 import Models.Interfaces.Animal.MarineAnimal;
+import Views.View;
 
 public class Aquarium<A extends MarineAnimal> extends Enclosure {
 
@@ -52,7 +53,7 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
         if (waterLevel >= 0 && waterLevel <= this.getDepth()) {
             this.waterLevel = waterLevel;
         } else {
-            System.out.println("The water level can't be greater that the aquarium depth");
+            View.displayMessage("The water level can't be greater that the aquarium depth");
         }
     }
 
@@ -101,17 +102,17 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      * Uses a generic name to ease its call within the Simulation
      */
     public void cleanEnclosure() {
-        System.out.println("The water level is worth " + this.getCurrentWaterLevel());
+        View.displayMessage("The water level is worth " + this.getCurrentWaterLevel());
         if (this.getCurrentWaterLevel() < this.getDepth()) {
-            System.out.println("Adding more water ...");
+            View.displayMessage("Adding more water ...");
             this.setWaterLevel(this.getDepth());
-            System.out.println("The water level is now worth " + this.getCurrentWaterLevel());
+            View.displayMessage("The water level is now worth " + this.getCurrentWaterLevel());
         }
-        System.out.println("The salinity level is now worth : " + this.getSalinity() + "/m3");
+        View.displayMessage("The salinity level is now worth : " + this.getSalinity() + "/m3");
         if (this.getSalinity() < 100) {
-            System.out.println("Recalibrating salinity level ...");
+            View.displayMessage("Recalibrating salinity level ...");
             this.setSalinity(100);
-            System.out.println("Salinity has been recalibrated, it is now worth : " + this.getSalinity());
+            View.displayMessage("Salinity has been recalibrated, it is now worth : " + this.getSalinity());
         }
     }
 

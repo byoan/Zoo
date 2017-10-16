@@ -2,7 +2,8 @@ package Models.Enclosures;
 
 import Models.Interfaces.Animal.AnimalInterface;
 import Models.Animals.Wolf;
-import Models.Animals.WolfPack;
+import Models.Animals.Packs.WolfPack;
+import Views.View;
 
 import java.util.ArrayList;
 
@@ -163,14 +164,14 @@ public class Enclosure<A extends AnimalInterface> {
                     this.getAnimals().add(animal);
                     animal.setInEnclosure(true);
                 } else {
-                    System.out.println("Can't add the wrong animal type to the enclosure");
+                    View.displayMessage("Can't add the wrong animal type to the enclosure");
                 }
             } else {
                 //throw new AnimalAlreadyInEnclosureException(animal, this);
-                System.out.println("Can't add this animal as it is already in an enclosure, or the enclosure is full");
+                View.displayMessage("Can't add this animal as it is already in an enclosure, or the enclosure is full");
             }
         } catch(Exception e) {
-            System.out.println("An error occurred while trying to add the Animal to the Enclosure : " + e.toString());
+            View.displayMessage("An error occurred while trying to add the Animal to the Enclosure : " + e.toString());
         }
     }
 
@@ -185,10 +186,10 @@ public class Enclosure<A extends AnimalInterface> {
                 animal.setInEnclosure(false);
             } else {
                 // TODO : custom exception
-                System.out.println("This animal is not in this enclosure");
+                View.displayMessage("This animal is not in this enclosure");
             }
         } catch(Exception e) {
-            System.out.println(e.getMessage());
+            View.displayMessage(e.getMessage());
         }
     }
 
@@ -264,20 +265,20 @@ public class Enclosure<A extends AnimalInterface> {
                 this.remove(animal);
                 targetEnclosure.add(animal);
             } catch (Exception e) {
-                System.out.println("An error occurred while transferring the animal : " + e.getMessage());
+                View.displayMessage("An error occurred while transferring the animal : " + e.getMessage());
                 return false;
             }
             // Check that the transfer executed as expected
             if (!this.getAnimals().contains(animal) && targetEnclosure.getAnimals().contains(animal)) {
                 if (!silent) {
-                    System.out.println("The animal was successfully transferred");
+                    View.displayMessage("The animal was successfully transferred");
                 }
                 return true;
             } else {
                 return false;
             }
         } else {
-            System.out.println("This animal is not in this enclosure");
+            View.displayMessage("This animal is not in this enclosure");
             return false;
         }
     }
@@ -306,7 +307,7 @@ public class Enclosure<A extends AnimalInterface> {
         } else {
             this.setCleanliness(2);
         }
-        System.out.println("The " + this.getName() + " enclosure has been cleaned.");
+        View.displayMessage("The " + this.getName() + " enclosure has been cleaned.");
     }
 
     /**

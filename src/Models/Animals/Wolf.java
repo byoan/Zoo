@@ -2,6 +2,7 @@ package Models.Animals;
 
 import Models.Interfaces.Animal.Mammal;
 import Models.Interfaces.Animal.WanderAnimal;
+import Views.View;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -136,21 +137,21 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     @Override
     public void scream() {
         if (healthIndicator < 50 ){
-            System.out.println("Oh my god i'm hurt !!");
+            View.displayMessage("Oh my god i'm hurt !!");
         } else if (healthIndicator == 100){
-            System.out.println("Oh yeah i'm good !!");
+            View.displayMessage("Oh yeah i'm good !!");
         }
     }
 
     public void heardScream(){
         if (this.sleepIndicator == false && this.healthIndicator == 100){
-            System.out.println("I can heard some wolf scream");
+            View.displayMessage("I can heard some wolf scream");
         } else if (this.sleepIndicator == true ){
-            System.out.println("I'm sleeping I can't heard some wolf scream");
+            View.displayMessage("I'm sleeping I can't heard some wolf scream");
         } else if (this.healthIndicator != 100){
-            System.out.println("I'm hurt I can't heard some wolf scream");
+            View.displayMessage("I'm hurt I can't heard some wolf scream");
         }else{
-            System.out.println("I'm sleeping and hurt so how the fuck can I heard some wolf scream ?");
+            View.displayMessage("I'm sleeping and hurt so how the fuck can I heard some wolf scream ?");
         }
     }
 
@@ -214,7 +215,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * Generic method who say if animal wandering or not
      */
     public void wander() {
-        System.out.println("I'm wandering...");
+        View.displayMessage("I'm wandering...");
     }
 
     /**

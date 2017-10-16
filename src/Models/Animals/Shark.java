@@ -3,6 +3,7 @@ package Models.Animals;
 import Models.Interfaces.Animal.AnimalInterface;
 import Models.Interfaces.Animal.MarineAnimal;
 import Models.Interfaces.Animal.Oviparous;
+import Views.View;
 
 public class Shark extends Animal implements MarineAnimal, Oviparous {
 
@@ -74,7 +75,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
         if (this.isHatched) {
             return true;
         } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
-            System.out.println("A shark hatched !");
+            View.displayMessage("A shark hatched !");
             this.setHatched(true);
         }
         return this.isHatched;
@@ -82,12 +83,12 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
 
     @Override
     public void scream() {
-        System.out.println("A shark is screaming");
+        View.displayMessage("A shark is screaming");
     }
 
     @Override
     public void swim() {
-        System.out.println("A shark is swimming");
+        View.displayMessage("A shark is swimming");
     }
 
     /**

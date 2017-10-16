@@ -7,6 +7,7 @@ import Models.Employees.Employee;
 import Models.Enclosures.Enclosure;
 import Models.Animals.*;
 import Models.Interfaces.Animal.*;
+import Views.View;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -67,7 +68,7 @@ public class Simulation {
         if (turnNb >= this.getTurnNb()) {
             this.turnNb = turnNb;
         } else {
-            System.out.println("Error while trying to set the turn number to " + turnNb + ", can't go back to a previous turn");
+            View.displayMessage("Error while trying to set the turn number to " + turnNb + ", can't go back to a previous turn");
         }
     }
 
@@ -76,7 +77,7 @@ public class Simulation {
      */
     private void nextTurn() {
         if (this.getTurnNb() != 0) {
-            System.out.println("\nTurn n°" + this.getTurnNb() + " ended.\n");
+            View.displayMessage("\nTurn n°" + this.getTurnNb() + " ended.\n");
             this.handleRandomEventGeneration();
             if (this.getTurnNb() % 10 == 0) {
                 this.deteriorateEnclosures();
@@ -86,7 +87,7 @@ public class Simulation {
 
         this.setTurnNb(this.getTurnNb() + 1);
 
-        System.out.println("Turn n°" + this.getTurnNb() + " started.\n");
+        View.displayMessage("Turn n°" + this.getTurnNb() + " started.\n");
 
         this.handleTurn();
     }
@@ -96,11 +97,11 @@ public class Simulation {
      * Will only display enclosure that have enough space
      */
     private void displayEnclosureListForNewBirth(Animal animal) {
-        System.out.println("A new " + animal.getSpecieName() + " is born. Please choose an enclosure to put it in:");
+        View.displayMessage("A new " + animal.getSpecieName() + " is born. Please choose an enclosure to put it in:");
         int i = 0;
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             if (enclosure.getNbAnimals() < enclosure.getMaxAnimals()) {
-                System.out.println((i + 1) + ". " + enclosure.getName());
+                View.displayMessage((i + 1) + ". " + enclosure.getName());
             }
             ++i;
         }
@@ -158,20 +159,20 @@ public class Simulation {
             try {
                 action = Integer.parseInt(userInput);
                 if (action > this.getZoo().getEnclosureList().size()) {
-                    System.out.println("Can't enter a value greater than the maximum enclosure. Please try again:\n");
+                    View.displayMessage("Can't enter a value greater than the maximum enclosure. Please try again:\n");
                     continue;
                 }
                 Enclosure<Animal> chosenEnclosure = this.getZoo().getEnclosureList().get(action - 1);
                 if (chosenEnclosure != null && chosenEnclosure.getNbAnimals() < chosenEnclosure.getMaxAnimals()) {
                     chosenEnclosure.add(animal);
-                    System.out.println("Adding the new " + animal.getSpecieName() + " to the " + chosenEnclosure.getName() + " enclosure.\n");
+                    View.displayMessage("Adding the new " + animal.getSpecieName() + " to the " + chosenEnclosure.getName() + " enclosure.\n");
                     correctAnswer = true;
                     break;
                 } else {
-                    System.out.println("This enclosure is not available. Please chose another one:\n");
+                    View.displayMessage("This enclosure is not available. Please chose another one:\n");
                 }
             } catch (Exception e) {
-                System.out.println("Error : " + e.toString() + ". Please try again:\n");
+                View.displayMessage("Error : " + e.toString() + ". Please try again:\n");
             }
         }
     }
@@ -197,7 +198,7 @@ public class Simulation {
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             enclosure.deteriorate();
         }
-        System.out.println("Models.Enclosures were deteriorated. You should look at them.\n");
+        View.displayMessage("Models.Enclosures were deteriorated. You should look at them.\n");
     }
 
     /**
@@ -213,7 +214,7 @@ public class Simulation {
                 action = Integer.parseInt(userInput);
                 break;
             } catch (Exception e) {
-                System.out.println("Error : " + e.getMessage() + ". Please try again");
+                View.displayMessage("Error : " + e.getMessage() + ". Please try again");
             }
         }
 
@@ -243,7 +244,7 @@ public class Simulation {
                 this.doNothing();
                 break;
             default:
-                System.out.println("Did not understood your action, please try again");
+                View.displayMessage("Did not understood your action, please try again");
                 this.handleTurn();
                 break;
         }
@@ -255,29 +256,29 @@ public class Simulation {
      * Allows to display to the user all the available action to manipulate its employee
      */
     private void displayPickAction() {
-        System.out.println("Choose an action by entering it's number:");
-        System.out.println("1. Inspect an enclosure");
-        System.out.println("2. Clean an enclosure");
-        System.out.println("3. Feed an enclosure");
-        System.out.println("4. Heal an animal");
-        System.out.println("5. Transfer an animal");
-        System.out.println("6. Display the current number of Models.Animals in the Controllers.Zoo");
-        System.out.println("7. Display all the Models.Animals currently in the Controllers.Zoo");
-        System.out.println("8. Do nothing");
+        View.displayMessage("Choose an action by entering it's number:");
+        View.displayMessage("1. Inspect an enclosure");
+        View.displayMessage("2. Clean an enclosure");
+        View.displayMessage("3. Feed an enclosure");
+        View.displayMessage("4. Heal an animal");
+        View.displayMessage("5. Transfer an animal");
+        View.displayMessage("6. Display the current number of Models.Animals in the Controllers.Zoo");
+        View.displayMessage("7. Display all the Models.Animals currently in the Controllers.Zoo");
+        View.displayMessage("8. Do nothing");
     }
 
     /**
      * Allows to display the current number of Models.Animals in the Controllers.Zoo
      */
     private void handleDisplayCurrentNbAnimalsInZoo() {
-        System.out.println("Current number of Models.Animals in the Controllers.Zoo: " + this.getZoo().getNbAnimalsInZoo());
+        View.displayMessage("Current number of Models.Animals in the Controllers.Zoo: " + this.getZoo().getNbAnimalsInZoo());
     }
 
     /**
      * Allows to display all the Models.Animals that are currently in the Controllers.Zoo
      */
     private void handleDisplayAllAnimalsInZoo() {
-        System.out.println("Here are all the Models.Animals currently in the Controllers.Zoo:\n");
+        View.displayMessage("Here are all the Models.Animals currently in the Controllers.Zoo:\n");
         this.getZoo().displayAnimalsFromAllEnclosures();
     }
 
@@ -285,13 +286,13 @@ public class Simulation {
      * Displays the message which matches the "Do Nothing this turn" action
      */
     private void doNothing() {
-        System.out.println("Not doing anything this turn ...");
+        View.displayMessage("Not doing anything this turn ...");
     }
 
     private <A extends AnimalInterface> void handleAnimalFeeding() {
         Enclosure<A> enclosure = this.pickEnclosure("Select the enclosure that you want to feed:");
         enclosure.feedAnimals();
-        System.out.println("This enclosure has been fed");
+        View.displayMessage("This enclosure has been fed");
     }
 
     private <A extends AnimalInterface> void handleAnimalHealing() {
@@ -312,14 +313,14 @@ public class Simulation {
 
             // While the enclosure is not different, we must keep asking to the user a valid one
             while (originEnclosure.equals(targetEnclosure)) {
-                System.out.println("Can't transfer this animal in its current enclosure. Please choose another one.");
+                View.displayMessage("Can't transfer this animal in its current enclosure. Please choose another one.");
                 targetEnclosure = this.pickEnclosure("Select the enclosure in which you would like to send this animal:");
             }
 
             // Proceed to the transfer
             originEnclosure.transferAnimal(animal, targetEnclosure, false);
         } else {
-            System.out.println("No enclosures are currently in the Controllers.Zoo.\n");
+            View.displayMessage("No enclosures are currently in the Controllers.Zoo.\n");
             // Return to the main menu
             this.handleTurn();
             return;
@@ -333,11 +334,11 @@ public class Simulation {
      * @return Enclosure<A> An Enclosure of AnimalInterface
      */
     private <A extends AnimalInterface> Enclosure<A> pickEnclosure(String messageToDisplay) {
-        System.out.println(messageToDisplay);
-        System.out.println("0. Go back to menu\n");
+        View.displayMessage(messageToDisplay);
+        View.displayMessage("0. Go back to menu\n");
         int i = 1;
         for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
-            System.out.println(i + ". " + enclosure.getName());
+            View.displayMessage(i + ". " + enclosure.getName());
             ++i;
         }
 
@@ -351,10 +352,10 @@ public class Simulation {
                 } else if (action == 0) {
                     this.handleTurn();
                 } else {
-                    System.out.println("Please enter a valid value");
+                    View.displayMessage("Please enter a valid value");
                 }
             } catch (Exception e) {
-                System.out.println("Error : " + e.getMessage() + ". Please try again");
+                View.displayMessage("Error : " + e.getMessage() + ". Please try again");
             }
         }
         return this.getZoo().getEnclosureList().get(action - 1);
@@ -368,11 +369,11 @@ public class Simulation {
      * @return The chosen animal, which implements the AnimalInterface
      */
     private <A extends AnimalInterface> A pickAnimal(String messageToDisplay, Enclosure<A> enclosure) {
-        System.out.println(messageToDisplay);
-        System.out.println("0. Go back to menu\n");
+        View.displayMessage(messageToDisplay);
+        View.displayMessage("0. Go back to menu\n");
         int i = 1;
         for (A animal : enclosure.getAnimals()) {
-            System.out.println(i + ". " + animal.toString());
+            View.displayMessage(i + ". " + animal.toString());
             ++i;
         }
 
@@ -386,10 +387,10 @@ public class Simulation {
                 } else if (action == 0) {
                     this.handleTurn();
                 } else {
-                    System.out.println("Please enter a valid value");
+                    View.displayMessage("Please enter a valid value");
                 }
             } catch (Exception e) {
-                System.out.println("Error : " + e.getMessage() + ". Please try again");
+                View.displayMessage("Error : " + e.getMessage() + ". Please try again");
             }
         }
         return enclosure.getAnimals().get(action - 1);
@@ -401,11 +402,11 @@ public class Simulation {
      */
     private <A extends AnimalInterface> void handlePickEnclosureToInspect() {
         if (this.getZoo().getEnclosureList().size() > 0) {
-            System.out.println("Which enclosure would you like to inspect?");
-            System.out.println("0. Go back to menu\n");
+            View.displayMessage("Which enclosure would you like to inspect?");
+            View.displayMessage("0. Go back to menu\n");
             int i = 1;
             for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
-                System.out.println(i + ". " + enclosure.getName());
+                View.displayMessage(i + ". " + enclosure.getName());
                 ++i;
             }
 
@@ -419,16 +420,16 @@ public class Simulation {
                     } else if (action == 0) {
                         this.handleTurn();
                     } else {
-                        System.out.println("Please enter a valid value");
+                        View.displayMessage("Please enter a valid value");
                     }
                 } catch (Exception e) {
-                    System.out.println("Error : " + e.getMessage() + ". Please try again");
+                    View.displayMessage("Error : " + e.getMessage() + ". Please try again");
                 }
             }
-            System.out.println("Inspecting the enclosure n°" + action + ":");
-            System.out.println(this.getEmployee().inspectEnclosure(this.getZoo().getEnclosureList().get(action - 1)));
+            View.displayMessage("Inspecting the enclosure n°" + action + ":");
+            View.displayMessage(this.getEmployee().inspectEnclosure(this.getZoo().getEnclosureList().get(action - 1)));
         } else {
-            System.out.println("No enclosures are currently in the Controllers.Zoo.\n");
+            View.displayMessage("No enclosures are currently in the Controllers.Zoo.\n");
             this.handleTurn();
             return;
         }
@@ -440,11 +441,11 @@ public class Simulation {
      */
     private <A extends AnimalInterface> void handlePickEnclosureToClean() {
         if (this.getZoo().getEnclosureList().size() > 0) {
-            System.out.println("Which enclosure would you like to clean?");
-            System.out.println("0. Go back to menu\n");
+            View.displayMessage("Which enclosure would you like to clean?");
+            View.displayMessage("0. Go back to menu\n");
             int i = 1;
             for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
-                System.out.println(i + ". " + enclosure.getName());
+                View.displayMessage(i + ". " + enclosure.getName());
                 ++i;
             }
 
@@ -458,16 +459,16 @@ public class Simulation {
                     } else if (action == 0) {
                         this.handleTurn();
                     } else {
-                        System.out.println("Please enter a valid value");
+                        View.displayMessage("Please enter a valid value");
                     }
                 } catch (Exception e) {
-                    System.out.println("Error : " + e.getMessage() + ". Please try again");
+                    View.displayMessage("Error : " + e.getMessage() + ". Please try again");
                 }
             }
-            System.out.println("Cleaning the enclosure n°" + action + " ...");
+            View.displayMessage("Cleaning the enclosure n°" + action + " ...");
             this.getEmployee().cleanEnclosure(this.getZoo().getEnclosureList().get(action - 1));
         } else {
-            System.out.println("No enclosures are currently in the Controllers.Zoo.\n");
+            View.displayMessage("No enclosures are currently in the Controllers.Zoo.\n");
             this.handleTurn();
             return;
         }
@@ -524,20 +525,20 @@ public class Simulation {
                 animal.setHunger(animal.getHunger() - 80);
                 if (animal.getHunger() <= 0) {
                     enclosure.remove(animal);
-                    System.out.println("A " + animal.getSpecieName() + " starved to death in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayMessage("A " + animal.getSpecieName() + " starved to death in the " + enclosure.getName() + " enclosure.\n");
                     animal = null;
                 } else {
-                    System.out.println("A " + animal.getSpecieName() + " is hungry in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayMessage("A " + animal.getSpecieName() + " is hungry in the " + enclosure.getName() + " enclosure.\n");
                 }
                 break;
             case "DECREASE_LIFE":
                 animal.setHealth(animal.getHealth() - 80);
                 if (animal.getHealth() <= 0) {
                     enclosure.remove(animal);
-                    System.out.println("A " + animal.getSpecieName() + " died in the " + enclosure.getName() + " enclosure.\n ");
+                    View.displayMessage("A " + animal.getSpecieName() + " died in the " + enclosure.getName() + " enclosure.\n ");
                     animal = null;
                 } else {
-                    System.out.println("A " + animal.getSpecieName() + " is hurt/sick in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayMessage("A " + animal.getSpecieName() + " is hurt/sick in the " + enclosure.getName() + " enclosure.\n");
                 }
                 break;
             case "SLEEP":
@@ -549,7 +550,7 @@ public class Simulation {
                 break;
             case "STOLE":
                 enclosure.remove(animal);
-                System.out.println("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + " enclosure.\n");
+                View.displayMessage("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + " enclosure.\n");
                 animal = null;
                 break;
             case "ESCAPE":
@@ -559,13 +560,13 @@ public class Simulation {
                 } else if (animal instanceof FlyingAnimal) {
                     if (enclosure.getCleanliness() < 1) {
                         enclosure.remove(animal);
-                        System.out.println("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
+                        View.displayMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
                         animal = null;
                     }
                     break;
                 }
                 enclosure.remove(animal);
-                System.out.println("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
+                View.displayMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
                 animal = null;
                 break;
             case "FIGHT":
@@ -576,14 +577,14 @@ public class Simulation {
                     }
                     animal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth()));
                     secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth()));
-                    System.out.println("2 Models.Animals fought in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayMessage("2 Models.Animals fought in the " + enclosure.getName() + " enclosure.\n");
                     if (animal.getHealth() <= 0) {
-                        System.out.println("The first one died.\n");
+                        View.displayMessage("The first one died.\n");
                         enclosure.remove(animal);
                         animal = null;
                     }
                     if (secondAnimal.getHealth() <= 0) {
-                        System.out.println("The second one died.\n");
+                        View.displayMessage("The second one died.\n");
                         enclosure.remove(secondAnimal);
                         secondAnimal = null;
                     }
@@ -601,7 +602,7 @@ public class Simulation {
                         }
                     }
 
-                    System.out.println("Some Models.Animals made some adult things in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayMessage("Some Models.Animals made some adult things in the " + enclosure.getName() + " enclosure.\n");
 
                     if (animal instanceof Oviparous) {
                         Animal newAnimal;
@@ -641,7 +642,7 @@ public class Simulation {
                         }
                     }
                 } else {
-                    System.out.println("No copulation possible in the " + enclosure.getName() + " enclosure, as there is not enough male/female\n");
+                    View.displayMessage("No copulation possible in the " + enclosure.getName() + " enclosure, as there is not enough male/female\n");
                 }
                 break;
         }
@@ -679,7 +680,7 @@ public class Simulation {
         zoo.getEnclosureByName("Wolf Enclosure").add(wolf4);
 
         // Beginning of the simulation
-        System.out.println("\n\n====== WELCOME TO ZOO SIMULATOR 3000 ======\n\n");
+        View.displayMessage("\n\n====== WELCOME TO ZOO SIMULATOR 3000 ======\n\n");
         this.nextTurn();
     }
 }

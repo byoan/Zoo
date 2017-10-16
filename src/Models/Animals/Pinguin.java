@@ -4,6 +4,7 @@ import Models.Interfaces.Animal.AnimalInterface;
 import Models.Interfaces.Animal.FlyingAnimal;
 import Models.Interfaces.Animal.MarineAnimal;
 import Models.Interfaces.Animal.Oviparous;
+import Views.View;
 
 public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAnimal {
 
@@ -72,7 +73,7 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         if (this.isHatched) {
             return true;
         } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
-            System.out.println("A pinguin hatched !");
+            View.displayMessage("A pinguin hatched !");
             this.setHatched(true);
         }
         return this.isHatched;
@@ -80,12 +81,12 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
 
     @Override
     public void scream() {
-        System.out.println("A pinguin is screaming");
+        View.displayMessage("A pinguin is screaming");
     }
 
     @Override
     public void swim() {
-        System.out.println("A pinguin is swimming");
+        View.displayMessage("A pinguin is swimming");
     }
 
     /**
@@ -113,7 +114,7 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
 
     @Override
     public void fly() {
-        System.out.println("A pinguin is flying");
+        View.displayMessage("A pinguin is flying");
     }
 
     @Override

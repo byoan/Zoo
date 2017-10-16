@@ -2,6 +2,7 @@ package Models.Animals;
 
 import Models.Interfaces.Animal.AnimalInterface;
 import Models.Interfaces.Animal.Mammal;
+import Views.View;
 
 import java.util.Random;
 
@@ -159,7 +160,7 @@ public class Animal implements AnimalInterface {
         if (this.sleepIndicator == false) {
             this.setHunger(100);
         } else {
-            System.out.println("A " +  this.getSpecieName() + " can't eat while sleeping");
+            View.displayMessage("A " +  this.getSpecieName() + " can't eat while sleeping");
         }
     }
 
@@ -168,7 +169,7 @@ public class Animal implements AnimalInterface {
      */
     @Override
     public void scream() {
-        System.out.println("A bear is screaming");
+        View.displayMessage("A bear is screaming");
     }
 
     /**
@@ -177,7 +178,7 @@ public class Animal implements AnimalInterface {
     @Override
     public void heal() {
         this.setHealth(100);
-        System.out.println("This " + this.specieName + " was healed");
+        View.displayMessage("This " + this.specieName + " was healed");
     }
 
     /**
@@ -224,15 +225,15 @@ public class Animal implements AnimalInterface {
         if (turnNb < 50) {
             ageState = 0;
             this.ageAnimal = "Young";
-            System.out.println("\nAnimal is " + this.ageAnimal);
+            View.displayMessage("\nAnimal is " + this.ageAnimal);
         } else if (turnNb > 100) {
             ageState = 1;
             this.ageAnimal = "Old";
-            System.out.println("\nAnimal is " + this.ageAnimal);
+            View.displayMessage("\nAnimal is " + this.ageAnimal);
         } else{
             ageState = 2;
             this.ageAnimal = "Adult";
-            System.out.println("\nAnimal is " + this.ageAnimal);
+            View.displayMessage("\nAnimal is " + this.ageAnimal);
         }
         return ageState;
     }

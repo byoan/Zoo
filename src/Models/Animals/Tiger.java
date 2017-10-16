@@ -2,6 +2,7 @@ package Models.Animals;
 
 import Models.Interfaces.Animal.Mammal;
 import Models.Interfaces.Animal.WanderAnimal;
+import Views.View;
 
 public class Tiger extends Animal implements Mammal, WanderAnimal {
 
@@ -41,7 +42,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
      */
     @Override
     public void scream() {
-        System.out.println("I'm screaming");
+        View.displayMessage("I'm screaming");
     }
 
     /**
@@ -86,7 +87,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
      * Generic method who say if animal wandering or not
      */
     public void wander() {
-        System.out.println("I'm wandering...");
+        View.displayMessage("I'm wandering...");
     }
 
     /**
