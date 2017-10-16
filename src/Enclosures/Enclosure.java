@@ -158,10 +158,15 @@ public class Enclosure<A extends AnimalInterface> {
     public void add(A animal) {
         try {
             if (!animal.isInEnclosure() && this.getAnimals().size() < this.getMaxAnimals()) {
-                this.getAnimals().add(animal);
-                animal.setInEnclosure(true);
                 if (animal.getSpecieName() == "Wolf") {
                     this.handleWolfAdditionToPack(animal);
+                }
+                if (this.getAnimals().size() == 0 || this.getAnimals().get(0).getSpecieName() == animal.getSpecieName()) {
+                    this.getAnimals().add(animal);
+                    animal.setInEnclosure(true);
+                } else {
+                    System.out.println("Can't add the wrong animal type to the enclosure");
+                }
             } else {
                 //throw new AnimalAlreadyInEnclosureException(animal, this);
                 System.out.println("Can't add this animal as it is already in an enclosure, or the enclosure is full");

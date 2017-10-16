@@ -43,4 +43,6 @@ public interface AnimalInterface {
     public <A extends AnimalInterface> Animal copulate(A animal, int turnNb);
 
     public boolean getSex();
+
+    public String getSpecieName();
 }
