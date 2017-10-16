@@ -144,6 +144,9 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         }
     }
 
+    /**
+     * TODO
+     */
     public void heardScream(){
         if (this.sleepIndicator == false && this.healthIndicator == 100){
             View.displayMessage("I can heard some wolf scream");
@@ -221,7 +224,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     /**
      * Represents the birth of the children
-     * @return
+     * @return A new Wolf instance (through the AnimalFactory), which represents the newly born animal
      */
     @Override
     public Wolf birth() {

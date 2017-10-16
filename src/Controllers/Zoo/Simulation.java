@@ -280,6 +280,10 @@ public class Simulation {
         View.displayMessage("This enclosure has been fed");
     }
 
+    /**
+     * Allows to handle the healing of the animal chosen by the user
+     * @param <A> Generic type which extends the AnimalInterface
+     */
     private <A extends AnimalInterface> void handleAnimalHealing() {
         Enclosure<A> enclosure = this.pickEnclosure("Select the enclosure containing the animal you want to heal:");
         A animal = this.pickAnimal("Select the animal you want to heal:", enclosure);

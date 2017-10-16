@@ -83,7 +83,7 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
 
     /**
      * Setter for the level of salinity of the aquarium
-     * @param salinity
+     * @param salinity The new level of salinity of the aquarium
      */
     public void setSalinity(int salinity) {
         if (salinity >= 0 && salinity <= 100) {
@@ -116,10 +116,6 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
         }
     }
 
-    /**
-     * Allows to display all the aquarium properties
-     * @return
-     */
     @Override
     public String toString() {
         return "Aquarium {\n" +

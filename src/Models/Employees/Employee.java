@@ -79,7 +79,7 @@ public class Employee implements EmployeeInterface {
 
     /**
      * Getter for the name of the employee
-     * @return
+     * @return The name of the employee
      */
     public String getName() {
         return this.name;
@@ -153,6 +153,11 @@ public class Employee implements EmployeeInterface {
         }
     }
 
+    /**
+     * Allows to make the employee perform a heal of the received animal
+     * @param animal The animal to heal
+     * @param <A> Generic type using AnimalInterface to use for the method arg
+     */
     public <A extends AnimalInterface> void healAnimal(A animal) {
         animal.heal();
     }

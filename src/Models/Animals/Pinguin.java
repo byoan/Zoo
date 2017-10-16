@@ -68,7 +68,7 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
 
     /**
      * Checks if the current animal is hatched, using its creation turn and the required amount of time to hatch
-     * @param turnNb
+     * @param turnNb The current turn number of the simulation
      */
     public boolean checkIfHatched(int turnNb) {
         if (this.isHatched) {

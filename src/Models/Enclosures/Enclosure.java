@@ -212,7 +212,7 @@ public class Enclosure<A extends AnimalInterface> {
 
     /**
      * Allows to check for packs before adding the wolf to the enclosure
-     * @param wolf
+     * @param wolf The wolf which we'll try to the pack, if he matches some conditions
      */
     private void handleWolfAdditionToPack(A wolf) {
         if (wolf instanceof Wolf) {
@@ -246,7 +246,7 @@ public class Enclosure<A extends AnimalInterface> {
     /**
      * Allows to create a temporary enclosure which has the same properties that the current instance
      * Used for the cleaning process, as an enclosure must be emptied before cleaned
-     * @return Enclosure<A extends AnimalInterface> The temporary enclosure to use during cleaning
+     * @return Enclosure<AnimalInterface> The temporary enclosure to use during cleaning
      */
     public Enclosure<A> createTemporaryEnclosure() {
         return new Enclosure<A>("Temporary Enclosure for " + this.getName() + " cleaning", this.getSurface(), this.getMaxAnimals());

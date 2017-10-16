@@ -85,7 +85,7 @@ public class Bear extends Animal implements Mammal {
 
     /**
      * Represents the birth of the children
-     * @return
+     * @return A new Bear instance (through the AnimalFactory), which represents the newly born animal
      */
     @Override
     public Bear birth() {

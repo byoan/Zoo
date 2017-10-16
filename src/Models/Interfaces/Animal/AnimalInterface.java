@@ -31,7 +31,7 @@ public interface AnimalInterface {
 
     /**
      * Getter for the isInEnclosure attributes, which indicates us if the animal is currently in an enclosure
-     * @return
+     * @return Whether or not the animal is in an enclosure
      */
     public boolean isInEnclosure();
 

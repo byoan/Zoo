@@ -72,7 +72,7 @@ public class WolfPack {
 
     /**
      * Allows to define at least 1 omega wolf in a pack
-     * @param enclosure
+     * @param enclosure The enclosure in which we must check if there is any Omega, and in which we'll define one if not
      */
     public void setAtLeastOneOmegaInPack(Enclosure<Wolf> enclosure) {
         for (Wolf wolf : enclosure.getAnimals()) {
@@ -92,7 +92,6 @@ public class WolfPack {
     /**
      * Allows to randomly generate a rank between Beta and Omega
      * @param wolf The wolf which will get the rank
-     * @return
      */
     public void generateWolfRank(Wolf wolf) {
         ThreadLocalRandom random = ThreadLocalRandom.current();
@@ -130,7 +129,7 @@ public class WolfPack {
     @Override
     public String toString() {
         return "Pack {\n" +
-                " Models.Animals='" + this.getWolfList() + "', \n" +
+                " animals='" + this.getWolfList() + "', \n" +
                 ((this.getAlphaMale() != null) ? " alpha male='" + this.getAlphaMale() + "', \n" : " No alpha male") +
                 ((this.getAlphaFemale() != null) ? " alpha female='" + this.getAlphaFemale() + "', \n" : " No alpha female") +
                 "}";

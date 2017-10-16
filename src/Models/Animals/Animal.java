@@ -66,7 +66,7 @@ public class Animal implements AnimalInterface {
 
     /**
      * Sets the sex of the current animal
-     * @param sex
+     * @param sex The new sex of the Animal (true for male, false for female)
      */
     public void setSex(boolean sex) {
         this.sex = sex;

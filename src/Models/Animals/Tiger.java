@@ -93,7 +93,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
 
     /**
      * Represents the birth of the children
-     * @return
+     * @return A new Tiger instance (through the AnimalFactory), which represents the newly born animal
      */
     @Override
     public Tiger birth() {

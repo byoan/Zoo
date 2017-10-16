@@ -98,7 +98,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
 
     /**
      * Represents the birth of the children
-     * @return
+     * @return A new Whale instance (through the AnimalFactory), which represents the newly born animal
      */
     @Override
     public Whale birth() {
