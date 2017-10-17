@@ -36,8 +36,10 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     private int dominationFactor;
 
-    // TODO : level of the wolf
-//    private
+    /**
+     * Represents the wolf level, calculated from its strength, domination factor and impetuosity
+     */
+    private int level;
 
     public Wolf() {
         this.specieName = "Wolf";
@@ -51,6 +53,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.healthIndicator = 100;
         this.childrenCreationTime = 69;
         this.impetuosity = this.generateImpetuosity();
+        this.level = this.generateWolfLevel();
     }
 
     public Wolf(boolean sex, float weight, float size, int age) {
@@ -66,6 +69,22 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.healthIndicator = 100;
         this.childrenCreationTime = 69;
         this.impetuosity = this.generateImpetuosity();
+        this.level = this.generateWolfLevel();
+    }
+
+    /**
+     * Allows to generate the wolf level attribute, based on its impetuosity, strength and domination level
+     */
+    private int generateWolfLevel() {
+        return ThreadLocalRandom.current().nextInt(1, 100);
+    }
+
+    /**
+     * Getter for the wolf level attribute, calculated from its impetuosity, strength and domination level
+     * @return int
+     */
+    public int getWolfLevel() {
+        return this.level;
     }
 
     /**
@@ -247,6 +266,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
                 "  isInEnclosure=" + isInEnclosure + ", \n" +
                 "  isInPack=" + ((this.getRank() == null) ? "Solitary" : "In a pack") + ", \n" +
                 "  rankInPack=" + ((this.getRank() == null) ? "none" : this.getRank()) + ", \n" +
+                "  level=" + this.getWolfLevel() + ", \n" +
                 '}';
     }
 }
