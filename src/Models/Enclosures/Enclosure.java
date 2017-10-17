@@ -235,7 +235,7 @@ public class Enclosure<A extends AnimalInterface> {
                         break;
                     }
                 }
-            } else if (this.getWolfPack() != null && ((Wolf) wolf).getRank() == null){
+            } else if (this.getWolfPack() != null && ((Wolf) wolf).getRank() == null) {
                 WolfPack pack = this.getWolfPack();
                 pack.generateWolfRank((Wolf) wolf);
                 pack.add((Wolf) wolf);

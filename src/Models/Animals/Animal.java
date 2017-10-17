@@ -9,6 +9,12 @@ import java.util.Random;
 public class Animal implements AnimalInterface {
 
     /**
+     * Represents the age of an animal
+     * 1 = young, 2 = adult, 3 = old
+     */
+    public int ageAnimal = 1;
+
+    /**
      * Defines the turn number at which the animal copulated, allowing us to calculate the difference
      * with the current turn number to compare with the gestation time
      */
@@ -25,18 +31,36 @@ public class Animal implements AnimalInterface {
     protected int childrenCreationTime;
     protected boolean isInEnclosure = false;
 
-
-
     /**
-     * Represents the age of an animal --> young, adult or old
+     * Returns the age of the animal ( 1 = young, 2 = adult, 3 = old)
+     * @return The age of the animal
      */
-    private String ageAnimal;
-
-    public String getAgeAnimal() {
-        return ageAnimal;
+    public int getAge() {
+        return this.ageAnimal;
     }
 
-    public void setAgeAnimal(String ageAnimal) {
+    /**
+     * Setter for the age of the animal
+     */
+    public void setAge(int age) {
+        if (age >= 1 && age <= 3) {
+            this.age = age;
+        }
+    }
+
+    /**
+     * Allows to make the animal get older
+     * Will increment to the next step, if not at the maximum value, which is 3
+     */
+    public void getOlder() {
+        this.setAge(this.getAge() + 1);
+    }
+
+    /**
+     * Setter for the animal age
+     * @param ageAnimal The new animal age. Can be 1, 2 or 3 for Young, Adult and Old
+     */
+    public void setAgeAnimal(int ageAnimal) {
         this.ageAnimal = ageAnimal;
     }
     /**
@@ -214,27 +238,5 @@ public class Animal implements AnimalInterface {
 
     public <A extends Mammal> void copulate(A animal, int turnNb) {
 
-    }
-
-    /**
-     * Allows to define the current age of an animal
-     * @param turnNb The turn number
-     */
-    private int defineAgeAnimal(int turnNb) {
-        int ageState;
-        if (turnNb < 50) {
-            ageState = 0;
-            this.ageAnimal = "Young";
-            View.displayMessage("\nAnimal is " + this.ageAnimal);
-        } else if (turnNb > 100) {
-            ageState = 1;
-            this.ageAnimal = "Old";
-            View.displayMessage("\nAnimal is " + this.ageAnimal);
-        } else{
-            ageState = 2;
-            this.ageAnimal = "Adult";
-            View.displayMessage("\nAnimal is " + this.ageAnimal);
-        }
-        return ageState;
     }
 }

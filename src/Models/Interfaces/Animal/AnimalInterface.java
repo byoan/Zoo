@@ -5,6 +5,17 @@ import Models.Animals.Animal;
 public interface AnimalInterface {
 
     /**
+     * Allows to make the animal older at some specific times of the simulation
+     */
+    public void getOlder();
+
+    /**
+     * Getter for the age of the Animal (1 Young, 2 Adult, 3 Old)
+     * @return The age of the Animal
+     */
+    public int getAge();
+
+    /**
      * Makes the animal eat
      */
     public void eat();

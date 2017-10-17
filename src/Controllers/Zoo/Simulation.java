@@ -1,5 +1,6 @@
 package Controllers.Zoo;
 
+import Controllers.Jobs.MakeAnimalsAge;
 import Models.Enums.RandomActions;
 import Models.Factories.AnimalFactory;
 import Controllers.Jobs.CheckNewBirthJob;
@@ -83,6 +84,7 @@ public class Simulation {
                 this.deteriorateEnclosures();
             }
             this.handleNewBirths();
+            this.handleAging();
         }
 
         this.setTurnNb(this.getTurnNb() + 1);
@@ -125,6 +127,16 @@ public class Simulation {
         }
 
         return (seenMale && seenFemale);
+    }
+
+    /**
+     * Allows to execute a job every 50 turn, which will make the animals get older
+     */
+    private void handleAging() {
+        if (this.getTurnNb() % 50 == 0) {
+            MakeAnimalsAge job = new MakeAnimalsAge(this.getZoo(), this.getTurnNb());
+            job.exec();
+        }
     }
 
     /**

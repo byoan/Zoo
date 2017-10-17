@@ -122,7 +122,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
                 "  sex=" + sex + ", \n" +
                 "  weight=" + weight + ", \n" +
                 "  size=" + size + ", \n" +
-                "  age=" + age + ", \n" +
+                "  age=" + this.getAge() + ", \n" +
                 "  hungerIndicator=" + hungerIndicator + ", \n" +
                 "  sleepIndicator=" + sleepIndicator + ", \n" +
                 "  healthIndicator=" + healthIndicator + ", \n" +
