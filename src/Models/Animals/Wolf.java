@@ -28,12 +28,12 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     private int copulationTurn;
 
     /**
-     * Represents the impetuosity level of the wolf, on a scale from 0 to 100
+     * Represents the impetuosity level of the wolf, on a scale from 1 to 100
      */
     private int impetuosity;
 
     /**
-     * Represents the strength level of the wolf, on a scale from 0 to 100
+     * Represents the strength level of the wolf, on a scale from 1 to 100
      */
     private int strength;
 
@@ -308,7 +308,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     }
 
     /**
-     * Strength generator between 0 - 100
+     * Strength generator between 1 - 100
      * @return A randomly generated number
      */
     private int generateStrength()
@@ -317,7 +317,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     }
 
     /**
-     * Impetuosity generator between 0 - 100
+     * Impetuosity generator between 1 - 100
      * @return A randomly generated number
      */
     private int generateImpetuosity()
