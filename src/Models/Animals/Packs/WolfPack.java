@@ -57,6 +57,35 @@ public class WolfPack {
     }
 
     /**
+     * Allows to sort the pack by the Wolf level attribute (calculated from each wolf's other attributes : strength, impetuosity, domination level)
+     */
+    public ArrayList<Wolf> insertionSort(ArrayList<Wolf> wolfPack) {
+        int i, j;
+        int currentWolfLevel;
+
+        for (i = 1; i < wolfPack.size(); i++) {
+            // Retrieve the current wolf level
+            currentWolfLevel = wolfPack.get(i).getWolfLevel();
+            j = i - 1;
+            // Second loop used for comparison between the previous entry and the wolf with the j position in the list
+            while (j >= 0) {
+                // If it is superior, then the pair is correctly ordered (between themselves)
+                if (currentWolfLevel > wolfPack.get(j).getWolfLevel()) {
+                    break;
+                }
+                // If it's not, then we have to invert them
+                Wolf wolf = wolfPack.get(j + 1);
+                wolfPack.set(j + 1, wolfPack.get(j));
+                wolfPack.set(j, wolf);
+
+                // Decrease so we can compare our currentWolfLevel with the value of the "next previous" wolf
+                --j;
+            }
+        }
+        return wolfPack;
+    }
+
+    /**
      * Allows to add all the wolves of an existing enclosure to a pack
      * @param enclosure The targeted enclosure
      */

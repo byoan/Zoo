@@ -230,13 +230,18 @@ public class Enclosure<A extends AnimalInterface> {
 
                         this.getWolfPack().addAllWolvesToPack((Enclosure<Wolf>) this);
                         this.getWolfPack().setAtLeastOneOmegaInPack((Enclosure<Wolf>) this);
+                        // Sort the list by level after our insertion
+                        this.getWolfPack().setWolfList(this.getWolfPack().insertionSort(this.getWolfPack().getWolfList()));
                         break;
                     }
                 }
             } else if (this.getWolfPack() != null && ((Wolf) wolf).getRank() == null){
-                this.getWolfPack().generateWolfRank((Wolf) wolf);
-                this.getWolfPack().add((Wolf) wolf);
-                this.getWolfPack().setAtLeastOneOmegaInPack((Enclosure<Wolf>) this);
+                WolfPack pack = this.getWolfPack();
+                pack.generateWolfRank((Wolf) wolf);
+                pack.add((Wolf) wolf);
+                pack.setAtLeastOneOmegaInPack((Enclosure<Wolf>) this);
+                // Sort the list by level after our insertion
+                pack.setWolfList(pack.insertionSort(pack.getWolfList()));
             }
         } else {
             // Error exception
