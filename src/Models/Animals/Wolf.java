@@ -61,6 +61,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.childrenCreationTime = 69;
         this.impetuosity = this.generateImpetuosity();
         this.dominationFactor = 100;
+        this.pack = null;
         this.level = 0;
     }
 
@@ -78,13 +79,25 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.childrenCreationTime = 69;
         this.impetuosity = this.generateImpetuosity();
         this.dominationFactor = 100;
+        this.pack = null;
         this.level = 0;
     }
 
     /**
-     * Allows to generate the wolf level attribute, based on its impetuosity, strength and domination level
+     * Getter for the pack of the Wolf
+     * @return The pack to which the wolf belongs
      */
-    private int generateWolfLevel() {
+    public WolfPack getPack() {
+        return this.pack;
+    }
+
+    /**
+     * Setter for the pack of the wolf
+     * @param pack The new pack of the wolf
+     */
+    public void setPack(WolfPack pack) {
+        this.pack = pack;
+    }
     /**
      * Allows to generate the wolf level attribute, based on its impetuosity, strength and domination level
         return ThreadLocalRandom.current().nextInt(1, 100);
@@ -129,6 +142,48 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     public void setLevel(int level) {
         this.level = level;
     }
+
+    /**
+     * Allows the current wolf to attempt a domination on the given wolf
+     */
+    public void attemptDomination(Wolf target) {
+        // Be careful, the lower the id of the rank is, the better the wolf rank is within the pack
+        if (this.getRank().getId() < target.getRank().getId() && target.getRank().getId() != 24) {
+            return;
+        } else {
+            // We must always be able to fight an Omega and win against him without swapping ranks
+            if (target.getRank().getId() == 24) {
+                this.increaseDominationFactor();
+            // Else, we use the level to compare wolf's chances
+            } else if (this.getLevel() > target.getLevel()) {
+                this.increaseDominationFactor();
+                target.decreaseDominationFactor();
+                // In case we attack the alpha male, and we win, we must remove the alpha from the pack, and replace it with the winner
+                if (target.getRank().getId() == 1) {
+                    target.getPack().remove(target);
+                    this.setRank(WolfRank.Alpha);
+                } else {
+                    // If it is not the alpha, we simply swap the ranks of the 2 fighters
+                    this.swapRanks(target);
+                }
+            } else {
+                // Failed attempt, the target looses domination though
+                target.decreaseDominationFactor();
+                target.increaseImpetuosity();
+            }
+        }
+    }
+
+    /**
+     * Allows to swap the ranks in a pack between the current Wolf instance and the given target
+     */
+    public void swapRanks(Wolf target) {
+        WolfRank gainedRank = target.getRank();
+        target.setRank(this.getRank());
+        this.setRank(gainedRank);
+    }
+
+    /**
      * Getter for the domination factor of the wolf
      * @return The domination factor of the wolf
      */
@@ -181,7 +236,15 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * Getter for the rank of the wolf within its pack (if any)
      * @return The wolf rank
      */
-    public String getRank() {
+    public String getRankName() {
+        return this.rank.getName();
+    }
+
+    /**
+     * Raw getter for the Enum which represents the wolf rank
+     * @return The wolf rank
+     */
+    public WolfRank getRank() {
         return this.rank;
     }
 
@@ -189,7 +252,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * Setter for the rank of the wolf within the pack
      * @param rank The new wolf rank
      */
-    public void setRank(String rank) {
+    public void setRank(WolfRank rank) {
         this.rank = rank;
     }
 

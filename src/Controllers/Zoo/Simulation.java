@@ -646,6 +646,18 @@ public class Simulation {
                     View.displayMessage("No copulation possible in the " + enclosure.getName() + " enclosure, as there is not enough male/female\n");
                 }
                 break;
+            case "WOLF_ATTACK":
+                View.displayMessage(animal.toString());
+                Animal secondAnimal = this.pickRandomAnimal(enclosure);
+                while (animal.equals(secondAnimal)) {
+                    secondAnimal = this.pickRandomAnimal(enclosure);
+                }
+                if(secondAnimal instanceof Wolf) {
+                    if (((Wolf)animal).getImpetuosity() >= ((Wolf)secondAnimal).getImpetuosity() && ((Wolf) secondAnimal).getRank().getId() != 1 && !secondAnimal.getSex()) {
+                        ((Wolf)animal).attemptDomination((Wolf)secondAnimal);
+                    }
+                }
+                break;
         }
     }
 

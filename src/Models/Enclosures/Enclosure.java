@@ -1,5 +1,6 @@
 package Models.Enclosures;
 
+import Models.Enums.WolfRank;
 import Models.Interfaces.Animal.AnimalInterface;
 import Models.Animals.Wolf;
 import Models.Animals.Packs.WolfPack;
@@ -43,6 +44,7 @@ public class Enclosure<A extends AnimalInterface> {
         this.maxAnimals = maxAnimals;
         this.cleanliness = 2;
         this.animals = new ArrayList<A>();
+        this.wolfPack = null;
     }
 
     /**
