@@ -1,5 +1,6 @@
 package Models.Animals;
 
+import Models.Enums.WolfRank;
 import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.Mammal;
 import Models.Interfaces.Animal.WanderAnimal;
@@ -54,6 +55,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.childrenCreationTime = 69;
         this.impetuosity = this.generateImpetuosity();
         this.level = this.generateWolfLevel();
+        this.dominationFactor = 100;
     }
 
     public Wolf(boolean sex, float weight, float size, int age) {
@@ -70,6 +72,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.childrenCreationTime = 69;
         this.impetuosity = this.generateImpetuosity();
         this.level = this.generateWolfLevel();
+        this.dominationFactor = 100;
     }
 
     /**
@@ -108,7 +111,8 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * Used when an attempted domination on another wolf succeeds
      */
     public void increaseDominationFactor() {
-        this.setDominationFactor(this.getDominationFactor() + 1);
+        this.setDominationFactor(this.getDominationFactor() + 10);
+    }
     }
 
     /**
@@ -116,7 +120,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * Used when an attempted domination on another wolf succeeds
      */
     public void decreaseDominationFactor() {
-        this.setDominationFactor(this.getDominationFactor() - 1);
+        this.setDominationFactor(this.getDominationFactor() - 10);
     }
 
     /**
