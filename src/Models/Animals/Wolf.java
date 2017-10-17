@@ -1,5 +1,6 @@
 package Models.Animals;
 
+import Models.Animals.Packs.WolfPack;
 import Models.Enums.WolfRank;
 import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.Mammal;
@@ -11,9 +12,14 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     /**
+     * Represents the pack that contains this wolf
+     */
+    private WolfPack pack;
+
+    /**
      * Represents the rank of the wolf within its pack (if any)
      */
-    private String rank;
+    private WolfRank rank;
 
     /**
      * Defines the turn number at which the animal copulated, allowing us to calculate the difference
@@ -54,8 +60,8 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.healthIndicator = 100;
         this.childrenCreationTime = 69;
         this.impetuosity = this.generateImpetuosity();
-        this.level = this.generateWolfLevel();
         this.dominationFactor = 100;
+        this.level = 0;
     }
 
     public Wolf(boolean sex, float weight, float size, int age) {
@@ -71,26 +77,58 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.healthIndicator = 100;
         this.childrenCreationTime = 69;
         this.impetuosity = this.generateImpetuosity();
-        this.level = this.generateWolfLevel();
         this.dominationFactor = 100;
+        this.level = 0;
     }
 
     /**
      * Allows to generate the wolf level attribute, based on its impetuosity, strength and domination level
      */
     private int generateWolfLevel() {
+    /**
+     * Allows to generate the wolf level attribute, based on its impetuosity, strength and domination level
         return ThreadLocalRandom.current().nextInt(1, 100);
+     */
+    public void generateWolfLevel() {
+        int bonusFromAge = 0;
+        switch (this.getAge()) {
+            case 1:
+                bonusFromAge = 25;
+                break;
+            case 2:
+                bonusFromAge = 50;
+                break;
+            case 3:
+                bonusFromAge = 10;
+                break;
+            default:
+                break;
+        }
+
+        // If male
+        if (this.getSex()) {
+            // 20% bonus as it is a male
+            this.setLevel(((this.getStrength() * this.getDominationFactor() * bonusFromAge) * 120 / 100) / (this.getRank().getId() * 100));
+        } else {
+            this.setLevel((this.getStrength() * this.getDominationFactor() * bonusFromAge) / (this.getRank().getId() * 100));
+        }
     }
 
     /**
      * Getter for the wolf level attribute, calculated from its impetuosity, strength and domination level
      * @return int
      */
-    public int getWolfLevel() {
+    public int getLevel() {
         return this.level;
     }
 
     /**
+     * Setter for the level of the wolf
+     * @param level The new level
+     */
+    public void setLevel(int level) {
+        this.level = level;
+    }
      * Getter for the domination factor of the wolf
      * @return The domination factor of the wolf
      */
@@ -270,7 +308,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
                 "  isInEnclosure=" + isInEnclosure + ", \n" +
                 "  isInPack=" + ((this.getRank() == null) ? "Solitary" : "In a pack") + ", \n" +
                 "  rankInPack=" + ((this.getRank() == null) ? "none" : this.getRank()) + ", \n" +
-                "  level=" + this.getWolfLevel() + ", \n" +
+                "  level=" + this.getLevel() + ", \n" +
                 '}';
     }
 }
