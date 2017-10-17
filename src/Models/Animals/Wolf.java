@@ -338,7 +338,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     private int generateStrength()
     {
-        return ThreadLocalRandom.current().nextInt(0, 100);
+        return ThreadLocalRandom.current().nextInt(1, 100);
     }
 
     /**
@@ -347,7 +347,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     private int generateImpetuosity()
     {
-        return ThreadLocalRandom.current().nextInt(0, 100);
+        return ThreadLocalRandom.current().nextInt(1, 100);
     }
 
     /**
