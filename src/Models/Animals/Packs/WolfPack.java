@@ -58,6 +58,19 @@ public class WolfPack {
         wolf.setPack(this);
         wolf.generateWolfLevel();
     }
+
+    /**
+     * Allows to remove a wolf from the pack
+     * @param wolf The wolf to remove
+     */
+    public void remove (Wolf wolf) {
+        if (this.getWolfList().contains(wolf)) {
+            // Delete pack related attributes
+            wolf.setPack(null);
+            wolf.setRank(null);
+            wolf.setLevel(0);
+            this.getWolfList().remove(wolf);
+        }
     }
 
     /**

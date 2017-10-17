@@ -98,6 +98,16 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     public void setPack(WolfPack pack) {
         this.pack = pack;
     }
+
+    /**
+     * Setter for the strength of the wolf
+     * Used for the Alpha couple, which will always have a better strength that the rest of the pack
+     * @param strength
+     */
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
     /**
      * Allows to generate the wolf level attribute, based on its impetuosity, strength and domination level
         return ThreadLocalRandom.current().nextInt(1, 100);
@@ -200,12 +210,27 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     }
 
     /**
+     * Setter for the impetuosity level of the wolf
+     * @param impetuosity The new level of impetuosity
+     */
+    public void setImpetuosity(int impetuosity) {
+        this.impetuosity = impetuosity;
+    }
+
+    /**
      * Allows to increase the domination factor of the wolf
      * Used when an attempted domination on another wolf succeeds
      */
     public void increaseDominationFactor() {
         this.setDominationFactor(this.getDominationFactor() + 10);
     }
+
+    /**
+     * Allows to increase the impetuosity factor of the wolf
+     * Used when an attempted domination on another wolf fails, and the target becomes more aggressive
+     */
+    public void increaseImpetuosity() {
+        this.setImpetuosity(this.getImpetuosity() + 10);
     }
 
     /**
