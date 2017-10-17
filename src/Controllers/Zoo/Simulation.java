@@ -1,6 +1,6 @@
 package Controllers.Zoo;
 
-import Controllers.Jobs.MakeAnimalsAge;
+import Controllers.Jobs.MakeAnimalsAgeJob;
 import Models.Enums.RandomActions;
 import Models.Factories.AnimalFactory;
 import Controllers.Jobs.CheckNewBirthJob;
@@ -134,7 +134,7 @@ public class Simulation {
      */
     private void handleAging() {
         if (this.getTurnNb() % 50 == 0) {
-            MakeAnimalsAge job = new MakeAnimalsAge(this.getZoo(), this.getTurnNb());
+            MakeAnimalsAgeJob job = new MakeAnimalsAgeJob(this.getZoo(), this.getTurnNb());
             job.exec();
         }
     }
