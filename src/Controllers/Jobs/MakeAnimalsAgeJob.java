@@ -1,12 +1,10 @@
 package Controllers.Jobs;
 
 import Controllers.Zoo.Zoo;
-import Models.Animals.Animal;
 import Models.Enclosures.Enclosure;
 import Models.Interfaces.Animal.AnimalInterface;
-import Views.View;
 
-public class MakeAnimalsAge {
+public class MakeAnimalsAgeJob {
 
     /**
      * The Zoo instance to manipulate in the Job
@@ -19,11 +17,11 @@ public class MakeAnimalsAge {
     private int turnNb;
 
     /**
-     * Constructor for the MakeAnimalsAge job
+     * Constructor for the MakeAnimalsAgeJob job
      * @param zoo The zoo instance that will be manipulated
      * @param turnNb The current turn number
      */
-    public MakeAnimalsAge(Zoo zoo, int turnNb) {
+    public MakeAnimalsAgeJob(Zoo zoo, int turnNb) {
         this.zoo = zoo;
         this.turnNb = turnNb;
     }
