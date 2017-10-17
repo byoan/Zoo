@@ -224,6 +224,7 @@ public class Enclosure<A extends AnimalInterface> {
                         this.setWolfPack(new WolfPack());
                         this.getWolfPack().add((Wolf) wolf);
                         ((Wolf) wolfInEnclosure).setRank(WolfRank.Alpha);
+                        ((Wolf) wolfInEnclosure).setStrength(101);
                         this.getWolfPack().add((Wolf) wolfInEnclosure);
 
                         if (this.getNbAnimals() >= 2) {
