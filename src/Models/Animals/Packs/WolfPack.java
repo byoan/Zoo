@@ -48,12 +48,16 @@ public class WolfPack {
      */
     public void add (Wolf wolf) {
         if (this.getWolfList().size() == 0) {
-            wolf.setRank("Alpha");
+            wolf.setRank(WolfRank.Alpha);
+            wolf.setStrength(101);
         }
         if (wolf.getRank() == null) {
             this.generateWolfRank(wolf);
         }
         this.getWolfList().add(wolf);
+        wolf.setPack(this);
+        wolf.generateWolfLevel();
+    }
     }
 
     /**
@@ -92,9 +96,9 @@ public class WolfPack {
     public void addAllWolvesToPack(Enclosure<Wolf> enclosure) {
         for (Wolf wolf : enclosure.getAnimals()) {
             // Check that it is not already in the pack
-            if (wolf.getRank() == null) {
+            if (wolf.getRankName() == null) {
                 this.generateWolfRank(wolf);
-                this.getWolfList().add(wolf);
+                this.add(wolf);
             }
         }
     }
@@ -105,13 +109,13 @@ public class WolfPack {
      */
     public void setAtLeastOneOmegaInPack(Enclosure<Wolf> enclosure) {
         for (Wolf wolf : enclosure.getAnimals()) {
-            if (wolf.getRank() == "Alpha") {
+            if (wolf.getRankName() == "Alpha") {
                 continue;
             } else {
-                if (wolf.getRank() == "Omega") {
+                if (wolf.getRankName() == "Omega") {
                     break;
                 } else {
-                    wolf.setRank("Omega");
+                    wolf.setRank(WolfRank.Omega);
                     break;
                 }
             }
@@ -127,7 +131,7 @@ public class WolfPack {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         int rank = random.nextInt(2, 24);
         WolfRank[] rankList = WolfRank.values();
-        wolf.setRank(rankList[rank - 1].toString());
+        wolf.setRank(rankList[rank - 1]);
     }
 
     /**
@@ -136,7 +140,7 @@ public class WolfPack {
      */
     public Wolf getAlphaMale() {
         for (Wolf wolf : this.getWolfList()) {
-            if (wolf.getSex() && wolf.getRank() == "Alpha") {
+            if (wolf.getSex() && wolf.getRank().getId() == 1) {
                 return wolf;
             }
         }
@@ -149,7 +153,7 @@ public class WolfPack {
      */
     public Wolf getAlphaFemale() {
         for (Wolf wolf : this.getWolfList()) {
-            if (wolf.getSex() == false && wolf.getRank() == "Alpha") {
+            if (wolf.getSex() == false && wolf.getRank().getId() == 1) {
                 return wolf;
             }
         }

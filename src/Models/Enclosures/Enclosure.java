@@ -223,7 +223,7 @@ public class Enclosure<A extends AnimalInterface> {
                     if (wolfInEnclosure.getSex() != wolf.getSex()) {
                         this.setWolfPack(new WolfPack());
                         this.getWolfPack().add((Wolf) wolf);
-                        ((Wolf) wolfInEnclosure).setRank("Alpha");
+                        ((Wolf) wolfInEnclosure).setRank(WolfRank.Alpha);
                         this.getWolfPack().add((Wolf) wolfInEnclosure);
 
                         if (this.getNbAnimals() >= 2) {
