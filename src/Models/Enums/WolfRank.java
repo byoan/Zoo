@@ -30,18 +30,38 @@ public enum WolfRank {
     Psi(23, "Psi"),
     Omega(24, "Omega");
 
+    /**
+     * Represents the id of the rank
+     */
     private int id;
+
+    /**
+     * Represents the name of the rank
+     */
     private String name;
 
+    /**
+     * Constructor which will assign the received id and name to our attributes
+     * @param id The id of the rank
+     * @param name The name of the rank
+     */
     WolfRank(int id , String name) {
         this.id = id;
         this.name = name;
     }
 
+    /**
+     * Getter for the rank's id
+     * @return The id of the rank
+     */
     public int getId() {
         return this.id;
     }
 
+    /**
+     * Getter for the rank's name
+     * @return The name of the rank
+     */
     public String getName() {
         return this.name;
     }
