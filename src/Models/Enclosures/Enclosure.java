@@ -339,13 +339,12 @@ public class Enclosure<A extends AnimalInterface> {
      */
     @Override
     public String toString() {
-        return "Enclosure {\n" +
-                " name='" + this.getName() + "', \n" +
-                " surface=" + this.getSurface() + "\n" +
-                " maxAnimals=" + this.getMaxAnimals() + ", \n" +
-                " cleanliness=" + this.getCleanliness() + ", \n" +
-                " Models.Animals=" + this.getAnimals() + ", \n" +
-                ((this.getWolfPack() != null) ? " pack=" + this.getWolfPack() + ", \n" : "") +
-                "}";
+        return "Enclosure information:\n" +
+                "Name: '" + this.getName() + "'" + "  |  " +
+                "Maximum number of animals that the enclosure can contain: " + this.getMaxAnimals() + "\n" +
+                "Surface: " + this.getSurface() + " m²  |  " + "Cleanliness status: " + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\n" +
+                "\nAnimals currently in the enclosure: " + "\n" + this.getAnimals() +
+                ((this.getWolfPack() != null) ? "Pack: " + this.getWolfPack() + ", \n" : "")
+                ;
     }
 }

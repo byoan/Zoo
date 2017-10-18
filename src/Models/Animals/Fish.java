@@ -62,6 +62,14 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     }
 
     /**
+     * Getter for hatched status
+     * @return Return hatched status
+     */
+    public boolean getIsHatched() {
+        return this.isHatched;
+    }
+
+    /**
      * Allows to set the current state of hatching of our Animal instance
      */
     public void setHatched(boolean value) {
@@ -117,19 +125,6 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
 
     @Override
     public String toString() {
-        return "Fish {\n" +
-                "  specieName='" + specieName + "', \n" +
-                "  sex=" + sex + ", \n" +
-                "  weight=" + weight + ", \n" +
-                "  size=" + size + ", \n" +
-                "  age=" + this.getAge() + ", \n" +
-                "  hungerIndicator=" + hungerIndicator + ", \n" +
-                "  sleepIndicator=" + sleepIndicator + ", \n" +
-                "  healthIndicator=" + healthIndicator + ", \n" +
-                "  copulationTurn=" + copulationTurn + ", \n" +
-                "  isHatched=" + isHatched + ", \n" +
-                "  childrenCreationTime=" + childrenCreationTime + ", \n" +
-                "  isInEnclosure=" + isInEnclosure + ", \n" +
-                '}';
+        return super.toString() + "       Already hatched: " +((this.getIsHatched()) ? "Yes" : "No")  + " \n    }\n";
     }
 }

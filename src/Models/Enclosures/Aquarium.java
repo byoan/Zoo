@@ -118,15 +118,13 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
 
     @Override
     public String toString() {
-        return "Aquarium {\n" +
-                " name='" + this.getName() + "', \n" +
-                " surface=" + this.getSurface() + "\n" +
-                " maxAnimals=" + this.getMaxAnimals() + ", \n" +
-                " cleanliness=" + this.getCleanliness() + ", \n" +
-                " depth=" + this.getDepth() + ", \n" +
-                " salinity=" + this.getSalinity() + ", \n" +
-                " waterLevel=" + this.getCurrentWaterLevel() + ", \n" +
-                " Models.Animals=" + this.getAnimals() + ", \n" +
-                '}';
+        return "Aquarium information:\n" +
+                "Name: '" + this.getName() + "'" + "  |  " +
+                "Maximum number of animals that the enclosure can contain: " + this.getMaxAnimals() + "\n" +
+                "Surface: " + this.getSurface() + " m3  |  " + "Cleanliness status: " + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\n" +
+                "Depth: " + this.getDepth() + "m" + "  |  " + "Salinity: " + this.getSalinity() + "%  |  " +
+                "WaterLevel: " + this.getCurrentWaterLevel() + ", \n" +
+                "\nAnimals currently in the aquarium: " + this.getAnimals() + " \n"
+                ;
     }
 }

@@ -45,7 +45,7 @@ public class Bear extends Animal implements Mammal {
         View.displayMessage("A bear is screaming");
     }
 
-        /**
+    /**
      * Performs a copulation between the current animal instance and the given Animal (which must be the same)
      * @param bear The animal instance that represents the male
      * @param turnNb The current turn number, to mark the beginning of the pregnancy
@@ -94,18 +94,6 @@ public class Bear extends Animal implements Mammal {
 
     @Override
     public String toString() {
-        return "Bear {\n" +
-                "  specieName='" + specieName + "', \n" +
-                "  sex=" + sex + ", \n" +
-                "  weight=" + weight + ", \n" +
-                "  size=" + size + ", \n" +
-                "  age=" + this.getAge() + ", \n" +
-                "  hungerIndicator=" + hungerIndicator + ", \n" +
-                "  sleepIndicator=" + sleepIndicator + ", \n" +
-                "  healthIndicator=" + healthIndicator + ", \n" +
-                "  copulationTurn=" + copulationTurn + ", \n" +
-                "  childrenCreationTime=" + childrenCreationTime + ", \n" +
-                "  isInEnclosure=" + isInEnclosure + ", \n" +
-                '}';
+        return super.toString();
     }
 }

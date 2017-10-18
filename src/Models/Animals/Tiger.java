@@ -102,18 +102,6 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
 
     @Override
     public String toString() {
-        return "Tiger {\n" +
-                "  specieName='" + specieName + "', \n" +
-                "  sex=" + sex + ", \n" +
-                "  weight=" + weight + ", \n" +
-                "  size=" + size + ", \n" +
-                "  age=" + this.getAge() + ", \n" +
-                "  hungerIndicator=" + hungerIndicator + ", \n" +
-                "  sleepIndicator=" + sleepIndicator + ", \n" +
-                "  healthIndicator=" + healthIndicator + ", \n" +
-                "  copulationTurn=" + copulationTurn + ", \n" +
-                "  childrenCreationTime=" + childrenCreationTime + ", \n" +
-                "  isInEnclosure=" + isInEnclosure + ", \n" +
-                '}';
+        return super.toString();
     }
 }

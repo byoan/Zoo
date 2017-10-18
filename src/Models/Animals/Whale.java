@@ -46,6 +46,9 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
         View.displayMessage("I'm screaming");
     }
 
+    /**
+     * Animal generic method to swim
+     */
     @Override
     public void swim() {
         View.displayMessage("A whale is swimming");
@@ -107,18 +110,6 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
 
     @Override
     public String toString() {
-        return "Whale {\n" +
-                "  specieName='" + specieName + "', \n" +
-                "  sex=" + sex + ", \n" +
-                "  weight=" + weight + ", \n" +
-                "  size=" + size + ", \n" +
-                "  age=" + this.getAge() + ", \n" +
-                "  hungerIndicator=" + hungerIndicator + ", \n" +
-                "  sleepIndicator=" + sleepIndicator + ", \n" +
-                "  healthIndicator=" + healthIndicator + ", \n" +
-                "  copulationTurn=" + copulationTurn + ", \n" +
-                "  childrenCreationTime=" + childrenCreationTime + ", \n" +
-                "  isInEnclosure=" + isInEnclosure + ", \n" +
-                '}';
+        return super.toString();
     }
 }

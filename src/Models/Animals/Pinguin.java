@@ -60,6 +60,14 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     }
 
     /**
+     * Getter for hatched status
+     * @return Return hatched status
+     */
+    public boolean getIsHatched() {
+        return this.isHatched;
+    }
+
+    /**
      * Allows to set the current state of hatching of our Animal instance
      */
     public void setHatched(boolean value) {
@@ -120,19 +128,6 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
 
     @Override
     public String toString() {
-        return "Pinguin {\n" +
-                "  specieName='" + specieName + "', \n" +
-                "  sex=" + sex + ", \n" +
-                "  weight=" + weight + ", \n" +
-                "  size=" + size + ", \n" +
-                "  age=" + this.getAge() + ", \n" +
-                "  hungerIndicator=" + hungerIndicator + ", \n" +
-                "  sleepIndicator=" + sleepIndicator + ", \n" +
-                "  healthIndicator=" + healthIndicator + ", \n" +
-                "  copulationTurn=" + copulationTurn + ", \n" +
-                "  isHatched=" + isHatched + ", \n" +
-                "  childrenCreationTime=" + childrenCreationTime + ", \n" +
-                "  isInEnclosure=" + isInEnclosure + ", \n" +
-                '}';
+        return super.toString() + "       Already hatched: " +((this.getIsHatched()) ? "Yes" : "No")  + " \n    }\n";
     }
 }

@@ -89,14 +89,14 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
      */
     @Override
     public String toString() {
-        return "Aviary {\n" +
-                " name='" + this.getName() + "', \n" +
-                " surface=" + this.getSurface() + "\n" +
-                " maxAnimals=" + this.getMaxAnimals() + ", \n" +
-                " cleanliness=" + this.getCleanliness() + ", \n" +
-                " height=" + this.getHeight() + ", \n" +
-                " roofState=" + this.getRoofState() + ", \n" +
-                " animals=" + this.getAnimals() + ", \n" +
-                '}';
+        return "Aviary information:\n" +
+                "Name: '" + this.getName() + "'" + "  |  " +
+                "Maximum number of animals that the enclosure can contain: " + this.getMaxAnimals() + "\n" +
+                "Surface: " + this.getSurface() + "m²  |  " + "Cleanliness status: " + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\n" +
+
+                "Height: " + this.getHeight() + "m  |  " +
+                "Roof State: " + ((this.getRoofState() == 0) ? "Really bad" : (this.getRoofState() == 1) ? "Bad" : "Good") + " \n" +
+                "\nAnimals currently in the aviary: " + this.getAnimals() + " \n"
+                ;
     }
 }

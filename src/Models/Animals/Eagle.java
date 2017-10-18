@@ -61,6 +61,14 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         this.isHatched = false;
     }
 
+    /**
+     * Getter for hatched status
+     * @return Return hatched status
+     */
+    public boolean getIsHatched() {
+        return this.isHatched;
+    }
+
     public void setHatched(boolean value) {
         this.isHatched = value;
     }
@@ -114,19 +122,6 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     @Override
     public String toString() {
-        return "Eagle {\n" +
-                "  specieName='" + specieName + "', \n" +
-                "  sex=" + sex + ", \n" +
-                "  weight=" + weight + ", \n" +
-                "  size=" + size + ", \n" +
-                "  age=" + this.getAge() + ", \n" +
-                "  hungerIndicator=" + hungerIndicator + ", \n" +
-                "  sleepIndicator=" + sleepIndicator + ", \n" +
-                "  healthIndicator=" + healthIndicator + ", \n" +
-                "  copulationTurn=" + copulationTurn + ", \n" +
-                "  isHatched=" + isHatched + ", \n" +
-                "  childrenCreationTime=" + childrenCreationTime + ", \n" +
-                "  isInEnclosure=" + isInEnclosure + ", \n" +
-                '}';
+        return super.toString()  + "       Already hatched: " +((this.getIsHatched()) ? "Yes" : "No")  + " \n    }\n";
     }
 }

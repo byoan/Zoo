@@ -20,7 +20,7 @@ public class Animal implements AnimalInterface {
      */
     private int copulationTurn;
 
-    protected String specieName;
+    protected String specieName;//
     protected boolean sex; // True if male
     protected float weight;
     protected float size;
@@ -29,6 +29,22 @@ public class Animal implements AnimalInterface {
     protected int healthIndicator; // Percentage
     protected int childrenCreationTime;
     protected boolean isInEnclosure = false;
+
+    /**
+     * Getter for the animal size attribute
+     * @return The animal size in cm
+     */
+    public float getSize() {
+        return this.size;
+    }
+
+    /**
+     * Getter the weight of an animal
+     * @return The weight of an animal in kg
+     */
+    public float getWeight() {
+        return this.weight;
+    }
 
     /**
      * Returns the age of the animal ( 1 = young, 2 = adult, 3 = old)
@@ -231,5 +247,16 @@ public class Animal implements AnimalInterface {
 
     public <A extends Mammal> void copulate(A animal, int turnNb) {
 
+    }
+
+    @Override
+    public String toString() {
+        return  "\n" +"   Animal {"+ "\n" +"       Specie: '" + this.getSpecieName() + "'  |  " + "Is in an enclosure : " + ((this.isInEnclosure()) ? "Yes" : "No")+ " \n" +
+                "       Hunger: " + this.getHunger() + "%" + "  |  " + "Currently sleeping: " + ((this.isSleeping()) ? "Yes" : "No") + "  |  " +
+                "Health: " + this.getHealth() + "%" + " \n" +
+                "       Sex: " + ((this.getSex()) ? "Male" : "Female") + "  |  " + "Weight: " + this.getWeight() + "kg" + "  |  " +
+                "Size: " + this.getSize() + "cm" + "  |  " + "Age: " + ((this.getAge() == 1) ? "Young" : (this.getAge() == 2) ? "Adult" : "Old") + " \n"  +
+                "       Started pregnancy at turn: " + ((this.getCopulationTurn() != 0) ? this.getCopulationTurn() : "-") + "  |  " + "Pregnancy duration: " + this.getChildrenCreationTime() + " turns \n"
+                ;
     }
 }
