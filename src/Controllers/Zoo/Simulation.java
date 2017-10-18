@@ -587,8 +587,8 @@ public class Simulation {
                     while (animal.equals(secondAnimal)) {
                         secondAnimal = this.pickRandomAnimal(enclosure);
                     }
-                    animal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth()));
-                    secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth()));
+                    animal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
+                    secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
                     View.displayMessage("2 Models.Animals fought in the " + enclosure.getName() + " enclosure.\n");
                     if (animal.getHealth() <= 0) {
                         View.displayMessage("The first one died.\n");
