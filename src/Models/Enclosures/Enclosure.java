@@ -222,19 +222,20 @@ public class Enclosure<A extends AnimalInterface> {
                 for (A wolfInEnclosure : this.getAnimals()) {
                     if (wolfInEnclosure.getSex() != wolf.getSex()) {
                         this.setWolfPack(new WolfPack());
+                        ((Wolf) wolf).setRank(WolfRank.Alpha);
+                        ((Wolf) wolf).setStrength(101);
                         this.getWolfPack().add((Wolf) wolf);
                         ((Wolf) wolfInEnclosure).setRank(WolfRank.Alpha);
                         ((Wolf) wolfInEnclosure).setStrength(101);
                         this.getWolfPack().add((Wolf) wolfInEnclosure);
 
+                        // In case we have animals in the enclosures, but no pack yet, we must add them to the newly created pack
                         if (this.getNbAnimals() >= 2) {
-                            this.getWolfPack().generateWolfRank((Wolf) wolf);
+                            this.getWolfPack().addAllWolvesToPack((Enclosure<Wolf>) this);
+                            this.getWolfPack().setAtLeastOneOmegaInPack((Enclosure<Wolf>) this);
+                            // Sort the list by level after our insertion
+                            this.getWolfPack().setWolfList(this.getWolfPack().insertionSort(this.getWolfPack().getWolfList()));
                         }
-
-                        this.getWolfPack().addAllWolvesToPack((Enclosure<Wolf>) this);
-                        this.getWolfPack().setAtLeastOneOmegaInPack((Enclosure<Wolf>) this);
-                        // Sort the list by level after our insertion
-                        this.getWolfPack().setWolfList(this.getWolfPack().insertionSort(this.getWolfPack().getWolfList()));
                         break;
                     }
                 }

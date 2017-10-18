@@ -157,29 +157,31 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * Allows the current wolf to attempt a domination on the given wolf
      */
     public void attemptDomination(Wolf target) {
-        // Be careful, the lower the id of the rank is, the better the wolf rank is within the pack
-        if (this.getRank().getId() < target.getRank().getId() && target.getRank().getId() != 24) {
-            return;
-        } else {
-            // We must always be able to fight an Omega and win against him without swapping ranks
-            if (target.getRank().getId() == 24) {
-                this.increaseDominationFactor();
-            // Else, we use the level to compare wolf's chances
-            } else if (this.getLevel() > target.getLevel()) {
-                this.increaseDominationFactor();
-                target.decreaseDominationFactor();
-                // In case we attack the alpha male, and we win, we must remove the alpha from the pack, and replace it with the winner
-                if (target.getRank().getId() == 1) {
-                    target.getPack().remove(target);
-                    this.setRank(WolfRank.Alpha);
-                } else {
-                    // If it is not the alpha, we simply swap the ranks of the 2 fighters
-                    this.swapRanks(target);
-                }
+        if (this.getPack() != null || target.getPack() != null) {
+            // Be careful, the lower the id of the rank is, the better the wolf rank is within the pack
+            if (this.getRank().getId() < target.getRank().getId() && target.getRank().getId() != 24) {
+                return;
             } else {
-                // Failed attempt, the target looses domination though
-                target.decreaseDominationFactor();
-                target.increaseImpetuosity();
+                // We must always be able to fight an Omega and win against him without swapping ranks
+                if (target.getRank().getId() == 24) {
+                    this.increaseDominationFactor();
+                    // Else, we use the level to compare wolf's chances
+                } else if (this.getLevel() > target.getLevel()) {
+                    this.increaseDominationFactor();
+                    target.decreaseDominationFactor();
+                    // In case we attack the alpha male, and we win, we must remove the alpha from the pack, and replace it with the winner
+                    if (target.getRank().getId() == 1) {
+                        target.getPack().remove(target);
+                        this.setRank(WolfRank.Alpha);
+                    } else {
+                        // If it is not the alpha, we simply swap the ranks of the 2 fighters
+                        this.swapRanks(target);
+                    }
+                } else {
+                    // Failed attempt, the target looses domination though
+                    target.decreaseDominationFactor();
+                    target.increaseImpetuosity();
+                }
             }
         }
     }
