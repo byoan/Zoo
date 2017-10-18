@@ -109,7 +109,7 @@ public class WolfPack {
     public void addAllWolvesToPack(Enclosure<Wolf> enclosure) {
         for (Wolf wolf : enclosure.getAnimals()) {
             // Check that it is not already in the pack
-            if (wolf.getRankName() == null) {
+            if (wolf.getRank() == null) {
                 this.generateWolfRank(wolf);
                 this.add(wolf);
             }
