@@ -1,6 +1,9 @@
 package Models.Enclosures;
 
 import Models.Enums.WolfRank;
+import Models.Exceptions.Animals.AnimalAlreadyInEnclosureException;
+import Models.Exceptions.Enclosures.AnimalNotInEnclosureException;
+import Models.Exceptions.Enclosures.FullEnclosureException;
 import Models.Interfaces.Animal.AnimalInterface;
 import Models.Animals.Wolf;
 import Models.Animals.Packs.WolfPack;
@@ -158,22 +161,30 @@ public class Enclosure<A extends AnimalInterface> {
      */
     public void add(A animal) {
         try {
-            if (!animal.isInEnclosure() && this.getAnimals().size() < this.getMaxAnimals()) {
-                if (animal.getSpecieName() == "Wolf") {
-                    this.handleWolfAdditionToPack(animal);
-                }
-                if (this.getAnimals().size() == 0 || this.getAnimals().get(0).getSpecieName() == animal.getSpecieName()) {
-                    this.getAnimals().add(animal);
-                    animal.setInEnclosure(true);
+            if (!animal.isInEnclosure()) {
+                if (this.getAnimals().size() < this.getMaxAnimals()) {
+                    // Specific case to the Wolf -> Packs
+                    if (animal.getSpecieName() == "Wolf") {
+                        this.handleWolfAdditionToPack(animal);
+                    }
+                    if (this.getAnimals().size() == 0 || this.getAnimals().get(0).getSpecieName() == animal.getSpecieName()) {
+                        this.getAnimals().add(animal);
+                        animal.setInEnclosure(true);
+                    } else {
+                        View.displayMessage("Can't add the wrong animal type to the enclosure");
+                    }
                 } else {
-                    View.displayMessage("Can't add the wrong animal type to the enclosure");
+                    throw new FullEnclosureException(this);
                 }
             } else {
-                //throw new AnimalAlreadyInEnclosureException(animal, this);
-                View.displayMessage("Can't add this animal as it is already in an enclosure, or the enclosure is full");
+                throw new AnimalAlreadyInEnclosureException(animal);
             }
-        } catch(Exception e) {
-            View.displayMessage("An error occurred while trying to add the Animal to the Enclosure : " + e.toString());
+        } catch (FullEnclosureException e) {
+            View.displayMessage(e.getMessage());
+        } catch (AnimalAlreadyInEnclosureException e) {
+            View.displayMessage(e.getMessage());
+        } catch (Exception e) {
+            View.displayMessage("An error occurred while trying to add this animal to the " + this.getName() + " enclosure : " + e.toString());
         }
     }
 
@@ -185,14 +196,15 @@ public class Enclosure<A extends AnimalInterface> {
         try {
             if (animal.isInEnclosure() && this.getAnimals().contains(animal)) {
                 if (animal.getSpecieName() == "Wolf") {
-                    this.handleWolfDeletion((Wolf)animal);
+                    this.handleWolfDeletion((Wolf) animal);
                 }
                 this.getAnimals().remove(animal);
                 animal.setInEnclosure(false);
             } else {
-                // TODO : custom exception
-                View.displayMessage("This animal is not in this enclosure");
+                throw new AnimalNotInEnclosureException(animal, this);
             }
+        } catch (AnimalNotInEnclosureException e) {
+            View.displayMessage(e.getMessage());
         } catch(Exception e) {
             View.displayMessage(e.getMessage());
         }

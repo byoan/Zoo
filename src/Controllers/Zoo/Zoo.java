@@ -2,6 +2,10 @@ package Controllers.Zoo;
 
 import Models.Employees.Employee;
 import Models.Enclosures.Enclosure;
+import Models.Exceptions.Zoo.CantFindEnclosureByNameException;
+import Models.Exceptions.Zoo.EmptyZooException;
+import Models.Exceptions.Zoo.EnclosureNotInZooException;
+import Models.Exceptions.Zoo.FullZooException;
 import Models.Interfaces.Animal.AnimalInterface;
 import Views.View;
 
@@ -109,11 +113,12 @@ public class Zoo {
             if (this.getEnclosureList().size() < this.getMaxNbEnclosure()) {
                 this.getEnclosureList().add(enclosure);
             } else {
-                // TODO : throw exception
-                View.displayMessage("Can't add this enclosure to the Controllers.Zoo, as it is full");
+                throw new FullZooException(enclosure, this);
             }
+        } catch (FullZooException e) {
+            View.displayMessage(e.getMessage());
         } catch(Exception e) {
-            View.displayMessage("An error occurred while trying to add this enclosure to the zoo : " + e.getMessage());
+            View.displayMessage("An error occurred while trying to add the " + enclosure.getName() + " enclosure to the zoo : " + e.getMessage());
         }
     }
 
@@ -127,12 +132,12 @@ public class Zoo {
             if (this.getEnclosureList().contains(enclosure)) {
                 this.getEnclosureList().remove(enclosure);
             } else {
-                // TODO : throw custom exception
-                View.displayMessage("The given enclosure is currently not in this Controllers.Zoo");
+                throw new EnclosureNotInZooException(enclosure, this);
             }
-        } catch(Exception e) {
-            // TODO : throw exception
-            View.displayMessage("An error occurred while trying to remove this enclosure from the zoo : " + e.getMessage());
+        } catch (EnclosureNotInZooException e) {
+            View.displayMessage(e.getMessage());
+        } catch (Exception e) {
+            View.displayMessage("An error occurred while trying to remove the " + enclosure.getName() + " from the zoo : " + e.getMessage());
         }
     }
 
@@ -142,17 +147,25 @@ public class Zoo {
      * @return mixed The first Enclosure instance that matches this name, or null if there isn't any match
      */
     public Enclosure getEnclosureByName(String enclosureName) {
-        if (this.getEnclosureList().size() > 0) {
-            for (int i = 0; i <= this.getEnclosureList().size(); i++) {
-                if (this.getEnclosureList().get(i).getName() == enclosureName) {
-                    return this.getEnclosureList().get(i);
+        try {
+            if (this.getEnclosureList().size() > 0) {
+                for (int i = 0; i <= this.getEnclosureList().size(); i++) {
+                    if (this.getEnclosureList().get(i).getName() == enclosureName) {
+                        return this.getEnclosureList().get(i);
+                    }
                 }
+                // In case we did not returned any enclosure that matched the given name
+                throw new CantFindEnclosureByNameException(enclosureName);
+            } else {
+                // If the size is equals to 0, the Zoo has no enclosures to search in
+                throw new EmptyZooException(this);
             }
-            // TODO : throw Exception
-            View.displayMessage("No enclosure found with this name");
-        } else {
-            // TODO : throw Exception
-            View.displayMessage("No enclosure in the Controllers.Zoo yet");
+        } catch (CantFindEnclosureByNameException e) {
+            View.displayMessage(e.getMessage());
+        } catch (EmptyZooException e) {
+            View.displayMessage(e.getMessage());
+        } catch (Exception e) {
+            View.displayMessage("An error occurred while trying to search the enclosure named " + enclosureName + " in the Zoo");
         }
         return null;
     }

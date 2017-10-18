@@ -1,5 +1,6 @@
 package Models.Animals;
 
+import Models.Exceptions.Animals.AnimalAlreadyPregnantException;
 import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.Mammal;
 import Models.Interfaces.Animal.MarineAnimal;
@@ -61,19 +62,15 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
      */
     public <A extends Mammal> void copulate(A whale, int turnNb) {
         // Same sex can't copulate
-        if (whale.getSex() == this.getSex()) {
-
-        } else {
-            if (this.getSex() == false) {
+        if (whale.getSex() != this.getSex()) {
+            try {
                 if (this.getCopulationTurn() == 0) {
                     this.setCopulationTurn(turnNb);
                 } else {
-                    // @TODO
-                    // Throw exception This animal is already pregnant
+                    throw new AnimalAlreadyPregnantException(this);
                 }
-            } else {
-                // @TODO
-                // Throw exception Man can't be pregnant;
+            } catch (AnimalAlreadyPregnantException e) {
+                View.displayMessage(e.getMessage());
             }
         }
     }

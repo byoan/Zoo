@@ -2,6 +2,7 @@ package Models.Animals;
 
 import Models.Animals.Packs.WolfPack;
 import Models.Enums.WolfRank;
+import Models.Exceptions.Animals.AnimalAlreadyPregnantException;
 import Models.Factories.AnimalFactory;
 import Models.Interfaces.Animal.Mammal;
 import Models.Interfaces.Animal.WanderAnimal;
@@ -317,19 +318,15 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     public <A extends Mammal> void copulate(A wolf, int turnNb) {
         // Same sex can't copulate
-        if (wolf.getSex() == this.getSex()) {
-
-        } else {
-            if (this.getSex() == false) {
+        if (wolf.getSex() != this.getSex()) {
+            try {
                 if (this.getCopulationTurn() == 0) {
                     this.setCopulationTurn(turnNb);
                 } else {
-                    // @TODO
-                    // Throw exception This animal is already pregnant
+                    throw new AnimalAlreadyPregnantException(this);
                 }
-            } else {
-                // @TODO
-                // Throw exception Man can't be pregnant;
+            } catch (AnimalAlreadyPregnantException e) {
+                View.displayMessage(e.getMessage());
             }
         }
     }
