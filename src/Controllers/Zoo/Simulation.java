@@ -555,9 +555,11 @@ public class Simulation {
                 break;
             case "SLEEP":
                 if (animal.isSleeping()) {
-                    animal.setSleeping(false);
-                } else {
+                    View.displayMessage("A " + animal.getSpecieName() + " woke up in the " + enclosure.getName() + " enclosure.\n");
                     animal.wake();
+                } else {
+                    View.displayMessage("A " + animal.getSpecieName() + " fell asleep in the " + enclosure.getName() + " enclosure.\n");
+                    animal.sleep();
                 }
                 break;
             case "STOLE":
