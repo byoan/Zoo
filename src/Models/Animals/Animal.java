@@ -230,21 +230,42 @@ public class Animal implements AnimalInterface {
         this.setSleeping(false);
     }
 
+    /**
+     * Getter for the current enclosure belonging
+     * @return Whether the animal is currently in an Enclosure or not
+     */
     @Override
     public boolean isInEnclosure() {
         return this.isInEnclosure;
     }
 
+    /**
+     * Setter which allows us to mark the current animal instance as in an enclosure or not
+     * @param isInEnclosure Whether or not it is now in an enclosure
+     */
     @Override
     public void setInEnclosure(boolean isInEnclosure) {
         this.isInEnclosure = isInEnclosure;
     }
 
+    /**
+     * Allows a copulation between 2 animals
+     * Will be redefined by all children classes
+     * @param animal The animal which will perform the copulation with the animal that calls the method
+     * @param turnNb The current turn number
+     * @param <A> Generic type used for the Animals parameter, which is here a type extending AnimalInterface
+     */
     @Override
     public <A extends AnimalInterface> Animal copulate(A animal, int turnNb) {
         return null;
     }
 
+    /**
+     * Allows a copulation between Mammals specifically (the behaviour is the same, we're just using it for the typing)
+     * @param animal The animal which will perform the copulation with the animal that calls the method
+     * @param turnNb The current turn number
+     * @param <A> Generic type used for the Animals parameter, which is here a type extending Mammal
+     */
     public <A extends Mammal> void copulate(A animal, int turnNb) {
 
     }

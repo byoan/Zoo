@@ -154,7 +154,6 @@ public class WolfPack {
      * @param wolf The wolf which will get the rank
      */
     public void generateWolfRank(Wolf wolf) {
-        // TODO Retry if it falls on Alpha and there is already a couple
         ThreadLocalRandom random = ThreadLocalRandom.current();
         int rank = random.nextInt(2, 24);
         WolfRank[] rankList = WolfRank.values();

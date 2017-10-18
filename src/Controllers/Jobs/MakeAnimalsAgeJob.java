@@ -59,7 +59,6 @@ public class MakeAnimalsAgeJob {
                 animal.getOlder();
 
                 if (animal.getAge() == 4) {
-                    // TODO : For now, let's just make this dying mecanism for the wolves
                     if (animal.getSpecieName() == "Wolf") {
                         ((Wolf)animal).getPack().remove((Wolf)animal);
                         enclosure.remove(animal);
