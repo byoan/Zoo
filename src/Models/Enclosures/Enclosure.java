@@ -184,6 +184,9 @@ public class Enclosure<A extends AnimalInterface> {
     public void remove(A animal) {
         try {
             if (animal.isInEnclosure() && this.getAnimals().contains(animal)) {
+                if (animal.getSpecieName() == "Wolf") {
+                    this.handleWolfDeletion((Wolf)animal);
+                }
                 this.getAnimals().remove(animal);
                 animal.setInEnclosure(false);
             } else {
@@ -209,6 +212,15 @@ public class Enclosure<A extends AnimalInterface> {
     public void feedAnimals() {
         for(A animal : this.getAnimals()) {
             animal.eat();
+        }
+    }
+
+    /**
+     * Allows to handle Wolves' specific removal from an Enclosure
+     */
+    private void handleWolfDeletion(Wolf wolf) {
+        if (this.getWolfPack() != null && wolf.getPack() != null) {
+            this.getWolfPack().remove(wolf);
         }
     }
 

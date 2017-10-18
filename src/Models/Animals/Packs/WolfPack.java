@@ -3,6 +3,7 @@ package Models.Animals.Packs;
 import Models.Animals.Wolf;
 import Models.Enums.WolfRank;
 import Models.Enclosures.Enclosure;
+import Views.View;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -65,12 +66,25 @@ public class WolfPack {
      */
     public void remove (Wolf wolf) {
         if (this.getWolfList().contains(wolf)) {
-            // Delete pack related attributes
-            wolf.setPack(null);
-            wolf.setRank(null);
-            wolf.setLevel(0);
-            this.getWolfList().remove(wolf);
+            // In case we are trying to remove the alpha male
+            if (wolf.getRank().getId() == 1) {
+                View.displayMessage("Removing the alpha male from the pack. Trying to find a new one ...");
+                this.designateNewAlphaMaleBeforeDeletion(wolf);
+            } else {
+                this.removeWolfPackAttributes(wolf);
+                this.getWolfList().remove(wolf);
+            }
         }
+    }
+
+    /**
+     * Allows to reset the wolf's attributes that are related to a pack
+     * @param wolf The wolf that needs to be taken care of
+     */
+    private void removeWolfPackAttributes(Wolf wolf) {
+        wolf.setPack(null);
+        wolf.setRank(null);
+        wolf.setLevel(0);
     }
 
     /**
@@ -171,6 +185,56 @@ public class WolfPack {
             }
         }
         return null;
+    }
+
+    /**
+     * Allows to designate a new Alpha male, in case the current one walks away or dies
+     * @param wolf The alpha male that is being deleted
+     */
+    public void designateNewAlphaMaleBeforeDeletion(Wolf wolf) {
+
+        Wolf potentialCandidate = null;
+        int potentialCandidateRank = 24;
+        int candidateId = 0;
+
+        for (int i = 0; i < this.getWolfList().size(); i++) {
+            Wolf wolfToTest = this.getWolfList().get(i);
+
+            if (wolfToTest.getSex() && !wolfToTest.equals(this.getAlphaMale()) && wolfToTest.getRank().getId() < potentialCandidateRank && wolfToTest.getRank().getId() != 24) {
+                potentialCandidate = wolfToTest;
+                potentialCandidateRank = wolfToTest.getRank().getId();
+                candidateId = i;
+            }
+        }
+
+        // In case after trying all other members of the pack, we have no better candidate, then disband the pack
+        if (potentialCandidate == null || potentialCandidateRank == 24) {
+            View.displayMessage("No candidate for the Alpha male role was found. The pack disbanded.\n");
+            this.disband();
+        } else {
+            View.displayMessage("A new alpha male has been designated for the pack.\n");
+            this.getWolfList().get(candidateId).setRank(WolfRank.Alpha);
+
+            // Remove the old alpha, and re-order the pack
+            this.removeWolfPackAttributes(wolf);
+            this.getWolfList().remove(wolf);
+            this.setWolfList(this.insertionSort(this.getWolfList()));
+        }
+    }
+
+    /**
+     * Allows to disband the pack
+     */
+    public void disband() {
+        int originalSize = this.getWolfList().size();
+        for (int i = 0; i < originalSize; i++) {
+            Wolf wolf = this.getWolfList().get(i);
+            // Delete pack related attributes
+            wolf.setPack(null);
+            wolf.setRank(null);
+            wolf.setLevel(0);
+            this.getWolfList().remove(wolf);
+        }
     }
 
     @Override
