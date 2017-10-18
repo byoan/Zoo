@@ -80,13 +80,13 @@ public class Simulation {
     private void nextTurn() {
         if (this.getTurnNb() != 0) {
             View.displayMessage("\nTurn n°" + this.getTurnNb() + " ended.\n");
+            this.handleAging();
+            this.handleNewBirths();
+            this.handleDominationRetrograde();
             this.handleRandomEventGeneration();
             if (this.getTurnNb() % 10 == 0) {
                 this.deteriorateEnclosures();
             }
-            this.handleNewBirths();
-            this.handleAging();
-            this.handleDominationRetrograde();
         }
 
         this.setTurnNb(this.getTurnNb() + 1);
