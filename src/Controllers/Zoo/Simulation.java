@@ -2,8 +2,6 @@ package Controllers.Zoo;
 
 import Controllers.Jobs.CheckDominationFactorJob;
 import Controllers.Jobs.MakeAnimalsAgeJob;
-import Models.Enclosures.Aquarium;
-import Models.Enclosures.Aviary;
 import Models.Enums.RandomActions;
 import Models.Factories.AnimalFactory;
 import Controllers.Jobs.CheckNewBirthJob;
@@ -440,7 +438,7 @@ public class Simulation {
                     View.displayMessage("Error : " + e.getMessage() + ". Please try again");
                 }
             }
-            View.displayMessage("\nInspecting the enclosure n°" + action + ":\n");
+            View.displayMessage("Inspecting the enclosure n°" + action + ":");
             View.displayMessage(this.getEmployee().inspectEnclosure(this.getZoo().getEnclosureList().get(action - 1)));
         } else {
             View.displayMessage("No enclosures are currently in the Controllers.Zoo.\n");
@@ -539,34 +537,34 @@ public class Simulation {
                 animal.setHunger(animal.getHunger() - 80);
                 if (animal.getHunger() <= 0) {
                     enclosure.remove(animal);
-                    View.displayMessage("A " + animal.getSpecieName() + " starved to death in the " + enclosure.getName() + ".\n");
+                    View.displayMessage("A " + animal.getSpecieName() + " starved to death in the " + enclosure.getName() + " enclosure.\n");
                     animal = null;
                 } else {
-                    View.displayMessage("A " + animal.getSpecieName() + " is hungry in the " + enclosure.getName() + ".\n");
+                    View.displayMessage("A " + animal.getSpecieName() + " is hungry in the " + enclosure.getName() + " enclosure.\n");
                 }
                 break;
             case "DECREASE_LIFE":
                 animal.setHealth(animal.getHealth() - 80);
                 if (animal.getHealth() <= 0) {
                     enclosure.remove(animal);
-                    View.displayMessage("A " + animal.getSpecieName() + " died in the " + enclosure.getName() + ".\n ");
+                    View.displayMessage("A " + animal.getSpecieName() + " died in the " + enclosure.getName() + " enclosure.\n ");
                     animal = null;
                 } else {
-                    View.displayMessage("A " + animal.getSpecieName() + " is hurt/sick in the " + enclosure.getName() + ".\n");
+                    View.displayMessage("A " + animal.getSpecieName() + " is hurt/sick in the " + enclosure.getName() + " enclosure.\n");
                 }
                 break;
             case "SLEEP":
                 if (animal.isSleeping()) {
-                    View.displayMessage("A " + animal.getSpecieName() + " woke up in the " + enclosure.getName() + ".\n");
+                    View.displayMessage("A " + animal.getSpecieName() + " woke up in the " + enclosure.getName() + " enclosure.\n");
                     animal.wake();
                 } else {
-                    View.displayMessage("A " + animal.getSpecieName() + " fell asleep in the " + enclosure.getName() + ".\n");
+                    View.displayMessage("A " + animal.getSpecieName() + " fell asleep in the " + enclosure.getName() + " enclosure.\n");
                     animal.sleep();
                 }
                 break;
             case "STOLE":
                 enclosure.remove(animal);
-                View.displayMessage("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + ".\n");
+                View.displayMessage("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + " enclosure.\n");
                 animal = null;
                 break;
             case "ESCAPE":
@@ -576,13 +574,13 @@ public class Simulation {
                 } else if (animal instanceof FlyingAnimal) {
                     if (enclosure.getCleanliness() < 1) {
                         enclosure.remove(animal);
-                        View.displayMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + ".\n");
+                        View.displayMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
                         animal = null;
                     }
                     break;
                 }
                 enclosure.remove(animal);
-                View.displayMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + ".\n");
+                View.displayMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
                 animal = null;
                 break;
             case "FIGHT":
@@ -593,7 +591,7 @@ public class Simulation {
                     }
                     animal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
                     secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
-                    View.displayMessage("2 Models.Animals fought in the " + enclosure.getName() + ".\n");
+                    View.displayMessage("2 animals fought in the " + enclosure.getName() + " enclosure.\n");
                     if (animal.getHealth() <= 0) {
                         View.displayMessage("The first one died.\n");
                         enclosure.remove(animal);
@@ -618,7 +616,7 @@ public class Simulation {
                         }
                     }
 
-                    View.displayMessage("Some Models.Animals made some adult things in the " + enclosure.getName() + ".\n");
+                    View.displayMessage("Some Models.Animals made some adult things in the " + enclosure.getName() + " enclosure.\n");
 
                     if (animal instanceof Oviparous) {
                         Animal newAnimal;
@@ -686,27 +684,27 @@ public class Simulation {
         this.setZoo(new Zoo("My Controllers.Zoo", employee, 10));
 
 //        Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 10);
-        Aviary<Eagle> eagleEnclosure = new Aviary<Eagle>("Eagle Enclosure", 10, 4, 4, 2);
+//        Aviary<Eagle> eagleEnclosure = new Aviary<Eagle>("Eagle Enclosure", 10, 4, 4, 2);
         Enclosure<Wolf> wolfEnclosure = new Enclosure<Wolf>("Wolf Enclosure", 10, 10);
-        Aquarium<Fish> fishAquarium = new Aquarium<Fish>("Fish Aquarium", 15, 10,15,100,15);
 //        Tiger tiger = AnimalFactory.getInstance().createTiger();
 //        Tiger tiger2 = AnimalFactory.getInstance().createTiger();
 //        Eagle eagle1 = AnimalFactory.getInstance().createEagle();
         Wolf wolf = AnimalFactory.getInstance().createWolf();
-        Eagle eagle = AnimalFactory.getInstance().createEagle();
-        Fish fish = AnimalFactory.getInstance().createFish();
+        Wolf wolf2 = AnimalFactory.getInstance().createWolf();
+        Wolf wolf3 = AnimalFactory.getInstance().createWolf();
+        Wolf wolf4 = AnimalFactory.getInstance().createWolf();
+
         zoo = this.getZoo();
 //        zoo.addEnclosure(tigerEnclosure);
 //        zoo.addEnclosure(eagleEnclosure);
         zoo.addEnclosure(wolfEnclosure);
-        zoo.addEnclosure(fishAquarium);
-        zoo.addEnclosure(eagleEnclosure);
 //        zoo.getEnclosureByName("Tiger Enclosure").add(tiger);
 //        zoo.getEnclosureByName("Tiger Enclosure").add(tiger2);
 //        zoo.getEnclosureByName("Eagle Enclosure").add(eagle1);
         zoo.getEnclosureByName("Wolf Enclosure").add(wolf);
-        zoo.getEnclosureByName("Fish Aquarium").add(fish);
-        zoo.getEnclosureByName("Eagle Enclosure").add(eagle);
+        zoo.getEnclosureByName("Wolf Enclosure").add(wolf2);
+        zoo.getEnclosureByName("Wolf Enclosure").add(wolf3);
+        zoo.getEnclosureByName("Wolf Enclosure").add(wolf4);
 
         // Beginning of the simulation
         View.displayMessage("\n\n====== WELCOME TO ZOO SIMULATOR 3000 ======\n\n");

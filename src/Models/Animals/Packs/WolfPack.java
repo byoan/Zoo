@@ -154,9 +154,11 @@ public class WolfPack {
      * @param wolf The wolf which will get the rank
      */
     public void generateWolfRank(Wolf wolf) {
-        // TODO Retry if it falls on Alpha and there is already a couple
         ThreadLocalRandom random = ThreadLocalRandom.current();
+
+        // Generate a random rank between 2 and 24, as we do not want anyone to be randomly ranked as Alpha
         int rank = random.nextInt(2, 24);
+
         WolfRank[] rankList = WolfRank.values();
         wolf.setRank(rankList[rank - 1]);
     }
@@ -223,12 +225,12 @@ public class WolfPack {
     }
 
     /**
-     * Allows to disband the pack
+     * Allows to disband the pack why removing all of its member, and resetting their pack related attributes
      */
     public void disband() {
         int originalSize = this.getWolfList().size();
         for (int i = 0; i < originalSize; i++) {
-            Wolf wolf = this.getWolfList().get(i);
+            Wolf wolf = this.getWolfList().get(0);
             // Delete pack related attributes
             wolf.setPack(null);
             wolf.setRank(null);
