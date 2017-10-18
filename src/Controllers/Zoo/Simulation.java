@@ -1,5 +1,6 @@
 package Controllers.Zoo;
 
+import Controllers.Jobs.CheckDominationFactorJob;
 import Controllers.Jobs.MakeAnimalsAgeJob;
 import Models.Enums.RandomActions;
 import Models.Factories.AnimalFactory;
@@ -85,6 +86,7 @@ public class Simulation {
             }
             this.handleNewBirths();
             this.handleAging();
+            this.handleDominationRetrograde();
         }
 
         this.setTurnNb(this.getTurnNb() + 1);
@@ -137,6 +139,15 @@ public class Simulation {
             MakeAnimalsAgeJob job = new MakeAnimalsAgeJob(this.getZoo(), this.getTurnNb());
             job.exec();
         }
+    }
+
+    /**
+     * Allows to check at each turn if a wolf has 50 or less domination, and must therefore be retrograded to a lower rank
+     * Will only retrograde if the wolf is not the only one of his sex for his rank
+     */
+    private void handleDominationRetrograde() {
+        CheckDominationFactorJob job = new CheckDominationFactorJob(this.getZoo().getEnclosureList());
+        job.exec();
     }
 
     /**
