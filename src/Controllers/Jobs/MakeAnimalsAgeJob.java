@@ -1,8 +1,12 @@
 package Controllers.Jobs;
 
 import Controllers.Zoo.Zoo;
+import Models.Animals.Animal;
+import Models.Animals.Wolf;
 import Models.Enclosures.Enclosure;
 import Models.Interfaces.Animal.AnimalInterface;
+import Views.View;
+
 
 public class MakeAnimalsAgeJob {
 
@@ -45,12 +49,26 @@ public class MakeAnimalsAgeJob {
     /**
      * Executes the job
      * Will call the getOlder method for each animal of the Zoo
-     * @param <A>
+     * If an animal reaches the age above "Old", which is basically the oldest available, he dies
      */
-    public <A extends AnimalInterface> void exec() {
-        for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
-            for (AnimalInterface animal : enclosure.getAnimals()) {
+    public void exec() {
+        for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
+            // We must proceed this way, as using a foreach on the collection, and removing an item from this collection within the foreach will create an Exception
+            for (int i = 0; i < enclosure.getNbAnimals(); i++) {
+                Animal animal = enclosure.getAnimals().get(i);
                 animal.getOlder();
+
+                if (animal.getAge() == 4) {
+                    // TODO : For now, let's just make this dying mecanism for the wolves
+                    if (animal.getSpecieName() == "Wolf") {
+                        ((Wolf)animal).getPack().remove((Wolf)animal);
+                        enclosure.remove(animal);
+                        View.displayMessage("A " + animal.getSpecieName() + " died of old age in the " + enclosure.getName() + " enclosure.\n");
+                        animal = null;
+                        // Decrease i to always pick the first of the list
+                        i--;
+                    }
+                }
             }
         }
     }

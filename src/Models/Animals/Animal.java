@@ -12,7 +12,7 @@ public class Animal implements AnimalInterface {
      * Represents the age of an animal
      * 1 = young, 2 = adult, 3 = old
      */
-    public int ageAnimal = 1;
+    public int age = 1;
 
     /**
      * Defines the turn number at which the animal copulated, allowing us to calculate the difference
@@ -24,7 +24,6 @@ public class Animal implements AnimalInterface {
     protected boolean sex; // True if male
     protected float weight;
     protected float size;
-    protected int age;
     protected int hungerIndicator;
     protected boolean sleepIndicator;
     protected int healthIndicator; // Percentage
@@ -36,14 +35,15 @@ public class Animal implements AnimalInterface {
      * @return The age of the animal
      */
     public int getAge() {
-        return this.ageAnimal;
+        return this.age;
     }
 
     /**
-     * Setter for the age of the animal
+     * Setter for the animal age
+     * @param age The new animal age. Can be 1, 2 or 3 for Young, Adult and Old. If given a greater value, the animal will die at the next turn
      */
     public void setAge(int age) {
-        if (age >= 1 && age <= 3) {
+        if (age >= 1) {
             this.age = age;
         }
     }
@@ -56,13 +56,6 @@ public class Animal implements AnimalInterface {
         this.setAge(this.getAge() + 1);
     }
 
-    /**
-     * Setter for the animal age
-     * @param ageAnimal The new animal age. Can be 1, 2 or 3 for Young, Adult and Old
-     */
-    public void setAgeAnimal(int ageAnimal) {
-        this.ageAnimal = ageAnimal;
-    }
     /**
      * Allows to randomly generate a boolean, used for the sex definition in case of a 'natural' birth
      * @return the randomly generated sex

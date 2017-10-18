@@ -54,7 +54,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.strength = this.generateStrength();
         this.weight = 50;
         this.size = 82;
-        this.age = 0;
+        this.age = 1;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
