@@ -74,20 +74,20 @@ public class WolfPack {
     }
 
     /**
-     * Allows to sort the pack by the Wolf level attribute (calculated from each wolf's other attributes : strength, impetuosity, domination level)
+     * Allows to sort the pack by the Wolf rank in its pack
      */
     public ArrayList<Wolf> insertionSort(ArrayList<Wolf> wolfPack) {
         int i, j;
-        int currentWolfLevel;
+        int currentWolfRank;
 
         for (i = 1; i < wolfPack.size(); i++) {
             // Retrieve the current wolf level
-            currentWolfLevel = wolfPack.get(i).getLevel();
+            currentWolfRank = wolfPack.get(i).getRank().getId();
             j = i - 1;
             // Second loop used for comparison between the previous entry and the wolf with the j position in the list
             while (j >= 0) {
                 // If it is superior, then the pair is correctly ordered (between themselves)
-                if (currentWolfLevel > wolfPack.get(j).getLevel()) {
+                if (currentWolfRank > wolfPack.get(j).getRank().getId()) {
                     break;
                 }
                 // If it's not, then we have to invert them
