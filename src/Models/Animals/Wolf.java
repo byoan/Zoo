@@ -399,6 +399,8 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
                 "  isInPack=" + ((this.getRank() == null) ? "Solitary" : "In a pack") + ", \n" +
                 "  rankInPack=" + ((this.getRank() == null) ? "none" : this.getRank()) + ", \n" +
                 "  dominationFactor=" + this.getDominationFactor() + ", \n" +
+                "  impetuosity=" + this.getImpetuosity() + ", \n" +
+                "  strength=" + this.getStrength() + ", \n" +
                 "  level=" + this.getLevel() + ", \n" +
                 '}';
     }
