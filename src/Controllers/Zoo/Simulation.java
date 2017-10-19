@@ -2,12 +2,14 @@ package Controllers.Zoo;
 
 import Controllers.Jobs.CheckDominationFactorJob;
 import Controllers.Jobs.MakeAnimalsAgeJob;
+import Models.Enums.AnimalTypes;
 import Models.Enums.RandomActions;
 import Models.Factories.AnimalFactory;
 import Controllers.Jobs.CheckNewBirthJob;
 import Models.Employees.Employee;
 import Models.Enclosures.Enclosure;
 import Models.Animals.*;
+import Models.Factories.EnclosureFactory;
 import Models.Interfaces.Animal.*;
 import Views.View;
 
@@ -675,36 +677,34 @@ public class Simulation {
     }
 
     /**
+     * Allows to generate a new randomly typed enclosure
+     * @return The enclosure type, as an int
+     */
+    private Enclosure generateRandomEnclosures() {
+        // Retrieve in our own array, as each call to values() creates a new array copy (performance hungry)
+        AnimalTypes[] values = AnimalTypes.values();
+        int animalTypeId = this.getRandom().nextInt(values.length);
+
+        // Retrieve the factory instance that matches the Animal type id retrieved
+        EnclosureFactory factory = EnclosureFactory.getInstance(values[animalTypeId].getId());
+        return factory.createEnclosure(true);
+    }
+
+    /**
      * Simulation init method, which basically runs the whole simulation
      */
     public void init() {
         this.setTurnNb(0);
         this.scanner = new Scanner(System.in);
         Employee employee = Employee.getInstance();
-        this.setZoo(new Zoo("My Controllers.Zoo", employee, 10));
+        this.setZoo(new Zoo("HackerMan", employee, 10));
 
-//        Enclosure<Tiger> tigerEnclosure = new Enclosure<Tiger>("Tiger Enclosure", 10, 10);
-//        Aviary<Eagle> eagleEnclosure = new Aviary<Eagle>("Eagle Enclosure", 10, 4, 4, 2);
-        Enclosure<Wolf> wolfEnclosure = new Enclosure<Wolf>("Wolf Enclosure", 10, 10);
-//        Tiger tiger = AnimalFactory.getInstance().createTiger();
-//        Tiger tiger2 = AnimalFactory.getInstance().createTiger();
-//        Eagle eagle1 = AnimalFactory.getInstance().createEagle();
-        Wolf wolf = AnimalFactory.getInstance().createWolf();
-        Wolf wolf2 = AnimalFactory.getInstance().createWolf();
-        Wolf wolf3 = AnimalFactory.getInstance().createWolf();
-        Wolf wolf4 = AnimalFactory.getInstance().createWolf();
 
-        zoo = this.getZoo();
-//        zoo.addEnclosure(tigerEnclosure);
-//        zoo.addEnclosure(eagleEnclosure);
-        zoo.addEnclosure(wolfEnclosure);
-//        zoo.getEnclosureByName("Tiger Enclosure").add(tiger);
-//        zoo.getEnclosureByName("Tiger Enclosure").add(tiger2);
-//        zoo.getEnclosureByName("Eagle Enclosure").add(eagle1);
-        zoo.getEnclosureByName("Wolf Enclosure").add(wolf);
-        zoo.getEnclosureByName("Wolf Enclosure").add(wolf2);
-        zoo.getEnclosureByName("Wolf Enclosure").add(wolf3);
-        zoo.getEnclosureByName("Wolf Enclosure").add(wolf4);
+        for (int i = 0; i < this.getZoo().getMaxNbEnclosure(); i++) {
+            Enclosure enclosure = this.generateRandomEnclosures();
+            zoo.addEnclosure(enclosure);
+        }
+
 
         // Beginning of the simulation
         View.displayMessage("\n\n====== WELCOME TO ZOO SIMULATOR 3000 ======\n\n");

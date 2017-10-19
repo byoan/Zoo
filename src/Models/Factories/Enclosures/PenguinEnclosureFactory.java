@@ -1,0 +1,80 @@
+package Models.Factories.Enclosures;
+
+import Models.Animals.Penguin;
+import Models.Enclosures.Enclosure;
+import Models.Factories.AnimalFactory;
+import Models.Factories.EnclosureFactory;
+import Views.View;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+public class PenguinEnclosureFactory extends EnclosureFactory {
+
+    /**
+     * The instance of the Factory, used by the Singleton
+     */
+    private static PenguinEnclosureFactory instance = null;
+
+    /**
+     * Enclosure number, incremented at each Enclosure creation
+     * Allows to have different enclosures name when we create several random enclosures using this Factory
+     */
+    private static int enclosureNb = 0;
+
+    /**
+     * Constructor for the PenguinEnclosureFactory
+     * Private accessibility as we do not want anyone to instantiate this class (Singleton)
+     */
+    private PenguinEnclosureFactory() {
+        super();
+    }
+
+    /**
+     * Allows to create the concrete Enclosure instance which will be returned to the object that called the Factory
+     * @param populate Whether the created enclosure should be populated with animals
+     * @return A new Penguin Enclosure
+     */
+    public Enclosure<Penguin> createEnclosure(boolean populate) {
+        enclosureNb++;
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        Enclosure<Penguin> enclosure = new Enclosure<Penguin>("Penguin Enclosure n°" + enclosureNb, random.nextInt(50, 101), 50);
+
+        if (populate) {
+            this.generateRandomPopulation(enclosure);
+        }
+        return enclosure;
+    }
+
+    /**
+     * Allows to retrieve the instance of the PenguinEnclosureFactory (Singleton)
+     * Will create a new instance on first call
+     * @return The PenguinEnclosureFactory instance
+     */
+    public static PenguinEnclosureFactory getInstance() {
+        if (PenguinEnclosureFactory.instance == null) {
+            // synchronized allows use to keep the singleton even when using multiple threads
+            synchronized(PenguinEnclosureFactory.class) {
+                if (PenguinEnclosureFactory.instance == null) {
+                    PenguinEnclosureFactory.instance = new PenguinEnclosureFactory();
+                }
+            }
+        }
+        return PenguinEnclosureFactory.instance;
+    }
+
+    /**
+     * Allows to generate animals to populate the created enclosure
+     * Will be called if the createEnclosure method of the Factory is called with the true parameter, which represents the "Do you want to populate the enclosure you are creating ?"
+     */
+    public void generateRandomPopulation(Enclosure<Penguin> enclosure) {
+        for (int i = 0; i < enclosure.getMaxAnimals() / 2; i++) {
+            AnimalFactory animalFactory = AnimalFactory.getInstance();
+            try {
+                enclosure.add(animalFactory.createPenguin());
+            } catch (Exception e) {
+                View.displayErrorMessage("An error occurred while trying to add an animal to an enclosure : " + e.getMessage());
+            }
+        }
+    }
+
+}
