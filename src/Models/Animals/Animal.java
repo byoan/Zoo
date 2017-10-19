@@ -36,7 +36,7 @@ public class Animal implements AnimalInterface {
      * @return A randomly generated number
      */
     public int randomWeight(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max+1);
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
     /**
@@ -44,7 +44,7 @@ public class Animal implements AnimalInterface {
      * @return A randomly generated number
      */
     public int randomSize(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max+1);
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
     /**

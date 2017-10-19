@@ -682,7 +682,7 @@ public class Simulation {
                 while (animal.equals(secondAnimal)) {
                     secondAnimal = this.pickRandomAnimal(enclosure);
                 }
-                if(secondAnimal instanceof Wolf) {
+                if (secondAnimal instanceof Wolf) {
                     if (((Wolf)animal).getImpetuosity() >= ((Wolf)secondAnimal).getImpetuosity() && ((Wolf) secondAnimal).getRank().getId() != 1 && !secondAnimal.getSex()) {
                         ((Wolf)animal).attemptDomination((Wolf)secondAnimal);
                     }
