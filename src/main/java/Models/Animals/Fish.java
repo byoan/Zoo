@@ -81,13 +81,13 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
      * @param turnNb The current turn number of the simulation
      */
     public boolean checkIfHatched(int turnNb) {
-        if (this.isHatched) {
+        if (this.getIsHatched()) {
             return true;
         } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
             View.displayMessage("A fish hatched !");
             this.setHatched(true);
         }
-        return this.isHatched;
+        return this.getIsHatched();
     }
 
     @Override
@@ -111,7 +111,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
         } else {
             // Man can't be pregnant
             if (this.getSex() == false) {
-                return new Fish(turnNb);
+                return AnimalFactory.getInstance().createFish(turnNb);
             } else {
                 return null;
             }

@@ -20,14 +20,18 @@ public final class AnimalFactory {
     /**
      * Allows to retrieve the instance of the AnimalFactory (Singleton)
      * Will create a new instance on first call
-     * synchronized keyword allows us to keep it a singleton even when using multiple threads
      * @return The AnimalFactory instance
      */
-    public static synchronized AnimalFactory getInstance() {
-        if (instance == null) {
-            instance = new AnimalFactory();
+    public static AnimalFactory getInstance() {
+        if (AnimalFactory.instance == null) {
+            // synchronized allows use to keep the singleton even when using multiple threads
+            synchronized(AnimalFactory.class) {
+                if (AnimalFactory.instance == null) {
+                    AnimalFactory.instance = new AnimalFactory();
+                }
+            }
         }
-        return instance;
+        return AnimalFactory.instance;
     }
 
     /**
@@ -47,11 +51,29 @@ public final class AnimalFactory {
     }
 
     /**
+     * Allows to create an Eagle
+     * Used for the copulation where the copulation turn is needed for hatching
+     * @return The newly created eagle
+     */
+    public Eagle createEagle(int copulationTurn) {
+        return new Eagle(copulationTurn);
+    }
+
+    /**
      * Allows to create a Fish
      * @return The newly created fish
      */
     public Fish createFish() {
         return new Fish();
+    }
+
+    /**
+     * Allows to create a Fish
+     * Used for the copulation where the copulation turn is needed for hatching
+     * @return The newly created fish
+     */
+    public Fish createFish(int copulationTurn) {
+        return new Fish(copulationTurn);
     }
 
     /**
@@ -63,11 +85,29 @@ public final class AnimalFactory {
     }
 
     /**
+     * Allows to create a Penguin
+     * Used for the copulation where the copulation turn is needed for hatching
+     * @return The newly created penguin
+     */
+    public Penguin createPenguin(int copulationTurn) {
+        return new Penguin(copulationTurn);
+    }
+
+    /**
      * Allows to create a Shark
      * @return The newly created shark
      */
     public Shark createShark() {
         return new Shark();
+    }
+
+    /**
+     * Allows to create a Shark
+     * Used for the copulation where the copulation turn is needed for hatching
+     * @return The newly created shark
+     */
+    public Shark createShark(int copulationTurn) {
+        return new Shark(copulationTurn);
     }
 
     /**

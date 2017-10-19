@@ -79,13 +79,13 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
      * @param turnNb The current turn number of the simulation
      */
     public boolean checkIfHatched(int turnNb) {
-        if (this.isHatched) {
+        if (this.getIsHatched()) {
             return true;
         } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
             View.displayMessage("A penguin hatched !");
             this.setHatched(true);
         }
-        return this.isHatched;
+        return this.getIsHatched();
     }
 
     @Override
@@ -109,7 +109,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         } else {
             // Man can't be pregnant
             if (this.getSex() == false) {
-                return new Penguin(turnNb);
+                return AnimalFactory.getInstance().createPenguin(turnNb);
             } else {
                 return null;
             }
