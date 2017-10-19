@@ -208,12 +208,15 @@ public class Simulation {
     private void handleRandomEventGeneration() {
         // Random events generation
         Enclosure randomEnclosure = this.pickRandomEnclosure();
-        Animal animal = this.pickRandomAnimal(randomEnclosure);
-        String randomAction = this.pickRandomAction();
+        if (randomEnclosure != null) {
+            Animal animal = this.pickRandomAnimal(randomEnclosure);
+            String randomAction = this.pickRandomAction();
 
-        if (randomEnclosure != null && animal != null) {
-            this.handleRandomAction(randomAction, animal, randomEnclosure);
+            if (animal != null) {
+                this.handleRandomAction(randomAction, animal, randomEnclosure);
+            }
         }
+
     }
 
     /**
@@ -606,18 +609,21 @@ public class Simulation {
                     while (animal.equals(secondAnimal)) {
                         secondAnimal = this.pickRandomAnimal(enclosure);
                     }
-                    animal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
-                    secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
-                    View.displayMessage("2 animals fought in the " + enclosure.getName() + " enclosure.\n");
-                    if (animal.getHealth() <= 0) {
-                        View.displayMessage("The first one died.\n");
-                        enclosure.remove(animal);
-                        animal = null;
-                    }
-                    if (secondAnimal.getHealth() <= 0) {
-                        View.displayMessage("The second one died.\n");
-                        enclosure.remove(secondAnimal);
-                        secondAnimal = null;
+                    if (secondAnimal != null) {
+                        animal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
+                        secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
+
+                        View.displayMessage("2 animals fought in the " + enclosure.getName() + " enclosure.\n");
+                        if (animal.getHealth() <= 0) {
+                            View.displayMessage("The first one died.\n");
+                            enclosure.remove(animal);
+                            animal = null;
+                        }
+                        if (secondAnimal.getHealth() <= 0) {
+                            View.displayMessage("The second one died.\n");
+                            enclosure.remove(secondAnimal);
+                            secondAnimal = null;
+                        }
                     }
                 }
                 break;
@@ -626,14 +632,14 @@ public class Simulation {
                     Animal secondAnimal = this.pickRandomAnimal(enclosure);
 
                     // Try to pick another animal until we pick one that is not the same that the first, and that has not the same sex
-                    while (secondAnimal.equals(animal) || (animal.getSex() == secondAnimal.getSex())) {
+                    while (animal.equals(secondAnimal) || (animal.getSex() == secondAnimal.getSex())) {
                         secondAnimal = this.pickRandomAnimal(enclosure);
-                        if (secondAnimal.getSex() == animal.getSex()) {
+                        if (secondAnimal != null && secondAnimal.getSex() == animal.getSex()) {
                             secondAnimal = animal;
                         }
                     }
 
-                    View.displayMessage("Some Models.Animals made some adult things in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayMessage("Some animals made some adult things in the " + enclosure.getName() + " enclosure.\n");
 
                     if (animal instanceof Oviparous) {
                         Animal newAnimal;
@@ -677,7 +683,6 @@ public class Simulation {
                 }
                 break;
             case "WOLF_ATTACK":
-                View.displayMessage(animal.toString());
                 Animal secondAnimal = this.pickRandomAnimal(enclosure);
                 while (animal.equals(secondAnimal)) {
                     secondAnimal = this.pickRandomAnimal(enclosure);

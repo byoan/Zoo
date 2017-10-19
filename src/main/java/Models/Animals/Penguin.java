@@ -22,9 +22,9 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
 
     public Penguin() {
         this.specieName = "Penguin";
-        this.sex = true;
-        this.weight = randomWeight(500, 700);
-        this.size = randomSize(37, 39);
+        this.sex = this.getRandomBoolean();;
+        this.weight = this.randomWeight(500, 700);
+        this.size = this.randomSize(37, 39);
         this.age = 1;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
@@ -35,9 +35,9 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
 
     public Penguin(int copulationTurn) {
         this.specieName = "Penguin";
-        this.sex = true;
-        this.weight = randomWeight(500, 700);
-        this.size = randomSize(37, 39);
+        this.sex = this.getRandomBoolean();;
+        this.weight = this.randomWeight(500, 700);
+        this.size = this.randomSize(37, 39);
         this.age = 1;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
