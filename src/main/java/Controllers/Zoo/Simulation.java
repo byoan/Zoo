@@ -632,9 +632,10 @@ public class Simulation {
                     Animal secondAnimal = this.pickRandomAnimal(enclosure);
 
                     // Try to pick another animal until we pick one that is not the same that the first, and that has not the same sex
-                    while (animal.equals(secondAnimal) || (animal.getSex() == secondAnimal.getSex())) {
+                    while (animal.equals(secondAnimal) || secondAnimal == null || (animal.getSex() == secondAnimal.getSex())) {
                         secondAnimal = this.pickRandomAnimal(enclosure);
-                        if (secondAnimal != null && secondAnimal.getSex() == animal.getSex()) {
+                        // If we do not get the conditions we want, we set them equals, so the checks made in the while condition will make us loop until we find a correct match
+                        if (secondAnimal == null || secondAnimal.getSex() == animal.getSex()) {
                             secondAnimal = animal;
                         }
                     }
