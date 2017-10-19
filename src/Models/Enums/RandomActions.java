@@ -8,6 +8,7 @@ public enum RandomActions {
     STOLE,
     ESCAPE,
     FIGHT,
-    COPULATE
+    COPULATE,
+    WOLF_ATTACK
 
 }
