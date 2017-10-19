@@ -728,7 +728,7 @@ public class Simulation {
 
 
         // Beginning of the simulation
-        View.displayMessage("\n\n====== WELCOME TO ZOO SIMULATOR 3000 ======\n\n");
+        View.displayWelcomeMessage();
         this.nextTurn();
     }
 }
