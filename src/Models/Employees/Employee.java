@@ -42,18 +42,14 @@ public class Employee implements EmployeeInterface {
     /**
      * Allows to retrieve the Employee instance (Singleton)
      * Will create a new one before the return on first call
+     * synchronized keyword allows us to keep it a singleton even when using multiple threads
      * @return Employee The employee instance
      */
-    public static Employee getInstance() {
-        if (Employee.instance == null) {
-            // synchronized allows use to keep the singleton even when using multiple threads
-            synchronized(Employee.class) {
-                if (Employee.instance == null) {
-                    Employee.instance = new Employee();
-                }
-            }
+    public static synchronized Employee getInstance() {
+        if (instance == null) {
+            instance = new Employee();
         }
-        return Employee.instance;
+        return instance;
     }
 
     /**

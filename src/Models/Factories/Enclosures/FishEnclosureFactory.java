@@ -49,18 +49,14 @@ public class FishEnclosureFactory extends EnclosureFactory {
     /**
      * Allows to retrieve the instance of the FishEnclosureFactory (Singleton)
      * Will create a new instance on first call
+     * synchronized keyword allows us to keep it a singleton even when using multiple threads
      * @return The FishEnclosureFactory instance
      */
-    public static FishEnclosureFactory getInstance() {
-        if (FishEnclosureFactory.instance == null) {
-            // synchronized allows use to keep the singleton even when using multiple threads
-            synchronized(FishEnclosureFactory.class) {
-                if (FishEnclosureFactory.instance == null) {
-                    FishEnclosureFactory.instance = new FishEnclosureFactory();
-                }
-            }
+    public static synchronized FishEnclosureFactory getInstance() {
+        if (instance == null) {
+            instance = new FishEnclosureFactory();
         }
-        return FishEnclosureFactory.instance;
+        return instance;
     }
 
     /**

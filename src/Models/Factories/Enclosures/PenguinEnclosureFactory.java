@@ -48,18 +48,14 @@ public class PenguinEnclosureFactory extends EnclosureFactory {
     /**
      * Allows to retrieve the instance of the PenguinEnclosureFactory (Singleton)
      * Will create a new instance on first call
+     * synchronized keyword allows us to keep it a singleton even when using multiple threads
      * @return The PenguinEnclosureFactory instance
      */
-    public static PenguinEnclosureFactory getInstance() {
-        if (PenguinEnclosureFactory.instance == null) {
-            // synchronized allows use to keep the singleton even when using multiple threads
-            synchronized(PenguinEnclosureFactory.class) {
-                if (PenguinEnclosureFactory.instance == null) {
-                    PenguinEnclosureFactory.instance = new PenguinEnclosureFactory();
-                }
-            }
+    public static synchronized PenguinEnclosureFactory getInstance() {
+        if (instance == null) {
+            instance = new PenguinEnclosureFactory();
         }
-        return PenguinEnclosureFactory.instance;
+        return instance;
     }
 
     /**

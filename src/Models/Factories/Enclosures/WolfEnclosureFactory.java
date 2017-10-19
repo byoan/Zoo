@@ -48,18 +48,14 @@ public class WolfEnclosureFactory extends EnclosureFactory {
     /**
      * Allows to retrieve the instance of the WolfEnclosureFactory (Singleton)
      * Will create a new instance on first call
+     * synchronized keyword allows us to keep it a singleton even when using multiple threads
      * @return The WolfEnclosureFactory instance
      */
-    public static WolfEnclosureFactory getInstance() {
-        if (WolfEnclosureFactory.instance == null) {
-            // synchronized allows use to keep the singleton even when using multiple threads
-            synchronized(WolfEnclosureFactory.class) {
-                if (WolfEnclosureFactory.instance == null) {
-                    WolfEnclosureFactory.instance = new WolfEnclosureFactory();
-                }
-            }
+    public static synchronized WolfEnclosureFactory getInstance() {
+        if (instance == null) {
+            instance = new WolfEnclosureFactory();
         }
-        return WolfEnclosureFactory.instance;
+        return instance;
     }
 
     /**

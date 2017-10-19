@@ -20,18 +20,14 @@ public final class AnimalFactory {
     /**
      * Allows to retrieve the instance of the AnimalFactory (Singleton)
      * Will create a new instance on first call
+     * synchronized keyword allows us to keep it a singleton even when using multiple threads
      * @return The AnimalFactory instance
      */
-    public static AnimalFactory getInstance() {
-        if (AnimalFactory.instance == null) {
-            // synchronized allows use to keep the singleton even when using multiple threads
-            synchronized(AnimalFactory.class) {
-                if (AnimalFactory.instance == null) {
-                    AnimalFactory.instance = new AnimalFactory();
-                }
-            }
+    public static synchronized AnimalFactory getInstance() {
+        if (instance == null) {
+            instance = new AnimalFactory();
         }
-        return AnimalFactory.instance;
+        return instance;
     }
 
     /**

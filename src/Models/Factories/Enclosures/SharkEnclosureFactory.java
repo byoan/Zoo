@@ -49,18 +49,14 @@ public class SharkEnclosureFactory extends EnclosureFactory {
     /**
      * Allows to retrieve the instance of the SharkEnclosureFactory (Singleton)
      * Will create a new instance on first call
+     * synchronized keyword allows us to keep it a singleton even when using multiple threads
      * @return The SharkEnclosureFactory instance
      */
-    public static SharkEnclosureFactory getInstance() {
-        if (SharkEnclosureFactory.instance == null) {
-            // synchronized allows use to keep the singleton even when using multiple threads
-            synchronized(SharkEnclosureFactory.class) {
-                if (SharkEnclosureFactory.instance == null) {
-                    SharkEnclosureFactory.instance = new SharkEnclosureFactory();
-                }
-            }
+    public static synchronized SharkEnclosureFactory getInstance() {
+        if (instance == null) {
+            instance = new SharkEnclosureFactory();
         }
-        return SharkEnclosureFactory.instance;
+        return instance;
     }
 
     /**

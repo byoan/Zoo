@@ -48,18 +48,14 @@ public class TigerEnclosureFactory extends EnclosureFactory {
     /**
      * Allows to retrieve the instance of the TigerEnclosureFactory (Singleton)
      * Will create a new instance on first call
+     * synchronized keyword allows us to keep it a singleton even when using multiple threads
      * @return The TigerEnclosureFactory instance
      */
-    public static TigerEnclosureFactory getInstance() {
-        if (TigerEnclosureFactory.instance == null) {
-            // synchronized allows use to keep the singleton even when using multiple threads
-            synchronized(TigerEnclosureFactory.class) {
-                if (TigerEnclosureFactory.instance == null) {
-                    TigerEnclosureFactory.instance = new TigerEnclosureFactory();
-                }
-            }
+    public static synchronized TigerEnclosureFactory getInstance() {
+        if (instance == null) {
+            instance = new TigerEnclosureFactory();
         }
-        return TigerEnclosureFactory.instance;
+        return instance;
     }
 
     /**
