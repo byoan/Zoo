@@ -30,4 +30,23 @@ public class View {
         System.out.println(message);
     }
 
+    public static void displayWarningMessage(String message) {
+        System.out.println("\033[31m" + message + "\033[37m");
+    }
+
+    public static void displaySuccessMessage(String message) {
+        System.out.println("\033[34m" + message + "\033[37m");
+    }
+
+    public static void displayInformationMessage(String message) {
+        System.out.println("\033[35m" + message +  "\033[37m");
+    }
+
+    public static void displayErrorMessage(String message) {
+        System.out.println("\032[33m" + message +  "\033[37m");
+    }
+
+    public static void displayWelcomeMessage() {
+        System.out.println("\n\n====== WELCOME TO ZOO SIMULATOR 3000 ======\n\n");
+    }
 }
