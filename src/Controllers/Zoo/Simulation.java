@@ -504,6 +504,12 @@ public class Simulation {
         this.zoo = zoo;
     }
 
+
+    /**
+     * Allows to pick a random enclosure from the Zoo's enclosure list
+     * @param <A> Generic type parameter, to receive an enclosure typed with an animal implementing AnimalInterface
+     * @return The randomly picked enclosure
+     */
     private <A extends AnimalInterface> Enclosure<A> pickRandomEnclosure() {
         if (this.getZoo().getEnclosureList().size() > 0) {
             int randomEnclosureId = this.getRandom().nextInt(this.getZoo().getEnclosureList().size());
@@ -512,6 +518,11 @@ public class Simulation {
         return null;
     }
 
+    /**
+     * Allows to pick a random animal in a given enclosure
+     * @param enclosure The enclosure in which we must pick an animal
+     * @return The randomly picked animal
+     */
     private Animal pickRandomAnimal(Enclosure<Animal> enclosure) {
         if (enclosure.getNbAnimals() > 0) {
             int randomAnimalId = this.getRandom().nextInt(enclosure.getNbAnimals());
@@ -520,6 +531,10 @@ public class Simulation {
         return null;
     }
 
+    /**
+     * Allows to randomly pick an action for the turn using the RandomActions enum
+     * @return The name of the random action
+     */
     private String pickRandomAction() {
         // Retrieve in our own array, as each call to values() creates a new array (performance hungry)
         RandomActions[] values = RandomActions.values();

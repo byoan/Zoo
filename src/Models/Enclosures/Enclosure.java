@@ -39,8 +39,18 @@ public class Enclosure<A extends AnimalInterface> {
      */
     private ArrayList<A> animals;
 
+    /**
+     * Represents the WolfPack present in the enclosure, if any
+     * Can only have one pack per Enclosure
+     */
     private WolfPack wolfPack;
 
+    /**
+     * Constructor for the Enclosure
+     * @param name The name of the enclosure
+     * @param surface The surface of the enclosure
+     * @param maxAnimals The maximum number of animals that the enclosure can contain
+     */
     public Enclosure(String name, int surface, int maxAnimals) {
         this.name = name;
         this.surface = surface;
