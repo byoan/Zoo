@@ -289,12 +289,12 @@ public class Animal implements AnimalInterface {
 
     @Override
     public String toString() {
-        return  "\n" +"   Animal {"+ "\n" +"       Specie: '" + this.getSpecieName() + "'  |  " + "Is in an enclosure : " + ((this.isInEnclosure()) ? "Yes" : "No")+ " \n" +
-                "       Hunger: " + this.getHunger() + "%" + "  |  " + "Currently sleeping: " + ((this.isSleeping()) ? "Yes" : "No") + "  |  " +
-                "Health: " + this.getHealth() + "%" + " \n" +
-                "       Sex: " + ((this.getSex()) ? "Male" : "Female") + "  |  " + "Weight: " + this.getWeight() + "g" + "  |  " +
-                "Size: " + this.getSize() + "cm" + "  |  " + "Age: " + ((this.getAge() == 1) ? "Young" : (this.getAge() == 2) ? "Adult" : "Old") + " \n"  +
-                "       Started pregnancy at turn: " + ((this.getCopulationTurn() != 0) ? this.getCopulationTurn() : "-") + "  |  " + "Pregnancy duration: " + this.getChildrenCreationTime() + " turns \n"
+        return  "\n" + "   Animal {"+ "\n" +"       Specie: \033[34m" + this.getSpecieName() + "\033[37m  |  " + "Is in an enclosure : " + "\033[34m" + ((this.isInEnclosure()) ? "Yes" : "No") + "\033[37m" + " \n" +
+                "       Hunger: \033[34m" + this.getHunger() + "%\033[37m" + "  |  " + "Currently sleeping: \033[34m" + ((this.isSleeping()) ? "Yes" : "No") + "\033[37m  |  " +
+                "Health: \033[34m" + this.getHealth() + "%\033[37m" + " \n" +
+                "       Sex: \033[34m" + ((this.getSex()) ? "Male" : "Female") + "\033[37m  |  " + "Weight: \033[34m" + this.getWeight() + "g\033[37m  |  " +
+                "Size: \033[34m" + this.getSize() + "cm\033[37m  |  " + "Age: \033[34m" + ((this.getAge() == 1) ? "Young" : (this.getAge() == 2) ? "Adult" : "Old") + "\033[37m \n"  +
+                "       Started pregnancy at turn: \033[34m" + ((this.getCopulationTurn() != 0) ? this.getCopulationTurn() : "-") + "\033[37m  |  " + "Pregnancy duration: \033[34m" + this.getChildrenCreationTime() + " turns\033[37m \n"
                 ;
     }
 }

@@ -382,12 +382,12 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     @Override
     public String toString() {
         return  super.toString() +
-                "\n" + "       Membership status: " + ((this.getRank() == null) ? "Solitary" : "In a pack") + "  |  " +
-                "Rank in the pack: " + ((this.getRank() == null) ? "none" : this.getRank()) + "  |  " +
-                "Level: " + this.getLevel() + "\n" +
-                "       Domination factor: " + this.getDominationFactor() + "  |  " +
-                "Impetuosity: " + this.getImpetuosity() + "%" + "  |  " +
-                "Strength: " + this.getStrength() + "\n" +"   } \n"
+                "\n" + "       Membership status: " + "\033[34m" + ((this.getRank() == null) ? "Solitary" : "In a pack") + "\033[37m" + "  |  " +
+                "Rank in the pack: " + "\033[34m" + ((this.getRank() == null) ? "none" : this.getRank()) + "\033[37m" + "  |  " +
+                "Level: " + "\033[34m" + this.getLevel() + "\033[37m" + "\n" +
+                "       Domination factor: " + "\033[34m" + this.getDominationFactor() + "\033[37m" + "  |  " +
+                "Impetuosity: " + "\033[34m" + this.getImpetuosity() + "%" + "\033[37m" + "  |  " +
+                "Strength: " + "\033[34m" + this.getStrength() + "\033[37m" + "\n" +"   } \n"
                 ;
     }
 }

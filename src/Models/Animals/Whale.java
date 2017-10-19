@@ -107,6 +107,6 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
 
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString() + "   } \n";
     }
 }

@@ -99,6 +99,6 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
 
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString() + "   } \n";
     }
 }

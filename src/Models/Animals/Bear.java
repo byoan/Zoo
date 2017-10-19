@@ -91,6 +91,6 @@ public class Bear extends Animal implements Mammal {
 
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString() + "   } \n";
     }
 }

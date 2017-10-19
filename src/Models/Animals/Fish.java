@@ -125,6 +125,6 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
 
     @Override
     public String toString() {
-        return super.toString() + "       Already hatched: " +((this.getIsHatched()) ? "Yes" : "No")  + " \n    }\n";
+        return super.toString() + "       Already hatched: \033[34m" +((this.getIsHatched()) ? "Yes" : "No")  + "\033[37m \n    }";
     }
 }
