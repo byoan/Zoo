@@ -1,4 +1,4 @@
-package UnitTests;
+package test.java;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,25 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PenguinTest {
+class TigerTest {
     @BeforeEach
     void setUp() {
     }
 
     @AfterEach
     void tearDown() {
-    }
-
-    @Test
-    void setHatched() {
-    }
-
-    @Test
-    void checkIfHatched() {
-    }
-
-    @Test
-    void getCopulationTurn() {
     }
 
     @Test
@@ -68,6 +56,14 @@ class PenguinTest {
     }
 
     @Test
+    void getCopulationTurn() {
+    }
+
+    @Test
+    void setCopulationTurn() {
+    }
+
+    @Test
     void eat() {
     }
 
@@ -96,23 +92,19 @@ class PenguinTest {
     }
 
     @Test
-    void swim() {
-    }
-
-    @Test
     void copulate() {
     }
 
     @Test
-    void lay() {
+    void checkBirth() {
     }
 
     @Test
-    void lay1() {
+    void wander() {
     }
 
     @Test
-    void fly() {
+    void birth() {
     }
 
     /**

@@ -1,4 +1,4 @@
-package UnitTests;
+package test.java;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FlyingAnimalTest {
+class MarineAnimalTest {
     @BeforeEach
     void setUp() {
     }
@@ -16,7 +16,7 @@ class FlyingAnimalTest {
     }
 
     @Test
-    void fly() {
+    void swim() {
     }
 
 }

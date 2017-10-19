@@ -1,4 +1,4 @@
-package UnitTests;
+package test.java;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WanderAnimalTest {
+class OviparousTest {
+
     @BeforeEach
     void setUp() {
     }
@@ -16,7 +17,7 @@ class WanderAnimalTest {
     }
 
     @Test
-    void wander() {
+    void lay() {
     }
 
 }
