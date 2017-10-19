@@ -5,6 +5,7 @@ import Models.Interfaces.Animal.Mammal;
 import Views.View;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Animal implements AnimalInterface {
 
@@ -29,6 +30,22 @@ public class Animal implements AnimalInterface {
     protected int healthIndicator; // Percentage
     protected int childrenCreationTime;
     protected boolean isInEnclosure = false;
+
+    /**
+     * Weight generator between min and max for each animals
+     * @return A randomly generated number
+     */
+    public int randomWeight(int min, int max){
+        return ThreadLocalRandom.current().nextInt(min, max);
+    }
+
+    /**
+     * Size generator between min and max for each animals
+     * @return A randomly generated number
+     */
+    public int randomSize(int min, int max){
+        return ThreadLocalRandom.current().nextInt(min, max);
+    }
 
     /**
      * Getter for the animal size attribute
@@ -275,7 +292,7 @@ public class Animal implements AnimalInterface {
         return  "\n" +"   Animal {"+ "\n" +"       Specie: '" + this.getSpecieName() + "'  |  " + "Is in an enclosure : " + ((this.isInEnclosure()) ? "Yes" : "No")+ " \n" +
                 "       Hunger: " + this.getHunger() + "%" + "  |  " + "Currently sleeping: " + ((this.isSleeping()) ? "Yes" : "No") + "  |  " +
                 "Health: " + this.getHealth() + "%" + " \n" +
-                "       Sex: " + ((this.getSex()) ? "Male" : "Female") + "  |  " + "Weight: " + this.getWeight() + "kg" + "  |  " +
+                "       Sex: " + ((this.getSex()) ? "Male" : "Female") + "  |  " + "Weight: " + this.getWeight() + "g" + "  |  " +
                 "Size: " + this.getSize() + "cm" + "  |  " + "Age: " + ((this.getAge() == 1) ? "Young" : (this.getAge() == 2) ? "Adult" : "Old") + " \n"  +
                 "       Started pregnancy at turn: " + ((this.getCopulationTurn() != 0) ? this.getCopulationTurn() : "-") + "  |  " + "Pregnancy duration: " + this.getChildrenCreationTime() + " turns \n"
                 ;

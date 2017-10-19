@@ -17,8 +17,8 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
     public Whale() {
         this.specieName = "Whale";
         this.sex = this.getRandomBoolean();
-        this.weight = 140000;
-        this.size = 25;
+        this.weight = super.randomWeight(20000000, 30000000);
+        this.size = super.randomSize(1300, 1600);
         this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;

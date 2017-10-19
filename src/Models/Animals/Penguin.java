@@ -7,7 +7,7 @@ import Models.Interfaces.Animal.MarineAnimal;
 import Models.Interfaces.Animal.Oviparous;
 import Views.View;
 
-public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAnimal {
+public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAnimal {
 
     /**
      * Defines the turn number at which the animal copulated, allowing us to calculate the difference
@@ -20,11 +20,11 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
      */
     private boolean isHatched;
 
-    public Pinguin() {
-        this.specieName = "Pinguin";
+    public Penguin() {
+        this.specieName = "Penguin";
         this.sex = true;
-        this.weight = 3;
-        this.size = 0.05f;
+        this.weight = super.randomWeight(500, 700);
+        this.size = super.randomSize(37, 39);
         this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
@@ -33,11 +33,11 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         this.isHatched = true;
     }
 
-    public Pinguin(int copulationTurn) {
-        this.specieName = "Pinguin";
+    public Penguin(int copulationTurn) {
+        this.specieName = "Penguin";
         this.sex = true;
-        this.weight = 3;
-        this.size = 0.5f;
+        this.weight = super.randomWeight(500, 700);
+        this.size = super.randomSize(37, 39);
         this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
@@ -46,8 +46,8 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         this.isHatched = false;
     }
 
-    public Pinguin(boolean sex, float weight, float size, int age, int copulationTurn) {
-        this.specieName = "Pinguin";
+    public Penguin(boolean sex, float weight, float size, int age, int copulationTurn) {
+        this.specieName = "Penguin";
         this.sex = sex;
         this.weight = weight;
         this.size = size;
@@ -82,7 +82,7 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         if (this.isHatched) {
             return true;
         } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
-            View.displayMessage("A pinguin hatched !");
+            View.displayMessage("A penguin hatched !");
             this.setHatched(true);
         }
         return this.isHatched;
@@ -90,26 +90,26 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
 
     @Override
     public void scream() {
-        View.displayMessage("A pinguin is screaming");
+        View.displayMessage("A penguin is screaming");
     }
 
     @Override
     public void swim() {
-        View.displayMessage("A pinguin is swimming");
+        View.displayMessage("A penguin is swimming");
     }
 
     /**
      * Performs a copulation between the current animal instance and the given Animal (which must be the same)
-     * @param pinguin The animal instance that represents the male
+     * @param penguin The animal instance that represents the male
      */
-    public <A extends AnimalInterface> Animal copulate(A pinguin, int turnNb) {
+    public <A extends AnimalInterface> Animal copulate(A penguin, int turnNb) {
         // Same sex can't copulate
-        if (pinguin.getSex() == this.getSex()) {
+        if (penguin.getSex() == this.getSex()) {
             return null;
         } else {
             // Man can't be pregnant
             if (this.getSex() == false) {
-                return new Pinguin(turnNb);
+                return new Penguin(turnNb);
             } else {
                 return null;
             }
@@ -117,13 +117,13 @@ public class Pinguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     }
 
     @Override
-    public Pinguin lay() {
-        return AnimalFactory.getInstance().createPinguin();
+    public Penguin lay() {
+        return AnimalFactory.getInstance().createPenguin();
     }
 
     @Override
     public void fly() {
-        View.displayMessage("A pinguin is flying");
+        View.displayMessage("A penguin is flying");
     }
 
     @Override

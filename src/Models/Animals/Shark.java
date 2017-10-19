@@ -22,8 +22,8 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     public Shark() {
         this.specieName = "Shark";
         this.sex = true;
-        this.weight = 907;
-        this.size = 3.5f;
+        this.weight = super.randomWeight(680000, 1100000);
+        this.size = super.randomWeight(3, 6);
         this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
@@ -36,8 +36,8 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     public Shark(int copulationTurn) {
         this.specieName = "Shark";
         this.sex = true;
-        this.weight = 907;
-        this.size = 3.5f;
+        this.weight = super.randomWeight(680000, 1100000);
+        this.size = super.randomWeight(3, 6);
         this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;

@@ -59,11 +59,11 @@ public final class AnimalFactory {
     }
 
     /**
-     * Allows to create a Pinguin
-     * @return The newly created pinguin
+     * Allows to create a Penguin
+     * @return The newly created penguin
      */
-    public Pinguin createPinguin() {
-        return new Pinguin();
+    public Penguin createPenguin() {
+        return new Penguin();
     }
 
     /**
