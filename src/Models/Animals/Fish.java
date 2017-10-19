@@ -22,9 +22,9 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     public Fish() {
         this.specieName = "Fish";
         this.sex = true;
-        this.weight = super.randomWeight(100, 2500);
-        this.size = super.randomSize(10, 15);
-        this.age = 0;
+        this.weight = randomWeight(100, 2500);
+        this.size = randomSize(10, 15);
+        this.age = 1;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
@@ -36,8 +36,8 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     public Fish(int copulationTurn) {
         this.specieName = "Fish";
         this.sex = true;
-        this.weight = super.randomWeight(100, 2500);
-        this.size = super.randomSize(10, 15);
+        this.weight = randomWeight(100, 2500);
+        this.size = randomSize(10, 15);
         this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;

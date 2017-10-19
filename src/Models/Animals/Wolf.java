@@ -53,8 +53,8 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.specieName = "Wolf";
         this.sex = this.getRandomBoolean();
         this.strength = this.generateStrength();
-        this.weight = super.randomWeight(16, 50);
-        this.size = super.randomSize(66, 81);
+        this.weight = randomWeight(16, 50);
+        this.size = randomSize(66, 81);
         this.age = 1;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
@@ -111,7 +111,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     /**
      * Allows to generate the wolf level attribute, based on its impetuosity, strength and domination level
-        return ThreadLocalRandom.current().nextInt(1, 100);
+        return ThreadLocalRandom.current().nextInt(1, 101);
      */
     public void generateWolfLevel() {
         int bonusFromAge = 0;
@@ -337,7 +337,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     private int generateStrength()
     {
-        return ThreadLocalRandom.current().nextInt(1, 100);
+        return ThreadLocalRandom.current().nextInt(1, 101);
     }
 
     /**
@@ -346,7 +346,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     private int generateImpetuosity()
     {
-        return ThreadLocalRandom.current().nextInt(1, 100);
+        return ThreadLocalRandom.current().nextInt(1, 101);
     }
 
     /**

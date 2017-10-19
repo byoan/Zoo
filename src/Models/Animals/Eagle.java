@@ -22,9 +22,9 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     public Eagle() {
         this.specieName = "Eagle";
         this.sex = this.getRandomBoolean();
-        this.weight = super.randomWeight(3000, 5000);
-        this.size = super.randomSize(70, 84);
-        this.age = 0;
+        this.weight = randomWeight(3000, 5000);
+        this.size = randomSize(70, 84);
+        this.age = 1;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
@@ -36,8 +36,8 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     public Eagle(int copulationTurn) {
         this.specieName = "Eagle";
         this.sex = this.getRandomBoolean();
-        this.weight = super.randomWeight(3000, 5000);
-        this.size = super.randomSize(70, 84);
+        this.weight = randomWeight(3000, 5000);
+        this.size = randomSize(70, 84);
         this.age = 0;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;

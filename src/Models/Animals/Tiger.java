@@ -17,9 +17,9 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
     public Tiger() {
         this.specieName = "Tiger";
         this.sex = this.getRandomBoolean();
-        this.weight = super.randomWeight(65000, 310000);
-        this.size = super.randomSize(70, 120);
-        this.age = 0;
+        this.weight = randomWeight(65000, 310000);
+        this.size = randomSize(70, 120);
+        this.age = 1;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;

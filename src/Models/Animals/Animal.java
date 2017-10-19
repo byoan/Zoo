@@ -35,16 +35,16 @@ public class Animal implements AnimalInterface {
      * Weight generator between min and max for each animals
      * @return A randomly generated number
      */
-    public int randomWeight(int min, int max){
-        return ThreadLocalRandom.current().nextInt(min, max);
+    public int randomWeight(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max+1);
     }
 
     /**
      * Size generator between min and max for each animals
      * @return A randomly generated number
      */
-    public int randomSize(int min, int max){
-        return ThreadLocalRandom.current().nextInt(min, max);
+    public int randomSize(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max+1);
     }
 
     /**
