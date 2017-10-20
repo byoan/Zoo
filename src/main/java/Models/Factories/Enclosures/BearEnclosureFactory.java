@@ -19,7 +19,7 @@ public class BearEnclosureFactory extends EnclosureFactory {
      * Enclosure number, incremented at each Enclosure creation
      * Allows to have different enclosures name when we create several random enclosures using this Factory
      */
-    private static int enclosureNb = 0;
+    protected static int enclosureNb = 0;
 
     /**
      * Constructor for the EnclosureFactory

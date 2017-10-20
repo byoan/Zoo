@@ -76,7 +76,7 @@ public class Simulation {
      * Returns the current turn number
      * @return int The turn number
      */
-    private int getTurnNb() {
+    protected int getTurnNb() {
         return this.turnNb;
     }
 
@@ -512,7 +512,7 @@ public class Simulation {
      * Returns our Controllers.Zoo instance
      * @return A Controllers.Zoo instance
      */
-    private Zoo getZoo() {
+    protected Zoo getZoo() {
         return this.zoo;
     }
 
