@@ -1,9 +1,9 @@
-package Controllers.Jobs;
+package controllers.jobs;
 
-import Models.Enclosures.Enclosure;
-import Models.Animals.Animal;
-import Models.Interfaces.Animal.Mammal;
-import Models.Interfaces.Animal.Oviparous;
+import models.enclosures.Enclosure;
+import models.animals.Animal;
+import models.interfaces.animal.Mammal;
+import models.interfaces.animal.Oviparous;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class CheckNewBirthJob {
 
     /**
      * Getter for the list of enclosure to check
-     * Will most likely represent the list of enclosures of the Zoo
+     * Will most likely represent the list of enclosures of the zoo
      * @return ArrayList<Enclosure> The enclosure list that the job received
      */
     public ArrayList<Enclosure> getEnclosureList() {
@@ -37,7 +37,7 @@ public class CheckNewBirthJob {
 
     /**
      * Getter for the newly born animals collections (born this turn)
-     * @return ArrayList<Animal> that were born this turn
+     * @return ArrayList<animal> that were born this turn
      */
     public ArrayList<Animal> getNewBirths() {
         return this.newBirths;

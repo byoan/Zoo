@@ -1,9 +1,9 @@
-package Controllers.Jobs;
+package controllers.jobs;
 
-import Models.Animals.Packs.WolfPack;
-import Models.Animals.Wolf;
-import Models.Enclosures.Enclosure;
-import Models.Enums.WolfRank;
+import models.animals.packs.WolfPack;
+import models.animals.Wolf;
+import models.enclosures.Enclosure;
+import models.enums.WolfRank;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ public class CheckDominationFactorJob {
     }
 
     /**
-     * Getter for the Zoo enclosures list received during construction
+     * Getter for the zoo enclosures list received during construction
      * @return The enclosures list
      */
     public ArrayList<Enclosure> getEnclosures() {

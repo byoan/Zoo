@@ -1,43 +1,43 @@
-package Controllers.Zoo;
+package controllers.zoo;
 
-import Models.Employees.Employee;
-import Models.Enclosures.Enclosure;
-import Models.Exceptions.Zoo.CantFindEnclosureByNameException;
-import Models.Exceptions.Zoo.EmptyZooException;
-import Models.Exceptions.Zoo.EnclosureNotInZooException;
-import Models.Exceptions.Zoo.FullZooException;
-import Models.Interfaces.Animal.AnimalInterface;
-import Views.View;
+import models.employees.Employee;
+import models.enclosures.Enclosure;
+import models.exceptions.zoo.CantFindEnclosureByNameException;
+import models.exceptions.zoo.EmptyZooException;
+import models.exceptions.zoo.EnclosureNotInZooException;
+import models.exceptions.zoo.FullZooException;
+import models.interfaces.animal.AnimalInterface;
+import views.View;
 
 import java.util.ArrayList;
 
 public class Zoo {
 
     /**
-     * Represents the name of the Controllers.Zoo
+     * Represents the name of the controllers.zoo
      */
     private String name;
 
     /**
-     * Represents the Employee instance of the Controllers.Zoo
+     * Represents the employee instance of the controllers.zoo
      */
     private Employee employee;
 
     /**
-     * Represents the maximum number of enclosure that this Controllers.Zoo can contain
+     * Represents the maximum number of enclosure that this controllers.zoo can contain
      */
     private int maxNbEnclosure;
 
     /**
-     * Represents all the enclosures contained by this Controllers.Zoo
+     * Represents all the enclosures contained by this controllers.zoo
      */
     private ArrayList<Enclosure> enclosureList;
 
     /**
-     * Constructor for the Controllers.Zoo class
-     * @param name The name of our Controllers.Zoo
-     * @param employee An employee instance which represents our unique employee of the Controllers.Zoo
-     * @param maxNbEnclosure The max number of enclosure that the Controllers.Zoo can contain
+     * Constructor for the controllers.zoo class
+     * @param name The name of our controllers.zoo
+     * @param employee An employee instance which represents our unique employee of the controllers.zoo
+     * @param maxNbEnclosure The max number of enclosure that the controllers.zoo can contain
      */
     public Zoo(String name, Employee employee, int maxNbEnclosure) {
         this.name = name;
@@ -47,31 +47,31 @@ public class Zoo {
     }
 
     /**
-     * Getter for our Controllers.Zoo name
-     * @return The Controllers.Zoo name attribute
+     * Getter for our controllers.zoo name
+     * @return The controllers.zoo name attribute
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * Setter for the Controllers.Zoo name
-     * @param name The new name to give to the Controllers.Zoo
+     * Setter for the controllers.zoo name
+     * @param name The new name to give to the controllers.zoo
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Getter for our Employee of the Zoo
-     * @return Employee The Employee attribute of the Zoo class
+     * Getter for our employee of the zoo
+     * @return employee The employee attribute of the zoo class
      */
     public Employee getEmployee() {
         return this.employee;
     }
 
     /**
-     * Getter for the maximum number of enclosure that the Controllers.Zoo can contain
+     * Getter for the maximum number of enclosure that the controllers.zoo can contain
      * @return int The attribute representing maximum number of enclosure that can be contained
      */
     public int getMaxNbEnclosure() {
@@ -79,7 +79,7 @@ public class Zoo {
     }
 
     /**
-     * Setter for the maximum number of enclosure that the Controllers.Zoo can contain
+     * Setter for the maximum number of enclosure that the controllers.zoo can contain
      * @param maxNbEnclosure The new maximum number of enclosures
      */
     public void setMaxNbEnclosure(int maxNbEnclosure) {
@@ -87,15 +87,15 @@ public class Zoo {
     }
 
     /**
-     * Getter for the enclosures contained by the Zoo
-     * @return An ArrayList of Enclosures
+     * Getter for the enclosures contained by the zoo
+     * @return An ArrayList of enclosures
      */
     public ArrayList<Enclosure> getEnclosureList() {
         return this.enclosureList;
     }
 
     /**
-     * Setter for the enclosure list of the Controllers.Zoo
+     * Setter for the enclosure list of the controllers.zoo
      * @param enclosureList The new enclosures list
      */
     public void setEnclosureList(ArrayList<Enclosure> enclosureList) {
@@ -103,8 +103,8 @@ public class Zoo {
     }
 
     /**
-     * Allows to add a new Enclosure to the Controllers.Zoo
-     * Will check if there is enough size in the Controllers.Zoo before proceeding
+     * Allows to add a new Enclosure to the controllers.zoo
+     * Will check if there is enough size in the controllers.zoo before proceeding
      * @param enclosure The Enclosure to add
      * @param <A> Generic type that can be used in the method
      */
@@ -123,8 +123,8 @@ public class Zoo {
     }
 
     /**
-     * Allows to remove an Enclosure from the Controllers.Zoo
-     * Will check if the Enclosure is in the Controllers.Zoo before proceeding to the removal
+     * Allows to remove an Enclosure from the controllers.zoo
+     * Will check if the Enclosure is in the controllers.zoo before proceeding to the removal
      * @param enclosure The Enclosure to remove
      */
     public void removeEnclosure(Enclosure<AnimalInterface> enclosure) {
@@ -142,7 +142,7 @@ public class Zoo {
     }
 
     /**
-     * Allows to retrieve the first Enclosure instance from our Controllers.Zoo's enclosures list that matches the given name
+     * Allows to retrieve the first Enclosure instance from our controllers.zoo's enclosures list that matches the given name
      * @param enclosureName The name of the searched enclosure
      * @return mixed The first Enclosure instance that matches this name, or null if there isn't any match
      */
@@ -157,7 +157,7 @@ public class Zoo {
                 // In case we did not returned any enclosure that matched the given name
                 throw new CantFindEnclosureByNameException(enclosureName);
             } else {
-                // If the size is equals to 0, the Zoo has no enclosures to search in
+                // If the size is equals to 0, the zoo has no enclosures to search in
                 throw new EmptyZooException(this);
             }
         } catch (CantFindEnclosureByNameException e) {
@@ -165,15 +165,15 @@ public class Zoo {
         } catch (EmptyZooException e) {
             View.displayErrorMessage(e.getMessage());
         } catch (Exception e) {
-            View.displayErrorMessage("An error occurred while trying to search the enclosure named " + enclosureName + " in the Zoo");
+            View.displayErrorMessage("An error occurred while trying to search the enclosure named " + enclosureName + " in the zoo");
         }
         return null;
     }
 
     /**
-     * Getter for the current number of animals that are in the Zoo
+     * Getter for the current number of animals that are in the zoo
      * Will iterate over the enclosures list to retrieve each enclosure's number of animals
-     * @return The total number of animals in the Zoo
+     * @return The total number of animals in the zoo
      */
     public int getNbAnimalsInZoo() {
         int nbAnimals = 0;
@@ -184,7 +184,7 @@ public class Zoo {
     }
 
     /**
-     * Allows to display all the characteristics of each animal in the Zoo
+     * Allows to display all the characteristics of each animal in the zoo
      */
     public void displayAnimalsFromAllEnclosures() {
         for (Enclosure enclosure : this.getEnclosureList()) {

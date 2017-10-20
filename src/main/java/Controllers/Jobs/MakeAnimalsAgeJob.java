@@ -1,16 +1,16 @@
-package Controllers.Jobs;
+package controllers.jobs;
 
-import Controllers.Zoo.Zoo;
-import Models.Animals.Animal;
-import Models.Animals.Wolf;
-import Models.Enclosures.Enclosure;
-import Views.View;
+import controllers.zoo.Zoo;
+import models.animals.Animal;
+import models.animals.Wolf;
+import models.enclosures.Enclosure;
+import views.View;
 
 
 public class MakeAnimalsAgeJob {
 
     /**
-     * The Zoo instance to manipulate in the Job
+     * The zoo instance to manipulate in the Job
      */
     private Zoo zoo;
 
@@ -30,8 +30,8 @@ public class MakeAnimalsAgeJob {
     }
 
     /**
-     * Getter for the Zoo instance passed during the Job construction
-     * @return The Zoo instance
+     * Getter for the zoo instance passed during the Job construction
+     * @return The zoo instance
      */
     public Zoo getZoo() {
         return this.zoo;
@@ -47,7 +47,7 @@ public class MakeAnimalsAgeJob {
 
     /**
      * Executes the job
-     * Will call the getOlder method for each animal of the Zoo
+     * Will call the getOlder method for each animal of the zoo
      * If an animal reaches the age above "Old", which is basically the oldest available, he dies
      */
     public void exec() {

@@ -1,16 +1,16 @@
-package Controllers.Zoo;
+package controllers.zoo;
 
-import Controllers.Jobs.CheckDominationFactorJob;
-import Controllers.Jobs.MakeAnimalsAgeJob;
-import Models.Enums.AnimalTypes;
-import Models.Enums.RandomActions;
-import Controllers.Jobs.CheckNewBirthJob;
-import Models.Employees.Employee;
-import Models.Enclosures.Enclosure;
-import Models.Animals.*;
-import Models.Factories.EnclosureFactory;
-import Models.Interfaces.Animal.*;
-import Views.View;
+import controllers.jobs.CheckDominationFactorJob;
+import controllers.jobs.MakeAnimalsAgeJob;
+import models.enums.AnimalTypes;
+import models.enums.RandomActions;
+import controllers.jobs.CheckNewBirthJob;
+import models.employees.Employee;
+import models.enclosures.Enclosure;
+import models.animals.*;
+import models.factories.EnclosureFactory;
+import models.interfaces.animal.*;
+import views.View;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Simulation {
 
     /**
-     * Represents the Controllers.Zoo instance
+     * Represents the controllers.zoo instance
      */
     private Zoo zoo;
 
@@ -40,7 +40,7 @@ public class Simulation {
 
     /**
      * Constructor for the Simulation
-     * Will initiate turn number, the scanner class for user input, get an Employee instance, assign a new Zoo to the simulation, and generate some population to start with
+     * Will initiate turn number, the scanner class for user input, get an employee instance, assign a new zoo to the simulation, and generate some population to start with
      */
     public Simulation() {
         this.setTurnNb(0);
@@ -64,8 +64,8 @@ public class Simulation {
     }
 
     /**
-     * Returns the employee instance of the Zoo
-     * @return Employee The employee instance of the Zoo
+     * Returns the employee instance of the zoo
+     * @return employee The employee instance of the zoo
      */
     private Employee getEmployee() {
         return this.getZoo().getEmployee();
@@ -241,11 +241,11 @@ public class Simulation {
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             enclosure.deteriorate();
         }
-        View.displayWarningMessage("Enclosures are deteriorated. You should clean them.\n");
+        View.displayWarningMessage("enclosures are deteriorated. You should clean them.\n");
     }
 
     /**
-     * This method allows to handle all the action that take place during this turn (from the Employee side)
+     * This method allows to handle all the action that take place during this turn (from the employee side)
      */
     private void handleTurn() {
         View.displayPickAction();
@@ -296,14 +296,14 @@ public class Simulation {
     }
 
     /**
-     * Allows to display the current number of animals in the Zoo
+     * Allows to display the current number of animals in the zoo
      */
     private void handleDisplayCurrentNbAnimalsInZoo() {
         View.displayInformationMessage("Current number of animals in the zoo: " + this.getZoo().getNbAnimalsInZoo());
     }
 
     /**
-     * Allows to display all the animals that are currently in the Zoo
+     * Allows to display all the animals that are currently in the zoo
      */
     private void handleDisplayAllAnimalsInZoo() {
         View.displayInformationMessage("Here are all the animals currently in the zoo:\n");
@@ -461,7 +461,7 @@ public class Simulation {
             View.displayConsoleMessage("Inspecting the enclosure n°" + action + ":\n");
             View.displayMessage(this.getEmployee().inspectEnclosure(this.getZoo().getEnclosureList().get(action - 1)));
         } else {
-            View.displayInformationMessage("No enclosures are currently in the Zoo.\n");
+            View.displayInformationMessage("No enclosures are currently in the zoo.\n");
             this.handleTurn();
             return;
         }
@@ -500,23 +500,23 @@ public class Simulation {
             View.displayConsoleMessage("Cleaning the enclosure n°" + action + " ...");
             this.getEmployee().cleanEnclosure(this.getZoo().getEnclosureList().get(action - 1));
         } else {
-            View.displayConsoleMessage("No enclosures are currently in the Zoo.\n");
+            View.displayConsoleMessage("No enclosures are currently in the zoo.\n");
             this.handleTurn();
             return;
         }
     }
 
     /**
-     * Returns our Controllers.Zoo instance
-     * @return A Controllers.Zoo instance
+     * Returns our controllers.zoo instance
+     * @return A controllers.zoo instance
      */
     protected Zoo getZoo() {
         return this.zoo;
     }
 
     /**
-     * Setter for our Controllers.Zoo attribute
-     * @param zoo A Controllers.Zoo instance
+     * Setter for our controllers.zoo attribute
+     * @param zoo A controllers.zoo instance
      */
     private void setZoo(Zoo zoo) {
         this.zoo = zoo;
@@ -524,7 +524,7 @@ public class Simulation {
 
 
     /**
-     * Allows to pick a random enclosure from the Zoo's enclosure list
+     * Allows to pick a random enclosure from the zoo's enclosure list
      * @param <A> Generic type parameter, to receive an enclosure typed with an animal implementing AnimalInterface
      * @return The randomly picked enclosure
      */
@@ -679,7 +679,7 @@ public class Simulation {
                             }
                         }
 
-                        // If there is enough space in the parent enclosure, put the new animal in it. Else, ask the Employee
+                        // If there is enough space in the parent enclosure, put the new animal in it. Else, ask the employee
                         if (enclosure.getNbAnimals() < enclosure.getMaxAnimals()) {
                             enclosure.add(newAnimal);
                         } else {
@@ -722,7 +722,7 @@ public class Simulation {
         AnimalTypes[] values = AnimalTypes.values();
         int animalTypeId = this.getRandom().nextInt(values.length);
 
-        // Retrieve the factory instance that matches the Animal type id retrieved
+        // Retrieve the factory instance that matches the animal type id retrieved
         EnclosureFactory factory = EnclosureFactory.getInstance(values[animalTypeId].getId());
         return factory.createEnclosure(true);
     }
