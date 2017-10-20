@@ -57,15 +57,12 @@ public class MakeAnimalsAgeJob {
                 Animal animal = enclosure.getAnimals().get(i);
                 animal.getOlder();
 
-                if (animal.getAge() == 4) {
-                    if (animal.getSpecieName() == "Wolf") {
-                        ((Wolf)animal).getPack().remove((Wolf)animal);
-                        enclosure.remove(animal);
-                        View.displayMessage("A " + animal.getSpecieName() + " died of old age in the " + enclosure.getName() + " enclosure.\n");
-                        animal = null;
-                        // Decrease i to always pick the first of the list
-                        i--;
-                    }
+                if (animal.getAge() == 4 && animal.getSpecieName() == "Wolf") {
+                    ((Wolf)animal).getPack().remove((Wolf)animal);
+                    enclosure.remove(animal);
+                    View.displayMessage("A " + animal.getSpecieName() + " died of old age in the " + enclosure.getName() + " enclosure.\n");
+                    // Decrease i to always pick the first of the list
+                    i--;
                 }
             }
         }

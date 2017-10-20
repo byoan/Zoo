@@ -4,7 +4,6 @@ import Controllers.Jobs.CheckDominationFactorJob;
 import Controllers.Jobs.MakeAnimalsAgeJob;
 import Models.Enums.AnimalTypes;
 import Models.Enums.RandomActions;
-import Models.Factories.AnimalFactory;
 import Controllers.Jobs.CheckNewBirthJob;
 import Models.Employees.Employee;
 import Models.Enclosures.Enclosure;
@@ -179,7 +178,7 @@ public class Simulation {
         // Retrieve result from exec() method
         ArrayList<Animal> newBirths =  checkNewBirthJob.getNewBirths();
 
-        if (newBirths.size() > 0) {
+        if (!newBirths.isEmpty()) {
             for (Animal animal : newBirths) {
                 // Make the employee choose an enclosure for the newly born animal
                 this.displayEnclosureListForNewBirth(animal);
@@ -209,7 +208,6 @@ public class Simulation {
                     chosenEnclosure.add(animal);
                     View.displayMessage("Adding the new " + animal.getSpecieName() + " to the " + chosenEnclosure.getName() + " enclosure.\n");
                     correctAnswer = true;
-                    break;
                 } else {
                     View.displayMessage("This enclosure is not available. Please chose another one:\n");
                 }
@@ -575,21 +573,21 @@ public class Simulation {
                 if (animal.getHunger() <= 0) {
                     enclosure.remove(animal);
                     View.displayMessage("A " + animal.getSpecieName() + " starved to death in the " + enclosure.getName() + " enclosure.\n");
-                    animal = null;
                 } else {
                     View.displayMessage("A " + animal.getSpecieName() + " is hungry in the " + enclosure.getName() + " enclosure.\n");
                 }
                 break;
+
             case "DECREASE_LIFE":
                 animal.setHealth(animal.getHealth() - 80);
                 if (animal.getHealth() <= 0) {
                     enclosure.remove(animal);
                     View.displayMessage("A " + animal.getSpecieName() + " died in the " + enclosure.getName() + " enclosure.\n ");
-                    animal = null;
                 } else {
                     View.displayMessage("A " + animal.getSpecieName() + " is hurt/sick in the " + enclosure.getName() + " enclosure.\n");
                 }
                 break;
+
             case "SLEEP":
                 if (animal.isSleeping()) {
                     View.displayMessage("A " + animal.getSpecieName() + " woke up in the " + enclosure.getName() + " enclosure.\n");
@@ -599,11 +597,12 @@ public class Simulation {
                     animal.sleep();
                 }
                 break;
+
             case "STOLE":
                 enclosure.remove(animal);
                 View.displayMessage("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + " enclosure.\n");
-                animal = null;
                 break;
+
             case "ESCAPE":
                 if (animal instanceof MarineAnimal) {
                     // Unless a whale has wings, it won't escape until chickens have golden teeth
@@ -612,14 +611,13 @@ public class Simulation {
                     if (enclosure.getCleanliness() < 1) {
                         enclosure.remove(animal);
                         View.displayMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
-                        animal = null;
                     }
                     break;
                 }
                 enclosure.remove(animal);
                 View.displayMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
-                animal = null;
                 break;
+
             case "FIGHT":
                 if (enclosure.getNbAnimals() > 2) {
                     Animal secondAnimal = this.pickRandomAnimal(enclosure);
@@ -634,16 +632,15 @@ public class Simulation {
                         if (animal.getHealth() <= 0) {
                             View.displayMessage("The first one died.\n");
                             enclosure.remove(animal);
-                            animal = null;
                         }
                         if (secondAnimal.getHealth() <= 0) {
                             View.displayMessage("The second one died.\n");
                             enclosure.remove(secondAnimal);
-                            secondAnimal = null;
                         }
                     }
                 }
                 break;
+
             case "COPULATE":
                 if (enclosure.getNbAnimals() >= 2 && this.hasAtLeastMaleAndFemale(enclosure)) {
                     Animal secondAnimal = this.pickRandomAnimal(enclosure);
@@ -700,16 +697,18 @@ public class Simulation {
                     View.displayMessage("No copulation possible in the " + enclosure.getName() + " enclosure, as there is not enough male/female\n");
                 }
                 break;
+
             case "WOLF_ATTACK":
                 Animal secondAnimal = this.pickRandomAnimal(enclosure);
                 while (animal.equals(secondAnimal)) {
                     secondAnimal = this.pickRandomAnimal(enclosure);
                 }
-                if (secondAnimal instanceof Wolf) {
-                    if (((Wolf)animal).getImpetuosity() >= ((Wolf)secondAnimal).getImpetuosity() && ((Wolf) secondAnimal).getRank().getId() != 1 && !secondAnimal.getSex()) {
-                        ((Wolf)animal).attemptDomination((Wolf)secondAnimal);
-                    }
+                if (secondAnimal instanceof Wolf && ((Wolf)animal).getImpetuosity() >= ((Wolf)secondAnimal).getImpetuosity() && ((Wolf) secondAnimal).getRank().getId() != 1 && !secondAnimal.getSex()) {
+                    ((Wolf)animal).attemptDomination((Wolf)secondAnimal);
                 }
+                break;
+
+            default:
                 break;
         }
     }
