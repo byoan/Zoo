@@ -40,6 +40,23 @@ public class Simulation {
     ThreadLocalRandom random = ThreadLocalRandom.current();
 
     /**
+     * Constructor for the Simulation
+     * Will initiate turn number, the scanner class for user input, get an Employee instance, assign a new Zoo to the simulation, and generate some population to start with
+     */
+    public Simulation() {
+        this.setTurnNb(0);
+        this.scanner = new Scanner(System.in);
+        Employee employee = Employee.getInstance();
+        this.setZoo(new Zoo("HackerMan", employee, 10));
+
+
+        for (int i = 0; i < this.getZoo().getMaxNbEnclosure(); i++) {
+            Enclosure enclosure = this.generateRandomEnclosures();
+            zoo.addEnclosure(enclosure);
+        }
+    }
+
+    /**
      * Getter for the ThreadLocalRandom instance of the Simulation
      * @return The ThreadLocalRandom instance of the simulation
      */
@@ -715,18 +732,6 @@ public class Simulation {
      * Simulation init method, which basically runs the whole simulation
      */
     public void init() {
-        this.setTurnNb(0);
-        this.scanner = new Scanner(System.in);
-        Employee employee = Employee.getInstance();
-        this.setZoo(new Zoo("HackerMan", employee, 10));
-
-
-        for (int i = 0; i < this.getZoo().getMaxNbEnclosure(); i++) {
-            Enclosure enclosure = this.generateRandomEnclosures();
-            zoo.addEnclosure(enclosure);
-        }
-
-
         // Beginning of the simulation
         View.displayWelcomeMessage();
         this.nextTurn();
