@@ -74,7 +74,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     public boolean checkIfHatched(int turnNb) {
         if (this.getIsHatched()) {
             return true;
-        } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
+        } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
             View.displayMessage("An eagle hatched !");
             this.setHatched(true);
         }
