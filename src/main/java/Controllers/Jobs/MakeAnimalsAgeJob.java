@@ -4,7 +4,6 @@ import Controllers.Zoo.Zoo;
 import Models.Animals.Animal;
 import Models.Animals.Wolf;
 import Models.Enclosures.Enclosure;
-import Models.Interfaces.Animal.AnimalInterface;
 import Views.View;
 
 
