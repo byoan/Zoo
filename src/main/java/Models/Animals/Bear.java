@@ -18,7 +18,7 @@ public class Bear extends Animal implements Mammal {
         this.sex = this.getRandomBoolean();
         this.weight = this.randomWeight(80000, 600000);
         this.size = this.randomSize(70, 150);
-        this.age = 3;
+        this.age = 1;
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;
