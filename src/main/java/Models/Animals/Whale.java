@@ -38,7 +38,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
      */
     @Override
     public void scream() {
-        View.displayMessage("I'm screaming");
+        View.displayAnimalActionMessage("I'm screaming");
     }
 
     /**
@@ -46,7 +46,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
      */
     @Override
     public void swim() {
-        View.displayMessage("A whale is swimming");
+        View.displayAnimalActionMessage("A whale is swimming");
     }
 
     /**
@@ -64,7 +64,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
                     throw new AnimalAlreadyPregnantException(this);
                 }
             } catch (AnimalAlreadyPregnantException e) {
-                View.displayMessage(e.getMessage());
+                View.displayErrorMessage(e.getMessage());
             }
         }
     }
@@ -87,7 +87,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
      * Generic method who say if animal wandering or not
      */
     public void wander() {
-        View.displayMessage("I'm wandering...");
+        View.displayAnimalActionMessage("I'm wandering...");
     }
 
     /**

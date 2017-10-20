@@ -170,7 +170,7 @@ public class Employee implements EmployeeInterface {
                 originEnclosure.getAnimals().remove(animalToTransfer);
                 targetEnclosure.getAnimals().add(animalToTransfer);
             } catch(Exception e) {
-                View.displayMessage("The following error was thrown while trying to transfer an animal : " + e.getMessage());
+                View.displayErrorMessage("The following error was thrown while trying to transfer an animal : " + e.getMessage());
             }
         }
     }

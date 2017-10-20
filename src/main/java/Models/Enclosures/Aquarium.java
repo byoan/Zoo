@@ -100,29 +100,29 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      * Uses a generic name to ease its call within the Simulation
      */
     public void cleanEnclosure() {
-        View.displayMessage("The water level is worth " + this.getCurrentWaterLevel());
+        View.displayInformationMessage("The water level is worth " + this.getCurrentWaterLevel());
         if (this.getCurrentWaterLevel() < this.getDepth()) {
-            View.displayMessage("Adding more water ...");
+            View.displayInformationMessage("Adding more water ...");
             this.setWaterLevel(this.getDepth());
-            View.displayMessage("The water level is now worth " + this.getCurrentWaterLevel());
+            View.displaySuccessMessage("The water level is now worth " + this.getCurrentWaterLevel());
         }
-        View.displayMessage("The salinity level is now worth : " + this.getSalinity() + "/m3");
+        View.displayInformationMessage("The salinity level is now worth : " + this.getSalinity() + "/m3");
         if (this.getSalinity() < 100) {
-            View.displayMessage("Recalibrating salinity level ...");
+            View.displayInformationMessage("Recalibrating salinity level ...");
             this.setSalinity(100);
-            View.displayMessage("Salinity has been recalibrated, it is now worth : " + this.getSalinity());
+            View.displaySuccessMessage("Salinity has been recalibrated, it is now worth : " + this.getSalinity());
         }
     }
 
     @Override
     public String toString() {
-        return "Aquarium information:\n" +
-                "Name: '" + this.getName() + "'" + "  |  " +
-                "Maximum number of animals that the enclosure can contain: " + this.getMaxAnimals() + "\n" +
-                "Surface: " + this.getSurface() + " m3  |  " + "Cleanliness status: " + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\n" +
-                "Depth: " + this.getDepth() + "m" + "  |  " + "Salinity: " + this.getSalinity() + "%  |  " +
-                "WaterLevel: " + this.getCurrentWaterLevel() + ", \n" +
-                "\nAnimals currently in the aquarium: " + this.getAnimals() + " \n"
+        return "\033[34;4mAquarium information:\033[37;24m\n" +
+                "Name: '\033[34m" + this.getName() + "\033[37m'" + "  |  " +
+                "Maximum number of animals that the enclosure can contain: \033[34m" + this.getMaxAnimals() + "\033[37m\n" +
+                "Surface: \033[34m" + this.getSurface() + "m3\033[37m  |  " + "Cleanliness status: \033[34m" + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\033[37m\n" +
+                "Depth: \033[34m" + this.getDepth() + "m\033[37m" + "  |  " + "Salinity: \033[34m" + this.getSalinity() + "%\033[37m  |  " +
+                "WaterLevel: \033[34m" + ((this.getCurrentWaterLevel() == 0) ? "Really bad" : (this.getCurrentWaterLevel() == 1) ? "Bad" : "Good") + "\033[37m\n" +
+                "\n\033[34;4mAnimals currently in the aquarium:\033[37;24m\n" + this.getAnimals() + " \n"
                 ;
     }
 }

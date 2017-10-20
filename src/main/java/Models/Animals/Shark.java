@@ -78,7 +78,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
         if (this.getIsHatched()) {
             return true;
         } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
-            View.displayMessage("A shark hatched !");
+            View.displaySuccessMessage("A shark hatched !");
             this.setHatched(true);
         }
         return this.getIsHatched();
@@ -86,12 +86,12 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
 
     @Override
     public void scream() {
-        View.displayMessage("A shark is screaming");
+        View.displayAnimalActionMessage("A shark is screaming");
     }
 
     @Override
     public void swim() {
-        View.displayMessage("A shark is swimming");
+        View.displayAnimalActionMessage("A shark is swimming");
     }
 
     /**

@@ -116,9 +116,9 @@ public class Zoo {
                 throw new FullZooException(enclosure, this);
             }
         } catch (FullZooException e) {
-            View.displayMessage(e.getMessage());
+            View.displayErrorMessage(e.getMessage());
         } catch(Exception e) {
-            View.displayMessage("An error occurred while trying to add the " + enclosure.getName() + " enclosure to the zoo : " + e.getMessage());
+            View.displayErrorMessage("An error occurred while trying to add the " + enclosure.getName() + " enclosure to the zoo : " + e.getMessage());
         }
     }
 
@@ -135,9 +135,9 @@ public class Zoo {
                 throw new EnclosureNotInZooException(enclosure, this);
             }
         } catch (EnclosureNotInZooException e) {
-            View.displayMessage(e.getMessage());
+            View.displayErrorMessage(e.getMessage());
         } catch (Exception e) {
-            View.displayMessage("An error occurred while trying to remove the " + enclosure.getName() + " from the zoo : " + e.getMessage());
+            View.displayErrorMessage("An error occurred while trying to remove the " + enclosure.getName() + " from the zoo : " + e.getMessage());
         }
     }
 
@@ -161,11 +161,11 @@ public class Zoo {
                 throw new EmptyZooException(this);
             }
         } catch (CantFindEnclosureByNameException e) {
-            View.displayMessage(e.getMessage());
+            View.displayErrorMessage(e.getMessage());
         } catch (EmptyZooException e) {
-            View.displayMessage(e.getMessage());
+            View.displayErrorMessage(e.getMessage());
         } catch (Exception e) {
-            View.displayMessage("An error occurred while trying to search the enclosure named " + enclosureName + " in the Zoo");
+            View.displayErrorMessage("An error occurred while trying to search the enclosure named " + enclosureName + " in the Zoo");
         }
         return null;
     }

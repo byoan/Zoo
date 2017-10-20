@@ -181,7 +181,7 @@ public class Enclosure<A extends AnimalInterface> {
                         this.getAnimals().add(animal);
                         animal.setInEnclosure(true);
                     } else {
-                        View.displayMessage("Can't add the wrong animal type to the enclosure");
+                        View.displayWarningMessage("Can't add the wrong animal type to the enclosure");
                     }
                 } else {
                     throw new FullEnclosureException(this);
@@ -190,11 +190,11 @@ public class Enclosure<A extends AnimalInterface> {
                 throw new AnimalAlreadyInEnclosureException(animal);
             }
         } catch (FullEnclosureException e) {
-            View.displayMessage(e.getMessage());
+            View.displayErrorMessage(e.getMessage());
         } catch (AnimalAlreadyInEnclosureException e) {
-            View.displayMessage(e.getMessage());
+            View.displayErrorMessage(e.getMessage());
         } catch (Exception e) {
-            View.displayMessage("An error occurred while trying to add this animal to the " + this.getName() + " enclosure : " + e.toString());
+            View.displayErrorMessage("An error occurred while trying to add this animal to the " + this.getName() + " enclosure : " + e.toString());
         }
     }
 
@@ -214,9 +214,9 @@ public class Enclosure<A extends AnimalInterface> {
                 throw new AnimalNotInEnclosureException(animal, this);
             }
         } catch (AnimalNotInEnclosureException e) {
-            View.displayMessage(e.getMessage());
+            View.displayErrorMessage(e.getMessage());
         } catch(Exception e) {
-            View.displayMessage(e.getMessage());
+            View.displayErrorMessage(e.getMessage());
         }
     }
 
@@ -308,20 +308,20 @@ public class Enclosure<A extends AnimalInterface> {
                 this.remove(animal);
                 targetEnclosure.add(animal);
             } catch (Exception e) {
-                View.displayMessage("An error occurred while transferring the animal : " + e.getMessage());
+                View.displayErrorMessage("An error occurred while transferring the animal : " + e.getMessage());
                 return false;
             }
             // Check that the transfer executed as expected
             if (!this.getAnimals().contains(animal) && targetEnclosure.getAnimals().contains(animal)) {
                 if (!silent) {
-                    View.displayMessage("The animal was successfully transferred");
+                    View.displaySuccessMessage("The animal was successfully transferred");
                 }
                 return true;
             } else {
                 return false;
             }
         } else {
-            View.displayMessage("This animal is not in this enclosure");
+            View.displayInformationMessage("This animal is not in this enclosure");
             return false;
         }
     }
@@ -352,7 +352,7 @@ public class Enclosure<A extends AnimalInterface> {
         } else {
             this.setCleanliness(2);
         }
-        View.displayMessage("The " + this.getName() + " enclosure has been cleaned.");
+        View.displaySuccessMessage("The " + this.getName() + " enclosure has been cleaned.");
     }
 
     /**
@@ -361,11 +361,11 @@ public class Enclosure<A extends AnimalInterface> {
      */
     @Override
     public String toString() {
-        return "Enclosure information:\n" +
-                "Name: '" + this.getName() + "'" + "  |  " +
-                "Maximum number of animals that the enclosure can contain: " + this.getMaxAnimals() + "\n" +
-                "Surface: " + this.getSurface() + " m²  |  " + "Cleanliness status: " + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\n" +
-                "\nAnimals currently in the enclosure: \n" + this.getAnimals() +
+        return "\033[34;4mEnclosure information:\033[37;24m\n"+
+                "   Name: '\033[34m" + this.getName() + "\033[37m'" + "  |  " +
+                "Maximum number of animals that the enclosure can contain: \033[34m" + this.getMaxAnimals() + "\033[37m\n" +
+                "   Surface: \033[34m" + this.getSurface() + " m²\033[37m  |  " + "Cleanliness status: \033[34m" + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\033[37m\n" +
+                "\n\033[34;4mAnimals currently in the enclosure:\033[37;24m\n" + this.getAnimals() +
                 ((this.getWolfPack() != null) ? "Pack: " + this.getWolfPack() + ", \n" : "")
                 ;
     }

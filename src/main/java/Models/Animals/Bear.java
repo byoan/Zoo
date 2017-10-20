@@ -37,7 +37,7 @@ public class Bear extends Animal implements Mammal {
      */
     @Override
     public void scream() {
-        View.displayMessage("A bear is screaming");
+        View.displayInformationMessage("A bear is screaming");
     }
 
     /**
@@ -55,7 +55,7 @@ public class Bear extends Animal implements Mammal {
                     throw new AnimalAlreadyPregnantException(this);
                 }
             } catch (AnimalAlreadyPregnantException e) {
-                View.displayMessage(e.getMessage());
+                View.displayErrorMessage(e.getMessage());
             }
         }
     }

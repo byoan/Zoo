@@ -60,7 +60,7 @@ public abstract class EnclosureFactory {
                     return WolfEnclosureFactory.getInstance();
 
                 default:
-                    View.displayMessage("An error occurred while trying to create an enclosure");
+                    View.displayErrorMessage("An error occurred while trying to create an enclosure");
                     return null;
             }
     }

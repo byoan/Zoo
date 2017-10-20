@@ -78,7 +78,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         if (this.getIsHatched()) {
             return true;
         } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
-            View.displayMessage("A penguin hatched !");
+            View.displaySuccessMessage("A penguin hatched !");
             this.setHatched(true);
         }
         return this.getIsHatched();
@@ -86,12 +86,12 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
 
     @Override
     public void scream() {
-        View.displayMessage("A penguin is screaming");
+        View.displayAnimalActionMessage("A penguin is screaming");
     }
 
     @Override
     public void swim() {
-        View.displayMessage("A penguin is swimming");
+        View.displayAnimalActionMessage("A penguin is swimming");
     }
 
     /**
@@ -119,7 +119,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
 
     @Override
     public void fly() {
-        View.displayMessage("A penguin is flying");
+        View.displayAnimalActionMessage("A penguin is flying");
     }
 
     @Override

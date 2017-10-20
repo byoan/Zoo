@@ -157,8 +157,8 @@ public class Animal implements AnimalInterface {
     /**
      * Sets the turn number at which the pregnancy started
      */
-    public void setCopulationTurn(int turnNumber) {
-        this.copulationTurn = turnNumber;
+    public void setCopulationTurn(int turnNb) {
+        this.copulationTurn = turnNb;
     }
 
     /**
@@ -210,7 +210,7 @@ public class Animal implements AnimalInterface {
         if (this.sleepIndicator == false) {
             this.setHunger(100);
         } else {
-            View.displayMessage("A " +  this.getSpecieName() + " can't eat while sleeping");
+            View.displayInformationMessage("A " +  this.getSpecieName() + " can't eat while sleeping");
         }
     }
 
@@ -219,7 +219,7 @@ public class Animal implements AnimalInterface {
      */
     @Override
     public void scream() {
-        View.displayMessage("A bear is screaming");
+        View.displayAnimalActionMessage("A bear is screaming");
     }
 
     /**
@@ -228,7 +228,7 @@ public class Animal implements AnimalInterface {
     @Override
     public void heal() {
         this.setHealth(100);
-        View.displayMessage("This " + this.specieName + " was healed");
+        View.displayInformationMessage("This " + this.specieName + " was healed");
     }
 
     /**

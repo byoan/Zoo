@@ -284,9 +284,9 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     @Override
     public void scream() {
         if (healthIndicator < 50 ){
-            View.displayMessage("Oh my god i'm hurt !!");
+            View.displayAnimalActionMessage("Oh my god i'm hurt !!");
         } else if (healthIndicator == 100){
-            View.displayMessage("Oh yeah i'm good !!");
+            View.displayAnimalActionMessage("Oh yeah i'm good !!");
         }
     }
 
@@ -295,13 +295,13 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     public void heardScream(){
         if (this.sleepIndicator == false && this.healthIndicator == 100){
-            View.displayMessage("I can heard some wolf scream");
+            View.displayAnimalActionMessage("I can heard some wolf scream");
         } else if (this.sleepIndicator == true ){
-            View.displayMessage("I'm sleeping I can't heard some wolf scream");
+            View.displayAnimalActionMessage("I'm sleeping I can't heard some wolf scream");
         } else if (this.healthIndicator != 100){
-            View.displayMessage("I'm hurt I can't heard some wolf scream");
+            View.displayAnimalActionMessage("I'm hurt I can't heard some wolf scream");
         }else{
-            View.displayMessage("I'm sleeping and hurt so how the fuck can I heard some wolf scream ?");
+            View.displayAnimalActionMessage("I'm sleeping and hurt so how the fuck can I heard some wolf scream ?");
         }
     }
 
@@ -320,7 +320,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
                     throw new AnimalAlreadyPregnantException(this);
                 }
             } catch (AnimalAlreadyPregnantException e) {
-                View.displayMessage(e.getMessage());
+                View.displayErrorMessage(e.getMessage());
             }
         }
     }
@@ -361,7 +361,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * Generic method who say if animal wandering or not
      */
     public void wander() {
-        View.displayMessage("I'm wandering...");
+        View.displayAnimalActionMessage("I'm wandering...");
     }
 
     /**

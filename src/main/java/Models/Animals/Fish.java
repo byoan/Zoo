@@ -78,7 +78,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
         if (this.getIsHatched()) {
             return true;
         } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
-            View.displayMessage("A fish hatched !");
+            View.displaySuccessMessage("A fish hatched !");
             this.setHatched(true);
         }
         return this.getIsHatched();
@@ -86,12 +86,12 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
 
     @Override
     public void scream() {
-        View.displayMessage("A fish is screaming blblblblbl");
+        View.displayAnimalActionMessage("A fish is screaming blblblblbl");
     }
 
     @Override
     public void swim() {
-        View.displayMessage("A fish is swimming");
+        View.displayAnimalActionMessage("A fish is swimming");
     }
 
     /**

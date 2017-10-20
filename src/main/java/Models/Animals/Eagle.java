@@ -75,7 +75,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         if (this.getIsHatched()) {
             return true;
         } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
-            View.displayMessage("An eagle hatched !");
+            View.displaySuccessMessage("An eagle hatched !");
             this.setHatched(true);
         }
         return this.getIsHatched();
@@ -83,7 +83,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     @Override
     public void scream() {
-        View.displayMessage("An eagle is screaming");
+        View.displayAnimalActionMessage("An eagle is screaming");
     }
 
     /**
@@ -111,7 +111,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     @Override
     public void fly() {
-        View.displayMessage("An eagle is flying");
+        View.displayAnimalActionMessage("An eagle is flying");
     }
 
     @Override

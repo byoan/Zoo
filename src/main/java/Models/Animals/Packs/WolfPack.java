@@ -68,7 +68,7 @@ public class WolfPack {
         if (this.getWolfList().contains(wolf)) {
             // In case we are trying to remove the alpha male
             if (wolf.getRank().getId() == 1) {
-                View.displayMessage("Removing the alpha male from the pack. Trying to find a new one ...");
+                View.displayInformationMessage("Removing the alpha male from the pack. Trying to find a new one ...");
                 this.designateNewAlphaMaleBeforeDeletion(wolf);
             } else {
                 this.removeWolfPackAttributes(wolf);
@@ -211,10 +211,10 @@ public class WolfPack {
 
         // In case after trying all other members of the pack, we have no better candidate, then disband the pack
         if (potentialCandidate == null || potentialCandidateRank == 24) {
-            View.displayMessage("No candidate for the Alpha male role was found. The pack disbanded.\n");
+            View.displayInformationMessage("No candidate for the Alpha male role was found. The pack disbanded.\n");
             this.disband();
         } else {
-            View.displayMessage("A new alpha male has been designated for the pack.\n");
+            View.displayInformationMessage("A new alpha male has been designated for the pack.\n");
             this.getWolfList().get(candidateId).setRank(WolfRank.Alpha);
 
             // Remove the old alpha, and re-order the pack

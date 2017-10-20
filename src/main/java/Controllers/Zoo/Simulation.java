@@ -88,7 +88,7 @@ public class Simulation {
         if (turnNb >= this.getTurnNb()) {
             this.turnNb = turnNb;
         } else {
-            View.displayMessage("Error while trying to set the turn number to " + turnNb + ", can't go back to a previous turn");
+            View.displayErrorMessage("Error while trying to set the turn number to " + turnNb + ", can't go back to a previous turn");
         }
     }
 
@@ -97,7 +97,7 @@ public class Simulation {
      */
     private void nextTurn() {
         if (this.getTurnNb() != 0) {
-            View.displayMessage("\nTurn n°" + this.getTurnNb() + " ended.\n");
+            View.displayConsoleMessage("\nTurn n°" + this.getTurnNb() + " ended.\n");
             this.handleAging();
             this.handleNewBirths();
             this.handleDominationRetrograde();
@@ -109,7 +109,7 @@ public class Simulation {
 
         this.setTurnNb(this.getTurnNb() + 1);
 
-        View.displayMessage("Turn n°" + this.getTurnNb() + " started.\n");
+        View.displayConsoleMessage("Turn n°" + this.getTurnNb() + " started.\n");
 
         this.handleTurn();
     }
@@ -119,7 +119,7 @@ public class Simulation {
      * Will only display enclosure that have enough space
      */
     private void displayEnclosureListForNewBirth(Animal animal) {
-        View.displayMessage("A new " + animal.getSpecieName() + " is born. Please choose an enclosure to put it in:");
+        View.displayInformationMessage("A new " + animal.getSpecieName() + " is born. Please choose an enclosure to put it in:");
         int i = 0;
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             if (enclosure.getNbAnimals() < enclosure.getMaxAnimals()) {
@@ -200,19 +200,19 @@ public class Simulation {
             try {
                 action = Integer.parseInt(userInput);
                 if (action > this.getZoo().getEnclosureList().size()) {
-                    View.displayMessage("Can't enter a value greater than the maximum enclosure. Please try again:\n");
+                    View.displayWarningMessage("Can't enter a value greater than the maximum enclosure. Please try again:\n");
                     continue;
                 }
                 Enclosure<Animal> chosenEnclosure = this.getZoo().getEnclosureList().get(action - 1);
                 if (chosenEnclosure != null && chosenEnclosure.getNbAnimals() < chosenEnclosure.getMaxAnimals()) {
                     chosenEnclosure.add(animal);
-                    View.displayMessage("Adding the new " + animal.getSpecieName() + " to the " + chosenEnclosure.getName() + " enclosure.\n");
+                    View.displayInformationMessage("Adding the new " + animal.getSpecieName() + " to the " + chosenEnclosure.getName() + " enclosure.\n");
                     correctAnswer = true;
                 } else {
-                    View.displayMessage("This enclosure is not available. Please chose another one:\n");
+                    View.displayWarningMessage("This enclosure is not available. Please chose another one:\n");
                 }
             } catch (Exception e) {
-                View.displayMessage("Error : " + e.toString() + ". Please try again:\n");
+                View.displayErrorMessage("Error : " + e.toString() + ". Please try again:\n");
             }
         }
     }
@@ -241,7 +241,7 @@ public class Simulation {
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             enclosure.deteriorate();
         }
-        View.displayMessage("Enclosures are deteriorated. You should clean them.\n");
+        View.displayWarningMessage("Enclosures are deteriorated. You should clean them.\n");
     }
 
     /**
@@ -257,7 +257,7 @@ public class Simulation {
                 action = Integer.parseInt(userInput);
                 break;
             } catch (Exception e) {
-                View.displayMessage("Error : " + e.getMessage() + ". Please try again");
+                View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
             }
         }
 
@@ -287,7 +287,7 @@ public class Simulation {
                 this.doNothing();
                 break;
             default:
-                View.displayMessage("Did not understood your action, please try again");
+                View.displayWarningMessage("Did not understood your action, please try again");
                 this.handleTurn();
                 break;
         }
@@ -299,14 +299,14 @@ public class Simulation {
      * Allows to display the current number of animals in the Zoo
      */
     private void handleDisplayCurrentNbAnimalsInZoo() {
-        View.displayMessage("Current number of animals in the zoo: " + this.getZoo().getNbAnimalsInZoo());
+        View.displayInformationMessage("Current number of animals in the zoo: " + this.getZoo().getNbAnimalsInZoo());
     }
 
     /**
      * Allows to display all the animals that are currently in the Zoo
      */
     private void handleDisplayAllAnimalsInZoo() {
-        View.displayMessage("Here are all the animals currently in the zoo:\n");
+        View.displayInformationMessage("Here are all the animals currently in the zoo:\n");
         this.getZoo().displayAnimalsFromAllEnclosures();
     }
 
@@ -314,13 +314,13 @@ public class Simulation {
      * Displays the message which matches the "Do Nothing this turn" action
      */
     private void doNothing() {
-        View.displayMessage("Not doing anything this turn ...");
+        View.displayInformationMessage("Not doing anything this turn ...");
     }
 
     private <A extends AnimalInterface> void handleAnimalFeeding() {
         Enclosure<A> enclosure = this.pickEnclosure("Select the enclosure that you want to feed:");
         enclosure.feedAnimals();
-        View.displayMessage("This enclosure has been fed");
+        View.displaySuccessMessage("This enclosure has been fed");
     }
 
     /**
@@ -345,14 +345,14 @@ public class Simulation {
 
             // While the enclosure is not different, we must keep asking to the user a valid one
             while (originEnclosure.equals(targetEnclosure)) {
-                View.displayMessage("Can't transfer this animal in its current enclosure. Please choose another one.");
+                View.displayWarningMessage("Can't transfer this animal in its current enclosure. Please choose another one.");
                 targetEnclosure = this.pickEnclosure("Select the enclosure in which you would like to send this animal:");
             }
 
             // Proceed to the transfer
             originEnclosure.transferAnimal(animal, targetEnclosure, false);
         } else {
-            View.displayMessage("No enclosures are currently in the zoo.\n");
+            View.displayInformationMessage("No enclosures are currently in the zoo.\n");
             // Return to the main menu
             this.handleTurn();
             return;
@@ -384,10 +384,10 @@ public class Simulation {
                 } else if (action == 0) {
                     this.handleTurn();
                 } else {
-                    View.displayMessage("Please enter a valid value");
+                    View.displayWarningMessage("Please enter a valid value");
                 }
             } catch (Exception e) {
-                View.displayMessage("Error : " + e.getMessage() + ". Please try again");
+                View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
             }
         }
         return this.getZoo().getEnclosureList().get(action - 1);
@@ -419,10 +419,10 @@ public class Simulation {
                 } else if (action == 0) {
                     this.handleTurn();
                 } else {
-                    View.displayMessage("Please enter a valid value");
+                    View.displayWarningMessage("Please enter a valid value");
                 }
             } catch (Exception e) {
-                View.displayMessage("Error : " + e.getMessage() + ". Please try again");
+                View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
             }
         }
         return enclosure.getAnimals().get(action - 1);
@@ -434,11 +434,11 @@ public class Simulation {
      */
     private <A extends AnimalInterface> void handlePickEnclosureToInspect() {
         if (this.getZoo().getEnclosureList().size() > 0) {
-            View.displayMessage("Which enclosure would you like to inspect?");
+            View.displayConsoleMessage("\nWhich enclosure would you like to inspect?\n");
             View.displayBackToMenuMessage();
             int i = 1;
             for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
-                View.displayMessage(i + ". " + enclosure.getName());
+                View.displayMenuMessage(i + ". " + enclosure.getName());
                 ++i;
             }
 
@@ -452,16 +452,16 @@ public class Simulation {
                     } else if (action == 0) {
                         this.handleTurn();
                     } else {
-                        View.displayMessage("Please enter a valid value");
+                        View.displayWarningMessage("Please enter a valid value");
                     }
                 } catch (Exception e) {
-                    View.displayMessage("Error : " + e.getMessage() + ". Please try again");
+                    View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
                 }
             }
-            View.displayMessage("Inspecting the enclosure n°" + action + ":");
+            View.displayConsoleMessage("Inspecting the enclosure n°" + action + ":\n");
             View.displayMessage(this.getEmployee().inspectEnclosure(this.getZoo().getEnclosureList().get(action - 1)));
         } else {
-            View.displayMessage("No enclosures are currently in the Controllers.Zoo.\n");
+            View.displayInformationMessage("No enclosures are currently in the Zoo.\n");
             this.handleTurn();
             return;
         }
@@ -473,11 +473,11 @@ public class Simulation {
      */
     private <A extends AnimalInterface> void handlePickEnclosureToClean() {
         if (this.getZoo().getEnclosureList().size() > 0) {
-            View.displayMessage("Which enclosure would you like to clean?");
+            View.displayConsoleMessage("\nWhich enclosure would you like to clean?\n");
             View.displayBackToMenuMessage();
             int i = 1;
             for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
-                View.displayMessage(i + ". " + enclosure.getName());
+                View.displayInformationMessage(i + ". " + enclosure.getName());
                 ++i;
             }
 
@@ -491,16 +491,16 @@ public class Simulation {
                     } else if (action == 0) {
                         this.handleTurn();
                     } else {
-                        View.displayMessage("Please enter a valid value");
+                        View.displayWarningMessage("Please enter a valid value");
                     }
                 } catch (Exception e) {
-                    View.displayMessage("Error : " + e.getMessage() + ". Please try again");
+                    View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
                 }
             }
-            View.displayMessage("Cleaning the enclosure n°" + action + " ...");
+            View.displayConsoleMessage("Cleaning the enclosure n°" + action + " ...");
             this.getEmployee().cleanEnclosure(this.getZoo().getEnclosureList().get(action - 1));
         } else {
-            View.displayMessage("No enclosures are currently in the Controllers.Zoo.\n");
+            View.displayConsoleMessage("No enclosures are currently in the Zoo.\n");
             this.handleTurn();
             return;
         }
@@ -572,9 +572,9 @@ public class Simulation {
                 animal.setHunger(animal.getHunger() - 80);
                 if (animal.getHunger() <= 0) {
                     enclosure.remove(animal);
-                    View.displayMessage("A " + animal.getSpecieName() + " starved to death in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayWarningMessage("A " + animal.getSpecieName() + " starved to death in the " + enclosure.getName() + " enclosure.\n");
                 } else {
-                    View.displayMessage("A " + animal.getSpecieName() + " is hungry in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayWarningMessage("A " + animal.getSpecieName() + " is hungry in the " + enclosure.getName() + " enclosure.\n");
                 }
                 break;
 
@@ -582,25 +582,25 @@ public class Simulation {
                 animal.setHealth(animal.getHealth() - 80);
                 if (animal.getHealth() <= 0) {
                     enclosure.remove(animal);
-                    View.displayMessage("A " + animal.getSpecieName() + " died in the " + enclosure.getName() + " enclosure.\n ");
+                    View.displayWarningMessage("A " + animal.getSpecieName() + " died in the " + enclosure.getName() + " enclosure.\n ");
                 } else {
-                    View.displayMessage("A " + animal.getSpecieName() + " is hurt/sick in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayWarningMessage("A " + animal.getSpecieName() + " is hurt/sick in the " + enclosure.getName() + " enclosure.\n");
                 }
                 break;
 
             case "SLEEP":
                 if (animal.isSleeping()) {
-                    View.displayMessage("A " + animal.getSpecieName() + " woke up in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayInformationMessage("A " + animal.getSpecieName() + " woke up in the " + enclosure.getName() + " enclosure.\n");
                     animal.wake();
                 } else {
-                    View.displayMessage("A " + animal.getSpecieName() + " fell asleep in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayInformationMessage("A " + animal.getSpecieName() + " fell asleep in the " + enclosure.getName() + " enclosure.\n");
                     animal.sleep();
                 }
                 break;
 
             case "STOLE":
                 enclosure.remove(animal);
-                View.displayMessage("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + " enclosure.\n");
+                View.displayWarningMessage("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + " enclosure.\n");
                 break;
 
             case "ESCAPE":
@@ -610,12 +610,12 @@ public class Simulation {
                 } else if (animal instanceof FlyingAnimal) {
                     if (enclosure.getCleanliness() < 1) {
                         enclosure.remove(animal);
-                        View.displayMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
+                        View.displayWarningMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
                     }
                     break;
                 }
                 enclosure.remove(animal);
-                View.displayMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
+                View.displayWarningMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
                 break;
 
             case "FIGHT":
@@ -628,13 +628,13 @@ public class Simulation {
                         animal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
                         secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
 
-                        View.displayMessage("2 animals fought in the " + enclosure.getName() + " enclosure.\n");
+                        View.displayInformationMessage("2 animals fought in the " + enclosure.getName() + " enclosure.\n");
                         if (animal.getHealth() <= 0) {
-                            View.displayMessage("The first one died.\n");
+                            View.displayWarningMessage("The first one died.\n");
                             enclosure.remove(animal);
                         }
                         if (secondAnimal.getHealth() <= 0) {
-                            View.displayMessage("The second one died.\n");
+                            View.displayWarningMessage("The second one died.\n");
                             enclosure.remove(secondAnimal);
                         }
                     }
@@ -654,7 +654,7 @@ public class Simulation {
                         }
                     }
 
-                    View.displayMessage("Some animals made some adult things in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayAnimalActionMessage("Some " + animal.getSpecieName() + " made some adult things in the " + enclosure.getName() + " enclosure.\n");
 
                     if (animal instanceof Oviparous) {
                         Animal newAnimal;
@@ -694,7 +694,7 @@ public class Simulation {
                         }
                     }
                 } else {
-                    View.displayMessage("No copulation possible in the " + enclosure.getName() + " enclosure, as there is not enough male/female\n");
+                    View.displayInformationMessage("No copulation possible in the " + enclosure.getName() + " enclosure, as there is not enough male/female\n");
                 }
                 break;
 

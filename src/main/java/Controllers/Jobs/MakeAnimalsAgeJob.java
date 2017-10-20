@@ -60,7 +60,7 @@ public class MakeAnimalsAgeJob {
                 if (animal.getAge() == 4 && animal.getSpecieName() == "Wolf") {
                     ((Wolf)animal).getPack().remove((Wolf)animal);
                     enclosure.remove(animal);
-                    View.displayMessage("A " + animal.getSpecieName() + " died of old age in the " + enclosure.getName() + " enclosure.\n");
+                    View.displayWarningMessage("A " + animal.getSpecieName() + " died of old age in the " + enclosure.getName() + " enclosure.\n");
                     // Decrease i to always pick the first of the list
                     i--;
                 }

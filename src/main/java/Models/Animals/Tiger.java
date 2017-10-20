@@ -38,7 +38,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
      */
     @Override
     public void scream() {
-        View.displayMessage("I'm screaming");
+        View.displayAnimalActionMessage("I'm screaming");
     }
 
     /**
@@ -56,7 +56,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
                     throw new AnimalAlreadyPregnantException(this);
                 }
             } catch (AnimalAlreadyPregnantException e) {
-                View.displayMessage(e.getMessage());
+                View.displayErrorMessage(e.getMessage());
             }
         }
     }
@@ -79,7 +79,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
      * Generic method who say if animal wandering or not
      */
     public void wander() {
-        View.displayMessage("I'm wandering...");
+        View.displayAnimalActionMessage("I'm wandering...");
     }
 
     /**
