@@ -1,4 +1,4 @@
-package test.java;
+package Models.Animals;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class WolfTest {
     @BeforeEach
     void setUp() {
-
     }
 
     @AfterEach
@@ -17,55 +16,79 @@ class WolfTest {
     }
 
     @Test
-    void getRandomBoolean() {
+    void getPack() {
     }
 
     @Test
-    void getChildrenCreationTime() {
+    void setPack() {
     }
 
     @Test
-    void getSex() {
+    void setStrength() {
     }
 
     @Test
-    void setSex() {
+    void generateWolfLevel() {
     }
 
     @Test
-    void getHunger() {
+    void getLevel() {
     }
 
     @Test
-    void setHunger() {
+    void setLevel() {
     }
 
     @Test
-    void getHealth() {
+    void attemptDomination() {
     }
 
     @Test
-    void setHealth() {
+    void swapRanks() {
     }
 
     @Test
-    void isSleeping() {
+    void getDominationFactor() {
     }
 
     @Test
-    void setSleeping() {
+    void setDominationFactor() {
     }
 
     @Test
-    void getCopulationTurn() {
+    void setImpetuosity() {
     }
 
     @Test
-    void setCopulationTurn() {
+    void increaseDominationFactor() {
     }
 
     @Test
-    void eat() {
+    void increaseImpetuosity() {
+    }
+
+    @Test
+    void decreaseDominationFactor() {
+    }
+
+    @Test
+    void getImpetuosity() {
+    }
+
+    @Test
+    void getStrength() {
+    }
+
+    @Test
+    void getRankName() {
+    }
+
+    @Test
+    void getRank() {
+    }
+
+    @Test
+    void setRank() {
     }
 
     @Test
@@ -73,23 +96,7 @@ class WolfTest {
     }
 
     @Test
-    void heal() {
-    }
-
-    @Test
-    void sleep() {
-    }
-
-    @Test
-    void wake() {
-    }
-
-    @Test
-    void isInEnclosure() {
-    }
-
-    @Test
-    void setInEnclosure() {
+    void heardScream() {
     }
 
     @Test
@@ -107,10 +114,5 @@ class WolfTest {
     @Test
     void birth() {
     }
-
-    /**
-    @Test
-    void toString() {
-    }**/
 
 }

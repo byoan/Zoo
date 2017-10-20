@@ -1,4 +1,4 @@
-package test.java;
+package Models.Animals;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AnimalInterfaceTest {
+class WhaleTest {
     @BeforeEach
     void setUp() {
     }
@@ -16,31 +16,27 @@ class AnimalInterfaceTest {
     }
 
     @Test
-    void eat() {
-    }
-
-    @Test
     void scream() {
     }
 
     @Test
-    void heal() {
+    void swim() {
     }
 
     @Test
-    void sleep() {
+    void copulate() {
     }
 
     @Test
-    void wake() {
+    void checkBirth() {
     }
 
     @Test
-    void isInEnclosure() {
+    void wander() {
     }
 
     @Test
-    void setInEnclosure() {
+    void birth() {
     }
 
 }

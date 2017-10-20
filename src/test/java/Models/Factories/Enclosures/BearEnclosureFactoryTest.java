@@ -1,4 +1,4 @@
-package test.java;
+package Models.Factories.Enclosures;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WanderAnimalTest {
+class BearEnclosureFactoryTest {
     @BeforeEach
     void setUp() {
     }
@@ -16,7 +16,15 @@ class WanderAnimalTest {
     }
 
     @Test
-    void wander() {
+    void createEnclosure() {
+    }
+
+    @Test
+    void getInstance() {
+    }
+
+    @Test
+    void generateRandomPopulation() {
     }
 
 }

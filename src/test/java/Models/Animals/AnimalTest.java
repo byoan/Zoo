@@ -1,4 +1,4 @@
-package test.java;
+package Models.Animals;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PenguinTest {
+class AnimalTest {
     @BeforeEach
     void setUp() {
     }
@@ -16,15 +16,31 @@ class PenguinTest {
     }
 
     @Test
-    void setHatched() {
+    void randomWeight() {
     }
 
     @Test
-    void checkIfHatched() {
+    void randomSize() {
     }
 
     @Test
-    void getCopulationTurn() {
+    void getSize() {
+    }
+
+    @Test
+    void getWeight() {
+    }
+
+    @Test
+    void getAge() {
+    }
+
+    @Test
+    void setAge() {
+    }
+
+    @Test
+    void getOlder() {
     }
 
     @Test
@@ -60,11 +76,27 @@ class PenguinTest {
     }
 
     @Test
+    void setCopulationTurn() {
+    }
+
+    @Test
+    void getCopulationTurn() {
+    }
+
+    @Test
     void isSleeping() {
     }
 
     @Test
     void setSleeping() {
+    }
+
+    @Test
+    void getSpecieName() {
+    }
+
+    @Test
+    void setSpecieName() {
     }
 
     @Test
@@ -96,28 +128,12 @@ class PenguinTest {
     }
 
     @Test
-    void swim() {
-    }
-
-    @Test
     void copulate() {
     }
 
     @Test
-    void lay() {
+    void copulate1() {
     }
 
-    @Test
-    void lay1() {
-    }
-
-    @Test
-    void fly() {
-    }
-
-    /**
-    @Test
-    void toString() {
-    }**/
 
 }

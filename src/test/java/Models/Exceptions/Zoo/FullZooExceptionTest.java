@@ -1,4 +1,4 @@
-package test.java;
+package Models.Exceptions.Zoo;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MarineAnimalTest {
+class FullZooExceptionTest {
     @BeforeEach
     void setUp() {
     }
@@ -16,7 +16,15 @@ class MarineAnimalTest {
     }
 
     @Test
-    void swim() {
+    void getZoo() {
+    }
+
+    @Test
+    void getEnclosure() {
+    }
+
+    @Test
+    void getMessage() {
     }
 
 }
