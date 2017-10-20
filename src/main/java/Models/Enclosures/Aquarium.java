@@ -52,8 +52,6 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
     public void setWaterLevel(int waterLevel) {
         if (waterLevel >= 0 && waterLevel <= this.getDepth()) {
             this.waterLevel = waterLevel;
-        } else {
-            View.displayMessage("The water level can't be greater that the aquarium depth");
         }
     }
 
