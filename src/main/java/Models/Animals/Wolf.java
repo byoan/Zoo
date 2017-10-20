@@ -23,12 +23,6 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     private WolfRank rank;
 
     /**
-     * Defines the turn number at which the animal copulated, allowing us to calculate the difference
-     * with the current turn number to compare with the gestation time
-     */
-    private int copulationTurn;
-
-    /**
      * Represents the impetuosity level of the wolf, on a scale from 1 to 100
      */
     private int impetuosity;

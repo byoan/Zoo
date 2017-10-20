@@ -9,12 +9,6 @@ import Views.View;
 public class Fish extends Animal implements MarineAnimal, Oviparous {
 
     /**
-     * Defines the turn number at which the animal copulated, allowing us to calculate the difference
-     * with the current turn number to compare with the gestation time
-     */
-    private int copulationTurn;
-
-    /**
      * Whether the current animal is hatched
      */
     private boolean isHatched;

@@ -8,12 +8,6 @@ import Views.View;
 
 public class Whale extends Animal implements MarineAnimal, Mammal {
 
-    /**
-     * Defines the turn number at which the animal copulated, allowing us to calculate the difference
-     * with the current turn number to compare with the gestation time
-     */
-    private int copulationTurn;
-
     public Whale() {
         this.specieName = "Whale";
         this.sex = this.getRandomBoolean();
