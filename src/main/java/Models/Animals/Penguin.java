@@ -24,6 +24,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         this.sleepIndicator = false;
         this.healthIndicator = 100;
         this.copulationTurn = 0;
+        this.childrenCreationTime = 30;
         this.isHatched = true;
     }
 
@@ -37,6 +38,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         this.sleepIndicator = false;
         this.healthIndicator = 100;
         this.copulationTurn = copulationTurn;
+        this.childrenCreationTime = 30;
         this.isHatched = false;
     }
 
