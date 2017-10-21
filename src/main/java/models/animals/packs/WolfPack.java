@@ -68,7 +68,7 @@ public class WolfPack {
         if (this.getWolfList().contains(wolf)) {
             // In case we are trying to remove the alpha male
             if (wolf.getRank().getId() == 1) {
-                View.displayInformationMessage("Removing the alpha male from the pack. Trying to find a new one ...");
+                View.displayInformationMessage("Trying to find a new Alpha as the previous one left ...");
                 this.designateNewAlphaMaleBeforeDeletion(wolf);
             } else {
                 this.removeWolfPackAttributes(wolf);
