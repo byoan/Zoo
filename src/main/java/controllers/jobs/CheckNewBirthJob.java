@@ -7,7 +7,7 @@ import models.interfaces.animal.Oviparous;
 
 import java.util.ArrayList;
 
-public class CheckNewBirthJob {
+public class CheckNewBirthJob implements Runnable {
 
     ArrayList<Enclosure> enclosureList;
     int turnNb;
@@ -46,10 +46,10 @@ public class CheckNewBirthJob {
     /**
      * Allows to browse the previously given enclosure list, looking for animals that were born during the turn.
      * These animals will be added to a collection which will later be retrieved through a getter
-     * @param <A> Generic type to use within the method
      */
-    public <A extends Animal> void exec() {
-        for (Enclosure<A> enclosure : this.getEnclosureList()) {
+    @Override
+    public void run() {
+        for (Enclosure<Animal> enclosure : this.getEnclosureList()) {
             for (Animal animal : enclosure.getAnimals()) {
                 if (animal instanceof Oviparous) {
                     ((Oviparous) animal).checkIfHatched(this.getTurnNb());

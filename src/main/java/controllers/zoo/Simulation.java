@@ -98,9 +98,9 @@ public class Simulation {
     private void nextTurn() {
         if (this.getTurnNb() != 0) {
             View.displayConsoleMessage("\nTurn n°" + this.getTurnNb() + " ended.\n");
-            this.handleAging();
-            this.handleNewBirths();
-            this.handleDominationRetrograde();
+            // Run our Jobs on several threads to reduce the time between 2 turns
+            this.handleAsyncJobs();
+
             this.handleRandomEventGeneration();
             if (this.getTurnNb() % 10 == 0) {
                 this.deteriorateEnclosures();
@@ -112,6 +112,41 @@ public class Simulation {
         View.displayConsoleMessage("Turn n°" + this.getTurnNb() + " started.\n");
 
         this.handleTurn();
+    }
+
+    /**
+     * Allows to run all our systematics jobs simultaneously before 2 turns
+     */
+    private void handleAsyncJobs() {
+        try {
+            if (this.getTurnNb() % 50 == 0) {
+                MakeAnimalsAgeJob ageJob = new MakeAnimalsAgeJob(this.getZoo(), this.getTurnNb());
+                Thread threadAge = new Thread(ageJob);
+                threadAge.start();
+                threadAge.join();
+            }
+
+            // Allows to check for hatching/pregnancy ending at each turn
+            CheckNewBirthJob checkNewBirthJob = new CheckNewBirthJob(this.getZoo().getEnclosureList(), this.getTurnNb());
+            Thread threadBirths = new Thread(checkNewBirthJob);
+            threadBirths.start();
+
+            // Allows to check at each turn if a wolf has 50 or less domination, and must therefore be retrograded to a lower rank
+            // Will only retrograde if the wolf is not the only one of his sex for his rank
+            CheckDominationFactorJob dominationFactorJob = new CheckDominationFactorJob(this.getZoo().getEnclosureList());
+            Thread dominationFactorThread = new Thread(dominationFactorJob);
+            dominationFactorThread.start();
+
+            // Join allows to wait for the Job to end before continuing (we need some jobs to execute simultaneously, but we want them to end before starting a new turn)
+            threadBirths.join();
+            dominationFactorThread.join();
+
+            // We need to handle what the job has returned
+            this.handleNewBirths(checkNewBirthJob.getNewBirths());
+
+        } catch (Exception e) {
+            View.displayErrorMessage(e.getMessage());
+        }
     }
 
     /**
@@ -150,34 +185,10 @@ public class Simulation {
     }
 
     /**
-     * Allows to execute a job every 50 turn, which will make the animals get older
-     */
-    private void handleAging() {
-        if (this.getTurnNb() % 50 == 0) {
-            MakeAnimalsAgeJob job = new MakeAnimalsAgeJob(this.getZoo(), this.getTurnNb());
-            job.exec();
-        }
-    }
-
-    /**
-     * Allows to check at each turn if a wolf has 50 or less domination, and must therefore be retrograded to a lower rank
-     * Will only retrograde if the wolf is not the only one of his sex for his rank
-     */
-    private void handleDominationRetrograde() {
-        CheckDominationFactorJob job = new CheckDominationFactorJob(this.getZoo().getEnclosureList());
-        job.exec();
-    }
-
-    /**
      * Allows to handle all the newly born animals, returned from CheckNewBirthJob
      * Will be executed every turn
      */
-    private void handleNewBirths() {
-        CheckNewBirthJob checkNewBirthJob = new CheckNewBirthJob(this.getZoo().getEnclosureList(), this.getTurnNb());
-        checkNewBirthJob.exec();
-        // Retrieve result from exec() method
-        ArrayList<Animal> newBirths =  checkNewBirthJob.getNewBirths();
-
+    private void handleNewBirths(ArrayList<Animal> newBirths) {
         if (!newBirths.isEmpty()) {
             for (Animal animal : newBirths) {
                 // Make the employee choose an enclosure for the newly born animal

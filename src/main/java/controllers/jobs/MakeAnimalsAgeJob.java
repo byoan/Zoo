@@ -7,7 +7,7 @@ import models.enclosures.Enclosure;
 import views.View;
 
 
-public class MakeAnimalsAgeJob {
+public class MakeAnimalsAgeJob implements Runnable {
 
     /**
      * The zoo instance to manipulate in the Job
@@ -50,7 +50,8 @@ public class MakeAnimalsAgeJob {
      * Will call the getOlder method for each animal of the zoo
      * If an animal reaches the age above "Old", which is basically the oldest available, he dies
      */
-    public void exec() {
+    @Override
+    public void run() {
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             // We must proceed this way, as using a foreach on the collection, and removing an item from this collection within the foreach will create an Exception
             for (int i = 0; i < enclosure.getNbAnimals(); i++) {
@@ -67,5 +68,4 @@ public class MakeAnimalsAgeJob {
             }
         }
     }
-
 }

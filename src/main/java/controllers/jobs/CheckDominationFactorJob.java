@@ -7,7 +7,7 @@ import models.enums.WolfRank;
 
 import java.util.ArrayList;
 
-public class CheckDominationFactorJob {
+public class CheckDominationFactorJob implements Runnable {
 
     /**
      * Represents the pack to test
@@ -30,7 +30,8 @@ public class CheckDominationFactorJob {
      * Performs the Job role
      * Will check the domination factor of all the wolves, and decrease the ones that matches the conditions domination <= 50 && not the last of his sex in its pack
      */
-    public void exec() {
+    @Override
+    public void run() {
         for (Enclosure<Wolf> enclosure : this.getEnclosures()) {
             if (enclosure.getWolfPack() != null) {
                 for (Wolf animalToCheck : enclosure.getAnimals()) {
@@ -58,5 +59,4 @@ public class CheckDominationFactorJob {
             }
         }
     }
-
 }
