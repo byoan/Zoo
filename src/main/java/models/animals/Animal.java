@@ -226,7 +226,7 @@ public class Animal implements AnimalInterface {
      * @return The specie name
      */
     public String getSpecieName() {
-        return specieName;
+        return this.specieName;
     }
 
     /**
