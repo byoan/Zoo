@@ -289,7 +289,7 @@ public class Animal implements AnimalInterface {
 
     @Override
     public String toString() {
-        return  "\n" + "   animal {"+ "\n" +"       Specie: \033[34m" + this.getSpecieName() + "\033[37m   |  " + "Is in an enclosure : " + "\033[34m" + ((this.isInEnclosure()) ? "Yes" : "No") + "\033[37m" + " \n" +
+        return  "\n" + "   Animal {"+ "\n" +"       Specie: \033[34m" + this.getSpecieName() + "\033[37m   |  " + "Is in an enclosure : " + "\033[34m" + ((this.isInEnclosure()) ? "Yes" : "No") + "\033[37m" + " \n" +
                 "       Hunger: \033[34m" + this.getHunger() + "%\033[37m" + "    |  " + "Currently sleeping: \033[34m" + ((this.isSleeping()) ? "Yes" : "No") + "\033[37m  |  " +
                 "Health: \033[34m" + this.getHealth() + "%\033[37m" + " \n" +
                 "       Sex: \033[34m" + ((this.getSex()) ? "Male\033[37m       |  " : "Female\033[37m     |  ") + "Weight: \033[34m" + this.getWeight() + "g\033[37m  |  " +

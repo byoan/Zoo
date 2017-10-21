@@ -362,7 +362,7 @@ public class Enclosure<A extends AnimalInterface> {
     @Override
     public String toString() {
         return "\033[34;4mEnclosure information:\033[37;24m\n"+
-                "   Name: '\033[34m" + this.getName() + "\033[37m'" + "  |  " +
+                "   Name: \033[34m" + this.getName() + "\033[37m" + "  |  " +
                 "Maximum number of animals that the enclosure can contain: \033[34m" + this.getMaxAnimals() + "\033[37m\n" +
                 "   Surface: \033[34m" + this.getSurface() + " m²\033[37m  |  " + "Cleanliness status: \033[34m" + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\033[37m\n" +
                 "\n\033[34;4mAnimals currently in the enclosure:\033[37;24m\n" + this.getAnimals() +

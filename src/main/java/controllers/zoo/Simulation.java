@@ -241,7 +241,7 @@ public class Simulation {
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             enclosure.deteriorate();
         }
-        View.displayWarningMessage("enclosures are deteriorated. You should clean them.\n");
+        View.displayWarningMessage("Enclosures are deteriorated. You should clean them.\n");
     }
 
     /**
