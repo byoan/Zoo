@@ -217,8 +217,10 @@ public class Simulation {
                 Enclosure<Animal> chosenEnclosure = this.getZoo().getEnclosureList().get(action - 1);
                 if (chosenEnclosure != null && chosenEnclosure.getNbAnimals() < chosenEnclosure.getMaxAnimals()) {
                     chosenEnclosure.add(animal);
-                    View.displayInformationMessage("Adding the new " + animal.getSpecieName() + " to the " + chosenEnclosure.getName() + " enclosure.\n");
-                    correctAnswer = true;
+                    if (chosenEnclosure.getAnimals().contains(animal)) {
+                        View.displayInformationMessage("Adding the new " + animal.getSpecieName() + " to the " + chosenEnclosure.getName() + " enclosure.\n");
+                        correctAnswer = true;
+                    }
                 } else {
                     View.displayWarningMessage("This enclosure is not available. Please chose another one:\n");
                 }
