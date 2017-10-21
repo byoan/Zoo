@@ -752,8 +752,8 @@ public class Simulation {
      * @param enclosure The enclosure containing the target animal
      */
     private void handleSteelAction(Animal animal, Enclosure enclosure) {
-        enclosure.remove(animal);
         View.displayWarningMessage("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + " enclosure.\n");
+        enclosure.remove(animal);
     }
 
     /**
