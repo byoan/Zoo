@@ -2,6 +2,13 @@ package views;
 
 public final class Color {
 
+    /**
+     * Private constructor as we do not want this class to be instantiated at any time
+     */
+    private Color() {
+
+    }
+
     public static final String WHITE = "\033[37m";
     public static final String RED = "\033[31m";
     public static final String GREEN = "\033[32m";

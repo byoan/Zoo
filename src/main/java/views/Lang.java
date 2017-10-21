@@ -2,6 +2,13 @@ package views;
 
 public final class Lang {
 
+    /**
+     * Private constructor as we do not want this class to be instantiated at any time
+     */
+    private Lang() {
+
+    }
+
     public static final String NO_ENCLOSURES_IN_ZOO = "No enclosures are currently in the zoo.\n";
     public static final String WRONG_ENCLOSURE_NUMBER_USER_INPUT = "Can't enter a value greater than the maximum enclosure. Please try again:\n";
     public static final String NOT_AVAILABLE_ENCLOSURE = "This enclosure is not available. Please chose another one:\n";
