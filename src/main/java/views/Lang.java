@@ -1,6 +1,6 @@
 package views;
 
-public class Lang {
+public final class Lang {
 
     public static final String NO_ENCLOSURES_IN_ZOO = "No enclosures are currently in the zoo.\n";
     public static final String WRONG_ENCLOSURE_NUMBER_USER_INPUT = "Can't enter a value greater than the maximum enclosure. Please try again:\n";

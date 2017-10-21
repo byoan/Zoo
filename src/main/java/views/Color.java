@@ -1,6 +1,6 @@
 package views;
 
-public class Color {
+public final class Color {
 
     public static final String WHITE = "\033[37m";
     public static final String RED = "\033[31m";
