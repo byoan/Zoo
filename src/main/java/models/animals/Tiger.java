@@ -73,7 +73,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
     public Tiger checkBirth(int turnNb) {
         if (this.getCopulationTurn() == 0) {
             return null;
-        } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
+        } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
             this.setCopulationTurn(0);
             return this.birth();
         }

@@ -49,7 +49,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     private int level;
 
     public Wolf() {
-        this.specieName = "Wolf";
+        this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
         this.strength = this.generateStrength();
         this.weight = this.randomWeight(16, 50);
@@ -66,7 +66,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     }
 
     public Wolf(boolean sex, float weight, float size, int age) {
-        this.specieName = "Wolf";
+        this.specieName = SPECIE_NAME;
         this.sex = sex;
         this.strength = this.generateStrength();
         this.weight = weight;
@@ -355,7 +355,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     public Wolf checkBirth(int turnNb) {
         if (this.getCopulationTurn() == 0) {
             return null;
-        } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
+        } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
             this.setCopulationTurn(0);
             return this.birth();
         }

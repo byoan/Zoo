@@ -72,7 +72,7 @@ public class Bear extends Animal implements Mammal {
     public Bear checkBirth(int turnNb) {
         if (this.getCopulationTurn() == 0) {
             return null;
-        } else if (turnNb - this.getCopulationTurn() >= this.getChildrenCreationTime()) {
+        } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
             this.setCopulationTurn(0);
             return this.birth();
         }
