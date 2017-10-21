@@ -2,6 +2,7 @@ package models.animals;
 
 import models.interfaces.animal.AnimalInterface;
 import models.interfaces.animal.Mammal;
+import views.Color;
 import views.View;
 
 import java.util.Random;
@@ -324,12 +325,12 @@ public class Animal implements AnimalInterface {
 
     @Override
     public String toString() {
-        return  "\n" + "   Animal {"+ "\n" +"       Specie: \033[34m" + this.getSpecieName() + "\033[37m   |  " + "Is in an enclosure : " + "\033[34m" + ((this.isInEnclosure()) ? "Yes" : "No") + "\033[37m" + " \n" +
-                "       Hunger: \033[34m" + this.getHunger() + "%\033[37m" + "    |  " + "Currently sleeping: \033[34m" + ((this.isSleeping()) ? "Yes" : "No") + "\033[37m  |  " +
-                "Health: \033[34m" + this.getHealth() + "%\033[37m" + " \n" +
-                "       Sex: \033[34m" + ((this.getSex()) ? "Male\033[37m       |  " : "Female\033[37m     |  ") + "Weight: \033[34m" + this.getWeight() + "g\033[37m  |  " +
-                "Size: \033[34m" + this.getSize() + "cm\033[37m  |  " + "Age: \033[34m" + ((this.getAge() == 1) ? "Young" : (this.getAge() == 2) ? "Adult" : "Old") + "\033[37m \n"  +
-                "       Started pregnancy at turn: \033[34m" + ((this.getCopulationTurn() != 0) ? this.getCopulationTurn() : "-") + "\033[37m  |  " + "Pregnancy duration: \033[34m" + this.getChildrenCreationTime() + " turns\033[37m \n"
+        return  "\n" + "   Animal {"+ "\n" +"       Specie: " + Color.BLUE + this.getSpecieName() + Color.WHITE + "   |  " + "Is in an enclosure : " + Color.BLUE + ((this.isInEnclosure()) ? "Yes" : "No") + Color.WHITE + " \n" +
+                "       Hunger: " + Color.BLUE + this.getHunger() + "%" + Color.WHITE + "    |  " + "Currently sleeping: " + Color.BLUE + ((this.isSleeping()) ? "Yes" : "No") + Color.WHITE + "  |  " +
+                "Health: " + Color.BLUE + this.getHealth() + "%" + Color.WHITE + " \n" +
+                "       Sex: " + Color.BLUE + ((this.getSex()) ? "Male" : "Female") + Color.WHITE + "     |  " + "Weight: " + Color.BLUE + this.getWeight() + "g" + Color.WHITE + "  |  " +
+                "Size: " + Color.BLUE + this.getSize() + "cm" + Color.WHITE + "  |  " + "Age: " + Color.BLUE + ((this.getAge() == 1) ? "Young" : (this.getAge() == 2) ? "Adult" : "Old") + Color.WHITE + " \n"  +
+                "       Started pregnancy at turn: " + Color.BLUE + ((this.getCopulationTurn() != 0) ? this.getCopulationTurn() : "-") + Color.WHITE + "  |  " + "Pregnancy duration: " + Color.BLUE + this.getChildrenCreationTime() + " turns" + Color.WHITE + " \n"
                 ;
     }
 }

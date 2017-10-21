@@ -6,6 +6,7 @@ import models.exceptions.animals.AnimalAlreadyPregnantException;
 import models.factories.AnimalFactory;
 import models.interfaces.animal.Mammal;
 import models.interfaces.animal.WanderAnimal;
+import views.Color;
 import views.View;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -381,12 +382,12 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     @Override
     public String toString() {
         return  super.toString() +
-                "\n" + "       Membership status: " + "\033[34m" + ((this.getRank() == null) ? "Solitary" : "In a pack") + "\033[37m" + "  |  " +
-                "Rank in the pack: " + "\033[34m" + ((this.getRank() == null) ? "none" : this.getRank()) + "\033[37m" + "  |  " +
-                "Level: " + "\033[34m" + this.getLevel() + "\033[37m" + "\n" +
-                "       Domination factor: " + "\033[34m" + this.getDominationFactor() + "\033[37m" + "  |  " +
-                "Impetuosity: " + "\033[34m" + this.getImpetuosity() + "%" + "\033[37m" + "  |  " +
-                "Strength: " + "\033[34m" + this.getStrength() + "\033[37m" + "\n" +"   } \n"
+                "\n" + "       Membership status: " + Color.BLUE + ((this.getRank() == null) ? "Solitary" : "In a pack") + Color.WHITE + "  |  " +
+                "Rank in the pack: " + Color.BLUE + ((this.getRank() == null) ? "none" : this.getRank()) + Color.WHITE + "  |  " +
+                "Level: " + Color.BLUE + this.getLevel() + Color.WHITE + "\n" +
+                "       Domination factor: " + Color.BLUE + this.getDominationFactor() + Color.WHITE + "  |  " +
+                "Impetuosity: " + Color.BLUE + this.getImpetuosity() + "%" + Color.WHITE + "  |  " +
+                "Strength: " + Color.BLUE + this.getStrength() + Color.WHITE + "\n" +"   } \n"
                 ;
     }
 }

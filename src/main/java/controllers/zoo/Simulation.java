@@ -10,6 +10,7 @@ import models.enclosures.Enclosure;
 import models.animals.*;
 import models.factories.EnclosureFactory;
 import models.interfaces.animal.*;
+import views.Lang;
 import views.View;
 
 import java.util.ArrayList;
@@ -211,7 +212,7 @@ public class Simulation {
             try {
                 action = Integer.parseInt(userInput);
                 if (action > this.getZoo().getEnclosureList().size()) {
-                    View.displayWarningMessage("Can't enter a value greater than the maximum enclosure. Please try again:\n");
+                    View.displayWarningMessage(Lang.WRONG_ENCLOSURE_NUMBER_USER_INPUT);
                     continue;
                 }
                 Enclosure<Animal> chosenEnclosure = this.getZoo().getEnclosureList().get(action - 1);
@@ -222,7 +223,7 @@ public class Simulation {
                         correctAnswer = true;
                     }
                 } else {
-                    View.displayWarningMessage("This enclosure is not available. Please chose another one:\n");
+                    View.displayWarningMessage(Lang.NOT_AVAILABLE_ENCLOSURE);
                 }
             } catch (Exception e) {
                 View.displayErrorMessage("Error : " + e.toString() + ". Please try again:\n");
@@ -254,7 +255,7 @@ public class Simulation {
         for (Enclosure<Animal> enclosure : this.getZoo().getEnclosureList()) {
             enclosure.deteriorate();
         }
-        View.displayWarningMessage("Enclosures are deteriorated. You should clean them.\n");
+        View.displayWarningMessage(Lang.ENCLOSURES_DETERIORATED);
     }
 
     /**
@@ -300,7 +301,7 @@ public class Simulation {
                 this.doNothing();
                 break;
             default:
-                View.displayWarningMessage("Did not understood your action, please try again");
+                View.displayWarningMessage(Lang.WRONG_USER_ACTION);
                 this.handleTurn();
                 break;
         }
@@ -312,7 +313,7 @@ public class Simulation {
      * Allows to display the current number of animals in the zoo
      */
     private void handleDisplayCurrentNbAnimalsInZoo() {
-        View.displayInformationMessage("Current number of animals in the zoo: " + this.getZoo().getNbAnimalsInZoo());
+        View.displayInformationMessage(Lang.CURRENT_NUMBER_ANIMALS_IN_ZOO + this.getZoo().getNbAnimalsInZoo());
     }
 
     /**
@@ -365,7 +366,7 @@ public class Simulation {
             // Proceed to the transfer
             originEnclosure.transferAnimal(animal, targetEnclosure, false);
         } else {
-            View.displayInformationMessage("No enclosures are currently in the zoo.\n");
+            View.displayInformationMessage(Lang.NO_ENCLOSURES_IN_ZOO);
             // Return to the main menu
             this.handleTurn();
             return;
@@ -474,7 +475,7 @@ public class Simulation {
             View.displayConsoleMessage("Inspecting the enclosure n°" + action + ":\n");
             View.displayMessage(this.getEmployee().inspectEnclosure(this.getZoo().getEnclosureList().get(action - 1)));
         } else {
-            View.displayInformationMessage("No enclosures are currently in the zoo.\n");
+            View.displayInformationMessage(Lang.NO_ENCLOSURES_IN_ZOO);
             this.handleTurn();
             return;
         }
@@ -513,7 +514,7 @@ public class Simulation {
             View.displayConsoleMessage("Cleaning the enclosure n°" + action + " ...");
             this.getEmployee().cleanEnclosure(this.getZoo().getEnclosureList().get(action - 1));
         } else {
-            View.displayConsoleMessage("No enclosures are currently in the zoo.\n");
+            View.displayConsoleMessage(Lang.NO_ENCLOSURES_IN_ZOO);
             this.handleTurn();
             return;
         }
@@ -638,16 +639,16 @@ public class Simulation {
                         secondAnimal = this.pickRandomAnimal(enclosure);
                     }
                     if (secondAnimal != null) {
-                        animal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
-                        secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(1 , animal.getHealth() + 1));
+                        animal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth() + 1));
+                        secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth() + 1));
 
-                        View.displayInformationMessage("2 animals fought in the " + enclosure.getName() + " enclosure.\n");
+                        View.displayInformationMessage(Lang.FIGHT_TWO_ANIMALS_FOUGHT + enclosure.getName() + " enclosure.\n");
                         if (animal.getHealth() <= 0) {
-                            View.displayWarningMessage("The first one died.\n");
+                            View.displayWarningMessage(Lang.FIGHT_FIRST_ANIMAL_DIED);
                             enclosure.remove(animal);
                         }
                         if (secondAnimal.getHealth() <= 0) {
-                            View.displayWarningMessage("The second one died.\n");
+                            View.displayWarningMessage(Lang.FIGHT_SECOND_ANIMAL_DIED);
                             enclosure.remove(secondAnimal);
                         }
                     }

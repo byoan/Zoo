@@ -31,35 +31,35 @@ public class View {
     }
 
     public static void displayWarningMessage(String message) {
-        System.out.println("\033[31m" + message + "\033[37m");
+        displayMessage(Color.RED + message + Color.WHITE);
     }
 
     public static void displaySuccessMessage(String message) {
-        System.out.println("\033[34m" + message + "\033[37m");
+        displayMessage(Color.GREEN + message + Color.WHITE);
     }
 
     public static void displayInformationMessage(String message) {
-        System.out.println("\033[35m" + message +  "\033[37m");
+        displayMessage(Color.CYAN + message + Color.WHITE);
     }
 
     public static void displayAnimalActionMessage(String message) {
-        System.out.println("\033[92m" + message +  "\033[37m");
+        displayMessage(Color.GREEN + message + Color.WHITE);
     }
 
     public static void displayMenuMessage(String message) {
-        System.out.println("\033[96m" + message +  "\033[37m");
+        displayMessage(Color.CYAN + message + Color.WHITE);
     }
 
     public static void displayConsoleMessage(String message) {
-        System.out.println("\033[95m" + message +  "\033[37m");
+        displayMessage(Color.MAGENTA + message + Color.WHITE);
     }
 
     public static void displayErrorMessage(String message) {
-        System.out.println("\033[33m" + message +  "\033[37m");
+        displayMessage(Color.YELLOW + message + Color.WHITE);
     }
 
     public static void displayWelcomeMessage() {
-        System.out.println("\n\n|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|\n" +
+        displayMessage("\n\n|‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|\n" +
                 "|===============================================================================================|\n" +
                 "|                                                                                               |\n" +
                 "|                    __      _____ _    ___ ___  __  __ ___    _____ ___                        |\n" +

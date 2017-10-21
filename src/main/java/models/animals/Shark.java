@@ -4,6 +4,7 @@ import models.factories.AnimalFactory;
 import models.interfaces.animal.AnimalInterface;
 import models.interfaces.animal.MarineAnimal;
 import models.interfaces.animal.Oviparous;
+import views.Color;
 import views.View;
 
 public class Shark extends Animal implements MarineAnimal, Oviparous {
@@ -124,6 +125,6 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
 
     @Override
     public String toString() {
-        return super.toString() + "       Already hatched: \033[34m" + ((this.getIsHatched()) ? "Yes" : "No") + "\033[37m \n    }";
+        return super.toString()  + "       Already hatched: " + Color.BLUE + ((this.getIsHatched()) ? "Yes" : "No") + Color.WHITE + " \n    }";
     }
 }
