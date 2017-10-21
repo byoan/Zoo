@@ -30,6 +30,7 @@ public class AnimalAlreadyPregnantException extends Exception {
      * Allows to display a more customized error message when calling e.getMessage() in the catch
      * @return The error message
      */
+    @Override
     public String getMessage() {
         return "This " + this.getAnimal().getSpecieName() + " is already pregnant. It therefore can't copulate.";
     }

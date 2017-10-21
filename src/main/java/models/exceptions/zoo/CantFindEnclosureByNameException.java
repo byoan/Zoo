@@ -27,6 +27,7 @@ public class CantFindEnclosureByNameException extends Exception {
      Allows to display a more customized error message when calling e.getMessage() in the catch
      * @return The error message indicating that the searched enclosure name could not be found in the zoo
      */
+    @Override
     public String getMessage() {
         return "The enclosure named " + this.getEnclosureName() + " could not be found.";
     }

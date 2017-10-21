@@ -45,6 +45,7 @@ public class EnclosureNotInZooException extends Exception {
      * Allows to display a more customized error message when calling e.getMessage() in the catch
      * @return The error message, with an indication regarding the maximum space of the enclosure
      */
+    @Override
     public String getMessage() {
         return "Could not remove the " + this.getEnclosure().getName() + " enclosure from the " + this.getZoo().getName() + " zoo, as it's not in it";
     }

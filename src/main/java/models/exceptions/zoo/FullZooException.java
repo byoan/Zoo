@@ -45,6 +45,7 @@ public class FullZooException extends Exception {
      * Allows to display a more customized error message when calling e.getMessage() in the catch
      * @return The error message, with an indication regarding the maximum space of the enclosure
      */
+    @Override
     public String getMessage() {
         return "Could not add the " + this.getEnclosure().getName() + " enclosure to the " + this.getZoo().getName() + " zoo, as it is already full (" + this.getZoo().getEnclosureList().size() + "/" + this.getZoo().getMaxNbEnclosure() + ").";
     }

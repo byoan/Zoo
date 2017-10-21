@@ -29,6 +29,7 @@ public class AnimalAlreadyInEnclosureException extends Exception {
      * Allows to display a more customized error message when calling e.getMessage() in the catch
      * @return The error message
      */
+    @Override
     public String getMessage() {
         return "This " + this.getAnimal() + " is already in an enclosure";
     }

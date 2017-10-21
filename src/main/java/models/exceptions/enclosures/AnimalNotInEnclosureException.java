@@ -40,6 +40,7 @@ public class AnimalNotInEnclosureException extends Exception {
      * Allows to display a more customized error message when calling e.getMessage() in the catch
      * @return The error message indicating which animal can't be found in which enclosure
      */
+    @Override
     public String getMessage() {
         return "This " + this.getAnimal().getSpecieName() + " is not present in the " + this.getEnclosure().getName() + " enclosure.";
     }

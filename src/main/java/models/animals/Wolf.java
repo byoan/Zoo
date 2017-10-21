@@ -173,7 +173,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
                     // In case we attack the alpha male, and we win, we must remove the alpha from the pack, and replace it with the winner
                     if (target.getRank().getId() == 1) {
                         target.getPack().remove(target);
-                        this.setRank(WolfRank.Alpha);
+                        this.setRank(WolfRank.ALPHA);
                     } else {
                         // If it is not the alpha, we simply swap the ranks of the 2 fighters
                         this.swapRanks(target);
@@ -383,7 +383,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     public String toString() {
         return  super.toString() +
                 "\n" + "       Membership status: " + Color.BLUE + ((this.getRank() == null) ? "Solitary" : "In a pack") + Color.WHITE + "  |  " +
-                "Rank in the pack: " + Color.BLUE + ((this.getRank() == null) ? "none" : this.getRank()) + Color.WHITE + "  |  " +
+                "Rank in the pack: " + Color.BLUE + ((this.getRank() == null) ? "none" : this.getRank().getName()) + Color.WHITE + "  |  " +
                 "Level: " + Color.BLUE + this.getLevel() + Color.WHITE + "\n" +
                 "       Domination factor: " + Color.BLUE + this.getDominationFactor() + Color.WHITE + "  |  " +
                 "Impetuosity: " + Color.BLUE + this.getImpetuosity() + "%" + Color.WHITE + "  |  " +

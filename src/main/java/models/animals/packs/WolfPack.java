@@ -48,8 +48,8 @@ public class WolfPack {
      * @param wolf The wolf to be added
      */
     public void add (Wolf wolf) {
-        if (this.getWolfList().size() == 0) {
-            wolf.setRank(WolfRank.Alpha);
+        if (this.getWolfList().isEmpty()) {
+            wolf.setRank(WolfRank.ALPHA);
             wolf.setStrength(101);
         }
         if (wolf.getRank() == null) {
@@ -91,7 +91,8 @@ public class WolfPack {
      * Allows to sort the pack by the Wolf rank in its pack
      */
     public ArrayList<Wolf> insertionSort(ArrayList<Wolf> wolfPack) {
-        int i, j;
+        int i;
+        int j;
         int currentWolfRank;
 
         for (i = 1; i < wolfPack.size(); i++) {
@@ -142,7 +143,7 @@ public class WolfPack {
                 if (wolf.getRankName() == "Omega") {
                     break;
                 } else {
-                    wolf.setRank(WolfRank.Omega);
+                    wolf.setRank(WolfRank.OMEGA);
                     break;
                 }
             }
@@ -215,7 +216,7 @@ public class WolfPack {
             this.disband();
         } else {
             View.displayInformationMessage("A new alpha male has been designated for the pack.\n");
-            this.getWolfList().get(candidateId).setRank(WolfRank.Alpha);
+            this.getWolfList().get(candidateId).setRank(WolfRank.ALPHA);
 
             // Remove the old alpha, and re-order the pack
             this.removeWolfPackAttributes(wolf);

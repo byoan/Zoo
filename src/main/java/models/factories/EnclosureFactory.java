@@ -8,11 +8,6 @@ import views.View;
 public abstract class EnclosureFactory {
 
     /**
-     * The instance of the Factory, used by the Singleton
-     */
-    private static EnclosureFactory instance = null;
-
-    /**
      * Constructor for the EnclosureFactory
      * Protected accessibility as we do not want anyone to instantiate this class (Singleton), only the concrete factories
      */
@@ -32,7 +27,7 @@ public abstract class EnclosureFactory {
      * Will create a new instance on first call
      * @return The EnclosureFactory instance
      */
-    public static <A extends Animal> EnclosureFactory getInstance(int type) {
+    public static EnclosureFactory getInstance(int type) {
 
             switch (type) {
                 case 1:

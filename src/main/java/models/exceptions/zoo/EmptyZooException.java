@@ -28,6 +28,7 @@ public class EmptyZooException extends Exception {
      Allows to display a more customized error message when calling e.getMessage() in the catch
      * @return The error message indicating that the zoo has no enclosures
      */
+    @Override
     public String getMessage() {
         return "The " + this.getZoo().getName() + " zoo hasn't any enclosure yet.";
     }

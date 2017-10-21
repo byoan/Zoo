@@ -177,7 +177,7 @@ public class Enclosure<A extends AnimalInterface> {
                     if (animal.getSpecieName() == "Wolf") {
                         this.handleWolfAdditionToPack(animal);
                     }
-                    if (this.getAnimals().size() == 0 || this.getAnimals().get(0).getSpecieName() == animal.getSpecieName()) {
+                    if (this.getAnimals().isEmpty() || this.getAnimals().get(0).getSpecieName() == animal.getSpecieName()) {
                         this.getAnimals().add(animal);
                         animal.setInEnclosure(true);
                     } else {
@@ -189,9 +189,7 @@ public class Enclosure<A extends AnimalInterface> {
             } else {
                 throw new AnimalAlreadyInEnclosureException(animal);
             }
-        } catch (FullEnclosureException e) {
-            View.displayErrorMessage(e.getMessage());
-        } catch (AnimalAlreadyInEnclosureException e) {
+        } catch (FullEnclosureException|AnimalAlreadyInEnclosureException e) {
             View.displayErrorMessage(e.getMessage());
         } catch (Exception e) {
             View.displayErrorMessage("An error occurred while trying to add this animal to the " + this.getName() + " enclosure : " + e.toString());
@@ -213,8 +211,6 @@ public class Enclosure<A extends AnimalInterface> {
             } else {
                 throw new AnimalNotInEnclosureException(animal, this);
             }
-        } catch (AnimalNotInEnclosureException e) {
-            View.displayErrorMessage(e.getMessage());
         } catch(Exception e) {
             View.displayErrorMessage(e.getMessage());
         }
@@ -256,10 +252,10 @@ public class Enclosure<A extends AnimalInterface> {
                 for (A wolfInEnclosure : this.getAnimals()) {
                     if (wolfInEnclosure.getSex() != wolf.getSex()) {
                         this.setWolfPack(new WolfPack());
-                        ((Wolf) wolf).setRank(WolfRank.Alpha);
+                        ((Wolf) wolf).setRank(WolfRank.ALPHA);
                         ((Wolf) wolf).setStrength(101);
                         this.getWolfPack().add((Wolf) wolf);
-                        ((Wolf) wolfInEnclosure).setRank(WolfRank.Alpha);
+                        ((Wolf) wolfInEnclosure).setRank(WolfRank.ALPHA);
                         ((Wolf) wolfInEnclosure).setStrength(101);
                         this.getWolfPack().add((Wolf) wolfInEnclosure);
 

@@ -320,7 +320,7 @@ public class Animal implements AnimalInterface {
      * @param <A> Generic type used for the animals parameter, which is here a type extending Mammal
      */
     public <A extends Mammal> void copulate(A animal, int turnNb) {
-
+        // This method will be redefined by all the Mammals of the simulation, as they have a Mammal's specific behaviour
     }
 
     @Override
