@@ -109,7 +109,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
             return null;
         } else {
             // Man can't be pregnant
-            if (this.getSex() == false) {
+            if (!this.getSex()) {
                 return AnimalFactory.getInstance().createShark(turnNb);
             } else {
                 return null;

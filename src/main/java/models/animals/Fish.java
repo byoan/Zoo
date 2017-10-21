@@ -109,7 +109,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
             return null;
         } else {
             // Man can't be pregnant
-            if (this.getSex() == false) {
+            if (!this.getSex()) {
                 return AnimalFactory.getInstance().createFish(turnNb);
             } else {
                 return null;

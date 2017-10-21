@@ -101,7 +101,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
             return null;
         } else {
             // Man can't be pregnant
-            if (this.getSex() == false) {
+            if (!this.getSex()) {
                 return AnimalFactory.getInstance().createEagle(turnNb);
             } else {
                 return null;

@@ -109,7 +109,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
             return null;
         } else {
             // Man can't be pregnant
-            if (this.getSex() == false) {
+            if (!this.getSex()) {
                 return AnimalFactory.getInstance().createPenguin(turnNb);
             } else {
                 return null;
