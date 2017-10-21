@@ -21,14 +21,49 @@ public class Animal implements AnimalInterface {
      */
     protected int copulationTurn;
 
-    protected String specieName;//
-    protected boolean sex; // True if male
+    /**
+     * Represents the specie name of the Animal, which is basically it's class name in a String
+     */
+    protected String specieName;
+
+    /**
+     * Represents the sex of the Animal, where true equals Male, and false equals Female
+     */
+    protected boolean sex;
+
+    /**
+     * Represents the weight of the Animal, in grammes
+     */
     protected float weight;
+
+    /**
+     * Represents the size of the Animal, in centimeters
+     */
     protected float size;
+
+    /**
+     * Represents the current hunger level of an animal, as a percentage, where 1 is very hungry, and 100 is not hungry
+     */
     protected int hungerIndicator;
+
+    /**
+     * Represents the current sleep state of the Animal, having true for currently sleeping, and false for awake
+     */
     protected boolean sleepIndicator;
-    protected int healthIndicator; // Percentage
+
+    /**
+     * Represents the current health of the animal, as a percentage, where 1 is low health and 100 is full health
+     */
+    protected int healthIndicator;
+
+    /**
+     * Represents the time required for a child to birth/hatch, as a number of turns
+     */
     protected int childrenCreationTime;
+
+    /**
+     * Represents a boolean indicating whether or not the animal is currently in an enclosure
+     */
     protected boolean isInEnclosure = false;
 
     /**
