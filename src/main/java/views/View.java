@@ -55,7 +55,7 @@ public class View {
     }
 
     public static void displayErrorMessage(String message) {
-        System.out.println("\032[33m" + "\032[1m" + message +  "\033[37m");
+        System.out.println("\033[33m" + message +  "\033[37m");
     }
 
     public static void displayWelcomeMessage() {
