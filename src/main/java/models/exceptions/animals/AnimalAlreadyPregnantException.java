@@ -32,7 +32,7 @@ public class AnimalAlreadyPregnantException extends Exception {
      */
     @Override
     public String getMessage() {
-        return "This " + this.getAnimal().getSpecieName() + " is already pregnant. It therefore can't copulate.";
+        return "A " + this.getAnimal().getSpecieName() + " copulated, but is already pregnant.";
     }
 
 }
