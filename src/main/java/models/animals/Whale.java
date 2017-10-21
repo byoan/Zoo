@@ -8,8 +8,13 @@ import views.View;
 
 public class Whale extends Animal implements MarineAnimal, Mammal {
 
+    /**
+     * Represents the specie name of the Animal, which is basically it's class name in a String
+     */
+    private static final String SPECIE_NAME = "Whale";
+
     public Whale() {
-        this.specieName = "Whale";
+        this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
         this.weight = randomWeight(20000000, 30000000);
         this.size = randomSize(1300, 1600);
@@ -21,12 +26,12 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
     }
 
     public Whale(boolean sex, float weight, float size, int age) {
-        this.specieName = "Whale";
+        this.specieName = SPECIE_NAME;
         this.sex = sex;
         this.weight = weight;
         this.size = size;
         this.age = age;
-        //Default ones
+        // Default ones
         this.hungerIndicator = 100;
         this.sleepIndicator = false;
         this.healthIndicator = 100;

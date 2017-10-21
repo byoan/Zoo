@@ -10,13 +10,18 @@ import views.View;
 public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAnimal {
 
     /**
+     * Represents the specie name of the Animal, which is basically it's class name in a String
+     */
+    private static final String SPECIE_NAME = "Penguin";
+
+    /**
      * Whether the current animal is hatched
      */
     private boolean isHatched;
 
     public Penguin() {
-        this.specieName = "Penguin";
-        this.sex = this.getRandomBoolean();;
+        this.specieName = SPECIE_NAME;
+        this.sex = this.getRandomBoolean();
         this.weight = this.randomWeight(500, 700);
         this.size = this.randomSize(37, 39);
         this.age = 1;
@@ -29,8 +34,8 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     }
 
     public Penguin(int copulationTurn) {
-        this.specieName = "Penguin";
-        this.sex = this.getRandomBoolean();;
+        this.specieName = SPECIE_NAME;
+        this.sex = this.getRandomBoolean();
         this.weight = this.randomWeight(500, 700);
         this.size = this.randomSize(37, 39);
         this.age = 1;
@@ -43,7 +48,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     }
 
     public Penguin(boolean sex, float weight, float size, int age, int copulationTurn) {
-        this.specieName = "Penguin";
+        this.specieName = SPECIE_NAME;
         this.sex = sex;
         this.weight = weight;
         this.size = size;

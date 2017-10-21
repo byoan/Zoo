@@ -8,8 +8,13 @@ import views.View;
 
 public class Tiger extends Animal implements Mammal, WanderAnimal {
 
+    /**
+     * Represents the specie name of the Animal, which is basically it's class name in a String
+     */
+    private static final String SPECIE_NAME = "Tiger";
+
     public Tiger() {
-        this.specieName = "Tiger";
+        this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
         this.weight = this.randomWeight(65000, 310000);
         this.size = this.randomSize(70, 120);
@@ -21,7 +26,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
     }
 
     public Tiger(boolean sex, float weight, float size, int age) {
-        this.specieName = "Tiger";
+        this.specieName = SPECIE_NAME;
         this.sex = sex;
         this.weight = weight;
         this.size = size;

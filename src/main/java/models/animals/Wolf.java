@@ -13,6 +13,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     /**
+     * Represents the specie name of the Animal, which is basically it's class name in a String
+     */
+    private static final String SPECIE_NAME = "Wolf";
+
+    /**
      * Represents the pack that contains this wolf
      */
     private WolfPack pack;

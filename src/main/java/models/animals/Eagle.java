@@ -9,12 +9,17 @@ import views.View;
 public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     /**
+     * Represents the specie name of the Animal, which is basically it's class name in a String
+     */
+    private static final String SPECIE_NAME = "Eagle";
+
+    /**
      * Whether the current animal is hatched
      */
     private boolean isHatched;
 
     public Eagle() {
-        this.specieName = "Eagle";
+        this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
         this.weight = this.randomWeight(3000, 5000);
         this.size = this.randomSize(70, 84);
@@ -28,7 +33,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     }
 
     public Eagle(int copulationTurn) {
-        this.specieName = "Eagle";
+        this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
         this.weight = this.randomWeight(3000, 5000);
         this.size = this.randomSize(70, 84);
@@ -42,7 +47,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     }
 
     public Eagle(boolean sex, float weight, float size, int age, int copulationTurn) {
-        this.specieName = "Eagle";
+        this.specieName = SPECIE_NAME;
         this.sex = sex;
         this.weight = weight;
         this.size = size;

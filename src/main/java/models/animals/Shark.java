@@ -9,13 +9,18 @@ import views.View;
 public class Shark extends Animal implements MarineAnimal, Oviparous {
 
     /**
+     * Represents the specie name of the Animal, which is basically it's class name in a String
+     */
+    private static final String SPECIE_NAME = "Shark";
+
+    /**
      * Whether the current animal is hatched
      */
     private boolean isHatched;
 
     public Shark() {
-        this.specieName = "Shark";
-        this.sex = this.getRandomBoolean();;
+        this.specieName = SPECIE_NAME;
+        this.sex = this.getRandomBoolean();
         this.weight = this.randomWeight(680000, 1100000);
         this.size = this.randomWeight(3, 6);
         this.age = 1;
@@ -28,8 +33,8 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     }
 
     public Shark(int copulationTurn) {
-        this.specieName = "Shark";
-        this.sex = this.getRandomBoolean();;
+        this.specieName = SPECIE_NAME;
+        this.sex = this.getRandomBoolean();
         this.weight = this.randomWeight(680000, 1100000);
         this.size = this.randomWeight(3, 6);
         this.age = 1;
@@ -42,7 +47,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     }
 
     public Shark(boolean sex, float weight, float size, int age, int copulationTurn) {
-        this.specieName = "Shark";
+        this.specieName = SPECIE_NAME;
         this.sex = sex;
         this.weight = weight;
         this.size = size;
