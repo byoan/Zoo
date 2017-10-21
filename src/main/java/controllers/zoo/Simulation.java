@@ -583,76 +583,27 @@ public class Simulation {
     private void handleRandomAction(String action, Animal animal, Enclosure enclosure) {
         switch (action) {
             case "DECREASE_HUNGER":
-                animal.setHunger(animal.getHunger() - 80);
-                if (animal.getHunger() <= 0) {
-                    enclosure.remove(animal);
-                    View.displayWarningMessage("A " + animal.getSpecieName() + " starved to death in the " + enclosure.getName() + " enclosure.\n");
-                } else {
-                    View.displayWarningMessage("A " + animal.getSpecieName() + " is hungry in the " + enclosure.getName() + " enclosure.\n");
-                }
+                this.handleDecreaseHungerAction(animal, enclosure);
                 break;
 
             case "DECREASE_LIFE":
-                animal.setHealth(animal.getHealth() - 80);
-                if (animal.getHealth() <= 0) {
-                    enclosure.remove(animal);
-                    View.displayWarningMessage("A " + animal.getSpecieName() + " died in the " + enclosure.getName() + " enclosure.\n ");
-                } else {
-                    View.displayWarningMessage("A " + animal.getSpecieName() + " is hurt/sick in the " + enclosure.getName() + " enclosure.\n");
-                }
+                this.handleDecreaseLifeAction(animal, enclosure);
                 break;
 
             case "SLEEP":
-                if (animal.isSleeping()) {
-                    View.displayInformationMessage("A " + animal.getSpecieName() + " woke up in the " + enclosure.getName() + " enclosure.\n");
-                    animal.wake();
-                } else {
-                    View.displayInformationMessage("A " + animal.getSpecieName() + " fell asleep in the " + enclosure.getName() + " enclosure.\n");
-                    animal.sleep();
-                }
+                this.handleSleepAction(animal, enclosure);
                 break;
 
             case "STOLE":
-                enclosure.remove(animal);
-                View.displayWarningMessage("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + " enclosure.\n");
+                this.handleSteelAction(animal, enclosure);
                 break;
 
             case "ESCAPE":
-                if (animal instanceof MarineAnimal) {
-                    // Unless a whale has wings, it won't escape until chickens have golden teeth
-                    break;
-                } else if (animal instanceof FlyingAnimal) {
-                    if (enclosure.getCleanliness() < 1) {
-                        enclosure.remove(animal);
-                        View.displayWarningMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
-                    }
-                    break;
-                }
-                enclosure.remove(animal);
-                View.displayWarningMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
+                this.handleEscapeAction(animal, enclosure);
                 break;
 
             case "FIGHT":
-                if (enclosure.getNbAnimals() > 2) {
-                    Animal secondAnimal = this.pickRandomAnimal(enclosure);
-                    while (animal.equals(secondAnimal)) {
-                        secondAnimal = this.pickRandomAnimal(enclosure);
-                    }
-                    if (secondAnimal != null) {
-                        animal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth() + 1));
-                        secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth() + 1));
-
-                        View.displayInformationMessage(Lang.FIGHT_TWO_ANIMALS_FOUGHT + enclosure.getName() + " enclosure.\n");
-                        if (animal.getHealth() <= 0) {
-                            View.displayWarningMessage(Lang.FIGHT_FIRST_ANIMAL_DIED);
-                            enclosure.remove(animal);
-                        }
-                        if (secondAnimal.getHealth() <= 0) {
-                            View.displayWarningMessage(Lang.FIGHT_SECOND_ANIMAL_DIED);
-                            enclosure.remove(secondAnimal);
-                        }
-                    }
-                }
+                this.handleFightAction(animal, enclosure);
                 break;
 
             case "COPULATE":
@@ -668,44 +619,10 @@ public class Simulation {
                         }
                     }
 
-                    View.displayAnimalActionMessage("Some " + animal.getSpecieName() + " made some adult things in the " + enclosure.getName() + " enclosure.\n");
-
                     if (animal instanceof Oviparous) {
-                        Animal newAnimal;
-                        // If its a male, we must call the copulate method on the second animal (the female)
-                        if (animal.getSex()) {
-                            newAnimal = secondAnimal.copulate(animal, this.getTurnNb());
-                            // Try to copulate until we get a valid animal
-                            while (newAnimal == null) {
-                                newAnimal = secondAnimal.copulate(animal, this.getTurnNb());
-                                if (newAnimal != null) {
-                                    break;
-                                }
-                            }
-                        } else {
-                            newAnimal = animal.copulate(secondAnimal, this.getTurnNb());
-                            // Try to copulate until we get a valid animal
-                            while (newAnimal == null) {
-                                newAnimal = animal.copulate(secondAnimal, this.getTurnNb());
-                                if (newAnimal != null) {
-                                    break;
-                                }
-                            }
-                        }
-
-                        // If there is enough space in the parent enclosure, put the new animal in it. Else, ask the employee
-                        if (enclosure.getNbAnimals() < enclosure.getMaxAnimals()) {
-                            enclosure.add(newAnimal);
-                        } else {
-                            this.displayEnclosureListForNewBirth(newAnimal);
-                            this.chooseEnclosureForNewBirth(newAnimal);
-                        }
+                        this.handleOviparousCopulation(animal, secondAnimal, enclosure);
                     } else if (animal instanceof Mammal) {
-                        if (animal.getSex()) {
-                            ((Mammal)secondAnimal).copulate((Mammal)animal, this.getTurnNb());
-                        } else {
-                            ((Mammal)animal).copulate((Mammal)secondAnimal, this.getTurnNb());
-                        }
+                        this.handleMammalCopulation(animal, secondAnimal, enclosure);
                     }
                 } else {
                     View.displayInformationMessage("No copulation possible in the " + enclosure.getName() + " enclosure, as there is not enough male/female\n");
@@ -713,17 +630,176 @@ public class Simulation {
                 break;
 
             case "WOLF_ATTACK":
-                Animal secondAnimal = this.pickRandomAnimal(enclosure);
-                while (animal.equals(secondAnimal)) {
-                    secondAnimal = this.pickRandomAnimal(enclosure);
-                }
-                if (secondAnimal instanceof Wolf && ((Wolf)animal).getImpetuosity() >= ((Wolf)secondAnimal).getImpetuosity() && ((Wolf) secondAnimal).getRank().getId() != 1 && !secondAnimal.getSex()) {
-                    ((Wolf)animal).attemptDomination((Wolf)secondAnimal);
-                }
+                this.handleWolfAttack(animal, enclosure);
                 break;
 
             default:
                 break;
+        }
+    }
+
+    /**
+     * Allows to handle the randomly picked WOLF_ATTACK action, which will basically make the given wolf attempt a domination on another one
+     * @param animal The first wolf involved
+     * @param enclosure The enclosure containing the give wolf
+     */
+    private void handleWolfAttack(Animal animal, Enclosure enclosure) {
+        Animal secondAnimal = this.pickRandomAnimal(enclosure);
+        while (animal.equals(secondAnimal)) {
+            secondAnimal = this.pickRandomAnimal(enclosure);
+        }
+        if (secondAnimal instanceof Wolf && ((Wolf)animal).getImpetuosity() >= ((Wolf)secondAnimal).getImpetuosity() && ((Wolf) secondAnimal).getRank().getId() != 1 && !secondAnimal.getSex()) {
+            ((Wolf)animal).attemptDomination((Wolf)secondAnimal);
+        }
+    }
+
+    /**
+     * Allows to handle the copulation process for Mammals
+     * @param animal The first animal involved
+     * @param secondAnimal The second animal involved (must have a different sex that the first one)
+     * @param enclosure The enclosure containing the 2 animals
+     */
+    private void handleMammalCopulation(Animal animal, Animal secondAnimal, Enclosure enclosure) {
+        View.displayAnimalActionMessage("Some " + animal.getSpecieName() + " made some adult things in the " + enclosure.getName() + " enclosure.\n");
+        if (animal.getSex()) {
+            ((Mammal)secondAnimal).copulate((Mammal)animal, this.getTurnNb());
+        } else {
+            ((Mammal)animal).copulate((Mammal)secondAnimal, this.getTurnNb());
+        }
+    }
+
+    /**
+     * Allows to handle the Oviparous copulation process
+     * @param animal The first animal involved
+     * @param secondAnimal The second animal involved (must have a different sex that the first one)
+     * @param enclosure The enclosure containing these 2 animals
+     */
+    private void handleOviparousCopulation(Animal animal, Animal secondAnimal, Enclosure enclosure) {
+        View.displayAnimalActionMessage("Some " + animal.getSpecieName() + " made some adult things in the " + enclosure.getName() + " enclosure.\n");
+
+        Animal newAnimal;
+        // If animal is a male, we must call the copulate method on the second animal (the female)
+        if (animal.getSex()) {
+            newAnimal = secondAnimal.copulate(animal, this.getTurnNb());
+        } else {
+            newAnimal = animal.copulate(secondAnimal, this.getTurnNb());
+        }
+
+        if (newAnimal != null) {
+            // If there is enough space in the parent enclosure, put the new animal in it. Else, ask the employee
+            if (enclosure.getNbAnimals() < enclosure.getMaxAnimals()) {
+                enclosure.add(newAnimal);
+            } else {
+                this.displayEnclosureListForNewBirth(newAnimal);
+                this.chooseEnclosureForNewBirth(newAnimal);
+            }
+        }
+    }
+
+    /**
+     * Allows to handle the randomly picked FIGHT action, which will basically make the given animal fight with another animal of its enclosure
+     * @param animal The randomly picked animal which will fight
+     * @param enclosure The enclosure of the animal, in which its opponent will be picked
+     */
+    private void handleFightAction(Animal animal, Enclosure enclosure) {
+        if (enclosure.getNbAnimals() > 2) {
+            Animal secondAnimal = this.pickRandomAnimal(enclosure);
+            while (animal.equals(secondAnimal)) {
+                secondAnimal = this.pickRandomAnimal(enclosure);
+            }
+            if (secondAnimal != null) {
+                animal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth() + 1));
+                secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth() + 1));
+
+                View.displayInformationMessage(Lang.FIGHT_TWO_ANIMALS_FOUGHT + enclosure.getName() + " enclosure.\n");
+                if (animal.getHealth() <= 0) {
+                    View.displayWarningMessage(Lang.FIGHT_FIRST_ANIMAL_DIED);
+                    enclosure.remove(animal);
+                }
+                if (secondAnimal.getHealth() <= 0) {
+                    View.displayWarningMessage(Lang.FIGHT_SECOND_ANIMAL_DIED);
+                    enclosure.remove(secondAnimal);
+                }
+            }
+        }
+    }
+
+    /**
+     * Allows to handle the randomly picked ESCAPE action, which will basically make an animal escape from its enclosure
+     * Animals implementing MarineAnimal can't escape
+     * Animals implementing FlyingAnimal must have their aviary in a medium-bad cleaning state to be able to escape
+     * @param animal The target animal, randomly picked by the simulation
+     * @param enclosure The enclosure containing the target animal
+     */
+    private void handleEscapeAction(Animal animal, Enclosure enclosure) {
+        if (animal instanceof MarineAnimal) {
+            // Unless a whales or fishes have wings, they won't escape until chickens have golden teeth
+            return;
+        } else if (animal instanceof FlyingAnimal) {
+            if (enclosure.getCleanliness() < 1) {
+                enclosure.remove(animal);
+                View.displayWarningMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
+            }
+            return;
+        }
+        enclosure.remove(animal);
+        View.displayWarningMessage("OMG, a " + animal.getSpecieName() + " escaped in the " + enclosure.getName() + " enclosure.\n");
+    }
+
+    /**
+     * Allows to handle the randomly picked SLEEP action, which basically will remove an animal from an enclosure, saying that he was stolen
+     * @param animal The target animal, randomly picked by the simulation
+     * @param enclosure The enclosure containing the target animal
+     */
+    private void handleSteelAction(Animal animal, Enclosure enclosure) {
+        enclosure.remove(animal);
+        View.displayWarningMessage("OMG, a " + animal.getSpecieName() + " was stolen in the " + enclosure.getName() + " enclosure.\n");
+    }
+
+    /**
+     * Allows to handle the randomly picked SLEEP action, which basically will make sleep or wake up the targeted animal
+     * @param animal The target animal, randomly picked by the simulation
+     * @param enclosure The enclosure containing the target animal
+     */
+    private void handleSleepAction(Animal animal, Enclosure enclosure) {
+        if (animal.isSleeping()) {
+            View.displayInformationMessage("A " + animal.getSpecieName() + " woke up in the " + enclosure.getName() + " enclosure.\n");
+            animal.wake();
+        } else {
+            View.displayInformationMessage("A " + animal.getSpecieName() + " fell asleep in the " + enclosure.getName() + " enclosure.\n");
+            animal.sleep();
+        }
+    }
+
+    /**
+     * Allows to handle the randomly picked DECREASE_HUNGER action, which basically will make the selected animal hungry
+     * Can eventually make him die in case hunger level reaches 0 (thus removing it from its enclosure)
+     * @param animal The target animal for the action DECREASE_HUNGER, which has been randomly picked
+     * @param enclosure The enclosure which contains the animal
+     */
+    private void handleDecreaseHungerAction(Animal animal, Enclosure enclosure) {
+        animal.setHunger(animal.getHunger() - 80);
+        if (animal.getHunger() <= 0) {
+            enclosure.remove(animal);
+            View.displayWarningMessage("A " + animal.getSpecieName() + " starved to death in the " + enclosure.getName() + " enclosure.\n");
+        } else {
+            View.displayWarningMessage("A " + animal.getSpecieName() + " is hungry in the " + enclosure.getName() + " enclosure.\n");
+        }
+    }
+
+    /**
+     * Allows to handle the randomly picked DECREASE_LIFE action, which will basically hurt the animal
+     * Can eventually make him die in case life level reaches 0 (thus removing it from its enclosure)
+     * @param animal The target animal for the action DECREASE_LIFE, which has been randomly picked
+     * @param enclosure The enclosure which contains the animal
+     */
+    private void handleDecreaseLifeAction(Animal animal, Enclosure enclosure) {
+        animal.setHealth(animal.getHealth() - 80);
+        if (animal.getHealth() <= 0) {
+            enclosure.remove(animal);
+            View.displayWarningMessage("A " + animal.getSpecieName() + " died in the " + enclosure.getName() + " enclosure.\n ");
+        } else {
+            View.displayWarningMessage("A " + animal.getSpecieName() + " is hurt/sick in the " + enclosure.getName() + " enclosure.\n");
         }
     }
 
