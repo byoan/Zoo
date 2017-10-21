@@ -217,6 +217,23 @@ public class Enclosure<A extends AnimalInterface> {
     }
 
     /**
+     * Allows to remove an animal from the Enclosure, without checking for the alpha replacement
+     * @param animal The animal to be removed, implementing the same animal class that the Enclosure
+     */
+    public void removeWithoutAlphaCheck(A animal) {
+        try {
+            if (animal.isInEnclosure() && this.getAnimals().contains(animal)) {
+                this.getAnimals().remove(animal);
+                animal.setInEnclosure(false);
+            } else {
+                throw new AnimalNotInEnclosureException(animal, this);
+            }
+        } catch(Exception e) {
+            View.displayErrorMessage(e.getMessage());
+        }
+    }
+
+    /**
      * Getter for the current number of models.animals in the enclosure
      * @return The current number of models.animals in the enclosure
      */
@@ -301,7 +318,11 @@ public class Enclosure<A extends AnimalInterface> {
     public boolean transferAnimal(A animal, Enclosure<A> targetEnclosure, boolean silent) {
         if (this.getAnimals().contains(animal)) {
             try {
-                this.remove(animal);
+                if (silent) {
+                    this.removeWithoutAlphaCheck(animal);
+                } else {
+                    this.remove(animal);
+                }
                 targetEnclosure.add(animal);
             } catch (Exception e) {
                 View.displayErrorMessage("An error occurred while transferring the animal : " + e.getMessage());
