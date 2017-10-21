@@ -182,7 +182,7 @@ public class WolfPack {
      */
     public Wolf getAlphaFemale() {
         for (Wolf wolf : this.getWolfList()) {
-            if (wolf.getSex() == false && wolf.getRank().getId() == 1) {
+            if (!wolf.getSex() && wolf.getRank().getId() == 1) {
                 return wolf;
             }
         }

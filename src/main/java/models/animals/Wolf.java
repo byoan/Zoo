@@ -300,11 +300,11 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      * TODO
      */
     public void heardScream(){
-        if (this.sleepIndicator == false && this.healthIndicator == 100){
+        if (!this.isSleeping() && this.healthIndicator == 100){
             View.displayAnimalActionMessage("I can heard some wolf scream");
-        } else if (this.sleepIndicator == true ){
+        } else if (this.isSleeping()){
             View.displayAnimalActionMessage("I'm sleeping I can't heard some wolf scream");
-        } else if (this.healthIndicator != 100){
+        } else if (this.getHealth() != 100){
             View.displayAnimalActionMessage("I'm hurt I can't heard some wolf scream");
         }else{
             View.displayAnimalActionMessage("I'm sleeping and hurt so how the fuck can I heard some wolf scream ?");

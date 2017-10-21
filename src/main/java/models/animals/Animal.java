@@ -243,7 +243,7 @@ public class Animal implements AnimalInterface {
      */
     @Override
     public void eat() {
-        if (this.sleepIndicator == false) {
+        if (!this.isSleeping()) {
             this.setHunger(100);
         } else {
             View.displayInformationMessage("A " +  this.getSpecieName() + " can't eat while sleeping");
