@@ -351,7 +351,7 @@ public class Simulation {
      * @param <A> Generic type to be used within the method itself
      */
     private <A extends AnimalInterface> void handleAnimalTransfer() {
-        if (this.getZoo().getEnclosureList().size() > 0) {
+        if (!this.getZoo().getEnclosureList().isEmpty()) {
             Enclosure<A> originEnclosure = this.pickEnclosure("Select the enclosure containing the animal you want to transfer:");
             A animal = this.pickAnimal("Select the animal you want to transfer:", originEnclosure);
             Enclosure<A> targetEnclosure = this.pickEnclosure("Select the enclosure in which you would like to send this animal:");
@@ -446,7 +446,7 @@ public class Simulation {
      * @param <A> Generic type to be used within the method itself
      */
     private <A extends AnimalInterface> void handlePickEnclosureToInspect() {
-        if (this.getZoo().getEnclosureList().size() > 0) {
+        if (!this.getZoo().getEnclosureList().isEmpty()) {
             View.displayConsoleMessage("\nWhich enclosure would you like to inspect?\n");
             View.displayBackToMenuMessage();
             int i = 1;
@@ -485,7 +485,7 @@ public class Simulation {
      * @param <A> Generic type to be used within the method itself
      */
     private <A extends AnimalInterface> void handlePickEnclosureToClean() {
-        if (this.getZoo().getEnclosureList().size() > 0) {
+        if (!this.getZoo().getEnclosureList().isEmpty()) {
             View.displayConsoleMessage("\nWhich enclosure would you like to clean?\n");
             View.displayBackToMenuMessage();
             int i = 1;
@@ -542,7 +542,7 @@ public class Simulation {
      * @return The randomly picked enclosure
      */
     private <A extends AnimalInterface> Enclosure<A> pickRandomEnclosure() {
-        if (this.getZoo().getEnclosureList().size() > 0) {
+        if (!this.getZoo().getEnclosureList().isEmpty()) {
             int randomEnclosureId = this.getRandom().nextInt(this.getZoo().getEnclosureList().size());
             return this.getZoo().getEnclosureList().get(randomEnclosureId);
         }

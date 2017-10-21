@@ -331,7 +331,7 @@ public class Enclosure<A extends AnimalInterface> {
      * Will transfer all the models.animals to a temporary enclosure to proceed
      */
     public void cleanEnclosure() {
-        if (this.getAnimals().size() > 0) {
+        if (!this.getAnimals().isEmpty()) {
             Enclosure<A> temporaryEnclosure = this.createTemporaryEnclosure();
             int originalSize = this.getNbAnimals();
 

@@ -148,7 +148,7 @@ public class Zoo {
      */
     public Enclosure getEnclosureByName(String enclosureName) {
         try {
-            if (this.getEnclosureList().size() > 0) {
+            if (!this.getEnclosureList().isEmpty()) {
                 for (int i = 0; i <= this.getEnclosureList().size(); i++) {
                     if (this.getEnclosureList().get(i).getName() == enclosureName) {
                         return this.getEnclosureList().get(i);
