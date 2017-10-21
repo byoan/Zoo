@@ -22,5 +22,7 @@ public final class Lang {
     public static final String FIGHT_FIRST_ANIMAL_DIED = "The first one died.\n";
     public static final String FIGHT_SECOND_ANIMAL_DIED = "The second one died.\n";
 
+    public static final String PACK_WOLF_RETROGRADED = "A wolf has been retrograded due to a low domination factor.\n";
+
 
 }
