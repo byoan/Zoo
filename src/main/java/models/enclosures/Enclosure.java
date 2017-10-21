@@ -192,7 +192,7 @@ public class Enclosure<A extends AnimalInterface> {
         } catch (FullEnclosureException|AnimalAlreadyInEnclosureException e) {
             View.displayErrorMessage(e.getMessage());
         } catch (Exception e) {
-            View.displayErrorMessage("An error occurred while trying to add this animal to the " + this.getName() + " enclosure : " + e.toString());
+            View.displayErrorMessage("An error occurred while trying to add this animal to the " + this.getName() + " enclosure : " + e.getMessage());
         }
     }
 
