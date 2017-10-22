@@ -17,16 +17,16 @@ public final class Lang {
     public static final String CURRENT_NUMBER_ANIMALS_IN_ZOO = "Current number of animals in the zoo --> ";
 
     public static final String NOT_DOING_ANYTHING_THIS_TURN = "Not doing anything this turn ...";
-    public static final String SELECT_ENCLOSURE_TO_FEED = Color.CYAN + "Select the enclosure that you want to feed" + Color.DEFAULT + "\n";
+    public static final String SELECT_ENCLOSURE_TO_FEED = "Select the enclosure that you want to feed\n";
     public static final String ENCLOSURE_FED = "This enclosure has been fed";
 
-    public static final String SELECT_ENCLOSURE_TO_HEAL = Color. CYAN + "Select the enclosure containing the animal you want to heal" + Color.DEFAULT + "\n";
-    public static final String SELECT_ANIMAL_TO_HEAL = Color.CYAN + "Select the animal you want to heal" + Color.DEFAULT + "\n";
+    public static final String SELECT_ENCLOSURE_TO_HEAL ="Select the enclosure containing the animal you want to heal\n";
+    public static final String SELECT_ANIMAL_TO_HEAL ="Select the animal you want to heal\n";
 
 
-    public static final String SELECT_ORIGIN_ENCLOSURE_FOR_TRANSFER = Color.CYAN + "Select the enclosure containing the animal you want to transfer" + Color.DEFAULT + "\n";
-    public static final String SELECT_ANIMAL_FOR_TRANSFER = Color.CYAN + "Select the animal you want to transfer" + Color.DEFAULT + "\n";
-    public static final String SELECT_TARGET_ENCLOSURE_FOR_TRANSFER = Color.CYAN + "Select the enclosure in which you would like to send this animal" + Color.CYAN + "\n";
+    public static final String SELECT_ORIGIN_ENCLOSURE_FOR_TRANSFER ="Select the enclosure containing the animal you want to transfer\n";
+    public static final String SELECT_ANIMAL_FOR_TRANSFER ="Select the animal you want to transfer\n";
+    public static final String SELECT_TARGET_ENCLOSURE_FOR_TRANSFER ="Select the enclosure in which you would like to send this animal\n";
 
     public static final String TRANSFER_SAME_ENCLOSURE = "Can't transfer this animal in its current enclosure. Please choose another one.";
 
@@ -42,7 +42,7 @@ public final class Lang {
     public static final String ERROR = "Error: ";
 
     public static final String PICK_ENCLOSURE_TO_INSPECT = "\nWhich enclosure would you like to inspect?\n";
-    public static final String INSPECTING_ENCLOSURE_N = "Inspecting the enclosure n°";
+    public static final String INSPECTING_ENCLOSURE_N = "\nInspecting the enclosure n°";
 
     public static final String PICK_ENCLOSURE_TO_CLEAN= "\nWhich enclosure would you like to clean?\n";
     public static final String CLEANING_ENCLOSURE_N = "Cleaning the enclosure n°";

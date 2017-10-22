@@ -99,7 +99,7 @@ public class Simulation {
      */
     private void nextTurn() {
         if (this.getTurnNb() != 0) {
-            View.displayConsoleMessage("\nTurn n°" + this.getTurnNb() + " ended.\n");
+            View.displayConsoleMessage(Color.BOLD + "\nTurn n°" + this.getTurnNb() + " ended.\n" + Color.DEFAULT);
             // Run our Jobs on several threads to reduce the time between 2 turns
             this.handleAsyncJobs();
 
@@ -111,7 +111,7 @@ public class Simulation {
 
         this.setTurnNb(this.getTurnNb() + 1);
 
-        View.displayConsoleMessage("Turn n°" + this.getTurnNb() + " started.\n");
+        View.displayConsoleMessage(Color.BOLD + "Turn n°" + this.getTurnNb() + " started.\n" + Color.DEFAULT);
 
         this.handleTurn();
     }
@@ -333,7 +333,7 @@ public class Simulation {
     }
 
     private <A extends AnimalInterface> void handleAnimalFeeding() {
-        Enclosure<A> enclosure = this.pickEnclosure(Lang.SELECT_ENCLOSURE_TO_FEED);
+        Enclosure<A> enclosure = this.pickEnclosure(Color.CYAN + Lang.SELECT_ENCLOSURE_TO_FEED + Color.DEFAULT);
         enclosure.feedAnimals();
         View.displaySuccessMessage(Lang.ENCLOSURE_FED);
     }
@@ -343,8 +343,8 @@ public class Simulation {
      * @param <A> Generic type which extends the AnimalInterface
      */
     private <A extends AnimalInterface> void handleAnimalHealing() {
-        Enclosure<A> enclosure = this.pickEnclosure(Lang.SELECT_ENCLOSURE_TO_HEAL);
-        A animal = this.pickAnimal(Lang.SELECT_ANIMAL_TO_HEAL, enclosure);
+        Enclosure<A> enclosure = this.pickEnclosure(Color.CYAN + Lang.SELECT_ENCLOSURE_TO_HEAL + Color.DEFAULT);
+        A animal = this.pickAnimal(Color.CYAN + Lang.SELECT_ANIMAL_TO_HEAL + Color.DEFAULT, enclosure);
         this.getEmployee().healAnimal(animal);
     }
 
@@ -354,14 +354,14 @@ public class Simulation {
      */
     private <A extends AnimalInterface> void handleAnimalTransfer() {
         if (!this.getZoo().getEnclosureList().isEmpty()) {
-            Enclosure<A> originEnclosure = this.pickEnclosure(Lang.SELECT_ORIGIN_ENCLOSURE_FOR_TRANSFER);
-            A animal = this.pickAnimal(Lang.SELECT_ANIMAL_FOR_TRANSFER, originEnclosure);
-            Enclosure<A> targetEnclosure = this.pickEnclosure(Lang.SELECT_TARGET_ENCLOSURE_FOR_TRANSFER);
+            Enclosure<A> originEnclosure = this.pickEnclosure(Color.CYAN + Lang.SELECT_ORIGIN_ENCLOSURE_FOR_TRANSFER + Color.DEFAULT);
+            A animal = this.pickAnimal(Color.CYAN + Lang.SELECT_ANIMAL_FOR_TRANSFER + Color.DEFAULT, originEnclosure);
+            Enclosure<A> targetEnclosure = this.pickEnclosure(Color.CYAN + Lang.SELECT_TARGET_ENCLOSURE_FOR_TRANSFER + Color.DEFAULT);
 
             // While the enclosure is not different, we must keep asking to the user a valid one
             while (originEnclosure.equals(targetEnclosure)) {
                 View.displayWarningMessage(Lang.TRANSFER_SAME_ENCLOSURE);
-                targetEnclosure = this.pickEnclosure(Lang.SELECT_TARGET_ENCLOSURE_FOR_TRANSFER);
+                targetEnclosure = this.pickEnclosure(Color.CYAN + Lang.SELECT_TARGET_ENCLOSURE_FOR_TRANSFER + Color.DEFAULT);
             }
 
             // Proceed to the transfer
@@ -509,10 +509,11 @@ public class Simulation {
                     } else if (action == 0) {
                         this.handleTurn();
                     } else {
-                        View.displayWarningMessage("Please enter a valid value");
+                        View.displayWarningMessage(Lang.ENTER_VALID_VALUE);
                     }
                 } catch (Exception e) {
-                    View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
+                    View.displayErrorMessage(Lang.ERROR + e.getMessage());
+                    View.displayErrorMessage(Lang.PLEASE_TRY_AGAIN);
                 }
             }
             View.displayConsoleMessage(Lang.CLEANING_ENCLOSURE_N + action + " ...\n");
