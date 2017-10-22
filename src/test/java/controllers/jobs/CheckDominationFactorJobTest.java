@@ -18,7 +18,7 @@ class CheckDominationFactorJobTest {
     }
 
     @Test
-    void exec() {
+    void run() {
     }
 
 }
