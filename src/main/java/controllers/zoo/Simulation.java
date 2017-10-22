@@ -328,13 +328,13 @@ public class Simulation {
      * Displays the message which matches the "Do Nothing this turn" action
      */
     private void doNothing() {
-        View.displayInformationMessage("Not doing anything this turn ...");
+        View.displayInformationMessage(Lang.NOT_DOING_ANYTHING_THIS_TURN);
     }
 
     private <A extends AnimalInterface> void handleAnimalFeeding() {
-        Enclosure<A> enclosure = this.pickEnclosure("Select the enclosure that you want to feed:");
+        Enclosure<A> enclosure = this.pickEnclosure(Lang.SELECT_ENCLOSURE_TO_FEED);
         enclosure.feedAnimals();
-        View.displaySuccessMessage("This enclosure has been fed");
+        View.displaySuccessMessage(Lang.ENCLOSURE_FED);
     }
 
     /**
@@ -342,8 +342,8 @@ public class Simulation {
      * @param <A> Generic type which extends the AnimalInterface
      */
     private <A extends AnimalInterface> void handleAnimalHealing() {
-        Enclosure<A> enclosure = this.pickEnclosure("Select the enclosure containing the animal you want to heal:");
-        A animal = this.pickAnimal("Select the animal you want to heal:", enclosure);
+        Enclosure<A> enclosure = this.pickEnclosure(Lang.SELECT_ENCLOSURE_TO_HEAL);
+        A animal = this.pickAnimal(Lang.SELECT_ANIMAL_TO_HEAL, enclosure);
         this.getEmployee().healAnimal(animal);
     }
 
@@ -353,14 +353,14 @@ public class Simulation {
      */
     private <A extends AnimalInterface> void handleAnimalTransfer() {
         if (!this.getZoo().getEnclosureList().isEmpty()) {
-            Enclosure<A> originEnclosure = this.pickEnclosure("Select the enclosure containing the animal you want to transfer:");
-            A animal = this.pickAnimal("Select the animal you want to transfer:", originEnclosure);
-            Enclosure<A> targetEnclosure = this.pickEnclosure("Select the enclosure in which you would like to send this animal:");
+            Enclosure<A> originEnclosure = this.pickEnclosure(Lang.SELECT_ORIGIN_ENCLOSURE_FOR_TRANSFER);
+            A animal = this.pickAnimal(Lang.SELECT_ANIMAL_FOR_TRANSFER, originEnclosure);
+            Enclosure<A> targetEnclosure = this.pickEnclosure(Lang.SELECT_TARGET_ENCLOSURE_FOR_TRANSFER);
 
             // While the enclosure is not different, we must keep asking to the user a valid one
             while (originEnclosure.equals(targetEnclosure)) {
-                View.displayWarningMessage("Can't transfer this animal in its current enclosure. Please choose another one.");
-                targetEnclosure = this.pickEnclosure("Select the enclosure in which you would like to send this animal:");
+                View.displayWarningMessage(Lang.TRANSFER_SAME_ENCLOSURE);
+                targetEnclosure = this.pickEnclosure(Lang.SELECT_TARGET_ENCLOSURE_FOR_TRANSFER);
             }
 
             // Proceed to the transfer
@@ -398,10 +398,11 @@ public class Simulation {
                 } else if (action == 0) {
                     this.handleTurn();
                 } else {
-                    View.displayWarningMessage("Please enter a valid value");
+                    View.displayWarningMessage(Lang.ENTER_VALID_VALUE);
                 }
             } catch (Exception e) {
-                View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
+                View.displayErrorMessage(Lang.ERROR + e.getMessage());
+                View.displayErrorMessage(Lang.PLEASE_TRY_AGAIN);
             }
         }
         return this.getZoo().getEnclosureList().get(action - 1);
@@ -433,10 +434,11 @@ public class Simulation {
                 } else if (action == 0) {
                     this.handleTurn();
                 } else {
-                    View.displayWarningMessage("Please enter a valid value");
+                    View.displayWarningMessage(Lang.ENTER_VALID_VALUE);
                 }
             } catch (Exception e) {
-                View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
+                View.displayErrorMessage(Lang.ERROR + e.getMessage());
+                View.displayErrorMessage(Lang.PLEASE_TRY_AGAIN);
             }
         }
         return enclosure.getAnimals().get(action - 1);
@@ -448,7 +450,7 @@ public class Simulation {
      */
     private <A extends AnimalInterface> void handlePickEnclosureToInspect() {
         if (!this.getZoo().getEnclosureList().isEmpty()) {
-            View.displayConsoleMessage("\nWhich enclosure would you like to inspect?\n");
+            View.displayConsoleMessage(Lang.PICK_ENCLOSURE_TO_INSPECT);
             View.displayBackToMenuMessage();
             int i = 1;
             for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
@@ -466,13 +468,14 @@ public class Simulation {
                     } else if (action == 0) {
                         this.handleTurn();
                     } else {
-                        View.displayWarningMessage("Please enter a valid value");
+                        View.displayWarningMessage(Lang.ENTER_VALID_VALUE);
                     }
                 } catch (Exception e) {
-                    View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
+                    View.displayErrorMessage(Lang.ERROR + e.getMessage());
+                    View.displayErrorMessage(Lang.PLEASE_TRY_AGAIN);
                 }
             }
-            View.displayConsoleMessage("Inspecting the enclosure n°" + action + ":\n");
+            View.displayConsoleMessage(Lang.INSPECTING_ENCLOSURE_N + action + ":\n");
             View.displayMessage(this.getEmployee().inspectEnclosure(this.getZoo().getEnclosureList().get(action - 1)));
         } else {
             View.displayInformationMessage(Lang.NO_ENCLOSURES_IN_ZOO);
@@ -487,7 +490,7 @@ public class Simulation {
      */
     private <A extends AnimalInterface> void handlePickEnclosureToClean() {
         if (!this.getZoo().getEnclosureList().isEmpty()) {
-            View.displayConsoleMessage("\nWhich enclosure would you like to clean?\n");
+            View.displayConsoleMessage(Lang.PICK_ENCLOSURE_TO_CLEAN);
             View.displayBackToMenuMessage();
             int i = 1;
             for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
@@ -505,13 +508,14 @@ public class Simulation {
                     } else if (action == 0) {
                         this.handleTurn();
                     } else {
-                        View.displayWarningMessage("Please enter a valid value");
+                        View.displayWarningMessage(Lang.ENTER_VALID_VALUE);
                     }
                 } catch (Exception e) {
-                    View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
+                    View.displayErrorMessage(Lang.ERROR + e.getMessage());
+                    View.displayErrorMessage(Lang.PLEASE_TRY_AGAIN);
                 }
             }
-            View.displayConsoleMessage("Cleaning the enclosure n°" + action + " ...");
+            View.displayConsoleMessage(Lang.CLEANING_ENCLOSURE_N + action + " ...");
             this.getEmployee().cleanEnclosure(this.getZoo().getEnclosureList().get(action - 1));
         } else {
             View.displayConsoleMessage(Lang.NO_ENCLOSURES_IN_ZOO);
