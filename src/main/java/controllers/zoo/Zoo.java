@@ -11,6 +11,13 @@ import views.View;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the Zoo of the simulation
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Zoo {
 
     /**
@@ -195,6 +202,10 @@ public class Zoo {
         }
     }
 
+    /**
+     * Represents the main Class of the Zoo
+     * @param args Of the Zoo
+     */
     public static void main(String[] args) {
         Simulation simulation = new Simulation();
         simulation.init();

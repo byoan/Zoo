@@ -2,6 +2,13 @@ package views;
 
 import models.enums.UserActions;
 
+/**
+ * Represents the view with all the display types
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class View {
 
     /**

@@ -2,6 +2,13 @@ package models.exceptions.zoo;
 
 import controllers.zoo.Zoo;
 
+/**
+ * Represents an exception thrown when
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class EmptyZooException extends Exception {
 
     /**

@@ -1,5 +1,12 @@
 package views;
 
+/**
+ * Represents the lang display
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public final class Lang {
 
     /**

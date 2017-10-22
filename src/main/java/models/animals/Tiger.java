@@ -7,7 +7,7 @@ import models.interfaces.animal.WanderAnimal;
 import views.View;
 
 /**
- * Represents a bear animal
+ * Represents a tiger animal
  *
  * @author Yoan Ballesteros
  * @author Antoine Sirven
@@ -118,7 +118,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
     }
 
     /**
-     * Represents the characteristics of th tiger
+     * Represents the characteristics of the tiger
      * @return Tiger characteristics information
      */
     @Override

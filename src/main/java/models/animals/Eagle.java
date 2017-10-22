@@ -163,7 +163,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     }
 
     /**
-     * Represents the characteristics of th eagle
+     * Represents the characteristics of the eagle
      * @return Eagle characteristics information
      */
     @Override

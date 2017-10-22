@@ -3,6 +3,13 @@ package models.enclosures;
 import models.interfaces.animal.FlyingAnimal;
 import views.Color;
 
+/**
+ * Represents an aviary
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Aviary<A extends FlyingAnimal> extends Enclosure {
 
     /**

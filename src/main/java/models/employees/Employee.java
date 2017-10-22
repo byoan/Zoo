@@ -8,6 +8,13 @@ import views.View;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Represents the employee
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Employee implements EmployeeInterface {
 
     /**

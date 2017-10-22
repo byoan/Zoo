@@ -6,7 +6,13 @@ import models.animals.Wolf;
 import models.enclosures.Enclosure;
 import views.View;
 
-
+/**
+ * Job that will be executed every 50 turns, which will make the animals older
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class MakeAnimalsAgeJob implements Runnable {
 
     /**

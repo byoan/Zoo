@@ -110,7 +110,7 @@ public class Bear extends Animal implements Mammal {
     }
 
     /**
-     * Represents the characteristics of th bear
+     * Represents the characteristics of the bear
      * @return Bear characteristics information
      */
     @Override

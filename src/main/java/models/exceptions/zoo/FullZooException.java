@@ -3,6 +3,13 @@ package models.exceptions.zoo;
 import controllers.zoo.Zoo;
 import models.enclosures.Enclosure;
 
+/**
+ * Represents an exception thrown when
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class FullZooException extends Exception {
 
     /**

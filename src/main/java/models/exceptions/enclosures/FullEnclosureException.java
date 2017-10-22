@@ -3,6 +3,13 @@ package models.exceptions.enclosures;
 import models.enclosures.Enclosure;
 import models.interfaces.animal.AnimalInterface;
 
+/**
+ * Represents an exception thrown when trying to add an animal to an enclosure already full
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class FullEnclosureException extends Exception {
 
     /**

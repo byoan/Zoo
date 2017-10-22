@@ -171,7 +171,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     }
 
     /**
-     * Represents the characteristics of th penguin
+     * Represents the characteristics of the penguin
      * @return penguin characteristics information
      */
     @Override

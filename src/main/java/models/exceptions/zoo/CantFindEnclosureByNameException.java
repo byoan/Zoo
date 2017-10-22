@@ -1,5 +1,12 @@
 package models.exceptions.zoo;
 
+/**
+ * Represents an exception thrown when
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class CantFindEnclosureByNameException extends Exception {
 
     /**

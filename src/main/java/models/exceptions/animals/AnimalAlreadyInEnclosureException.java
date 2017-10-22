@@ -2,6 +2,13 @@ package models.exceptions.animals;
 
 import models.interfaces.animal.AnimalInterface;
 
+/**
+ * Represents an exception thrown when the given animal is being added to an enclosure while already being in an enclosure
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class AnimalAlreadyInEnclosureException extends Exception {
 
     /**

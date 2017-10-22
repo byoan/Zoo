@@ -7,7 +7,7 @@ import models.interfaces.animal.MarineAnimal;
 import views.View;
 
 /**
- * Represents a bear animal
+ * Represents a whale animal
  *
  * @author Yoan Ballesteros
  * @author Antoine Sirven
@@ -126,7 +126,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
     }
 
     /**
-     * Represents the characteristics of th whale
+     * Represents the characteristics of the whale
      * @return Whale characteristics information
      */
     @Override

@@ -2,6 +2,13 @@ package models.exceptions.animals;
 
 import models.animals.Animal;
 
+/**
+ * Represents an exception thrown when the given animal is getting pregnant while already being pregnant
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class AnimalAlreadyPregnantException extends Exception {
 
     /**

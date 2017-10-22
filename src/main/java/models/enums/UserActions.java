@@ -1,5 +1,12 @@
 package models.enums;
 
+/**
+ * Represents the actions
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public enum UserActions {
 
     INSPECT(1, "Inspect an enclosure"),
@@ -14,6 +21,11 @@ public enum UserActions {
     private int id;
     private String name;
 
+    /**
+     * Constructor for an Enum value
+     * @param id The Id of the user action type
+     * @param name The name of the user action
+     */
     UserActions(int id, String name) {
         this.id = id;
         this.name = name;

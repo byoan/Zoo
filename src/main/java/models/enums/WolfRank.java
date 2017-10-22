@@ -1,7 +1,11 @@
 package models.enums;
 
 /**
- * Enum of all possible rank in a pack
+ * Represents all the possible Wolves ranks in a Pack
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
  */
 public enum WolfRank {
 

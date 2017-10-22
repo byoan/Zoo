@@ -13,7 +13,7 @@ import views.View;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Represents a bear animal
+ * Represents a wolf animal
  *
  * @author Yoan Ballesteros
  * @author Antoine Sirven
@@ -398,7 +398,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     }
 
     /**
-     * Represents the characteristics of th wolf
+     * Represents the characteristics of the wolf
      * @return Wolf characteristics information
      */
     @Override

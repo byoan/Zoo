@@ -12,6 +12,13 @@ import views.View;
 
 import java.util.ArrayList;
 
+/**
+ * Represents an enclosure
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Enclosure<A extends AnimalInterface> {
 
     /**

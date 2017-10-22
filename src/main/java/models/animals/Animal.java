@@ -8,6 +8,13 @@ import views.View;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Represents Animal
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Animal implements AnimalInterface {
 
     /**
@@ -328,6 +335,10 @@ public class Animal implements AnimalInterface {
         // This method will be redefined by all the Mammals of the simulation, as they have a Mammal's specific behaviour
     }
 
+    /**
+     * Represents the characteristics of the animal
+     * @return Animal characteristics information
+     */
     @Override
     public String toString() {
         return  "\n" + "   Animal {"+ "\n" +"       Specie: " + Color.BLUE + this.getSpecieName() + Color.DEFAULT + "   |  " + "Is in an enclosure : " + Color.BLUE + ((this.isInEnclosure()) ? "Yes" : "No") + Color.DEFAULT + " \n" +

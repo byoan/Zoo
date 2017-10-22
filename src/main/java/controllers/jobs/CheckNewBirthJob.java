@@ -7,12 +7,35 @@ import models.interfaces.animal.Oviparous;
 
 import java.util.ArrayList;
 
+/**
+ * Job that will be executed at every turn, which will check if there are new birth animal in enclosures
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class CheckNewBirthJob implements Runnable {
 
+    /**
+     * Represents the enclosure list to check
+     */
     ArrayList<Enclosure> enclosureList;
+
+    /**
+     * Represents the current turn number
+     */
     int turnNb;
+
+    /**
+     * Represents the list of new birth during this turn
+     */
     ArrayList<Animal> newBirths = new ArrayList<Animal>();
 
+    /**
+     * Generic method to check a new birth
+     * @param enclosureList The enclosure list to check
+     * @param turnNb The current turn number
+     */
     public CheckNewBirthJob(ArrayList<Enclosure> enclosureList, int turnNb) {
         this.enclosureList = enclosureList;
         this.turnNb = turnNb;

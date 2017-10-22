@@ -3,6 +3,13 @@ package models.exceptions.enclosures;
 import models.enclosures.Enclosure;
 import models.interfaces.animal.AnimalInterface;
 
+/**
+ * Represents an exception thrown when trying to delete an animal when which is not contained by the given enclosure
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class AnimalNotInEnclosureException extends Exception {
 
     /**

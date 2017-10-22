@@ -1,5 +1,12 @@
 package views;
 
+/**
+ * Represents the color text that are used in display
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public final class Color {
 
     /**

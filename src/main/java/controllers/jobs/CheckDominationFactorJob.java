@@ -9,6 +9,13 @@ import views.View;
 
 import java.util.ArrayList;
 
+/**
+ * Job that will be executed at every turn, which will check the domination factor of all the wolves in a pack and decreased their rank if it's to low
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class CheckDominationFactorJob implements Runnable {
 
     /**

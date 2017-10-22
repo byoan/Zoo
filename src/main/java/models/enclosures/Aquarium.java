@@ -4,6 +4,13 @@ import models.interfaces.animal.MarineAnimal;
 import views.Color;
 import views.View;
 
+/**
+ * Represents an aquarium
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Aquarium<A extends MarineAnimal> extends Enclosure {
 
     /**
@@ -120,6 +127,10 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
         }
     }
 
+    /**
+     * Allows to display all the aquarium's properties
+     * @return A concatenated string containing the aquarium properties
+     */
     @Override
     public String toString() {
         return  Color.BLUE + Color.UNDERLINE + "Aquarium information:\n\n" + Color.DEFAULT +
