@@ -406,7 +406,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
                 "Rank in the pack: " + Color.BLUE + ((this.getRank() == null) ? "none" : this.getRank().getName()) + Color.DEFAULT + "  |  " +
                 "Level: " + Color.BLUE + this.getLevel() + Color.DEFAULT + "\n" +
                 "       Domination factor: " + Color.BLUE + this.getDominationFactor() + Color.DEFAULT + "  |  " +
-                "Impetuosity: " + Color.BLUE + this.getImpetuosity() + "%" + Color.DEFAULT + "  |  " +
+                "Impetuosity: " + Color.BLUE + this.getImpetuosity() + Color.DEFAULT + "  |  " +
                 "Strength: " + Color.BLUE + this.getStrength() + Color.DEFAULT + "\n" +"   } \n"
                 ;
     }
