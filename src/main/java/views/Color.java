@@ -24,7 +24,6 @@ public final class Color {
     public static final String PINK = "\033[35m";
     public static final String YELLOW = "\033[33m";
     public static final String BLUE = "\033[34m";
-    public static final String REDERRORR = "\033[31";
 
     /**
      * Set some style to use

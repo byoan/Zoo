@@ -57,12 +57,12 @@ public class View {
         displayMessage(Color.WHITE + message + Color.DEFAULT);
     }
 
-    public static void displayConsoleMessage(String message) {
+    public static void displayErrorMessage(String message) {
         displayMessage(Color.CYAN + message + Color.DEFAULT);
     }
 
-    public static void displayErrorMessage(String message) {
-        displayMessage(Color.REDERRORR + Color.BOLD + message + Color.DEFAULT);
+    public static void displayConsoleMessage(String message) {
+        displayMessage(Color.RED + Color.BOLD + message + Color.DEFAULT);
     }
 
     public static void displayWelcomeMessage() {
