@@ -330,6 +330,7 @@ class WolfTest {
         int turnNb = 4;
         wolf.childrenCreationTime = 2;
         wolf.setCopulationTurn(2);
+        wolf.setRank(WolfRank.ALPHA);
 
         // Check birth with an expected animal as return
         Wolf newAnimal = wolf.checkBirth(turnNb);
@@ -340,6 +341,42 @@ class WolfTest {
 
         // Check that the copulation turn was reset
         assertEquals(0, wolf.getCopulationTurn());
+    }
+
+    @Test
+    void checkBirthSolitary() {
+        // Instantiate required values
+        Wolf wolf = new Wolf();
+        int turnNb = 4;
+        wolf.childrenCreationTime = 2;
+        wolf.setCopulationTurn(2);
+
+        // Check birth with an expected animal as return
+        Wolf newAnimal = wolf.checkBirth(turnNb);
+
+        // Check that we successfully got an animal and not a null
+        assertNotNull(newAnimal);
+        assertEquals(wolf.getSpecieName(), newAnimal.getSpecieName());
+
+        // Check that the copulation turn was reset
+        assertEquals(0, wolf.getCopulationTurn());
+    }
+
+    @Test
+    void checkBirthNotAlpha() {
+        // Instantiate required values
+        Wolf wolf = new Wolf();
+        int turnNb = 4;
+        wolf.childrenCreationTime = 2;
+        wolf.setCopulationTurn(2);
+        wolf.setPack(new WolfPack());
+        wolf.setRank(WolfRank.CHI);
+
+        // Check birth with an expected animal as return
+        Wolf newAnimal = wolf.checkBirth(turnNb);
+        System.out.println(newAnimal);
+        // Check that we didn't got an animal
+        assertNull(newAnimal);
     }
 
     @Test

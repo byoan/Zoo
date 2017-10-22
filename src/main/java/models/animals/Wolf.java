@@ -7,6 +7,7 @@ import models.factories.AnimalFactory;
 import models.interfaces.animal.Mammal;
 import models.interfaces.animal.WanderAnimal;
 import views.Color;
+import views.Lang;
 import views.View;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -318,17 +319,22 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     @Override
     public <A extends Mammal> void copulate(A wolf, int turnNb) {
-        // Same sex can't copulate
-        if (wolf.getSex() != this.getSex()) {
-            try {
-                if (this.getCopulationTurn() == 0) {
-                    this.setCopulationTurn(turnNb);
-                } else {
-                    throw new AnimalAlreadyPregnantException(this);
+        // Only the alpha couple can copulate, or any wolf if no pack
+        if ((this.getPack() != null && this.getRank().getId() == 1 && ((Wolf)wolf).getRank().getId() == 1) || this.getPack() == null) {
+            // Same sex can't copulate
+            if (wolf.getSex() != this.getSex()) {
+                try {
+                    if (this.getCopulationTurn() == 0) {
+                        this.setCopulationTurn(turnNb);
+                    } else {
+                        throw new AnimalAlreadyPregnantException(this);
+                    }
+                } catch (AnimalAlreadyPregnantException e) {
+                    View.displayErrorMessage(e.getMessage());
                 }
-            } catch (AnimalAlreadyPregnantException e) {
-                View.displayErrorMessage(e.getMessage());
             }
+        } else {
+            View.displayErrorMessage(Lang.NOT_ALPHA_WOLF_CANT_COPULATE);
         }
     }
 
@@ -359,7 +365,11 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
             return null;
         } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
             this.setCopulationTurn(0);
-            return this.birth();
+            if (this.getPack() != null && this.getRank() == WolfRank.ALPHA) {
+                return this.birth();
+            } else if (this.getPack() == null) {
+                return this.birth();
+            }
         }
         return null;
     }
