@@ -1,0 +1,15 @@
+controllers.jobs
+controllers.zoo
+models.animals
+models.animals.packs
+models.employees
+models.enclosures
+models.enums
+models.exceptions.animals
+models.exceptions.enclosures
+models.exceptions.zoo
+models.factories
+models.factories.enclosures
+models.interfaces.animal
+models.interfaces.employee
+views
