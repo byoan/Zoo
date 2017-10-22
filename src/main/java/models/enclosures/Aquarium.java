@@ -127,7 +127,7 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
                 "Maximum number of animals that the enclosure can contain: " + Color.BLUE + this.getMaxAnimals() + Color.DEFAULT + "\n" +
                 "Surface: " + Color.BLUE + this.getSurface() + "m3" + Color.DEFAULT + "  |  " + "Cleanliness status: " + Color.BLUE + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + Color.DEFAULT + "\n" +
                 "Depth: " + Color.BLUE + this.getDepth() + "m" + Color.DEFAULT + "  |  " + "Salinity: " + Color.BLUE + this.getSalinity() + "%" + Color.DEFAULT +"  |  " +
-                "WaterLevel: " + Color.BLUE + ((this.getCurrentWaterLevel() == 0) ? "Really bad" : (this.getCurrentWaterLevel() == 1) ? "Bad" : "Good") + Color.DEFAULT + "\n" +
+                "Water level: " + Color.BLUE + ((this.getCurrentWaterLevel() == 0) ? "Really bad" : (this.getCurrentWaterLevel() == 1) ? "Bad" : "Good") + Color.DEFAULT + "\n" +
                 "\n" + Color.BLUE + Color.UNDERLINE + "Animals currently in the aquarium:" + Color.DEFAULT + "\n" + this.getAnimals() + "\n"
                 ;
     }
