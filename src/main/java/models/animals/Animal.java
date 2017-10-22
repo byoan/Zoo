@@ -264,7 +264,7 @@ public class Animal implements AnimalInterface {
     @Override
     public void heal() {
         this.setHealth(100);
-        View.displayInformationMessage("This " + this.specieName + " was healed");
+        View.displaySuccessMessage("This " + this.specieName + " was healed");
     }
 
     /**
@@ -325,12 +325,12 @@ public class Animal implements AnimalInterface {
 
     @Override
     public String toString() {
-        return  "\n" + "   Animal {"+ "\n" +"       Specie: " + Color.BLUE + this.getSpecieName() + Color.WHITE + "   |  " + "Is in an enclosure : " + Color.BLUE + ((this.isInEnclosure()) ? "Yes" : "No") + Color.WHITE + " \n" +
-                "       Hunger: " + Color.BLUE + this.getHunger() + "%" + Color.WHITE + "    |  " + "Currently sleeping: " + Color.BLUE + ((this.isSleeping()) ? "Yes" : "No") + Color.WHITE + "  |  " +
-                "Health: " + Color.BLUE + this.getHealth() + "%" + Color.WHITE + " \n" +
-                "       Sex: " + Color.BLUE + ((this.getSex()) ? "Male" : "Female") + Color.WHITE + "     |  " + "Weight: " + Color.BLUE + this.getWeight() + "g" + Color.WHITE + "  |  " +
-                "Size: " + Color.BLUE + this.getSize() + "cm" + Color.WHITE + "  |  " + "Age: " + Color.BLUE + ((this.getAge() == 1) ? "Young" : (this.getAge() == 2) ? "Adult" : "Old") + Color.WHITE + " \n"  +
-                "       Started pregnancy at turn: " + Color.BLUE + ((this.getCopulationTurn() != 0) ? this.getCopulationTurn() : "-") + Color.WHITE + "  |  " + "Pregnancy duration: " + Color.BLUE + this.getChildrenCreationTime() + " turns" + Color.WHITE + " \n"
+        return  "\n" + "   Animal {"+ "\n" +"       Specie: " + Color.BLUE + this.getSpecieName() + Color.DEFAULT + "   |  " + "Is in an enclosure : " + Color.BLUE + ((this.isInEnclosure()) ? "Yes" : "No") + Color.DEFAULT + " \n" +
+                "       Hunger: " + Color.BLUE + this.getHunger() + "%" + Color.DEFAULT + "    |  " + "Currently sleeping: " + Color.BLUE + ((this.isSleeping()) ? "Yes" : "No") + Color.DEFAULT + "  |  " +
+                "Health: " + Color.BLUE + this.getHealth() + "%" + Color.DEFAULT + " \n" +
+                "       Sex: " + Color.BLUE + ((this.getSex()) ? "Male" : "Female") + Color.DEFAULT + "     |  " + "Weight: " + Color.BLUE + this.getWeight() + "g" + Color.DEFAULT + "  |  " +
+                "Size: " + Color.BLUE + this.getSize() + "cm" + Color.DEFAULT + "  |  " + "Age: " + Color.BLUE + ((this.getAge() == 1) ? "Young" : (this.getAge() == 2) ? "Adult" : "Old") + Color.DEFAULT + " \n"  +
+                "       Started pregnancy at turn: " + Color.BLUE + ((this.getCopulationTurn() != 0) ? this.getCopulationTurn() : "-") + Color.DEFAULT + "  |  " + "Pregnancy duration: " + Color.BLUE + this.getChildrenCreationTime() + " turns" + Color.DEFAULT + " \n"
                 ;
     }
 }

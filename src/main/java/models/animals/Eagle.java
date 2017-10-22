@@ -122,6 +122,6 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     @Override
     public String toString() {
-        return super.toString()  + "       Already hatched: " + Color.BLUE + ((this.getIsHatched()) ? "Yes" : "No") + Color.WHITE + " \n    }";
+        return super.toString()  + "       Already hatched: " + Color.BLUE + ((this.getIsHatched()) ? "Yes" : "No") + Color.DEFAULT + "     }\n";
     }
 }

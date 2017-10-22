@@ -22,9 +22,9 @@ public class View {
      * Allows to display the user main action menu
      */
     public static void displayPickAction() {
-        View.displayMenuMessage("Choose an action by entering it's number:\n");
+        View.displayConsoleMessage("Choose an action by entering it's number\n");
         for (UserActions action : UserActions.values()) {
-            View.displayMessage(action.display());
+            View.displayMenuMessage(action.display());
         }
     }
 
@@ -34,35 +34,35 @@ public class View {
      * @param message The message to display
      */
     public static void displayMessage(String message) {
-        System.out.println(message);
+        System.out.println(Color.WHITE + message);
     }
 
     public static void displayWarningMessage(String message) {
-        displayMessage(Color.RED + message + Color.WHITE);
+        displayMessage(Color.YELLOW + Color.BOLD + message + Color.DEFAULT);
     }
 
     public static void displaySuccessMessage(String message) {
-        displayMessage(Color.GREEN + message + Color.WHITE);
+        displayMessage(Color.GREEN + message + Color.DEFAULT);
     }
 
     public static void displayInformationMessage(String message) {
-        displayMessage(Color.CYAN + message + Color.WHITE);
+        displayMessage(Color.BLUE + message + Color.DEFAULT);
     }
 
     public static void displayAnimalActionMessage(String message) {
-        displayMessage(Color.GREEN + message + Color.WHITE);
+        displayMessage(Color.PINK + message + Color.DEFAULT);
     }
 
     public static void displayMenuMessage(String message) {
-        displayMessage(Color.CYAN + message + Color.WHITE);
+        displayMessage(Color.WHITE + message + Color.DEFAULT);
     }
 
     public static void displayConsoleMessage(String message) {
-        displayMessage(Color.MAGENTA + message + Color.WHITE);
+        displayMessage(Color.CYAN + message + Color.DEFAULT);
     }
 
     public static void displayErrorMessage(String message) {
-        displayMessage(Color.YELLOW + message + Color.WHITE);
+        displayMessage(Color.REDERRORR + Color.BOLD + message + Color.DEFAULT);
     }
 
     public static void displayWelcomeMessage() {

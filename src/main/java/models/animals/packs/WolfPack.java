@@ -3,6 +3,7 @@ package models.animals.packs;
 import models.animals.Wolf;
 import models.enums.WolfRank;
 import models.enclosures.Enclosure;
+import views.Color;
 import views.View;
 
 import java.util.ArrayList;
@@ -242,11 +243,11 @@ public class WolfPack {
 
     @Override
     public String toString() {
-        return "Pack {\n" +
-                " animals='" + this.getWolfList() + "', \n" +
-                ((this.getAlphaMale() != null) ? " alpha male='" + this.getAlphaMale() + "', \n" : " No alpha male") +
-                ((this.getAlphaFemale() != null) ? " alpha female='" + this.getAlphaFemale() + "', \n" : " No alpha female") +
-                "}";
+        return  "\n" + Color.BLUE + Color.UNDERLINE + "\nWolf pack:\n" + Color.DEFAULT +
+                this.getWolfList() + " \n" +
+                ((this.getAlphaMale() != null) ? Color.BLUE + Color.UNDERLINE + "Alpha male:" + Color.DEFAULT + this.getAlphaMale() + "\n" : Color.BLUE + "No alpha male\n") +
+                ((this.getAlphaFemale() != null) ? Color.BLUE + Color.UNDERLINE + "Alpha female:" + Color.DEFAULT + this.getAlphaFemale() + "\n" : Color.BLUE + "No alpha female\n")
+                ;
     }
 
 }

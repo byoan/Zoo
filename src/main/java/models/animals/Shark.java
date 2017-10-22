@@ -125,6 +125,6 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
 
     @Override
     public String toString() {
-        return super.toString()  + "       Already hatched: " + Color.BLUE + ((this.getIsHatched()) ? "Yes" : "No") + Color.WHITE + " \n    }";
+        return super.toString()  + "       Already hatched: " + Color.BLUE + ((this.getIsHatched()) ? "Yes" : "No") + Color.DEFAULT + "     }\n";
     }
 }

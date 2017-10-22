@@ -7,6 +7,7 @@ import models.exceptions.enclosures.FullEnclosureException;
 import models.interfaces.animal.AnimalInterface;
 import models.animals.Wolf;
 import models.animals.packs.WolfPack;
+import views.Color;
 import views.View;
 
 import java.util.ArrayList;
@@ -378,12 +379,12 @@ public class Enclosure<A extends AnimalInterface> {
      */
     @Override
     public String toString() {
-        return "\033[34;4mEnclosure information:\033[0m\n"+
-                "   Name: \033[34m" + this.getName() + "\033[37m" + "  |  " +
-                "Maximum number of animals that the enclosure can contain: \033[34m" + this.getMaxAnimals() + "\033[37m\n" +
-                "   Surface: \033[34m" + this.getSurface() + " m²\033[37m  |  " + "Cleanliness status: \033[34m" + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\033[37m\n" +
-                "\n\033[34;4mAnimals currently in the enclosure:\033[37;24m\n" + this.getAnimals() +
-                ((this.getWolfPack() != null) ? "Pack: " + this.getWolfPack() + ", \n" : "")
+        return  Color.BLUE + Color.UNDERLINE +"Enclosure information:\n\n" + Color.DEFAULT +
+                "   Name: " + Color.BLUE + this.getName() + Color.DEFAULT + "  |  " + "Current number of animal in the enclosure:" + Color.BLUE + this.getNbAnimals() + Color.DEFAULT +
+                "\n   Maximum number of animals that the enclosure can contain: " + Color.BLUE + this.getMaxAnimals() + Color.DEFAULT +
+                "  |  Surface: " + Color.BLUE + this.getSurface() + " m²" + Color.DEFAULT + "\n   Cleanliness status: " + Color.BLUE + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + Color.DEFAULT +
+                Color.BLUE + Color.UNDERLINE + "\n\nAnimals currently in the enclosure:\n" + Color.DEFAULT + this.getAnimals() +
+                ((this.getWolfPack() != null) ? this.getWolfPack() + "\n" : "")
                 ;
     }
 }

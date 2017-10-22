@@ -14,7 +14,7 @@ public final class Lang {
     public static final String NOT_AVAILABLE_ENCLOSURE = "This enclosure is not available. Please chose another one:\n";
     public static final String ENCLOSURES_DETERIORATED = "Enclosures are deteriorated. You should clean them.\n";
     public static final String WRONG_USER_ACTION = "Did not understood your action, please try again";
-    public static final String CURRENT_NUMBER_ANIMALS_IN_ZOO = "Current number of animals in the zoo: ";
+    public static final String CURRENT_NUMBER_ANIMALS_IN_ZOO = "Current number of animals in the zoo --> ";
 
 
 

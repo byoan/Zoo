@@ -1,6 +1,7 @@
 package models.enclosures;
 
 import models.interfaces.animal.FlyingAnimal;
+import views.Color;
 
 public class Aviary<A extends FlyingAnimal> extends Enclosure {
 
@@ -89,14 +90,14 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
      */
     @Override
     public String toString() {
-        return "\033[34;4mAviary information:\033[37;24m\n" +
-                "Name: '\033[34m" + this.getName() + "\033[37m'" + "  |  " +
-                "Maximum number of animals that the enclosure can contain: \033[34m" + this.getMaxAnimals() + "\033[37m\n" +
-                "Surface: \033[34m" + this.getSurface() + "m²\033[37m  |  " + "Cleanliness status: \033[34m" + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\033[37m\n" +
+        return Color.BLUE + Color.UNDERLINE + "Aviary information:\n\n" + Color.DEFAULT +
+                "Name: " + Color.BLUE + this.getName() + Color.DEFAULT + "  |  " +
+                "Maximum number of animals that the enclosure can contain: " + Color.BLUE + this.getMaxAnimals() + Color.DEFAULT + "\n" +
+                "Surface: " + Color.BLUE + this.getSurface() + "m²" + Color.DEFAULT + "  |  " + "Cleanliness status: " + Color.BLUE + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + Color.DEFAULT + "\n" +
 
-                "Height: \033[34m" + this.getHeight() + "m\033[37m  |  " +
-                "Roof State: \033[34m" + ((this.getRoofState() == 0) ? "Really bad" : (this.getRoofState() == 1) ? "Bad" : "Good") + "\033[37m\n" +
-                "\n\033[34;4mAnimals currently in the aviary:\033[37;24m\n" + this.getAnimals() + "\n"
+                "Height: " + Color.BLUE + this.getHeight() + "m" + Color.DEFAULT + "  |  " +
+                "Roof State: " + Color.BLUE + ((this.getRoofState() == 0) ? "Really bad" : (this.getRoofState() == 1) ? "Bad" : "Good") + Color.DEFAULT + "\n" +
+                "\n" + Color.BLUE + Color.UNDERLINE + "Animals currently in the aviary:\n" + Color.DEFAULT + this.getAnimals() + "\n"
                 ;
     }
 }

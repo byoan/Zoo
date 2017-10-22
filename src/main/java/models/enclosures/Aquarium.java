@@ -1,6 +1,7 @@
 package models.enclosures;
 
 import models.interfaces.animal.MarineAnimal;
+import views.Color;
 import views.View;
 
 public class Aquarium<A extends MarineAnimal> extends Enclosure {
@@ -116,13 +117,13 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
 
     @Override
     public String toString() {
-        return "\033[34;4mAquarium information:\033[37;24m\n" +
-                "Name: '\033[34m" + this.getName() + "\033[37m'" + "  |  " +
-                "Maximum number of animals that the enclosure can contain: \033[34m" + this.getMaxAnimals() + "\033[37m\n" +
-                "Surface: \033[34m" + this.getSurface() + "m3\033[37m  |  " + "Cleanliness status: \033[34m" + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + "\033[37m\n" +
-                "Depth: \033[34m" + this.getDepth() + "m\033[37m" + "  |  " + "Salinity: \033[34m" + this.getSalinity() + "%\033[37m  |  " +
-                "WaterLevel: \033[34m" + ((this.getCurrentWaterLevel() == 0) ? "Really bad" : (this.getCurrentWaterLevel() == 1) ? "Bad" : "Good") + "\033[37m\n" +
-                "\n\033[34;4mAnimals currently in the aquarium:\033[37;24m\n" + this.getAnimals() + " \n"
+        return  Color.BLUE + Color.UNDERLINE + "Aquarium information:\n\n" + Color.DEFAULT +
+                "Name: " + Color.BLUE + this.getName() + Color.DEFAULT + "  |  " +
+                "Maximum number of animals that the enclosure can contain: " + Color.BLUE + this.getMaxAnimals() + Color.DEFAULT + "\n" +
+                "Surface: " + Color.BLUE + this.getSurface() + "m3" + Color.DEFAULT + "  |  " + "Cleanliness status: " + Color.BLUE + ((this.getCleanliness() == 0) ? "Really bad" : (this.getCleanliness() == 1) ? "Bad" : "Good") + Color.DEFAULT + "\n" +
+                "Depth: " + Color.BLUE + this.getDepth() + "m" + Color.DEFAULT + "  |  " + "Salinity: " + Color.BLUE + this.getSalinity() + "%" + Color.DEFAULT +"  |  " +
+                "WaterLevel: " + Color.BLUE + ((this.getCurrentWaterLevel() == 0) ? "Really bad" : (this.getCurrentWaterLevel() == 1) ? "Bad" : "Good") + Color.DEFAULT + "\n" +
+                "\n" + Color.BLUE + Color.UNDERLINE + "Animals currently in the aquarium:" + Color.DEFAULT + "\n" + this.getAnimals() + "\n"
                 ;
     }
 }
