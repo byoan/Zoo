@@ -372,9 +372,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
             return null;
         } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
             this.setCopulationTurn(0);
-            if (this.getPack() != null && this.getRank() == WolfRank.ALPHA) {
-                return this.birth();
-            } else if (this.getPack() == null) {
+            if ((this.getPack() != null && this.getRank() == WolfRank.ALPHA) || this.getPack() == null) {
                 return this.birth();
             }
         }
