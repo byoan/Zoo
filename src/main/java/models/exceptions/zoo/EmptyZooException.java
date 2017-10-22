@@ -19,9 +19,10 @@ public class EmptyZooException extends Exception {
 
     /**
      * Getter for the zoo attribute which represents the zoo involved in the Exception
+     * @return The Zoo instance that was given during Exception construction
      */
     public Zoo getZoo() {
-        return zoo;
+        return this.zoo;
     }
 
     /**

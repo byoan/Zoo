@@ -12,6 +12,7 @@ public class FullEnclosureException extends Exception {
 
     /**
      * Constructor for the Exception
+     * @param <A> Generic type for AnimalInterface, used for the return type
      * @param enclosure The enclosure which caused the exception
      */
     public <A extends AnimalInterface> FullEnclosureException(Enclosure<A> enclosure) {
@@ -20,6 +21,7 @@ public class FullEnclosureException extends Exception {
 
     /**
      * Getter for the enclosure involved in the exception
+     * @param <A> Generic type of AnimalInterface used for the return type
      * @return The enclosure instance
      */
     public <A extends AnimalInterface> Enclosure<A> getEnclosure() {

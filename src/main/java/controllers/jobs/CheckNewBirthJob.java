@@ -29,7 +29,7 @@ public class CheckNewBirthJob implements Runnable {
     /**
      * Getter for the list of enclosure to check
      * Will most likely represent the list of enclosures of the zoo
-     * @return ArrayList<Enclosure> The enclosure list that the job received
+     * @return An ArrayList of enclosures that contains the enclosure list received by the Job during its construction
      */
     public ArrayList<Enclosure> getEnclosureList() {
         return this.enclosureList;
@@ -37,7 +37,7 @@ public class CheckNewBirthJob implements Runnable {
 
     /**
      * Getter for the newly born animals collections (born this turn)
-     * @return ArrayList<animal> that were born this turn
+     * @return An ArrayList of Animals that will contain the animals born this turn
      */
     public ArrayList<Animal> getNewBirths() {
         return this.newBirths;

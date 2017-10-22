@@ -104,7 +104,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     /**
      * Setter for the strength of the wolf
      * Used for the Alpha couple, which will always have a better strength that the rest of the pack
-     * @param strength
+     * @param strength The new strength value for this Animal's strength attribute
      */
     public void setStrength(int strength) {
         this.strength = strength;
@@ -157,6 +157,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     /**
      * Allows the current wolf to attempt a domination on the given wolf
+     * @param target The wolf representing the target on which the wolf calling this method will attempt the domination
      */
     public void attemptDomination(Wolf target) {
         if (this.getPack() != null || target.getPack() != null) {
@@ -190,6 +191,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     /**
      * Allows to swap the ranks in a pack between the current Wolf instance and the given target
+     * @param target The wolf that will swap its rank with the wolf calling this method
      */
     public void swapRanks(Wolf target) {
         WolfRank gainedRank = target.getRank();

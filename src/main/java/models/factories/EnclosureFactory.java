@@ -25,6 +25,7 @@ public abstract class EnclosureFactory {
     /**
      * Allows to retrieve the instance of the EnclosureFactory (Singleton)
      * Will create a new instance on first call
+     * @param type The id of the desired type of Animal, which is defined in the AnimalTypes enum
      * @return The EnclosureFactory instance
      */
     public static EnclosureFactory getInstance(int type) {

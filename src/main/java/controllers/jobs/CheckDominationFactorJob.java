@@ -30,7 +30,7 @@ public class CheckDominationFactorJob implements Runnable {
 
     /**
      * Performs the Job role
-     * Will check the domination factor of all the wolves, and decrease the ones that matches the conditions domination <= 50 && not the last of his sex in its pack
+     * Will check the domination factor of all the wolves, and decrease the ones that matches the conditions "domination is inferior or equals to 50" AND "not the last of his sex in its pack"
      */
     @Override
     public void run() {
@@ -67,7 +67,6 @@ public class CheckDominationFactorJob implements Runnable {
      * Checks within the Pack's wolves if there is another wolf with the same sex and same rank
      * @param pack The Wolf Pack to check
      * @param animalToCheck The animal we have to check with the pack's wolves
-     * @return Will return true if we found another wolf which has the same sex and rank, or false if not
      */
     public void compareAnimalWithItsPack(WolfPack pack, Wolf animalToCheck) {
         for (Wolf wolf : pack.getWolfList()) {

@@ -62,6 +62,7 @@ public class SharkEnclosureFactory extends EnclosureFactory {
     /**
      * Allows to generate animals to populate the created enclosure
      * Will be called if the createEnclosure method of the Factory is called with the true parameter, which represents the "Do you want to populate the enclosure you are creating ?"
+     * @param enclosure The enclosure in which this method will generate some population (basically a newly created enclosure)
      */
     public void generateRandomPopulation(Enclosure<Shark> enclosure) {
         for (int i = 0; i < enclosure.getMaxAnimals() / 2; i++) {

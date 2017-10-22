@@ -152,7 +152,7 @@ public class Enclosure<A extends AnimalInterface> {
 
     /**
      * Getter for the list of models.animals contained in the enclosure
-     * @return An ArrayList<A extends AnimalInterface> containing all the models.animals of the enclosure
+     * @return A typed ArrayList containing all the animals of the enclosure
      */
     public ArrayList<A> getAnimals() {
         return this.animals;
@@ -303,7 +303,7 @@ public class Enclosure<A extends AnimalInterface> {
     /**
      * Allows to create a temporary enclosure which has the same properties that the current instance
      * Used for the cleaning process, as an enclosure must be emptied before cleaned
-     * @return Enclosure<AnimalInterface> The temporary enclosure to use during cleaning
+     * @return The temporary enclosure to use during cleaning, which has the same type that the original one
      */
     public Enclosure<A> createTemporaryEnclosure() {
         return new Enclosure<A>("Temporary Enclosure for " + this.getName() + " cleaning", this.getSurface(), this.getMaxAnimals());

@@ -69,7 +69,9 @@ public class Animal implements AnimalInterface {
 
     /**
      * Weight generator between min and max for each animals
-     * @return A randomly generated number
+     * @param min The minimal weight that the animal can have
+     * @param max The maximum weight that the animal can have
+     * @return A randomly generated number between min and max
      */
     public int randomWeight(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
@@ -77,7 +79,9 @@ public class Animal implements AnimalInterface {
 
     /**
      * Size generator between min and max for each animals
-     * @return A randomly generated number
+     * @param min The minimal size that the animal can have
+     * @param max The maximum size that the animal can have
+     * @return A randomly generated number between min and max
      */
     public int randomSize(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
@@ -192,6 +196,7 @@ public class Animal implements AnimalInterface {
 
     /**
      * Sets the turn number at which the pregnancy started
+     * @param turnNb The turn number at which the copulation took place
      */
     public void setCopulationTurn(int turnNb) {
         this.copulationTurn = turnNb;

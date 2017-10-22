@@ -70,7 +70,8 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     }
 
     /**
-     * Allows to set the current state of hatching of our animal instance
+     * Setter for the isHatched attribute, which represents whether or not the Animal has hatched or is still in an egg
+     * @param value The new isHatched value to assign
      */
     public void setHatched(boolean value) {
         this.isHatched = value;

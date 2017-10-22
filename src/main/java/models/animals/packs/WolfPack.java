@@ -90,6 +90,8 @@ public class WolfPack {
 
     /**
      * Allows to sort the pack by the Wolf rank in its pack
+     * @param wolfPack The WolfPack to sort by insertion
+     * @return The sorted WolfPack having its wolves sorted by their ranks
      */
     public ArrayList<Wolf> insertionSort(ArrayList<Wolf> wolfPack) {
         int i;

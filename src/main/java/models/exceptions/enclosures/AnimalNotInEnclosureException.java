@@ -15,6 +15,12 @@ public class AnimalNotInEnclosureException extends Exception {
      */
     private Enclosure enclosure;
 
+    /**
+     * Constructor for the AnimalNotInEnclosureException
+     * @param animal The animal involved in the Exception
+     * @param enclosure The enclosure involved with the animal in the Exception
+     * @param <A> Generic type of AnimalInterface used for the received animal arg
+     */
     public <A extends AnimalInterface> AnimalNotInEnclosureException(AnimalInterface animal, Enclosure<A> enclosure) {
         this.animal = animal;
         this.enclosure = enclosure;
@@ -30,6 +36,7 @@ public class AnimalNotInEnclosureException extends Exception {
 
     /**
      * Getter for the enclosure involved in the Exception
+     * @param <A> Generic type of AnimalInterface used for the return type
      * @return The enclosure attribute of the Exception
      */
     public <A extends AnimalInterface> Enclosure<A> getEnclosure() {

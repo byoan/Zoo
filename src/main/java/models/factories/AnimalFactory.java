@@ -49,6 +49,7 @@ public final class AnimalFactory {
     /**
      * Allows to create an Eagle
      * Used for the copulation where the copulation turn is needed for hatching
+     * @param copulationTurn The turn at which the copulation happened, used later to calculate at each turn if the animal hatched
      * @return The newly created eagle
      */
     public Eagle createEagle(int copulationTurn) {
@@ -66,6 +67,7 @@ public final class AnimalFactory {
     /**
      * Allows to create a Fish
      * Used for the copulation where the copulation turn is needed for hatching
+     * @param copulationTurn The turn at which the copulation happened, used later to calculate at each turn if the animal hatched
      * @return The newly created fish
      */
     public Fish createFish(int copulationTurn) {
@@ -83,6 +85,7 @@ public final class AnimalFactory {
     /**
      * Allows to create a Penguin
      * Used for the copulation where the copulation turn is needed for hatching
+     * @param copulationTurn The turn at which the copulation happened, used later to calculate at each turn if he hatched
      * @return The newly created penguin
      */
     public Penguin createPenguin(int copulationTurn) {
@@ -100,6 +103,7 @@ public final class AnimalFactory {
     /**
      * Allows to create a Shark
      * Used for the copulation where the copulation turn is needed for hatching
+     * @param copulationTurn The turn at which the copulation happened, used later to calculate at each turn if he hatched
      * @return The newly created shark
      */
     public Shark createShark(int copulationTurn) {

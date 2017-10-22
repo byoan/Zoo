@@ -69,6 +69,10 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         return this.isHatched;
     }
 
+    /**
+     * Setter for the isHatched attribute, which represents whether or not the Animal has hatched or is still in an egg
+     * @param value The new isHatched value to assign
+     */
     public void setHatched(boolean value) {
         this.isHatched = value;
     }
