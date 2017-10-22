@@ -37,34 +37,73 @@ public class View {
         System.out.println(Color.WHITE + message);
     }
 
+    /**
+     * Allows to display the received message in the console
+     * Currently uses System.out.println()
+     * @param message The message to display in yellow and bold
+     */
     public static void displayWarningMessage(String message) {
         displayMessage(Color.YELLOW + Color.BOLD + message + Color.DEFAULT);
     }
 
+    /**
+     * Allows to display the received message in the console
+     * Currently uses System.out.println()
+     * @param message The message to display in green
+     */
     public static void displaySuccessMessage(String message) {
         displayMessage(Color.GREEN + message + Color.DEFAULT);
     }
 
+    /**
+     * Allows to display the received message in the console
+     * Currently uses System.out.println()
+     * @param message The message to display in blue
+     */
     public static void displayInformationMessage(String message) {
         displayMessage(Color.BLUE + message + Color.DEFAULT);
     }
 
+    /**
+     * Allows to display the received message in the console
+     * Currently uses System.out.println()
+     * @param message The message to display in pink
+     */
     public static void displayAnimalActionMessage(String message) {
         displayMessage(Color.PINK + message + Color.DEFAULT);
     }
 
+    /**
+     * Allows to display the received message in the console
+     * Currently uses System.out.println()
+     * @param message The message to display in white
+     */
     public static void displayMenuMessage(String message) {
         displayMessage(Color.WHITE + message + Color.DEFAULT);
     }
 
+    /**
+     * Allows to display the received message in the console
+     * Currently uses System.out.println()
+     * @param message The message to display in cyan
+     */
     public static void displayConsoleMessage(String message) {
         displayMessage(Color.CYAN + message + Color.DEFAULT);
     }
 
+    /**
+     * Allows to display the received message in the console
+     * Currently uses System.out.println()
+     * @param message The message to display in red and bold
+     */
     public static void displayErrorMessage(String message) {
         displayMessage(Color.RED + Color.BOLD + message + Color.DEFAULT);
     }
 
+    /**
+     * Allows to display the welcome message
+     * Currently uses System.out.println()
+     */
     public static void displayWelcomeMessage() {
         displayMessage("\n\n" +
                 "|===============================================================================================|\n" +
