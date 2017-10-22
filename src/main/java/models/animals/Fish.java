@@ -27,7 +27,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     private boolean isHatched;
 
     /**
-     * Constructor for the fish
+     * Constructor for the Fish
      * Will randomly generate sex, weight and size
      * Age, hunger, sleep, health and children creation time will always be the same
      */
@@ -46,7 +46,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     }
 
     /**
-     * Constructor for the fish
+     * Constructor for the Fish
      * @param copulationTurn The turn number at which the copulation took place
      * Will randomly generate sex, weight and size
      * Age, hunger, sleep, health and children creation time will always be the same
@@ -66,12 +66,12 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     }
 
     /**
-     * Constructor for eagle
-     * @param sex Generation of the fish
-     * @param weight Generation of the fish
-     * @param size Generation of the fish
-     * @param age Generation of the fish
-     * @param copulationTurn Generation of the fish
+     * Constructor for the Fish
+     * @param sex The sex of the fish
+     * @param weight The weight of the fish
+     * @param size The size of the fish
+     * @param age The age of the fish
+     * @param copulationTurn The copulation turn of the fish
      * Age, hunger, sleep, health and children creation time will always be the same
      */
     public Fish(boolean sex, float weight, float size, int age, int copulationTurn) {
@@ -163,7 +163,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
     }
 
     /**
-     * Represents the characteristics of th fish
+     * Represents the characteristics of the fish
      * @return Fish characteristics information
      */
     @Override

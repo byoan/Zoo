@@ -286,10 +286,6 @@ class WolfTest {
     }
 
     @Test
-    void heardScream() {
-    }
-
-    @Test
     void copulate() {
         // Instantiate required values
         Wolf wolf = new Wolf();

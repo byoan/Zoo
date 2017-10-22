@@ -27,7 +27,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     private boolean isHatched;
 
     /**
-     * Constructor for the eagle
+     * Constructor for the Eagle
      * Will randomly generate sex, weight and size
      * Age, hunger, sleep, health and children creation time will always be the same
      */
@@ -46,7 +46,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     }
 
     /**
-     * Constructor for the eagle
+     * Constructor for the Eagle
      * @param copulationTurn The turn number at which the copulation took place
      * Will randomly generate sex, weight and size
      * Age, hunger, sleep, health and children creation time will always be the same
@@ -66,12 +66,12 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     }
 
     /**
-     * Constructor for eagle
-     * @param sex Generation of the eagle
-     * @param weight Generation of the eagle
-     * @param size Generation of the eagle
-     * @param age Generation of the eagle
-     * @param copulationTurn Generation of the eagle
+     * Constructor for the Eagle
+     * @param sex The sex of the eagle
+     * @param weight The weight of the eagle
+     * @param size The size of the eagle
+     * @param age The age of the eagle
+     * @param copulationTurn The copulation turn of the eagle
      * Age, hunger, sleep, health and children creation time will always be the same
      */
     public Eagle(boolean sex, float weight, float size, int age, int copulationTurn) {
@@ -119,7 +119,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     }
 
     /**
-     * animal generic method to scream
+     * Animal generic method to scream
      */
     @Override
     public void scream() {
@@ -155,7 +155,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
     }
 
     /**
-     * animal generic method to fly
+     * Animal generic method to fly
      */
     @Override
     public void fly() {

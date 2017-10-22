@@ -21,7 +21,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
     private static final String SPECIE_NAME = "Tiger";
 
     /**
-     * Constructor for bear
+     * Constructor for Tiger
      * Will randomly generate sex, weight and size
      * Age, hunger, sleep, health and children creation time will always be the same
      */
@@ -38,11 +38,11 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
     }
 
     /**
-     * Constructor for bear
-     * @param sex Generation of the bear
-     * @param weight Generation of the bear
-     * @param size Generation of the bear
-     * @param age Generation of the bear
+     * Constructor for the Tiger
+     * @param sex The sex of the tiger
+     * @param weight The weight of the tiger
+     * @param size The size of the tiger
+     * @param age The age of the tiger
      * Age, hunger, sleep, health and children creation time will always be the same
      */
     public Tiger(boolean sex, float weight, float size, int age) {
@@ -59,7 +59,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
     }
 
     /**
-     * animal generic method to scream
+     * Animal generic method to scream
      */
     @Override
     public void scream() {
@@ -118,8 +118,8 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
     }
 
     /**
-     * Represents the characteristics of th bear
-     * @return Bear characteristics information
+     * Represents the characteristics of th tiger
+     * @return Tiger characteristics information
      */
     @Override
     public String toString() {

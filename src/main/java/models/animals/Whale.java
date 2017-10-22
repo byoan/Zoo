@@ -6,6 +6,13 @@ import models.interfaces.animal.Mammal;
 import models.interfaces.animal.MarineAnimal;
 import views.View;
 
+/**
+ * Represents a bear animal
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Whale extends Animal implements MarineAnimal, Mammal {
 
     /**
@@ -13,6 +20,11 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
      */
     private static final String SPECIE_NAME = "Whale";
 
+    /**
+     * Constructor for the Whale
+     * Will randomly generate sex, weight and size
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Whale() {
         this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
@@ -25,6 +37,14 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
         this.childrenCreationTime = 330;
     }
 
+    /**
+     * Constructor for Whale
+     * @param sex The sex of the whale
+     * @param weight The weight of the whale
+     * @param size The size of the whale
+     * @param age The age of the whale
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Whale(boolean sex, float weight, float size, int age) {
         this.specieName = SPECIE_NAME;
         this.sex = sex;
@@ -39,7 +59,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
     }
 
     /**
-     * animal generic method to scream
+     * Animal generic method to scream
      */
     @Override
     public void scream() {
@@ -47,7 +67,7 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
     }
 
     /**
-     * animal generic method to swim
+     * Animal generic method to swim
      */
     @Override
     public void swim() {
@@ -105,6 +125,10 @@ public class Whale extends Animal implements MarineAnimal, Mammal {
         return AnimalFactory.getInstance().createWhale();
     }
 
+    /**
+     * Represents the characteristics of th whale
+     * @return Whale characteristics information
+     */
     @Override
     public String toString() {
         return super.toString() + "   } \n";

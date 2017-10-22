@@ -27,7 +27,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     private boolean isHatched;
 
     /**
-     * Constructor for the shark
+     * Constructor for the Shark
      * Will randomly generate sex, weight and size
      * Age, hunger, sleep, health and children creation time will always be the same
      */
@@ -46,7 +46,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     }
 
     /**
-     * Constructor for the shark
+     * Constructor for the Shark
      * @param copulationTurn The turn number at which the copulation took place
      * Will randomly generate sex, weight and size
      * Age, hunger, sleep, health and children creation time will always be the same
@@ -66,12 +66,12 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     }
 
     /**
-     * Constructor for eagle
-     * @param sex Generation of the shark
-     * @param weight Generation of the shark
-     * @param size Generation of the shark
-     * @param age Generation of the shark
-     * @param copulationTurn Generation of the shark
+     * Constructor for the Shark
+     * @param sex The sex of the shark
+     * @param weight The weight of the shark
+     * @param size The size of the shark
+     * @param age The age of the shark
+     * @param copulationTurn The copulation turn of the shark
      * Age, hunger, sleep, health and children creation time will always be the same
      */
     public Shark(boolean sex, float weight, float size, int age, int copulationTurn) {
@@ -163,8 +163,8 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
     }
 
     /**
-     * Represents the characteristics of th shark
-     * @return shark characteristics information
+     * Represents the characteristics of the shark
+     * @return Shark characteristics information
      */
     @Override
     public String toString() {

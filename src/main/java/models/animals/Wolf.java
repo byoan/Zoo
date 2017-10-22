@@ -12,6 +12,13 @@ import views.View;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Represents a bear animal
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Wolf extends Animal implements Mammal, WanderAnimal {
 
     /**
@@ -50,6 +57,11 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
      */
     private int level;
 
+    /**
+     * Constructor for the Wolf
+     * Will randomly generate sex, weight, impetuosity, level and size
+     * Age, hunger, sleep, health, dominationFactor and children creation time will always be the same
+     */
     public Wolf() {
         this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
@@ -67,6 +79,14 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         this.level = 0;
     }
 
+    /**
+     * Constructor for the Wolf
+     * @param sex The age of the wolf
+     * @param weight The weight of the wolf
+     * @param size The size of the wolf
+     * @param age The age of the wolf
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Wolf(boolean sex, float weight, float size, int age) {
         this.specieName = SPECIE_NAME;
         this.sex = sex;
@@ -288,7 +308,7 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     }
 
     /**
-     * animal generic method to scream
+     * Animal generic method to scream
      */
     @Override
     public void scream() {
@@ -296,21 +316,6 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
             View.displayAnimalActionMessage("Oh my god i'm hurt !!");
         } else if (healthIndicator == 100){
             View.displayAnimalActionMessage("Oh yeah i'm good !!");
-        }
-    }
-
-    /**
-     * TODO
-     */
-    public void heardScream(){
-        if (!this.isSleeping() && this.healthIndicator == 100){
-            View.displayAnimalActionMessage("I can heard some wolf scream");
-        } else if (this.isSleeping()){
-            View.displayAnimalActionMessage("I'm sleeping I can't heard some wolf scream");
-        } else if (this.getHealth() != 100){
-            View.displayAnimalActionMessage("I'm hurt I can't heard some wolf scream");
-        }else{
-            View.displayAnimalActionMessage("I'm sleeping and hurt so how the fuck can I heard some wolf scream ?");
         }
     }
 
@@ -392,6 +397,10 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
         return AnimalFactory.getInstance().createWolf();
     }
 
+    /**
+     * Represents the characteristics of th wolf
+     * @return Wolf characteristics information
+     */
     @Override
     public String toString() {
         return  super.toString() +

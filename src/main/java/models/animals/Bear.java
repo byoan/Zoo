@@ -20,7 +20,7 @@ public class Bear extends Animal implements Mammal {
     private static final String SPECIE_NAME = "Bear";
 
     /**
-     * Constructor for bear
+     * Constructor for the Bear
      * Will randomly generate sex, weight and size
      * Age, hunger, sleep, health and children creation time will always be the same
      */
@@ -37,11 +37,11 @@ public class Bear extends Animal implements Mammal {
     }
 
     /**
-     * Constructor for bear
-     * @param sex Generation of the bear
-     * @param weight Generation of the bear
-     * @param size Generation of the bear
-     * @param age Generation of the bear
+     * Constructor for the Bear
+     * @param sex The age of the bear
+     * @param weight The weight of the bear
+     * @param size The size of the bear
+     * @param age The age of the bear
      * Age, hunger, sleep, health and children creation time will always be the same
      */
     public Bear(boolean sex, float weight, float size, int age) {

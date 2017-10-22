@@ -28,7 +28,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     private boolean isHatched;
 
     /**
-     * Constructor for the penguin
+     * Constructor for the Penguin
      * Will randomly generate sex, weight and size
      * Age, hunger, sleep, health and children creation time will always be the same
      */
@@ -47,7 +47,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     }
 
     /**
-     * Constructor for the penguin
+     * Constructor for the Penguin
      * @param copulationTurn The turn number at which the copulation took place
      * Will randomly generate sex, weight and size
      * Age, hunger, sleep, health and children creation time will always be the same
@@ -67,12 +67,12 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
     }
 
     /**
-     * Constructor for eagle
-     * @param sex Generation of the penguin
-     * @param weight Generation of the penguin
-     * @param size Generation of the penguin
-     * @param age Generation of the penguin
-     * @param copulationTurn Generation of the penguin
+     * Constructor for the Penguin
+     * @param sex The sex of the penguin
+     * @param weight The weight of the penguin
+     * @param size The size of the penguin
+     * @param age The age of the penguin
+     * @param copulationTurn The copulation turn of the penguin
      * Age, hunger, sleep, health and children creation time will always be the same
      */
     public Penguin(boolean sex, float weight, float size, int age, int copulationTurn) {
