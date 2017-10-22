@@ -330,7 +330,7 @@ public class Animal implements AnimalInterface {
                 "Health: " + Color.BLUE + this.getHealth() + "%" + Color.DEFAULT + " \n" +
                 "       Sex: " + Color.BLUE + ((this.getSex()) ? "Male" : "Female") + Color.DEFAULT + "     |  " + "Weight: " + Color.BLUE + this.getWeight() + "g" + Color.DEFAULT + "  |  " +
                 "Size: " + Color.BLUE + this.getSize() + "cm" + Color.DEFAULT + "  |  " + "Age: " + Color.BLUE + ((this.getAge() == 1) ? "Young" : (this.getAge() == 2) ? "Adult" : "Old") + Color.DEFAULT + " \n"  +
-                "       Started pregnancy at turn: " + Color.BLUE + ((this.getCopulationTurn() != 0) ? this.getCopulationTurn() : "-") + Color.DEFAULT + "  |  " + "Pregnancy duration: " + Color.BLUE + this.getChildrenCreationTime() + " turns" + Color.DEFAULT + " \n"
+                ((this.getSex() == false) ? "       Started pregnancy at turn: " + Color.BLUE + ((this.getCopulationTurn() != 0) ? this.getCopulationTurn() : "-") + Color.DEFAULT + "  |  " + "Pregnancy duration: " + Color.BLUE + this.getChildrenCreationTime() + " turns" + Color.DEFAULT + " \n" : "")
                 ;
     }
 }
