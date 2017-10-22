@@ -4,13 +4,13 @@ package models.enums;
 public enum AnimalTypes {
 
     BEAR(1, "Bear"),
-    EAGLE(2, "Eagle");
-    //FISH(3, "Fish"),
-    //PENGUIN(4, "Penguin"),
-    //SHARK(5, "Shark"),
-    //TIGER(6, "Tiger"),
-    //WHALE(7, "Whale"),
-    //WOLF(8, "Wolf");
+    EAGLE(2, "Eagle"),
+    FISH(3, "Fish"),
+    PENGUIN(4, "Penguin"),
+    SHARK(5, "Shark"),
+    TIGER(6, "Tiger"),
+    WHALE(7, "Whale"),
+    WOLF(8, "Wolf");
 
     /**
      * Represents the ID associated with the animal, which will allow us to pick an random number in all the types
