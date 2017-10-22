@@ -104,6 +104,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
      * Performs a copulation between the current animal instance and the given animal (which must be the same)
      * @param fish The animal instance that represents the male
      */
+    @Override
     public <A extends AnimalInterface> Animal copulate(A fish, int turnNb) {
         // Same sex can't copulate
         if (fish.getSex() == this.getSex()) {

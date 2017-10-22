@@ -51,6 +51,7 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
      * @param tiger The animal instance that represents the male
      * @param turnNb The current turn number, to mark the beginning of the pregnancy
      */
+    @Override
     public <A extends Mammal> void copulate(A tiger, int turnNb) {
         // Same sex can't copulate
         if (tiger.getSex() != this.getSex()) {

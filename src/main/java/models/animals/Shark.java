@@ -104,6 +104,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
      * Performs a copulation between the current animal instance and the given animal (which must be the same)
      * @param shark The animal instance that represents the male
      */
+    @Override
     public <A extends AnimalInterface> Animal copulate(A shark, int turnNb) {
         // Same sex can't copulates
         if (shark.getSex() == this.getSex()) {

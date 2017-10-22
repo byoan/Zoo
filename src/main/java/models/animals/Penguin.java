@@ -104,6 +104,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
      * Performs a copulation between the current animal instance and the given animal (which must be the same)
      * @param penguin The animal instance that represents the male
      */
+    @Override
     public <A extends AnimalInterface> Animal copulate(A penguin, int turnNb) {
         // Same sex can't copulate
         if (penguin.getSex() == this.getSex()) {

@@ -90,6 +90,10 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
         }
     }
 
+    /**
+     * Allows to deteriorate the currentWaterLevel and the salinity of the aquarium without having to specify any value in the Simulation
+     */
+    @Override
     public void deteriorate() {
         this.setWaterLevel(this.getCurrentWaterLevel() - 1);
         this.setSalinity(this.getSalinity() - 10);
@@ -100,6 +104,7 @@ public class Aquarium<A extends MarineAnimal> extends Enclosure {
      * Does redefine the cleanEnclosure method from its parent
      * Uses a generic name to ease its call within the Simulation
      */
+    @Override
     public void cleanEnclosure() {
         View.displayInformationMessage("The water level is worth " + this.getCurrentWaterLevel());
         if (this.getCurrentWaterLevel() < this.getDepth()) {

@@ -96,6 +96,7 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
      * Performs a copulation between the current animal instance and the given animal (which must be the same)
      * @param eagle The animal instance that represents the male
      */
+    @Override
     public <A extends AnimalInterface> Animal copulate(A eagle, int turnNb) {
         // Same sex can't copulate
         if (eagle.getSex() == this.getSex()) {

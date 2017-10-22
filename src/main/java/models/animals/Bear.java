@@ -50,6 +50,7 @@ public class Bear extends Animal implements Mammal {
      * @param bear The animal instance that represents the male
      * @param turnNb The current turn number, to mark the beginning of the pregnancy
      */
+    @Override
     public <A extends Mammal> void copulate(A bear, int turnNb) {
         // Same sex can't copulate
         if (bear.getSex() != this.getSex()) {

@@ -68,6 +68,7 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
     /**
      * Allows to deteriorate the cleanliness and the roofState of the aviary without having to specify any value in the Simulation
      */
+    @Override
     public void deteriorate() {
         this.setCleanliness(this.getCleanliness() - 1);
         this.setRoofState(this.getRoofState() - 1);
@@ -77,6 +78,7 @@ public class Aviary<A extends FlyingAnimal> extends Enclosure {
      * Allows to clean the aviary
      * Will first call the Enclosure's cleaning method
      */
+    @Override
     public void cleanEnclosure() {
         super.cleanEnclosure();
         if (this.getRoofState() <= 1) {
