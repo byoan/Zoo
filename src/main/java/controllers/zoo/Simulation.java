@@ -10,6 +10,7 @@ import models.enclosures.Enclosure;
 import models.animals.*;
 import models.factories.EnclosureFactory;
 import models.interfaces.animal.*;
+import views.Color;
 import views.Lang;
 import views.View;
 
@@ -301,7 +302,7 @@ public class Simulation {
                 this.doNothing();
                 break;
             default:
-                View.displayWarningMessage(Lang.WRONG_USER_ACTION);
+                View.displayWarningMessage("\n" + Lang.WRONG_USER_ACTION + "\n");
                 this.handleTurn();
                 break;
         }
@@ -320,7 +321,7 @@ public class Simulation {
      * Allows to display all the animals that are currently in the zoo
      */
     private void handleDisplayAllAnimalsInZoo() {
-        View.displayInformationMessage("Here are all the animals currently in the zoo:\n");
+        View.displayInformationMessage(Color.UNDERLINE + "Here are all the animals currently in the zoo:" + Color.DEFAULT);
         this.getZoo().displayAnimalsFromAllEnclosures();
     }
 
@@ -494,7 +495,7 @@ public class Simulation {
             View.displayBackToMenuMessage();
             int i = 1;
             for (Enclosure<A> enclosure : this.getZoo().getEnclosureList()) {
-                View.displayInformationMessage(i + ". " + enclosure.getName());
+                View.displayMenuMessage(i + ". " + enclosure.getName());
                 ++i;
             }
 
@@ -508,14 +509,13 @@ public class Simulation {
                     } else if (action == 0) {
                         this.handleTurn();
                     } else {
-                        View.displayWarningMessage(Lang.ENTER_VALID_VALUE);
+                        View.displayWarningMessage("Please enter a valid value");
                     }
                 } catch (Exception e) {
-                    View.displayErrorMessage(Lang.ERROR + e.getMessage());
-                    View.displayErrorMessage(Lang.PLEASE_TRY_AGAIN);
+                    View.displayErrorMessage("Error : " + e.getMessage() + ". Please try again");
                 }
             }
-            View.displayConsoleMessage(Lang.CLEANING_ENCLOSURE_N + action + " ...");
+            View.displayConsoleMessage(Lang.CLEANING_ENCLOSURE_N + action + " ...\n");
             this.getEmployee().cleanEnclosure(this.getZoo().getEnclosureList().get(action - 1));
         } else {
             View.displayConsoleMessage(Lang.NO_ENCLOSURES_IN_ZOO);

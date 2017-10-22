@@ -11,22 +11,22 @@ public final class Lang {
 
     public static final String NO_ENCLOSURES_IN_ZOO = "No enclosures are currently in the zoo.\n";
     public static final String WRONG_ENCLOSURE_NUMBER_USER_INPUT = "Can't enter a value greater than the maximum enclosure. Please try again:\n";
-    public static final String NOT_AVAILABLE_ENCLOSURE = "This enclosure is not available. Please chose another one:\n";
+    public static final String NOT_AVAILABLE_ENCLOSURE = "This enclosure is not available. Please chose another one\n";
     public static final String ENCLOSURES_DETERIORATED = "Enclosures are deteriorated. You should clean them.\n";
     public static final String WRONG_USER_ACTION = "Did not understood your action, please try again";
     public static final String CURRENT_NUMBER_ANIMALS_IN_ZOO = "Current number of animals in the zoo --> ";
 
     public static final String NOT_DOING_ANYTHING_THIS_TURN = "Not doing anything this turn ...";
-    public static final String SELECT_ENCLOSURE_TO_FEED = "Select the enclosure that you want to feed:";
+    public static final String SELECT_ENCLOSURE_TO_FEED = Color.CYAN + "Select the enclosure that you want to feed" + Color.DEFAULT + "\n";
     public static final String ENCLOSURE_FED = "This enclosure has been fed";
 
-    public static final String SELECT_ENCLOSURE_TO_HEAL = "Select the enclosure containing the animal you want to heal:";
-    public static final String SELECT_ANIMAL_TO_HEAL = "Select the animal you want to heal:";
+    public static final String SELECT_ENCLOSURE_TO_HEAL = Color. CYAN + "Select the enclosure containing the animal you want to heal" + Color.DEFAULT + "\n";
+    public static final String SELECT_ANIMAL_TO_HEAL = Color.CYAN + "Select the animal you want to heal" + Color.DEFAULT + "\n";
 
 
-    public static final String SELECT_ORIGIN_ENCLOSURE_FOR_TRANSFER = "Select the enclosure containing the animal you want to transfer:";
-    public static final String SELECT_ANIMAL_FOR_TRANSFER = "Select the animal you want to transfer:";
-    public static final String SELECT_TARGET_ENCLOSURE_FOR_TRANSFER = "Select the enclosure in which you would like to send this animal:";
+    public static final String SELECT_ORIGIN_ENCLOSURE_FOR_TRANSFER = Color.CYAN + "Select the enclosure containing the animal you want to transfer" + Color.DEFAULT + "\n";
+    public static final String SELECT_ANIMAL_FOR_TRANSFER = Color.CYAN + "Select the animal you want to transfer" + Color.DEFAULT + "\n";
+    public static final String SELECT_TARGET_ENCLOSURE_FOR_TRANSFER = Color.CYAN + "Select the enclosure in which you would like to send this animal" + Color.CYAN + "\n";
 
     public static final String TRANSFER_SAME_ENCLOSURE = "Can't transfer this animal in its current enclosure. Please choose another one.";
 
