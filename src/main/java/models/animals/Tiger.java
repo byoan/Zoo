@@ -6,6 +6,13 @@ import models.interfaces.animal.Mammal;
 import models.interfaces.animal.WanderAnimal;
 import views.View;
 
+/**
+ * Represents a bear animal
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Tiger extends Animal implements Mammal, WanderAnimal {
 
     /**
@@ -13,6 +20,11 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
      */
     private static final String SPECIE_NAME = "Tiger";
 
+    /**
+     * Constructor for bear
+     * Will randomly generate sex, weight and size
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Tiger() {
         this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
@@ -25,6 +37,14 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
         this.childrenCreationTime = 109;
     }
 
+    /**
+     * Constructor for bear
+     * @param sex Generation of the bear
+     * @param weight Generation of the bear
+     * @param size Generation of the bear
+     * @param age Generation of the bear
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Tiger(boolean sex, float weight, float size, int age) {
         this.specieName = SPECIE_NAME;
         this.sex = sex;
@@ -97,6 +117,10 @@ public class Tiger extends Animal implements Mammal, WanderAnimal {
         return AnimalFactory.getInstance().createTiger();
     }
 
+    /**
+     * Represents the characteristics of th bear
+     * @return Bear characteristics information
+     */
     @Override
     public String toString() {
         return super.toString() + "   } \n";

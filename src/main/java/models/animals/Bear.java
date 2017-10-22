@@ -5,6 +5,13 @@ import models.factories.AnimalFactory;
 import models.interfaces.animal.Mammal;
 import views.View;
 
+/**
+ * Represents a bear animal
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Bear extends Animal implements Mammal {
 
     /**
@@ -12,6 +19,11 @@ public class Bear extends Animal implements Mammal {
      */
     private static final String SPECIE_NAME = "Bear";
 
+    /**
+     * Constructor for bear
+     * Will randomly generate sex, weight and size
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Bear() {
         this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
@@ -24,6 +36,14 @@ public class Bear extends Animal implements Mammal {
         this.childrenCreationTime = 180;
     }
 
+    /**
+     * Constructor for bear
+     * @param sex Generation of the bear
+     * @param weight Generation of the bear
+     * @param size Generation of the bear
+     * @param age Generation of the bear
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Bear(boolean sex, float weight, float size, int age) {
         this.specieName = SPECIE_NAME;
         this.sex = sex;
@@ -89,6 +109,10 @@ public class Bear extends Animal implements Mammal {
         return AnimalFactory.getInstance().createBear();
     }
 
+    /**
+     * Represents the characteristics of th bear
+     * @return Bear characteristics information
+     */
     @Override
     public String toString() {
         return super.toString() + "   } \n";

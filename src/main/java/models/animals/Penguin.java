@@ -8,6 +8,13 @@ import models.interfaces.animal.Oviparous;
 import views.Color;
 import views.View;
 
+/**
+ * Represents a penguin animal
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAnimal {
 
     /**
@@ -20,6 +27,11 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
      */
     private boolean isHatched;
 
+    /**
+     * Constructor for the penguin
+     * Will randomly generate sex, weight and size
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Penguin() {
         this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
@@ -34,6 +46,12 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         this.isHatched = true;
     }
 
+    /**
+     * Constructor for the penguin
+     * @param copulationTurn The turn number at which the copulation took place
+     * Will randomly generate sex, weight and size
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Penguin(int copulationTurn) {
         this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
@@ -48,6 +66,15 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         this.isHatched = false;
     }
 
+    /**
+     * Constructor for eagle
+     * @param sex Generation of the penguin
+     * @param weight Generation of the penguin
+     * @param size Generation of the penguin
+     * @param age Generation of the penguin
+     * @param copulationTurn Generation of the penguin
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Penguin(boolean sex, float weight, float size, int age, int copulationTurn) {
         this.specieName = SPECIE_NAME;
         this.sex = sex;
@@ -91,11 +118,17 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         return this.getIsHatched();
     }
 
+    /**
+     * Animal generic method to scream
+     */
     @Override
     public void scream() {
         View.displayAnimalActionMessage("A penguin is screaming");
     }
 
+    /**
+     * Animal generic method to swim
+     */
     @Override
     public void swim() {
         View.displayAnimalActionMessage("A penguin is swimming");
@@ -120,16 +153,27 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         }
     }
 
+    /**
+     * Animal generic method to lay
+     * @return A new penguin instance (through the AnimalFactory), which represents the newly born animal
+     */
     @Override
     public Penguin lay() {
         return AnimalFactory.getInstance().createPenguin();
     }
 
+    /**
+     * Animal generic method to fly
+     */
     @Override
     public void fly() {
         View.displayAnimalActionMessage("A penguin is flying");
     }
 
+    /**
+     * Represents the characteristics of th penguin
+     * @return penguin characteristics information
+     */
     @Override
     public String toString() {
         return super.toString()  + "       Already hatched: " + Color.BLUE + ((this.getIsHatched()) ? "Yes" : "No") + Color.DEFAULT + "     }\n";

@@ -7,6 +7,13 @@ import models.interfaces.animal.Oviparous;
 import views.Color;
 import views.View;
 
+/**
+ * Represents a shark animal
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Shark extends Animal implements MarineAnimal, Oviparous {
 
     /**
@@ -19,6 +26,11 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
      */
     private boolean isHatched;
 
+    /**
+     * Constructor for the shark
+     * Will randomly generate sex, weight and size
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Shark() {
         this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
@@ -33,6 +45,12 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
         this.isHatched = true;
     }
 
+    /**
+     * Constructor for the shark
+     * @param copulationTurn The turn number at which the copulation took place
+     * Will randomly generate sex, weight and size
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Shark(int copulationTurn) {
         this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
@@ -47,6 +65,15 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
         this.isHatched = false;
     }
 
+    /**
+     * Constructor for eagle
+     * @param sex Generation of the shark
+     * @param weight Generation of the shark
+     * @param size Generation of the shark
+     * @param age Generation of the shark
+     * @param copulationTurn Generation of the shark
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Shark(boolean sex, float weight, float size, int age, int copulationTurn) {
         this.specieName = SPECIE_NAME;
         this.sex = sex;
@@ -91,11 +118,17 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
         return this.getIsHatched();
     }
 
+    /**
+     * Animal generic method to scream
+     */
     @Override
     public void scream() {
         View.displayAnimalActionMessage("A shark is screaming");
     }
 
+    /**
+     * Animal generic method to swim
+     */
     @Override
     public void swim() {
         View.displayAnimalActionMessage("A shark is swimming");
@@ -120,11 +153,19 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
         }
     }
 
+    /**
+     * Animal generic method to lay
+     * @return A new shark instance (through the AnimalFactory), which represents the newly born animal
+     */
     @Override
     public Shark lay() {
         return AnimalFactory.getInstance().createShark();
     }
 
+    /**
+     * Represents the characteristics of th shark
+     * @return shark characteristics information
+     */
     @Override
     public String toString() {
         return super.toString()  + "       Already hatched: " + Color.BLUE + ((this.getIsHatched()) ? "Yes" : "No") + Color.DEFAULT + "     }\n";

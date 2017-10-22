@@ -7,6 +7,13 @@ import models.interfaces.animal.Oviparous;
 import views.Color;
 import views.View;
 
+/**
+ * Represents a eagle animal
+ *
+ * @author Yoan Ballesteros
+ * @author Antoine Sirven
+ * @version 1.0
+ */
 public class Eagle extends Animal implements FlyingAnimal, Oviparous {
 
     /**
@@ -19,6 +26,11 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
      */
     private boolean isHatched;
 
+    /**
+     * Constructor for the eagle
+     * Will randomly generate sex, weight and size
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Eagle() {
         this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
@@ -33,6 +45,12 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         this.isHatched = true;
     }
 
+    /**
+     * Constructor for the eagle
+     * @param copulationTurn The turn number at which the copulation took place
+     * Will randomly generate sex, weight and size
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Eagle(int copulationTurn) {
         this.specieName = SPECIE_NAME;
         this.sex = this.getRandomBoolean();
@@ -47,6 +65,15 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         this.isHatched = false;
     }
 
+    /**
+     * Constructor for eagle
+     * @param sex Generation of the eagle
+     * @param weight Generation of the eagle
+     * @param size Generation of the eagle
+     * @param age Generation of the eagle
+     * @param copulationTurn Generation of the eagle
+     * Age, hunger, sleep, health and children creation time will always be the same
+     */
     public Eagle(boolean sex, float weight, float size, int age, int copulationTurn) {
         this.specieName = SPECIE_NAME;
         this.sex = sex;
@@ -91,6 +118,9 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         return this.getIsHatched();
     }
 
+    /**
+     * animal generic method to scream
+     */
     @Override
     public void scream() {
         View.displayAnimalActionMessage("An eagle is screaming");
@@ -115,16 +145,27 @@ public class Eagle extends Animal implements FlyingAnimal, Oviparous {
         }
     }
 
+    /**
+     * Animal generic method to lay
+     * @return A new Eagle instance (through the AnimalFactory), which represents the newly born animal
+     */
     @Override
     public Eagle lay() {
         return AnimalFactory.getInstance().createEagle();
     }
 
+    /**
+     * animal generic method to fly
+     */
     @Override
     public void fly() {
         View.displayAnimalActionMessage("An eagle is flying");
     }
 
+    /**
+     * Represents the characteristics of th eagle
+     * @return Eagle characteristics information
+     */
     @Override
     public String toString() {
         return super.toString()  + "       Already hatched: " + Color.BLUE + ((this.getIsHatched()) ? "Yes" : "No") + Color.DEFAULT + "     }\n";
