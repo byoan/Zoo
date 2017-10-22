@@ -4,4 +4,4 @@ Current build status: [![Build Status](http://jenkins.yoanballesteros.com/buildS
 
 Licence Pro SIL DA2I | Projet Zoo
 
-Yoan Ballesteros & Antoine Sirven
+@byoan & @Kur0n33k0
