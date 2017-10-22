@@ -393,12 +393,12 @@ public class Wolf extends Animal implements Mammal, WanderAnimal {
     @Override
     public String toString() {
         return  super.toString() +
-                "\n" + "       Membership status: " + Color.BLUE + ((this.getRank() == null) ? "Solitary" : "In a pack") + Color.WHITE + "  |  " +
-                "Rank in the pack: " + Color.BLUE + ((this.getRank() == null) ? "none" : this.getRank().getName()) + Color.WHITE + "  |  " +
-                "Level: " + Color.BLUE + this.getLevel() + Color.WHITE + "\n" +
-                "       Domination factor: " + Color.BLUE + this.getDominationFactor() + Color.WHITE + "  |  " +
-                "Impetuosity: " + Color.BLUE + this.getImpetuosity() + "%" + Color.WHITE + "  |  " +
-                "Strength: " + Color.BLUE + this.getStrength() + Color.WHITE + "\n" +"   } \n"
+                "\n" + "       Membership status: " + Color.BLUE + ((this.getRank() == null) ? "Solitary" : "In a pack") + Color.DEFAULT + "  |  " +
+                "Rank in the pack: " + Color.BLUE + ((this.getRank() == null) ? "none" : this.getRank().getName()) + Color.DEFAULT + "  |  " +
+                "Level: " + Color.BLUE + this.getLevel() + Color.DEFAULT + "\n" +
+                "       Domination factor: " + Color.BLUE + this.getDominationFactor() + Color.DEFAULT + "  |  " +
+                "Impetuosity: " + Color.BLUE + this.getImpetuosity() + "%" + Color.DEFAULT + "  |  " +
+                "Strength: " + Color.BLUE + this.getStrength() + Color.DEFAULT + "\n" +"   } \n"
                 ;
     }
 }
