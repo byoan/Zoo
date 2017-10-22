@@ -84,7 +84,7 @@ public class Fish extends Animal implements MarineAnimal, Oviparous {
         if (this.getIsHatched()) {
             return true;
         } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
-            View.displaySuccessMessage("A fish hatched !");
+            View.displaySuccessMessage(Color.BOLD + "A fish hatched !\n" + Color.DEFAULT);
             this.setHatched(true);
         }
         return this.getIsHatched();

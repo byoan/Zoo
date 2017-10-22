@@ -84,7 +84,7 @@ public class Shark extends Animal implements MarineAnimal, Oviparous {
         if (this.getIsHatched()) {
             return true;
         } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
-            View.displaySuccessMessage("A shark hatched !");
+            View.displaySuccessMessage(Color.BOLD + "A shark hatched !\n" + Color.DEFAULT);
             this.setHatched(true);
         }
         return this.getIsHatched();

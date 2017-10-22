@@ -84,7 +84,7 @@ public class Penguin extends Animal implements MarineAnimal, Oviparous, FlyingAn
         if (this.getIsHatched()) {
             return true;
         } else if (turnNb - this.getCopulationTurn() == this.getChildrenCreationTime()) {
-            View.displaySuccessMessage("A penguin hatched !");
+            View.displaySuccessMessage(Color.BOLD + "A penguin hatched !\n" + Color.DEFAULT);
             this.setHatched(true);
         }
         return this.getIsHatched();
