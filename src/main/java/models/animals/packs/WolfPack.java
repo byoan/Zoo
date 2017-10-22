@@ -192,6 +192,19 @@ public class WolfPack {
     }
 
     /**
+     * Getter for all omega of the pack
+     * @return all omega
+     */
+    public Wolf getOmega() {
+        for (Wolf wolf : this.getWolfList()) {
+            if (wolf.getRank().getId() == 24) {
+                return wolf;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Allows to designate a new Alpha male, in case the current one walks away or dies
      * @param wolf The alpha male that is being deleted
      */
@@ -246,7 +259,8 @@ public class WolfPack {
         return  "\n" + Color.BLUE + Color.UNDERLINE + "\nWolf pack:\n" + Color.DEFAULT +
                 this.getWolfList() + " \n" +
                 ((this.getAlphaMale() != null) ? Color.BLUE + Color.UNDERLINE + "Alpha male:" + Color.DEFAULT + this.getAlphaMale() + "\n" : Color.BLUE + "No alpha male\n") +
-                ((this.getAlphaFemale() != null) ? Color.BLUE + Color.UNDERLINE + "Alpha female:" + Color.DEFAULT + this.getAlphaFemale() + "\n" : Color.BLUE + "No alpha female\n")
+                ((this.getAlphaFemale() != null) ? Color.BLUE + Color.UNDERLINE + "Alpha female:" + Color.DEFAULT + this.getAlphaFemale() + "\n" : Color.BLUE + "No alpha female\n")+
+                ((this.getOmega() != null) ? Color.BLUE + Color.UNDERLINE + "Wolf omega:" + Color.DEFAULT + this.getOmega() + "\n" : Color.BLUE + "No omega\n")
                 ;
     }
 
