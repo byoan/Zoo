@@ -711,11 +711,14 @@ public class Simulation {
             while (animal.equals(secondAnimal)) {
                 secondAnimal = this.pickRandomAnimal(enclosure);
             }
-            if (secondAnimal != null) {
-                animal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth() + 1));
-                secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth() + 1));
 
-                View.displayInformationMessage(Lang.FIGHT_TWO_ANIMALS_FOUGHT + enclosure.getName() + " enclosure.\n");
+            if (secondAnimal != null) {
+                if (animal.getSpecieName() != "Wolf") {
+                    animal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth() + 1));
+                    secondAnimal.setHealth(animal.getHealth() - this.getRandom().nextInt(0 , animal.getHealth() + 1));
+                }
+
+                View.displayAnimalActionMessage(Lang.FIGHT_TWO_ANIMALS_FOUGHT + enclosure.getName() + " enclosure.\n");
                 if (animal.getHealth() <= 0) {
                     View.displayWarningMessage(Lang.FIGHT_FIRST_ANIMAL_DIED);
                     enclosure.remove(animal);
