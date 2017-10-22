@@ -46,4 +46,7 @@ public final class Lang {
 
     public static final String PICK_ENCLOSURE_TO_CLEAN= "\nWhich enclosure would you like to clean?\n";
     public static final String CLEANING_ENCLOSURE_N = "Cleaning the enclosure n°";
+
+
+    public static final String NOT_ALPHA_WOLF_CANT_COPULATE = "Only the Alpha couple can copulate in a pack.\n";
 }
